@@ -23,24 +23,10 @@ import Layout from '../layouts/Layout.astro';
       <!-- Search box -->
       <div class="hero-search-wrapper">
         <div class="hero-search-box">
-          <div class="hero-search-input" contenteditable="false" role="textbox">
-            <span class="hero-search-placeholder">Find lab furniture, testing apparatus...</span>
-          </div>
-          <div class="hero-search-bar">
-            <div class="hero-search-tabs">
-              <button class="hero-search-tab active">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                Search
-              </button>
-              <button class="hero-search-tab">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M12 8V4H8"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 13v2"/><path d="M9 13v2"/></svg>
-                Catalog
-              </button>
-            </div>
-            <button class="hero-search-submit">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
-            </button>
-          </div>
+          <input type="text" class="hero-search-input" placeholder="Find lab furniture, testing apparatus..." />
+          <button class="hero-search-submit">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></svg>
+          </button>
         </div>
       </div>
       <!-- Logo strip -->
@@ -94,40 +80,132 @@ import Layout from '../layouts/Layout.astro';
 
   <div class="container"><div class="rule"></div></div>
 
-  <!-- WHY TAKA -->
-  <section class="section">
-    <div class="container">
-      <div class="why-grid">
-        <div class="why-left">
-          <span class="eyebrow">Why TAKA</span>
-          <h2 class="section-title">Quality equipment,<br>delivered and installed.</h2>
+  <!-- BUILT FOR EVERY SECTOR -->
+  <section class="sector-section">
+    <div class="sector-wrap">
+      <div class="sector-left">
+        <h2 class="sector-heading">Built for every<br />sector</h2>
+        <p class="sector-desc">One supplier for schools, hospitals, labs, and factories across the UAE.</p>
+        <div class="sector-list">
+          <button class="sector-item active" data-sector="education">
+            <span class="sector-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            </span>
+            Education &amp; Schools
+          </button>
+          <button class="sector-item" data-sector="healthcare">
+            <span class="sector-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M12 14v4"/><path d="M10 16h4"/></svg>
+            </span>
+            Healthcare &amp; Hospitals
+          </button>
+          <button class="sector-item" data-sector="research">
+            <span class="sector-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
+            </span>
+            Research Laboratories
+          </button>
+          <button class="sector-item" data-sector="industrial">
+            <span class="sector-item-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </span>
+            Industrial &amp; Factory
+          </button>
         </div>
-        <div class="why-right">
-          <div class="why-item">
-            <span class="why-number">01</span>
-            <div>
-              <h4 class="why-item-title">Wide product range</h4>
-              <p class="why-item-desc">From classroom desks to laboratory fume hoods — one supplier for all your institutional needs.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <span class="why-number">02</span>
-            <div>
-              <h4 class="why-item-title">UAE-wide delivery</h4>
-              <p class="why-item-desc">Based in Abu Dhabi, we deliver and install across all seven emirates.</p>
-            </div>
-          </div>
-          <div class="why-item">
-            <span class="why-number">03</span>
-            <div>
-              <h4 class="why-item-title">Expert support</h4>
-              <p class="why-item-desc">Our team helps you select the right equipment for your specific requirements and budget.</p>
+      </div>
+      <div class="sector-right">
+        <div class="sector-panel">
+          <div id="sector-result">
+            <h3 class="sector-result-title">Education &amp; Schools</h3>
+            <p class="sector-result-subtitle">Equipping classrooms and school laboratories across the UAE</p>
+            <div class="sector-result-tag">Key Products</div>
+            <div class="sector-result-list">
+              <div class="sector-product">
+                <p class="sector-product-name">Laboratory Workstations</p>
+                <p class="sector-product-desc">Modular bench systems with chemical-resistant tops</p>
+              </div>
+              <div class="sector-product">
+                <p class="sector-product-name">Fume Hoods</p>
+                <p class="sector-product-desc">Ducted and ductless models, EN 14175 certified</p>
+              </div>
+              <div class="sector-product">
+                <p class="sector-product-name">Student Desks &amp; Seating</p>
+                <p class="sector-product-desc">Adjustable-height lab desks, powder-coated steel frames</p>
+              </div>
+              <div class="sector-product">
+                <p class="sector-product-name">Safety Cabinets</p>
+                <p class="sector-product-desc">Eye-wash stations, fire extinguishers, first-aid kits</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <script is:inline>
+    const sectorData = {
+      education: {
+        title: "Education & Schools",
+        subtitle: "Equipping classrooms and school laboratories across the UAE",
+        products: [
+          { name: "Laboratory Workstations", detail: "Modular bench systems with chemical-resistant tops" },
+          { name: "Fume Hoods", detail: "Ducted and ductless models, EN 14175 certified" },
+          { name: "Student Desks & Seating", detail: "Adjustable-height lab desks, powder-coated steel frames" },
+          { name: "Safety Cabinets", detail: "Eye-wash stations, fire extinguishers, first-aid kits" }
+        ]
+      },
+      healthcare: {
+        title: "Healthcare & Hospitals",
+        subtitle: "Medical furniture and equipment for healthcare facilities",
+        products: [
+          { name: "Hospital Beds", detail: "Electric and manual models with side rails" },
+          { name: "Medical Carts", detail: "Crash carts, procedure carts, IV poles, stainless steel" },
+          { name: "Sterile Storage Cabinets", detail: "Laminar flow cabinets and clean-room shelving" },
+          { name: "Examination Tables", detail: "Adjustable height, vinyl upholstery" }
+        ]
+      },
+      research: {
+        title: "Research Laboratories",
+        subtitle: "Precision equipment for research institutions",
+        products: [
+          { name: "Analytical Instruments", detail: "Spectrophotometers, balances, centrifuges" },
+          { name: "ESD Workbenches", detail: "Anti-static surfaces for electronics labs" },
+          { name: "Chemical Storage", detail: "Flammable cabinets, corrosive storage, EN 14470 certified" },
+          { name: "Fume Extraction", detail: "Bench-top and ceiling-mounted systems" }
+        ]
+      },
+      industrial: {
+        title: "Industrial & Factory",
+        subtitle: "Testing and workspace solutions for manufacturing",
+        products: [
+          { name: "Testing Equipment", detail: "Tensile testers, hardness testers, gauges" },
+          { name: "Heavy-Duty Workbenches", detail: "Steel-frame benches with 500kg load capacity" },
+          { name: "Calibration Tools", detail: "Reference standards and calibration kits" },
+          { name: "Tool Storage", detail: "Industrial cabinets, shadow boards" }
+        ]
+      }
+    };
+
+    document.querySelectorAll('.sector-item').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.sector-item').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const key = btn.dataset.sector;
+        const data = sectorData[key];
+        const result = document.getElementById('sector-result');
+        result.querySelector('.sector-result-title').textContent = data.title;
+        result.querySelector('.sector-result-subtitle').textContent = data.subtitle;
+        const list = result.querySelector('.sector-result-list');
+        list.innerHTML = data.products.map(p => `
+          <div class="sector-product">
+            <p class="sector-product-name">${p.name}</p>
+            <p class="sector-product-desc">${p.detail}</p>
+          </div>
+        `).join('');
+      });
+    });
+  </script>
 
   <!-- TRUSTED BY — exact exa.ai style -->
   <section class="trusted-section">
@@ -156,7 +234,7 @@ import Layout from '../layouts/Layout.astro';
           <div class="trusted-main-content">
             <div class="trusted-main-logo">Abu Dhabi Education Council</div>
             <blockquote class="trusted-main-quote">
-              "TAKA delivered and installed 200+ laboratory workstations across 12 schools. Professional service from start to finish."
+              "TAKA delivered and installed laboratory workstations across multiple schools. Professional service from start to finish."
             </blockquote>
             <div class="trusted-main-author">
               <p class="trusted-main-name">Ahmed Al Mansouri</p>
@@ -173,11 +251,11 @@ import Layout from '../layouts/Layout.astro';
           <div class="trusted-stats-logo">Sheikh Khalifa Medical City</div>
           <div class="trusted-stats-content">
             <div class="trusted-stats-item">
-              <span class="trusted-stats-number">500+</span>
+              <span class="trusted-stats-number">25+</span>
               <span class="trusted-stats-label">Projects completed</span>
             </div>
             <div class="trusted-stats-item">
-              <span class="trusted-stats-number">150+</span>
+              <span class="trusted-stats-number">10+</span>
               <span class="trusted-stats-label">Institutions served</span>
             </div>
           </div>
@@ -199,6 +277,31 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <!-- TRUST & COMPLIANCE — exa.ai dark style -->
+  <section class="trust-section">
+    <div class="trust-wrap">
+      <div class="trust-header">
+        <h2 class="trust-heading">Quality standards<br />and compliance</h2>
+        <a href="/contact" class="trust-btn">Talk to an expert &rarr;</a>
+      </div>
+      <div class="trust-divider"></div>
+      <div class="trust-features">
+        <div class="trust-feature">
+          <h3 class="trust-feature-title">ISO 9001 Certified</h3>
+          <p class="trust-feature-desc">Our quality management system meets international standards. Consistent product quality and reliable supply chain processes for every order.</p>
+        </div>
+        <div class="trust-feature">
+          <h3 class="trust-feature-title">Authorized Distributor</h3>
+          <p class="trust-feature-desc">Official partnerships with leading scientific equipment manufacturers. Genuine products with full manufacturer warranties and support.</p>
+        </div>
+        <div class="trust-feature">
+          <h3 class="trust-feature-title">Calibration &amp; Documentation</h3>
+          <p class="trust-feature-desc">Complete compliance documentation and calibration certificates for regulated laboratory environments. Full traceability for every instrument.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACT CTA — exa.ai large serif style -->
   <section class="cta-section">
     <div class="cta-content">
@@ -212,614 +315,3 @@ import Layout from '../layouts/Layout.astro';
   </section>
 
 </Layout>
-
-<style>
-  /* ═══════════════════════════════════════
-     HERO — exact exa.ai style
-     ═══════════════════════════════════════ */
-  .hero-container {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-    overflow: hidden;
-  }
-  .hero-content-motion {
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 120px;
-    padding-bottom: 3rem;
-  }
-  @media (min-width: 1024px) {
-    .hero-content-motion {
-      min-height: 100vh;
-      padding-top: 80px;
-      padding-bottom: 3rem;
-    }
-  }
-  .hero-text {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-  .hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.2rem, 5vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.12;
-    letter-spacing: -0.03em;
-    color: #111;
-    margin-bottom: 1rem;
-  }
-  .hero-subtitle {
-    font-size: clamp(0.95rem, 2vw, 1.15rem);
-    line-height: 1.6;
-    color: #777;
-    max-width: 480px;
-    margin: 0 auto 1.5rem;
-  }
-  .hero-actions {
-    display: flex;
-    justify-content: center;
-  }
-  .hero-btn-primary {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.625rem 1.25rem;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 500;
-    background: #111;
-    color: #fff;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  .hero-btn-primary:hover { background: #333; }
-
-  /* Search box */
-  .hero-search-wrapper {
-    width: 100%;
-    max-width: 700px;
-    position: relative;
-  }
-  .hero-search-box {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
-    outline: 1px solid rgba(0,0,0,0.08);
-    overflow: hidden;
-  }
-  .hero-search-input {
-    padding: 0.875rem 1rem;
-    min-height: 48px;
-    font-size: 1rem;
-    color: #111;
-    display: flex;
-    align-items: center;
-  }
-  .hero-search-placeholder {
-    color: rgba(0,0,0,0.35);
-    font-size: 1rem;
-  }
-  .hero-search-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.5rem 0.625rem 0.625rem;
-  }
-  .hero-search-tabs {
-    display: flex;
-    gap: 0;
-  }
-  .hero-search-tab {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.375rem 0.75rem;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: #999;
-    background: none;
-    border: 1px solid transparent;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  .hero-search-tab.active {
-    color: #111;
-    border-color: #e5e5e5;
-    background: #fafafa;
-  }
-  .hero-search-tab:hover:not(.active) {
-    color: #555;
-  }
-  .hero-search-submit {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    background: #1446e0;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.15s;
-  }
-  .hero-search-submit:hover { background: #1238c0; }
-
-  /* Logo strip */
-  .hero-logos {
-    width: 100%;
-    max-width: 700px;
-    margin-top: 3rem;
-    overflow: hidden;
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  }
-  .hero-logos-track {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    animation: scroll-logos 20s linear infinite;
-    white-space: nowrap;
-  }
-  .hero-logo-item {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 500;
-    color: #bbb;
-    flex-shrink: 0;
-    letter-spacing: 0.02em;
-  }
-  @keyframes scroll-logos {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
-  }
-
-  .hidden { display: none; }
-  @media (min-width: 640px) {
-    .hidden.sm\:block { display: block; }
-  }
-
-  @media (max-width: 768px) {
-    .hero-container {
-      min-height: auto;
-      padding-top: 0;
-    }
-    .hero-content-motion {
-      padding-top: 4rem;
-      padding-bottom: 2.5rem;
-    }
-    .hero-title { font-size: clamp(1.8rem, 8vw, 2.5rem); }
-    .hero-subtitle { font-size: 0.95rem; }
-    .hero-text { margin-bottom: 2rem; }
-    .hero-logos { margin-top: 2rem; }
-  }
-
-  /* ═══════════════════════════════════════
-     SUPPLY GRID
-     ═══════════════════════════════════════ */
-  .supply-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 1px;
-    background: var(--color-border);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-  .supply-card {
-    background: #fff;
-    padding: 2rem 1.5rem;
-    transition: background 0.15s;
-  }
-  .supply-card:hover { background: var(--color-surface); }
-  .supply-icon {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: var(--color-surface);
-    border-radius: var(--radius-sm);
-    margin-bottom: 1.25rem;
-    color: var(--color-text);
-  }
-  .supply-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 0.5rem;
-  }
-  .supply-desc {
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    line-height: 1.65;
-  }
-
-  @media (max-width: 1024px) {
-    .supply-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .supply-grid { grid-template-columns: 1fr; }
-  }
-
-  /* ═══════════════════════════════════════
-     WHY GRID
-     ═══════════════════════════════════════ */
-  .why-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
-  }
-  .why-left {
-    position: sticky;
-    top: calc(var(--nav-height) + 2rem);
-  }
-  .why-right {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-  }
-  .why-item {
-    display: flex;
-    gap: 1.25rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .why-item:last-child { border-bottom: none; padding-bottom: 0; }
-  .why-number {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    color: var(--color-text-muted);
-    flex-shrink: 0;
-    padding-top: 0.15rem;
-  }
-  .why-item-title {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin-bottom: 0.35rem;
-  }
-  .why-item-desc {
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    line-height: 1.65;
-  }
-
-  @media (max-width: 768px) {
-    .why-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    .why-left { position: static; }
-  }
-
-  /* ═══════════════════════════════════════
-     CTA — exa.ai large serif style
-     ═══════════════════════════════════════ */
-  .cta-section {
-    padding: 6rem 1.5rem;
-    text-align: center;
-  }
-  .cta-content {
-    max-width: 700px;
-    margin: 0 auto;
-  }
-  .cta-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 400;
-    line-height: 1.08;
-    letter-spacing: -0.03em;
-    color: #111;
-    margin-bottom: 1.25rem;
-  }
-  .cta-subtitle {
-    font-size: 1.05rem;
-    line-height: 1.7;
-    color: #555;
-    max-width: 480px;
-    margin: 0 auto 2rem;
-  }
-  .cta-actions {
-    display: flex;
-    gap: 0.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  /* ═══════════════════════════════════════
-     TRUSTED BY — exact exa.ai style
-     ═══════════════════════════════════════ */
-  .trusted-section {
-    width: 100%;
-    background: #fff;
-    padding: 4rem 0 6rem;
-  }
-  .trusted-wrap {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
-  }
-  .trusted-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
-  }
-  .trusted-heading {
-    font-family: var(--font-serif);
-    font-size: clamp(1.5rem, 3.5vw, 2.5rem);
-    font-weight: 400;
-    line-height: 1.15;
-    color: #111;
-  }
-  .trusted-btn {
-    font-family: var(--font-sans);
-    font-size: 0.875rem;
-    font-weight: 500;
-    padding: 0.5rem 1rem;
-    background: #111;
-    color: #fff;
-    border-radius: 4px;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: background 0.15s;
-    text-decoration: none;
-  }
-  .trusted-btn:hover { background: #333; }
-
-  /* Main testimonial card */
-  .trusted-main {
-    margin-bottom: 1rem;
-    border-radius: 6px;
-    overflow: hidden;
-    background: var(--cream);
-  }
-  .trusted-main-inner {
-    display: flex;
-    flex-direction: column;
-  }
-  @media (min-width: 768px) {
-    .trusted-main-inner { flex-direction: row; }
-  }
-  .trusted-main-image {
-    position: relative;
-    width: 100%;
-    min-height: 260px;
-    background: #e8e6e3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-  @media (min-width: 768px) {
-    .trusted-main-image {
-      width: 67%;
-      min-height: 360px;
-    }
-  }
-  .trusted-main-placeholder {
-    width: 100px;
-    height: 100px;
-    background: rgba(255,255,255,0.6);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-  }
-  .trusted-main-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    padding: 1.25rem;
-  }
-  .trusted-main-play {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.5rem 0.75rem;
-    background: rgba(255,255,255,0.1);
-    backdrop-filter: blur(30px);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 500;
-    align-self: flex-end;
-  }
-  .trusted-main-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 1.5rem;
-  }
-  @media (min-width: 768px) {
-    .trusted-main-content {
-      padding: 2.25rem 2rem;
-    }
-  }
-  .trusted-main-logo {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #111;
-    margin-bottom: 1rem;
-  }
-  .trusted-main-quote {
-    font-family: var(--font-serif);
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 400;
-    line-height: 1.25;
-    color: #111;
-    margin-bottom: 1.5rem;
-  }
-  .trusted-main-author {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-  }
-  .trusted-main-name {
-    font-family: var(--font-serif);
-    font-size: 1.1rem;
-    color: #111;
-  }
-  .trusted-main-role {
-    font-size: 0.95rem;
-    color: #777;
-  }
-
-  /* Bottom cards */
-  .trusted-bottom {
-    display: grid;
-    grid-template-columns: 1fr 2.2fr;
-    gap: 1rem;
-  }
-  @media (max-width: 768px) {
-    .trusted-bottom {
-      grid-template-columns: 1fr;
-    }
-  }
-
-  /* Stats card */
-  .trusted-stats-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    min-height: 260px;
-    padding: 1.75rem;
-    border-radius: 6px;
-    background: var(--cream);
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-  @media (min-width: 768px) {
-    .trusted-stats-card { min-height: 320px; }
-  }
-  .trusted-stats-card:hover { background: var(--cream-darker); }
-  .trusted-stats-logo {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #111;
-    margin-bottom: 1rem;
-  }
-  .trusted-stats-content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  .trusted-stats-item {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
-  .trusted-stats-number {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    font-weight: 400;
-    line-height: 1;
-    color: #111;
-  }
-  @media (min-width: 768px) {
-    .trusted-stats-number { font-size: 3.4rem; }
-  }
-  .trusted-stats-label {
-    font-size: 1.1rem;
-    color: #333;
-  }
-  .trusted-stats-cta {
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #514837;
-    background: #efedeb;
-    padding: 0.5rem 0.75rem;
-    border-radius: 6px;
-    display: inline-flex;
-    align-self: flex-start;
-    margin-top: 1rem;
-  }
-
-  /* Image card */
-  .trusted-image-card {
-    position: relative;
-    min-height: 260px;
-    border-radius: 6px;
-    overflow: hidden;
-  }
-  @media (min-width: 768px) {
-    .trusted-image-card { min-height: 320px; }
-  }
-  .trusted-image-bg {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #2c5282, #1a365d, #2d3748);
-  }
-  .trusted-image-content {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    min-height: 260px;
-    padding: 1.75rem;
-  }
-  @media (min-width: 768px) {
-    .trusted-image-content { min-height: 320px; }
-  }
-  .trusted-image-logo {
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: #fff;
-  }
-  .trusted-image-bottom {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .trusted-image-text {
-    font-size: 1.25rem;
-    font-weight: 400;
-    line-height: 1.3;
-    color: #fff;
-    max-width: 400px;
-  }
-  .trusted-image-cta {
-    flex-shrink: 0;
-    padding: 0.5rem 0.75rem;
-    background: rgba(255,255,255,0.15);
-    backdrop-filter: blur(30px);
-    border-radius: 6px;
-    color: #fff;
-    font-size: 0.875rem;
-    font-weight: 500;
-    white-space: nowrap;
-  }
-
-  @media (max-width: 768px) {
-    .trusted-header {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1rem;
-    }
-    .trusted-stats-cta { display: none; }
-  }
-</style>

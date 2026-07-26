@@ -22,6 +22,13 @@ const { title, description } = Astro.props;
     <meta name="description" content={description || "TAKA Scientific — Retail of scientific equipment, laboratory furniture, testing apparatus, and factory equipment across the UAE."} />
     <meta name="robots" content="index, follow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/ABCArizonaFlare-Light.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ABCArizonaFlare-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ABCArizonaFlare-Medium.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/ABCArizonaFlare-Bold.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Inter-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/GeistMono-Medium.woff2" as="font" type="font/woff2" crossorigin />
   </head>
   <body>
     <Header />
