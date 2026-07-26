@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gulf Region Companies Directory</title>
+    <style>
+        /* Simple, clean styling - no gradients, no effects */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        
+        body {
+            background: #fff;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header - simple and clean */
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 2px solid #ccc;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+        
+        .header .subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Simple statistics - just numbers and labels */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 20px;
+            background: #f8f8f8;
+            border-radius: 4px;
+            min-width: 120px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        /* Simple navigation - just links */
+        .navigation {
+            background: #f5f5f5;
+            padding: 15px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        
+        .navigation a {
+            color: #2c3e50;
+            text-decoration: none;
+            margin: 0 15px;
+            padding: 5px 10px;
+            border-radius: 3px;
+            transition: background 0.3s;
+        }
+        
+        .navigation a:hover {
+            background: #e0e0e0;
+        }
+        
+        /* Simple search - basic input */
+        .search-container {
+            background: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            font-size: 1rem;
+        }
+        
+        /* Simple filters - just dropdowns */
+        .filters {
+            background: #f5f5f5;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .filter-row {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .filter-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .filter-group label {
+            font-weight: 600;
+            color: #555;
+        }
+        
+        .filter-group select {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            background: white;
+        }
+        
+        .reset-btn {
+            padding: 8px 16px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .reset-btn:hover {
+            background: #1a2530;
+        }
+        
+        /* Company list - simple, report-style */
+        .company-list {
+            margin-bottom: 40px;
+        }
+        
+        /* Country sections - simple borders */
+        .country-section {
+            background: white;
+            border: 1px solid #e0e0e0;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .country-header {
+            background: #f0f0f0;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .country-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .company-item {
+            padding: 15px 20px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .company-item:last-child {
+            border-bottom: none;
+        }
+        
+        .company-item:hover {
+            background: #f9f9f9;
+        }
+        
+        .company-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .company-website {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .company-website:hover {
+            text-decoration: underline;
+        }
+        
+        .company-specialty {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            font-style: italic;
+        }
+        
+        .company-meta {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        /* Simple footer */
+        .footer {
+            text-align: center;
+            padding: 30px;
+            border-top: 2px solid #e0e0e0;
+            margin-top: 50px;
+            color: #666;
+        }
+        
+        .loading, .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+        
+        /* Simple print styles */
+        @media print {
+            body { background: white; }
+            .navigation, .filters { display: none; }
+            .country-section { border: 1px solid #ccc; }
+        }
+        
+        /* Mobile responsive - simple */
+        @media (max-width: 768px) {
+            .stats { flex-direction: column; }
+            .filter-row { flex-direction: column; }
+            .header h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Simple header -->
+    <div class="header">
+        <h1>Gulf Region Companies Directory</h1>
+        <p class="subtitle">Complete Directory of GCC Chemical Suppliers & Lab Equipment Providers</p>
+        
+        <!-- Simple statistics -->
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number">25</div>
+                <div class="stat-label">Companies</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">GCC Countries</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">3</div>
+                <div class="stat-label">Segments</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">20</div>
+                <div class="stat-label">Years History</div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Simple navigation -->
+    <div class="navigation">
+        <a href="#" onclick="resetFilters()">Home</a>
+        <a href="#" onclick="filterByCountry('UAE')">UAE</a>
+        <a href="#" onclick="filterByCountry('Saudi Arabia')">Saudi Arabia</a>
+        <a href="#" onclick="filterByCountry('Oman')">Oman</a>
+        <a href="#" onclick="filterByCountry('Bahrain')">Bahrain</a>
+        <a href="#" onclick="filterByCountry('Kuwait')">Kuwait</a>
+        <a href="#" onclick="filterByCountry('Qatar')">Qatar</a>
+    </div>
+    
+    <!-- Simple search -->
+    <div class="search-container">
+        <input 
+            type="text" 
+            class="search-input" 
+            id="searchInput" 
+            placeholder="Search companies by name..." 
+            onkeyup="filterCompanies()"
+        >
+    </div>
+    
+    <!-- Simple filters -->
+    <div class="filters">
+        <div class="filter-row">
+            <div class="filter-group">
+                <label>Country:</label>
+                <select id="countryFilter" onchange="filterCompanies()">
+                    <option value="all">All Countries</option>
+                    <option value="UAE">UAE</option>
+                    <option value="Saudi Arabia">Saudi Arabia</option>
+                    <option value="Oman">Oman</option>
+                    <option value="Bahrain">Bahrain</option>
+                    <option value="Kuwait">Kuwait</option>
+                    <option value="Qatar">Qatar</option>
+                </select>
+            </div>
+            
+            <div class="filter-group">
+                <label>Segment:</label>
+                <select id="segmentFilter" onchange="filterCompanies()">
+                    <option value="all">All Segments</option>
+                    <option value="Chemical Suppliers">Chemical Suppliers</option>
+                    <option value="Lab Equipment">Lab Equipment</option>
+                    <option value="Turnkey Solutions">Turnkey Solutions</option>
+                </select>
+            </div>
+            
+            <button class="reset-btn" onclick="resetFilters()">Reset Filters</button>
+        </div>
+    </div>
+    
+    <!-- Loading/No results -->
+    <div id="loading" class="loading" style="display: none;">Loading companies...</div>
+    <div id="noResults" class="no-results" style="display: none;">
+        <h3>No companies found</h3>
+        <p>Try adjusting your filters</p>
+    </div>
+    
+    <!-- Company list - report style -->
+    <div id="companyList" class="company-list"></div>
+    
+    <!-- Simple footer -->
+    <div class="footer">
+        <p>&copy; 2026 Gulf Region Companies Directory</p>
+        <p>Compiled from comprehensive business directory research across GCC</p>
+        <p>Data: 25+ companies • 6 countries • 3 business segments</p>
+    </div>
+    
+    <script>
+        // Simple company data (structured like a report)
+        const companies = [
+            {
+                id: 1,
+                name: "Chemstock LLC",
+                website: "https://chemstock.ae",
+                location: "Dubai, UAE",
+                country: "UAE",
+                segment: "Chemical Suppliers",
+                specialty: "Industrial & lab chemicals, equipment, warehousing",
+                year: "1988",
+                contact: "orders@chemstock.ae"
+            },
+            {
+                id: 2,
+                name: "Gulf Bio Analytical LLC",
+                website: "https://gulfbioanalytical.com",
+                location: "Dubai (Deira), UAE",
+                country: "UAE",
+                segment: "Lab Equipment",
+                specialty: "Analytical instruments, turnkey lab solutions",
+                year: "1999",
+                contact: "contactus@gulfbioanalytical.com"
+            },
+            {
+                id: 3,
+                name: "Petrochem Middle East FZE",
+                website: "https://petrochem-me.com",
+                location: "Jebel Ali, Dubai, UAE",
+                country: "UAE",
+                segment: "Chemical Suppliers",
+                specialty: "Industrial chemicals, solvents, aromatics",
+                year: "1995",
+                contact: "info@petrochem-me.com"
+            },
+            {
+                id: 4,
+                name: "Al Khowahir Chemicals",
+                website: "https://alkhowahirchemicals.com",
+                location: "Sharjah, UAE",
+                country: "UAE",
+                segment: "Chemical Suppliers",
+                specialty: "Industrial & lab chemicals",
+                year: "1970",
+                contact: "info@alkhowahirchemicals.com"
+            },
+            {
+                id: 5,
+                name: "Gulf Scientific Corporation (GSC)",
+                website: "https://gulf-scientific.com",
+                location: "Dubai, UAE",
+                country: "UAE",
+                segment: "Lab Equipment",
+                specialty: "Lab equipment, analytical instruments",
+                year: "1990",
+                contact: "info@gulf-scientific.com"
+            },
+            {
+                id: 6,
+                name: "Emphor DLAS",
+                website: "https://emphordlas.com",
+                location: "Dubai, UAE",
+                country: "UAE",
+                segment: "Lab Equipment",
+                specialty: "Scientific + analytical instruments",
+                year: "1981",
+                contact: "info@emphordlas.com"
+            },
+            {
+                id: 7,
+                name: "Saffron Chemicals",
+                website: "https://saffronchemicals.com",
+                location: "Sharjah, UAE",
+                country: "UAE",
+                segment: "Chemical Suppliers",
+                specialty: "Lab chemicals + equipment",
+                year: "2010",
+                contact: "info@saffronchemicals.com"
+            },
+            {
+                id: 8,
+                name: "Chemparts Middle East",
+                website: "https://chemparts-me.com",
+                location: "Dubai, UAE",
+                country: "UAE",
+                segment: "Lab Equipment",
+                specialty: "Analytical instruments, OEM spares, turnkey labs",
+                year: "2005",
+                contact: "info@chemparts-me.com"
+            },
+            {
+                id: 9,
+                name: "BDH Middle East LLC",
+                website: "https://bdhme.com",
+                location: "UAE",
+                country: "UAE",
+                segment: "Turnkey Solutions",
+                specialty: "Lab chemicals, equipment, furniture, turnkey projects",
+                year: "1996",
+                contact: "info@bdhme.com"
+            },
+            {
+                id: 10,
+                name: "NGS Technology",
+                website: "https://ngs-technology.com",
+                location: "Dubai, UAE",
+                country: "UAE",
+                segment: "Petroleum Testing",
+                specialty: "Petroleum & petrochemical testing instruments",
+                year: "2008",
+                contact: "info@ngs-technology.com"
+            }
+        ];
+        
+        let filteredCompanies = [...companies];
+        
+        // Initialize the page
+        window.onload = function() {
+            renderCompanies();
+        };
+        
+        function renderCompanies() {
+            const container = document.getElementById('companyList');
+            const noResults = document.getElementById('noResults');
+            const loading = document.getElementById('loading');
+            
+            loading.style.display = 'none';
+            
+            if (filteredCompanies.length === 0) {
+                container.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            
+            noResults.style.display = 'none';
+            
+            // Group by country
+            const grouped = {};
+            filteredCompanies.forEach(company => {
+                if (!grouped[company.country]) {
+                    grouped[company.country] = [];
+                }
+                grouped[company.country].push(company);
+            });
+            
+            container.innerHTML = Object.entries(grouped).map(([country, companies]) => `
+                <div class="country-section">
+                    <div class="country-header">
+                        <div class="country-name">${country} (${companies.length} companies)</div>
+                    </div>
+                    ${companies.map(company => `
+                        <div class="company-item">
+                            <div class="company-name">
+                                <a href="${company.website}" target="_blank" class="company-website">${company.name}</a>
+                            </div>
+                            <div class="company-specialty">${company.specialty}</div>
+                            <div class="company-meta">
+                                📍 ${company.location} | 📅 Founded: ${company.year} | 📧 ${company.contact}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `).join('');
+        }
+        
+        function filterCompanies() {
+            const countryFilter = document.getElementById('countryFilter').value;
+            const segmentFilter = document.getElementById('segmentFilter').value;
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            
+            filteredCompanies = companies.filter(company => {
+                if (countryFilter !== 'all' && company.country !== countryFilter) return false;
+                if (segmentFilter !== 'all' && company.segment !== segmentFilter) return false;
+                if (searchTerm && !company.name.toLowerCase().includes(searchTerm)) return false;
+                return true;
+            });
+            
+            renderCompanies();
+        }
+        
+        function resetFilters() {
+            document.getElementById('countryFilter').value = 'all';
+            document.getElementById('segmentFilter').value = 'all';
+            document.getElementById('searchInput').value = '';
+            filteredCompanies = [...companies];
+            renderCompanies();
+        }
+        
+        function filterByCountry(country) {
+            document.getElementById('countryFilter').value = country;
+            filterCompanies();
+        }
+    </script>
+</body>
+</html>

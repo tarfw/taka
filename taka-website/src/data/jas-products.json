@@ -1,0 +1,331 @@
+{
+  "company": "TAKA Scientific",
+  "tagline": "Equipment for every facility",
+  "categories": [
+    {
+      "id": "laboratory-furniture",
+      "name": "Laboratory Furniture",
+      "shortName": "Furniture",
+      "icon": "🪑",
+      "description": "Durable laboratory furniture designed for schools, hospitals, and research institutions.",
+      "products": [
+        {
+          "id": "lab-bench",
+          "name": "Laboratory Workbench",
+          "fullName": "TAKA Laboratory Workbench — Heavy Duty",
+          "description": "Heavy-duty laboratory workbench with chemical-resistant surface. Adjustable height options available.",
+          "specs": [
+            { "key": "Surface", "value": "Chemical-resistant" },
+            { "key": "Frame", "value": "Steel" },
+            { "key": "Load", "value": "Up to 500kg" },
+            { "key": "Sizes", "value": "Custom available" }
+          ],
+          "applications": ["Research labs", "Schools", "Hospitals"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Workbench"
+        },
+        {
+          "id": "fume-hood",
+          "name": "Fume Hood",
+          "fullName": "TAKA Fume Hood — Ducted",
+          "description": "Ducted fume hood for safe handling of chemicals and hazardous materials in laboratory settings.",
+          "specs": [
+            { "key": "Type", "value": "Ducted" },
+            { "key": "Airflow", "value": "0.5 m/s" },
+            { "key": "Material", "value": "Epoxy resin" },
+            { "key": "Lighting", "value": "LED" }
+          ],
+          "applications": ["Chemical labs", "Research institutions", "Universities"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Fume+Hood"
+        },
+        {
+          "id": "storage-cabinet",
+          "name": "Storage Cabinet",
+          "fullName": "TAKA Storage Cabinet — Chemical Safe",
+          "description": "Chemical-safe storage cabinet for laboratory reagents, solvents, and hazardous materials.",
+          "specs": [
+            { "key": "Material", "value": "Steel / Polypropylene" },
+            { "key": "Capacity", "value": "Various sizes" },
+            { "key": "Ventilation", "value": "Built-in" },
+            { "key": "Compliance", "value": "EN 14175" }
+          ],
+          "applications": ["Laboratories", "Schools", "Medical facilities"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Storage+Cabinet"
+        },
+        {
+          "id": "lab-stool",
+          "name": "Adjustable Lab Stool",
+          "fullName": "TAKA Adjustable Laboratory Stool",
+          "description": "Ergonomic laboratory stool with adjustable height and chemical-resistant seat.",
+          "specs": [
+            { "key": "Height", "value": "Adjustable" },
+            { "key": "Seat", "value": "Chemical-resistant" },
+            { "key": "Base", "value": "Chrome steel" },
+            { "key": "Castors", "value": "Locking" }
+          ],
+          "applications": ["Laboratories", "Clinics", "Workshops"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Lab+Stool"
+        }
+      ]
+    },
+    {
+      "id": "scientific-equipment",
+      "name": "Scientific Equipment",
+      "shortName": "Scientific",
+      "icon": "🔬",
+      "description": "Practical scientific devices and measuring instruments for research and education.",
+      "products": [
+        {
+          "id": "microscope",
+          "name": "Student Microscope",
+          "fullName": "TAKA Student Microscope — Binocular",
+          "description": "Binocular microscope designed for educational institutions with LED illumination.",
+          "specs": [
+            { "key": "Magnification", "value": "40x–1600x" },
+            { "key": "Illumination", "value": "LED" },
+            { "key": "Objectives", "value": "4x, 10x, 40x, 100x" },
+            { "key": "Head", "value": "Binocular" }
+          ],
+          "applications": ["Schools", "Universities", "Training labs"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Microscope"
+        },
+        {
+          "id": "analytical-balance",
+          "name": "Analytical Balance",
+          "fullName": "TAKA Analytical Balance — 0.0001g",
+          "description": "High-precision analytical balance for accurate mass measurement in laboratory settings.",
+          "specs": [
+            { "key": "Readability", "value": "0.0001g" },
+            { "key": "Capacity", "value": "220g" },
+            { "key": "Calibration", "value": "Internal" },
+            { "key": "Display", "value": "LCD" }
+          ],
+          "applications": ["Research labs", "Pharmaceutical", "Quality control"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Balance"
+        },
+        {
+          "id": "ph-meter",
+          "name": "pH Meter",
+          "fullName": "TAKA Digital pH Meter — Benchtop",
+          "description": "Benchtop pH meter with automatic temperature compensation and multi-point calibration.",
+          "specs": [
+            { "key": "Range", "value": "0.00–14.00 pH" },
+            { "key": "Accuracy", "value": "±0.01 pH" },
+            { "key": "ATC", "value": "Automatic" },
+            { "key": "Calibration", "value": "Multi-point" }
+          ],
+          "applications": ["Water testing", "Food labs", "Research"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=pH+Meter"
+        },
+        {
+          "id": "spectrophotometer",
+          "name": "UV-Vis Spectrophotometer",
+          "fullName": "TAKA UV-Vis Spectrophotometer — Single Beam",
+          "description": "Single beam UV-Vis spectrophotometer for quantitative analysis in laboratory settings.",
+          "specs": [
+            { "key": "Wavelength", "value": "190–1100nm" },
+            { "key": "Bandwidth", "value": "2nm" },
+            { "key": "Light source", "value": "Deuterium + Tungsten" },
+            { "key": "Display", "value": "Touchscreen" }
+          ],
+          "applications": ["Environmental testing", "Pharmaceutical", "Education"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Spectro"
+        }
+      ]
+    },
+    {
+      "id": "testing-equipment",
+      "name": "Testing & Commissioning",
+      "shortName": "Testing",
+      "icon": "🔧",
+      "description": "Testing apparatus and commissioning equipment for quality assurance and compliance.",
+      "products": [
+        {
+          "id": "autoclave",
+          "name": "Autoclave",
+          "fullName": "TAKA Laboratory Autoclave — Vertical",
+          "description": "Vertical autoclave for sterilization of laboratory equipment, glassware, and media.",
+          "specs": [
+            { "key": "Type", "value": "Vertical" },
+            { "key": "Capacity", "value": "24L" },
+            { "key": "Temperature", "value": "Up to 134°C" },
+            { "key": "Cycle", "value": "Programmable" }
+          ],
+          "applications": ["Medical labs", "Research institutions", "Food testing"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Autoclave"
+        },
+        {
+          "id": "incubator",
+          "name": "Laboratory Incubator",
+          "fullName": "TAKA Laboratory Incubator — Forced Air",
+          "description": "Forced air incubator for cell culture, microbiology, and other temperature-sensitive applications.",
+          "specs": [
+            { "key": "Temperature", "value": "Ambient +5 to 80°C" },
+            { "key": "Airflow", "value": "Forced convection" },
+            { "key": "Capacity", "value": "Various sizes" },
+            { "key": "Controller", "value": "Digital PID" }
+          ],
+          "applications": ["Microbiology", "Cell culture", "Quality control"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Incubator"
+        },
+        {
+          "id": "centrifuge",
+          "name": "Laboratory Centrifuge",
+          "fullName": "TAKA Benchtop Centrifuge — Multi-purpose",
+          "description": "Multi-purpose benchtop centrifuge for separation of samples in clinical and research laboratories.",
+          "specs": [
+            { "key": "Speed", "value": "Up to 15,000 RPM" },
+            { "key": "Capacity", "value": "Up to 6 x 50ml" },
+            { "key": "Timer", "value": "Programmable" },
+            { "key": "Safety", "value": "Lid lock" }
+          ],
+          "applications": ["Clinical labs", "Research", "Blood banks"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Centrifuge"
+        },
+        {
+          "id": "water-bath",
+          "name": "Water Bath",
+          "fullName": "TAKA Digital Water Bath — Thermostatic",
+          "description": "Thermostatic water bath for uniform temperature control in laboratory heating applications.",
+          "specs": [
+            { "key": "Temperature", "value": "Room to 100°C" },
+            { "key": "Capacity", "value": "10L / 20L" },
+            { "key": "Control", "value": "Digital PID" },
+            { "key": "Material", "value": "Stainless steel" }
+          ],
+          "applications": ["General lab use", "DNA amplification", "Incubation"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Water+Bath"
+        }
+      ]
+    },
+    {
+      "id": "hospital-equipment",
+      "name": "Hospital Equipment",
+      "shortName": "Hospital",
+      "icon": "🏥",
+      "description": "Medical furniture and equipment for hospitals, clinics, and healthcare facilities.",
+      "products": [
+        {
+          "id": "hospital-bed",
+          "name": "Hospital Bed",
+          "fullName": "TAKA Hospital Bed — Electric Adjustable",
+          "description": "Electric adjustable hospital bed with multiple positions for patient comfort and care.",
+          "specs": [
+            { "key": "Positions", "value": "Electric adjustable" },
+            { "key": "Capacity", "value": "250kg" },
+            { "key": "Side rails", "value": "Foldable" },
+            { "key": "Wheels", "value": "Locking castors" }
+          ],
+          "applications": ["Hospitals", "Clinics", "Care homes"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Hospital+Bed"
+        },
+        {
+          "id": "medical-cart",
+          "name": "Medical Cart",
+          "fullName": "TAKA Medical Supply Cart — Mobile",
+          "description": "Mobile medical supply cart with lockable drawers for organized storage of medical supplies.",
+          "specs": [
+            { "key": "Drawers", "value": "6 lockable" },
+            { "key": "Material", "value": "Steel frame" },
+            { "key": "Wheels", "value": "Heavy-duty castors" },
+            { "key": "Top", "value": "Work surface" }
+          ],
+          "applications": ["Hospitals", "Emergency rooms", "Clinics"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Medical+Cart"
+        },
+        {
+          "id": "examination-table",
+          "name": "Examination Table",
+          "fullName": "TAKA Examination Table — Hydraulic",
+          "description": "Hydraulic examination table with adjustable height for patient examinations and procedures.",
+          "specs": [
+            { "key": "Adjustment", "value": "Hydraulic" },
+            { "key": "Height", "value": "50–85cm" },
+            { "key": "Upholstery", "value": "Antimicrobial" },
+            { "key": "Paper roll", "value": "Built-in" }
+          ],
+          "applications": ["Clinics", "General practice", "Specialists"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Examination+Table"
+        },
+        {
+          "id": "instrument-trolley",
+          "name": "Instrument Trolley",
+          "fullName": "TAKA Instrument Trolley — 3 Tier",
+          "description": "Three-tier instrument trolley for organized transport of medical instruments and supplies.",
+          "specs": [
+            { "key": "Tiers", "value": "3" },
+            { "key": "Material", "value": "Stainless steel" },
+            { "key": "Wheels", "value": "Swivel castors" },
+            { "key": "Rails", "value": "Guard rails" }
+          ],
+          "applications": ["Hospitals", "Operating theaters", "Clinics"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Trolley"
+        }
+      ]
+    },
+    {
+      "id": "factory-equipment",
+      "name": "Factory Equipment",
+      "shortName": "Factory",
+      "icon": "🏭",
+      "description": "Industrial furniture and equipment for manufacturing and production facilities.",
+      "products": [
+        {
+          "id": "workbench-industrial",
+          "name": "Industrial Workbench",
+          "fullName": "TAKA Industrial Workbench — Heavy Duty",
+          "description": "Heavy-duty industrial workbench for manufacturing and assembly operations.",
+          "specs": [
+            { "key": "Surface", "value": "Hardwood / Steel" },
+            { "key": "Load", "value": "Up to 1000kg" },
+            { "key": "Options", "value": "Drawers, shelving" },
+            { "key": "Height", "value": "Adjustable" }
+          ],
+          "applications": ["Manufacturing", "Assembly lines", "Workshops"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Workbench"
+        },
+        {
+          "id": "tool-cabinet",
+          "name": "Tool Cabinet",
+          "fullName": "TAKA Tool Cabinet — Rolling",
+          "description": "Rolling tool cabinet with multiple drawers for organized storage of tools and equipment.",
+          "specs": [
+            { "key": "Drawers", "value": "7–16" },
+            { "key": "Material", "value": "Steel" },
+            { "key": "Wheels", "value": "Heavy-duty" },
+            { "key": "Lock", "value": "Central locking" }
+          ],
+          "applications": ["Workshops", "Maintenance", "Manufacturing"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Tool+Cabinet"
+        },
+        {
+          "id": "safety-cabinet",
+          "name": "Safety Cabinet",
+          "fullName": "TAKA Safety Storage Cabinet — Flammable",
+          "description": "Flammable materials safety cabinet for safe storage of hazardous chemicals in industrial settings.",
+          "specs": [
+            { "key": "Capacity", "value": "Various sizes" },
+            { "key": "Material", "value": "Double-wall steel" },
+            { "key": "Ventilation", "value": "Built-in" },
+            { "key": "Compliance", "value": "OSHA / NFPA" }
+          ],
+          "applications": ["Factories", "Warehouses", "Industrial labs"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Safety+Cabinet"
+        },
+        {
+          "id": "material-rack",
+          "name": "Material Rack",
+          "fullName": "TAKA Material Storage Rack — Heavy Duty",
+          "description": "Heavy-duty material storage rack for organizing raw materials and components in production areas.",
+          "specs": [
+            { "key": "Load", "value": "Up to 2000kg/level" },
+            { "key": "Levels", "value": "3–5 adjustable" },
+            { "key": "Material", "value": "Steel" },
+            { "key": "Width", "value": "Custom available" }
+          ],
+          "applications": ["Warehouses", "Factories", "Distribution centers"],
+          "image": "https://placehold.co/400x400/f2f0ef/111?text=Storage+Rack"
+        }
+      ]
+    }
+  ]
+}

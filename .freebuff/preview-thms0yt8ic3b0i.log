@@ -1,0 +1,25 @@
+[2m04:57:09[22m [34m[vite][39m connected.
+[2m04:57:11[22m [34m[types][39m Generated [2m2ms[22m
+[2m04:57:11[22m [34m[vite][39m connected.
+[42m[1m astro [22m[49m [32mv7.1.3[39m [2mready in[22m 3150 [2mms[22m
+[2m┃[22m Local    [36mhttp://127.0.0.1:4321/[39m
+[2m04:57:11[22m [32mwatching for file changes...[39m
+[33m[1m04:57:42[22m [WARN] [vite][39m [33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+623 |    }
+624 |  }
+625 |  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600...
+    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+626 |  :root {
+627 |    --color-navy: var(--color-primary);[39m
+[2m04:57:42[22m [34m[200][39m / [2m52ms[22m
+[2m04:57:42[22m [34m[200][39m / [2m12ms[22m
+[33m[1m04:57:43[22m [WARN] [vite][39m [33m[vite:css][postcss] @import must precede all other statements (besides @charset or empty @layer)
+623 |    }
+624 |  }
+625 |  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Sora:wght@400;500;600...
+    |  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+626 |  :root {
+627 |    --color-navy: var(--color-primary);[39m
+[2m04:58:22[22m [34m[200][39m / [2m4ms[22m
+[2m04:58:31[22m [34m[200][39m /products [2m30ms[22m
+[2m04:58:53[22m [34m[200][39m / [2m10ms[22m

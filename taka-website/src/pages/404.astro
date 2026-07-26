@@ -1,0 +1,43 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Page Not Found">
+  <section class="not-found">
+    <div class="container text-center">
+      <h1 class="not-found-title">Page not found.</h1>
+      <p class="not-found-text">The page you're looking for doesn't exist or has been moved.</p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+        <a href="/" class="btn btn-primary">Back to home</a>
+        <a href="/contact" class="btn btn-outline">Contact us</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .not-found {
+    padding: 6rem 0;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+  }
+  .not-found-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: #111;
+    margin-bottom: 1rem;
+  }
+  .not-found-text {
+    font-size: 1rem;
+    color: #555;
+    max-width: 400px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+  @media (max-width: 768px) {
+    .not-found { padding: 4rem 0; }
+  }
+</style>

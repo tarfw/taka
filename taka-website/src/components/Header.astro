@@ -1,0 +1,457 @@
+---
+// Header — exact exa.ai nav style with full responsive support
+---
+
+<header class="header" id="navbar">
+  <nav class="nav-desktop">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo" aria-label="TAKA Scientific home">
+        <span class="nav-logo-text">TAKA Scientific</span>
+      </a>
+      <div class="nav-links">
+        <div class="nav-dropdown" data-dropdown="products">
+          <button class="nav-link-btn">
+            Products
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="/products" class="dropdown-item">Laboratory Furniture</a>
+            <a href="/products" class="dropdown-item">Scientific Equipment</a>
+            <a href="/products" class="dropdown-item">Testing Apparatus</a>
+            <a href="/products" class="dropdown-item">Hospital Equipment</a>
+            <a href="/products" class="dropdown-item">Factory Equipment</a>
+          </div>
+        </div>
+        <div class="nav-dropdown" data-dropdown="resources">
+          <button class="nav-link-btn">
+            Resources
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="nav-dropdown-menu">
+            <a href="/services" class="dropdown-item">Services</a>
+            <a href="/contact" class="dropdown-item">Contact</a>
+          </div>
+        </div>
+        <a href="/about" class="nav-link">About</a>
+      </div>
+      <div class="nav-actions">
+        <a href="/contact" class="nav-btn-ghost">Contact sales</a>
+        <a href="/contact" class="nav-btn-dark">Get a quote</a>
+      </div>
+      <button class="nav-burger" id="mobile-toggle" aria-label="Toggle menu" data-state="closed">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile nav -->
+  <div class="nav-mobile" id="mobile-nav">
+    <div class="nav-mobile-inner">
+      <div class="nav-mobile-section">
+        <button class="mobile-accordion" data-mobile="products">
+          <span>Products</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-accordion-content">
+          <a href="/products" class="mobile-link">Laboratory Furniture</a>
+          <a href="/products" class="mobile-link">Scientific Equipment</a>
+          <a href="/products" class="mobile-link">Testing Apparatus</a>
+          <a href="/products" class="mobile-link">Hospital Equipment</a>
+          <a href="/products" class="mobile-link">Factory Equipment</a>
+        </div>
+      </div>
+      <div class="nav-mobile-section">
+        <button class="mobile-accordion" data-mobile="resources">
+          <span>Resources</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-accordion-content">
+          <a href="/services" class="mobile-link">Services</a>
+          <a href="/contact" class="mobile-link">Contact</a>
+        </div>
+      </div>
+      <a href="/about" class="mobile-link-single">About</a>
+    </div>
+    <div class="nav-mobile-actions">
+      <a href="/contact" class="mobile-btn-ghost">Contact sales</a>
+      <a href="/contact" class="mobile-btn-dark">Get a quote</a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    position: sticky;
+    top: 0;
+    z-index: 101;
+    width: 100%;
+    background: #fff;
+  }
+
+  /* Desktop nav */
+  .nav-desktop {
+    width: 100%;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--nav-height);
+  }
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #111;
+    flex-shrink: 0;
+  }
+  .nav-logo-text {
+    font-family: var(--font-sans);
+    font-size: 1.125rem;
+    font-weight: 700;
+    letter-spacing: -0.04em;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .nav-link-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: #5f5a54;
+    background: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+  }
+  .nav-link-btn:hover {
+    color: #111;
+    background: #f5f5f5;
+  }
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: #5f5a54;
+    border-radius: 4px;
+    transition: all 0.15s;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .nav-link:hover {
+    color: #111;
+    background: #f5f5f5;
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .nav-btn-ghost {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.875rem;
+    background: #f2f0ef;
+    color: #514837;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-btn-ghost:hover { background: #e8e6e5; }
+  .nav-btn-dark {
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 0.875rem;
+    background: #111;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+  .nav-btn-dark:hover { background: #333; }
+
+  /* Burger - hidden on desktop */
+  .nav-burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .nav-burger:hover { background: #f5f5f5; }
+  .burger-line {
+    display: block;
+    width: 18px;
+    height: 2px;
+    background: #111;
+    border-radius: 1px;
+    position: absolute;
+    transition: all 0.25s ease;
+  }
+  .burger-line:nth-child(1) { transform: translateY(-6px); }
+  .burger-line:nth-child(2) { transform: translateY(0); }
+  .burger-line:nth-child(3) { transform: translateY(6px); }
+  /* X state */
+  .nav-burger[data-state="open"] .burger-line:nth-child(1) {
+    transform: rotate(45deg);
+  }
+  .nav-burger[data-state="open"] .burger-line:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  .nav-burger[data-state="open"] .burger-line:nth-child(3) {
+    transform: rotate(-45deg);
+  }
+
+  /* Dropdown */
+  .nav-dropdown {
+    position: relative;
+  }
+  .nav-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 8px;
+  }
+  .nav-dropdown-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 200px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.1), 0 0 0 1px rgba(0,0,0,0.06);
+    padding: 0.5rem;
+    z-index: 200;
+  }
+  .nav-dropdown:hover .nav-dropdown-menu,
+  .nav-dropdown.open .nav-dropdown-menu {
+    display: block;
+  }
+  .dropdown-item {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    color: #333;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.1s;
+  }
+  .dropdown-item:hover {
+    background: #f5f5f5;
+  }
+
+  /* Mobile nav */
+  .nav-mobile {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 100;
+    flex-direction: column;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-mobile.open {
+    display: flex;
+  }
+  .nav-mobile-inner {
+    flex: 1;
+    padding: 0;
+  }
+  .nav-mobile-section {
+    border-bottom: 1px solid #e8e6e5;
+  }
+  .nav-mobile-actions {
+    padding: 1rem 1.5rem;
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+    border-top: 1px solid #e8e6e5;
+    display: flex;
+    gap: 0.75rem;
+    background: #fff;
+    position: sticky;
+    bottom: 0;
+  }
+  .mobile-accordion {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 1.125rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+  }
+  .mobile-accordion svg {
+    transition: transform 0.2s;
+    color: #999;
+  }
+  .mobile-accordion.open svg {
+    transform: rotate(180deg);
+  }
+  .mobile-accordion-content {
+    display: none;
+    padding: 0 0 0.5rem;
+  }
+  .mobile-accordion-content.open {
+    display: block;
+  }
+  .mobile-link {
+    display: block;
+    padding: 0.75rem 1.5rem 0.75rem 2.25rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    color: #555;
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .mobile-link:hover { color: #111; }
+  .mobile-link-single {
+    display: block;
+    padding: 1.125rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 500;
+    color: #111;
+    text-decoration: none;
+    border-bottom: 1px solid #e8e6e5;
+  }
+  .mobile-btn-ghost {
+    flex: 1;
+    text-align: center;
+    padding: 0.875rem 1rem;
+    background: #f2f0ef;
+    color: #514837;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .mobile-btn-ghost:hover { background: #e8e6e5; }
+  .mobile-btn-dark {
+    flex: 1;
+    text-align: center;
+    padding: 0.875rem 1rem;
+    background: #111;
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .mobile-btn-dark:hover { background: #333; }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .nav-links { display: none; }
+    .nav-actions { display: none; }
+    .nav-burger { display: flex; }
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .nav-inner { padding: 0 1rem; }
+    .nav-logo-text { font-size: 1rem; }
+  }
+</style>
+
+<script>
+  // Desktop dropdowns
+  document.querySelectorAll('.nav-dropdown').forEach(dropdown => {
+    const btn = dropdown.querySelector('.nav-link-btn');
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const wasOpen = dropdown.classList.contains('open');
+      document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+      if (!wasOpen) dropdown.classList.add('open');
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.nav-dropdown').forEach(d => d.classList.remove('open'));
+  });
+
+  // Mobile accordion
+  document.querySelectorAll('.mobile-accordion').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const content = btn.nextElementSibling;
+      const wasOpen = btn.classList.contains('open');
+      // Close other accordions in same section
+      const section = btn.closest('.nav-mobile-section');
+      if (section) {
+        section.querySelectorAll('.mobile-accordion').forEach(b => b.classList.remove('open'));
+        section.querySelectorAll('.mobile-accordion-content').forEach(c => c.classList.remove('open'));
+      }
+      if (!wasOpen) {
+        btn.classList.add('open');
+        content.classList.add('open');
+      }
+    });
+  });
+
+  // Mobile menu toggle
+  const burger = document.getElementById('mobile-toggle');
+  const mobileNav = document.getElementById('mobile-nav');
+  if (burger && mobileNav) {
+    burger.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.contains('open');
+      mobileNav.classList.toggle('open');
+      burger.setAttribute('data-state', isOpen ? 'closed' : 'open');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
+    });
+
+    // Close mobile menu when clicking a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('open');
+        burger.setAttribute('data-state', 'closed');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+</script>

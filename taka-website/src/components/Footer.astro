@@ -1,0 +1,181 @@
+---
+// Footer — exact exa.ai blue gradient design
+const footerLinks = [
+  {
+    title: 'Products',
+    links: [
+      { label: 'Laboratory Furniture', href: '/products' },
+      { label: 'Scientific Equipment', href: '/products' },
+      { label: 'Testing Apparatus', href: '/products' },
+      { label: 'Hospital Equipment', href: '/products' },
+      { label: 'Factory Equipment', href: '/products' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '/about' },
+      { label: 'Services', href: '/services' },
+      { label: 'Careers', href: '#' },
+      { label: 'Contact', href: '/contact' },
+    ],
+  },
+  {
+    title: 'Resources',
+    links: [
+      { label: 'Product Catalog', href: '/products' },
+      { label: 'Documentation', href: '#' },
+      { label: 'FAQ', href: '#' },
+      { label: 'Support', href: '/contact' },
+    ],
+  },
+  {
+    title: 'Connect',
+    links: [
+      { label: 'Contact Sales', href: '/contact' },
+      { label: 'WhatsApp', href: 'https://wa.me/971557566123' },
+      { label: 'LinkedIn', href: '#' },
+      { label: 'Email', href: 'mailto:info@taka.ae' },
+    ],
+  },
+];
+---
+
+<footer class="footer">
+  <!-- CTA section — large serif heading -->
+  <div class="footer-cta">
+    <div class="footer-cta-inner">
+      <h2 class="footer-cta-heading">Equipping labs,<br />hospitals &amp; schools</h2>
+    </div>
+  </div>
+
+  <!-- Links section -->
+  <div class="footer-links">
+    <div class="footer-links-inner">
+      <div class="footer-cols">
+        {footerLinks.map((col) => (
+          <div class="footer-col">
+            <h4 class="footer-col-title">{col.title}</h4>
+            {col.links.map((link) => (
+              <a href={link.href} class="footer-link">{link.label}</a>
+            ))}
+          </div>
+        ))}
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-legal">Privacy</span>
+        <span class="footer-legal">Terms</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #1446e0;
+    position: relative;
+    overflow: hidden;
+  }
+  .footer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* CTA section */
+  .footer-cta {
+    width: 100%;
+    padding: 5rem 0 4rem;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-cta-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-cta-heading {
+    font-family: var(--font-serif);
+    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #fff;
+  }
+
+  /* Links section */
+  .footer-links {
+    width: 100%;
+    padding: 3.5rem 0 2.5rem;
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+  }
+  .footer-links-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .footer-cols {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+  .footer-col-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1.25rem;
+  }
+  .footer-link {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.75);
+    margin-bottom: 0.6rem;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  .footer-link:hover {
+    color: #fff;
+  }
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    display: flex;
+    gap: 1.5rem;
+  }
+  .footer-legal {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.55);
+    cursor: pointer;
+    transition: color 0.15s;
+  }
+  .footer-legal:hover {
+    color: rgba(255, 255, 255, 0.85);
+  }
+
+  @media (max-width: 768px) {
+    .footer-cta { padding: 3.5rem 0 3rem; }
+    .footer-cta-heading { font-size: clamp(2rem, 8vw, 3rem); }
+    .footer-links { padding: 2.5rem 0 2rem; }
+    .footer-cols {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem 1.5rem;
+    }
+    .footer-bottom { flex-direction: column; gap: 0.5rem; }
+  }
+</style>
