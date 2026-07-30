@@ -5,7 +5,7 @@
     {
       "id": "analytical-equipments",
       "name": "Analytical Equipments",
-      "shortName": "Analytical",
+      "shortName": "Analytical Equipments",
       "description": "Advanced analytical instruments for precise chemical and material analysis.",
       "brands": [
         {
@@ -1650,7 +1650,7 @@
     {
       "id": "scientific-equipments",
       "name": "Scientific Equipments",
-      "shortName": "Scientific",
+      "shortName": "Scientific Equipments",
       "description": "Precision scientific instruments for mixing, heating, separation, and sample preparation.",
       "brands": [
         {
@@ -3353,7 +3353,7 @@
     {
       "id": "testing-apparatus",
       "name": "Testing Apparatus",
-      "shortName": "Testing",
+      "shortName": "Testing Apparatus",
       "description": "Testing and quality control equipment for laboratory and field applications.",
       "brands": [
         {
@@ -4426,104 +4426,27 @@
               ]
             }
           ]
-        },
-        {
-          "id": "divine",
-          "name": "Divine International Techcraft",
-          "country": "India",
-          "logo": "/products/brands/divine.svg",
-          "website": "https://indianscientificgoods.com",
-          "subcategories": [
-            {
-              "id": "test-sieves",
-              "name": "Test Sieves",
-              "products": [
-                {
-                  "id": "divine-standard-sieves",
-                  "name": "Standard Test Sieves",
-                  "fullName": "Divine Standard Test Sieves",
-                  "brand": "divine",
-                  "category": "testing",
-                  "subcategory": "test-sieves",
-                  "description": "Precision manufactured standard test sieves for particle size analysis.",
-                  "fullDescription": "Divine Standard Test Sieves are precision manufactured from high-quality stainless steel or brass for accurate particle size analysis. Available in full-height, half-height, and custom sizes with various mesh ranges from 20μm to 125mm, meeting international standards ISO 565, ASTM E11.",
-                  "specs": [
-                    {
-                      "key": "Material",
-                      "value": "SS304 / Brass"
-                    },
-                    {
-                      "key": "Diameter",
-                      "value": "100mm, 150mm, 200mm, 300mm"
-                    },
-                    {
-                      "key": "Mesh range",
-                      "value": "20μm - 125mm"
-                    },
-                    {
-                      "key": "Standards",
-                      "value": "ISO 565, ASTM E11"
-                    }
-                  ],
-                  "applications": [
-                    "Particle size analysis",
-                    "Soil testing",
-                    "Cement testing",
-                    "Aggregate testing"
-                  ],
-                  "image": "/products/divine/test-sieves.jpg"
-                }
-              ]
-            },
-            {
-              "id": "material-testing",
-              "name": "Material Testing",
-              "products": [
-                {
-                  "id": "divine-tensile-machine",
-                  "name": "Tensile Testing Machine",
-                  "fullName": "Divine Digital Tensile Testing Machine",
-                  "brand": "divine",
-                  "category": "testing",
-                  "subcategory": "material-testing",
-                  "description": "Digital tensile testing machine for measuring tensile strength and elongation of materials.",
-                  "fullDescription": "The Divine Digital Tensile Testing Machine is designed for measuring tensile strength, compressive strength, and elongation of various materials including metals, plastics, textiles, and rubber. Featuring digital display and load cell technology for accurate and repeatable results.",
-                  "specs": [
-                    {
-                      "key": "Load capacity",
-                      "value": "0-100 kN"
-                    },
-                    {
-                      "key": "Accuracy",
-                      "value": "±1%"
-                    },
-                    {
-                      "key": "Speed",
-                      "value": "0.1-500 mm/min"
-                    },
-                    {
-                      "key": "Display",
-                      "value": "Digital LCD"
-                    }
-                  ],
-                  "applications": [
-                    "Metal testing",
-                    "Plastic testing",
-                    "Textile testing",
-                    "Quality control"
-                  ],
-                  "image": "/products/divine/material-testing.jpg"
-                }
-              ]
-            }
-          ]
         }
       ]
     },
     {
+      "id": "laboratory-furnitures",
+      "name": "Laboratory Furnitures",
+      "shortName": "Laboratory Furnitures",
+      "description": "Laboratory furniture, benches, and workspace solutions.",
+      "brands": []
+    },
+    {
+      "id": "laboratory-consumables",
+      "name": "Laboratory Consumables",
+      "shortName": "Laboratory Consumables",
+      "description": "Laboratory consumables and disposable supplies.",
+      "brands": []
+    },
+    {
       "id": "turnkey",
       "name": "Turnkey",
-      "shortName": "Turnkey",
+      "shortName": "Turnkey Projects",
       "description": "Complete integrated solutions and systems ready for deployment.",
       "brands": [
         {
@@ -5533,20 +5456,6 @@
           ]
         }
       ]
-    },
-    {
-      "id": "laboratory-furnitures",
-      "name": "Laboratory Furnitures",
-      "shortName": "Furniture",
-      "description": "Laboratory furniture, benches, and workspace solutions.",
-      "brands": []
-    },
-    {
-      "id": "laboratory-consumables",
-      "name": "Laboratory Consumables",
-      "shortName": "Consumables",
-      "description": "Laboratory consumables and disposable supplies.",
-      "brands": []
     }
   ]
 }

@@ -11,6 +11,7 @@ export interface Props {
 }
 
 const { title, description } = Astro.props;
+const isHome = title === 'Home';
 ---
 
 <!DOCTYPE html>
@@ -18,6 +19,9 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
     <title>{title} | TAKA Scientific</title>
     <meta name="description" content={description || "TAKA Scientific — Retail of scientific equipment, laboratory furniture, testing apparatus, and factory equipment across the UAE."} />
     <meta name="robots" content="index, follow" />
@@ -30,7 +34,7 @@ const { title, description } = Astro.props;
     <link rel="preload" href="/fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/GeistMono-Medium.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body>
+  <body class:list={[{ 'has-hero': isHome }]}>
     <Header />
     <main>
       <slot />

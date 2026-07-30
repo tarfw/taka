@@ -132,6 +132,9 @@ body {
 body > main {
   flex: 1;
 }
+body:not(.has-hero) > main {
+  padding-top: 55px;
+}
 
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -219,12 +222,12 @@ ul, ol { list-style: none; }
 
 .btn-dark,
 .btn-primary {
-  background: var(--brand);
+  background: #1a365d;
   color: #fff;
 }
 .btn-dark:hover,
 .btn-primary:hover {
-  background: var(--brand-hover);
+  background: #163052;
 }
 
 .btn-ghost {
@@ -528,8 +531,17 @@ ul, ol { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: #000;
   overflow: hidden;
+}
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 .hero-content-motion {
   position: relative;
@@ -553,21 +565,23 @@ ul, ol { list-style: none; }
 }
 .hero-text {
   text-align: center;
+  margin-top: 3rem;
   margin-bottom: 2.5rem;
 }
 .hero-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.2rem, 5vw, 3.5rem);
-  font-weight: 400;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
   line-height: 1.12;
-  letter-spacing: -0.03em;
-  color: #111;
+  letter-spacing: -0.02em;
+  color: #fff;
   margin-bottom: 1rem;
+  text-transform: uppercase;
 }
 .hero-subtitle {
   font-size: clamp(0.95rem, 2vw, 1.15rem);
   line-height: 1.6;
-  color: #777;
+  color: rgba(255,255,255,0.8);
   max-width: 480px;
   margin: 0 auto 1.5rem;
 }
@@ -583,13 +597,13 @@ ul, ol { list-style: none; }
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 500;
-  background: var(--brand);
+  background: #1a365d;
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
   transition: background 0.15s;
 }
-.hero-btn-primary:hover { background: var(--brand-hover); }
+.hero-btn-primary:hover { background: #163052; }
 .hero-search-wrapper {
   width: 100%;
   max-width: 700px;
@@ -624,7 +638,7 @@ ul, ol { list-style: none; }
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: var(--brand);
+  background: #1a365d;
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -632,7 +646,7 @@ ul, ol { list-style: none; }
   flex-shrink: 0;
   transition: background 0.15s;
 }
-.hero-search-submit:hover { background: var(--brand-hover); }
+.hero-search-submit:hover { background: #163052; }
 .hero-logos {
   width: 100%;
   max-width: 700px;
@@ -652,7 +666,7 @@ ul, ol { list-style: none; }
   font-family: var(--font-sans);
   font-size: 1.05rem;
   font-weight: 500;
-  color: #bbb;
+  color: rgba(255,255,255,0.6);
   flex-shrink: 0;
   letter-spacing: 0.02em;
 }
@@ -726,7 +740,7 @@ ul, ol { list-style: none; }
 
 /* ═══ TRUST & COMPLIANCE ═══ */
 .trust-section {
-  background: #111;
+  background: #0f2e1c;
   color: #fff;
   padding: 5rem 1.5rem;
 }
@@ -855,7 +869,7 @@ ul, ol { list-style: none; }
   font-size: 0.875rem;
   font-weight: 500;
   padding: 0.5rem 1rem;
-  background: #111;
+  background: #1a365d;
   color: #fff;
   border-radius: 4px;
   white-space: nowrap;
@@ -863,7 +877,7 @@ ul, ol { list-style: none; }
   transition: background 0.15s;
   text-decoration: none;
 }
-.trusted-btn:hover { background: #333; }
+.trusted-btn:hover { background: #163052; }
 .trusted-main {
   margin-bottom: 1rem;
   border-radius: 6px;

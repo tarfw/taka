@@ -314,8 +314,7 @@ const brands = Array.from(brandCategoryMap.values());
         if (visible) n++;
       });
 
-      if (count) count.textContent = (q || selectedCategory !== 'all' || selectedSubcategory !== 'all' || selectedBrand !== 'all') ? `${n} product${n !== 1 ? 's' : ''}` : '';
-      if (productsCount) productsCount.textContent = String(n);
+      if (count) count.textContent = '';
       if (empty) empty.classList.toggle('visible', n === 0);
     }
 
