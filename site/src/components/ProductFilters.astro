@@ -3,6 +3,7 @@ interface Subcategory {
   id: string;
   name: string;
   count: number;
+  categoryId: string;
 }
 
 interface Brand {
@@ -10,6 +11,7 @@ interface Brand {
   name: string;
   logo?: string;
   count: number;
+  categoryId: string;
 }
 
 interface Props {
@@ -33,7 +35,7 @@ const totalProducts = subcategories.reduce((sum, s) => sum + s.count, 0);
         <span class="filter-sidebar-count">{totalProducts}</span>
       </button>
       {subcategories.map(sc => (
-        <button class={`filter-sidebar-item ${selectedSubcategory === sc.id ? 'active' : ''}`} data-subcategory={sc.id}>
+        <button class={`filter-sidebar-item ${selectedSubcategory === sc.id ? 'active' : ''}`} data-subcategory={sc.id} data-category={sc.categoryId}>
           <span class="filter-sidebar-dot"></span>
           <span class="filter-sidebar-label">{sc.name}</span>
           <span class="filter-sidebar-count">{sc.count}</span>
@@ -52,7 +54,7 @@ const totalProducts = subcategories.reduce((sum, s) => sum + s.count, 0);
         <span class="filter-sidebar-label">All Brands</span>
       </button>
       {brands.map(brand => (
-        <button class={`filter-sidebar-item ${selectedBrand === brand.id ? 'active' : ''}`} data-brand={brand.id}>
+        <button class={`filter-sidebar-item ${selectedBrand === brand.id ? 'active' : ''}`} data-brand={brand.id} data-category={brand.categoryId}>
           <span class="filter-sidebar-dot"></span>
           {brand.logo ? (
             <img src={brand.logo} alt={brand.name} class="filter-sidebar-logo" />

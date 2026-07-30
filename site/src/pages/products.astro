@@ -25,55 +25,49 @@ const categories = productData.categories.map(c => ({
   shortName: c.shortName,
 }));
 
-const allSubcategories = productData.categories.flatMap(cat =>
-  cat.brands.flatMap(brand =>
-    brand.subcategories.map(sc => ({
-      id: sc.id,
-      name: sc.name,
-      count: sc.products.length
-    }))
-  )
-);
-
-const subcategoryMap = new Map<string, { id: string; name: string; count: number }>();
-allSubcategories.forEach(sc => {
-  if (subcategoryMap.has(sc.id)) {
-    subcategoryMap.get(sc.id)!.count += sc.count;
-  } else {
-    subcategoryMap.set(sc.id, { ...sc });
-  }
+const subcategoryCategoryMap = new Map<string, { id: string; name: string; count: number; categoryId: string }>();
+productData.categories.forEach(cat => {
+  cat.brands.forEach(brand => {
+    brand.subcategories.forEach(sc => {
+      const key = sc.id + '|' + cat.id;
+      if (subcategoryCategoryMap.has(key)) {
+        subcategoryCategoryMap.get(key)!.count += sc.products.length;
+      } else {
+        subcategoryCategoryMap.set(key, {
+          id: sc.id,
+          name: sc.name,
+          count: sc.products.length,
+          categoryId: cat.id
+        });
+      }
+    });
+  });
 });
-const subcategories = Array.from(subcategoryMap.values());
+const subcategories = Array.from(subcategoryCategoryMap.values());
 
-const allBrands = productData.categories.flatMap(cat =>
-  cat.brands.map(b => ({
-    id: b.id,
-    name: b.name,
-    logo: b.logo,
-    count: b.subcategories.reduce((sum, sc) => sum + sc.products.length, 0)
-  }))
-);
-const brandMap = new Map<string, { id: string; name: string; logo?: string; count: number }>();
-allBrands.forEach(b => {
-  if (brandMap.has(b.id)) {
-    brandMap.get(b.id)!.count += b.count;
-  } else {
-    brandMap.set(b.id, { ...b });
-  }
+const brandCategoryMap = new Map<string, { id: string; name: string; logo?: string; count: number; categoryId: string }>();
+productData.categories.forEach(cat => {
+  cat.brands.forEach(b => {
+    const key = b.id + '|' + cat.id;
+    if (brandCategoryMap.has(key)) {
+      brandCategoryMap.get(key)!.count += b.subcategories.reduce((sum, sc) => sum + sc.products.length, 0);
+    } else {
+      brandCategoryMap.set(key, {
+        id: b.id,
+        name: b.name,
+        logo: b.logo,
+        count: b.subcategories.reduce((sum, sc) => sum + sc.products.length, 0),
+        categoryId: cat.id
+      });
+    }
+  });
 });
-const brands = Array.from(brandMap.values());
+const brands = Array.from(brandCategoryMap.values());
 ---
 
 <Layout title="Products — TAKA Scientific">
   <section class="page-hero">
     <div class="container">
-      <div class="hero-top">
-        <div>
-          <span class="eyebrow">Catalog</span>
-          <h1 class="page-hero-title">Products</h1>
-        </div>
-        <span class="hero-count" id="productsCount">{totalProducts}</span>
-      </div>
       <div class="hero-toolbar">
         <div class="search-field">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
@@ -141,29 +135,8 @@ const brands = Array.from(brandMap.values());
 
 <style>
   .page-hero {
-    padding: 4rem 0 0;
+    padding: 2rem 0 0;
     border-bottom: 1px solid var(--color-border);
-  }
-  .hero-top {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-  .page-hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 2.8rem);
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    color: var(--color-text);
-    line-height: 1.1;
-    margin-top: 0.5rem;
-  }
-  .hero-count {
-    font-family: var(--font-mono);
-    font-size: 0.78rem;
-    color: var(--color-text-muted);
   }
   .hero-toolbar {
     display: flex;
@@ -297,6 +270,36 @@ const brands = Array.from(brandMap.values());
     let selectedBrand = 'all';
     let timer: ReturnType<typeof setTimeout>;
 
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory && initialCategory !== 'all') {
+      selectedCategory = initialCategory;
+      const btn = categoryFilters?.querySelector(`[data-category="${initialCategory}"]`);
+      if (btn) {
+        categoryFilters?.querySelectorAll('.filter-category').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const subcatFilters = document.getElementById('subcategoryFilters');
+      const brandFilters = document.getElementById('brandFilters');
+      if (subcatFilters) {
+        subcatFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
+          b.classList.remove('active');
+          const itemCat = b.getAttribute('data-category');
+          (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+        });
+        subcatFilters.querySelector('[data-subcategory="all"]')?.classList.add('active');
+      }
+      if (brandFilters) {
+        brandFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
+          b.classList.remove('active');
+          const itemCat = b.getAttribute('data-category');
+          (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+        });
+        brandFilters.querySelector('[data-brand="all"]')?.classList.add('active');
+      }
+      apply();
+    }
+
     function apply() {
       const q = searchInput.value.toLowerCase().trim();
       let n = 0;
@@ -338,11 +341,27 @@ const brands = Array.from(brandMap.values());
         const subcatFilters = document.getElementById('subcategoryFilters');
         const brandFilters = document.getElementById('brandFilters');
         if (subcatFilters) {
-          subcatFilters.querySelectorAll('.filter-sidebar-item').forEach(b => b.classList.remove('active'));
+          subcatFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
+            b.classList.remove('active');
+            const itemCat = b.getAttribute('data-category');
+            if (selectedCategory === 'all') {
+              (b as HTMLElement).style.display = '';
+            } else {
+              (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+            }
+          });
           subcatFilters.querySelector('[data-subcategory="all"]')?.classList.add('active');
         }
         if (brandFilters) {
-          brandFilters.querySelectorAll('.filter-sidebar-item').forEach(b => b.classList.remove('active'));
+          brandFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
+            b.classList.remove('active');
+            const itemCat = b.getAttribute('data-category');
+            if (selectedCategory === 'all') {
+              (b as HTMLElement).style.display = '';
+            } else {
+              (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+            }
+          });
           brandFilters.querySelector('[data-brand="all"]')?.classList.add('active');
         }
         

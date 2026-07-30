@@ -219,12 +219,12 @@ ul, ol { list-style: none; }
 
 .btn-dark,
 .btn-primary {
-  background: var(--color-text);
+  background: var(--brand);
   color: #fff;
 }
 .btn-dark:hover,
 .btn-primary:hover {
-  background: #333;
+  background: var(--brand-hover);
 }
 
 .btn-ghost {
@@ -241,7 +241,8 @@ ul, ol { list-style: none; }
   border: 1px solid var(--color-border);
 }
 .btn-outline:hover {
-  border-color: var(--color-text);
+  border-color: var(--brand);
+  color: var(--brand);
 }
 
 .btn-accent {
@@ -582,13 +583,13 @@ ul, ol { list-style: none; }
   font-family: var(--font-sans);
   font-size: 0.9375rem;
   font-weight: 500;
-  background: #111;
+  background: var(--brand);
   color: #fff;
   border-radius: 4px;
   text-decoration: none;
   transition: background 0.15s;
 }
-.hero-btn-primary:hover { background: #333; }
+.hero-btn-primary:hover { background: var(--brand-hover); }
 .hero-search-wrapper {
   width: 100%;
   max-width: 700px;
@@ -623,7 +624,7 @@ ul, ol { list-style: none; }
   justify-content: center;
   width: 36px;
   height: 36px;
-  background: #1446e0;
+  background: var(--brand);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -631,7 +632,7 @@ ul, ol { list-style: none; }
   flex-shrink: 0;
   transition: background 0.15s;
 }
-.hero-search-submit:hover { background: #1238c0; }
+.hero-search-submit:hover { background: var(--brand-hover); }
 .hero-logos {
   width: 100%;
   max-width: 700px;
