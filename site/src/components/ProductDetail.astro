@@ -1,0 +1,381 @@
+---
+interface Spec {
+  key: string;
+  value: string;
+}
+
+interface Product {
+  id: string;
+  name: string;
+  fullName?: string;
+  brand: string;
+  subcategory: string;
+  description: string;
+  fullDescription?: string;
+  specs: Spec[];
+  applications?: string[];
+  image: string;
+  gallery?: string[];
+}
+
+interface Props {
+  product: Product;
+  categoryName?: string;
+  brandName?: string;
+  subcategoryName?: string;
+  relatedProducts?: Product[];
+}
+
+const { product, categoryName, brandName, subcategoryName, relatedProducts = [] } = Astro.props;
+---
+
+<article class="product-detail">
+  <div class="container">
+    <nav class="product-detail-breadcrumb">
+      <a href="/products" class="breadcrumb-link">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        Back to products
+      </a>
+    </nav>
+
+    <div class="product-detail-hero">
+      <div class="product-detail-image-wrap">
+        <img src={product.image} alt={product.fullName || product.name} class="product-detail-image" />
+      </div>
+      <div class="product-detail-info">
+        <div class="product-detail-meta">
+          {categoryName && <span class="product-detail-category">{categoryName}</span>}
+          {brandName && <span class="product-detail-brand">{brandName}</span>}
+          {subcategoryName && <span class="product-detail-subcategory">{subcategoryName}</span>}
+        </div>
+        <h1 class="product-detail-title">{product.fullName || product.name}</h1>
+        <p class="product-detail-desc">{product.description}</p>
+        
+        {product.specs && product.specs.length > 0 && (
+          <div class="product-detail-specs">
+            <h3 class="product-detail-section-title">Specifications</h3>
+            <div class="specs-table">
+              {product.specs.map(spec => (
+                <div class="specs-row">
+                  <span class="specs-key">{spec.key}</span>
+                  <span class="specs-value">{spec.value}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {product.applications && product.applications.length > 0 && (
+          <div class="product-detail-applications">
+            <h3 class="product-detail-section-title">Applications</h3>
+            <div class="applications-list">
+              {product.applications.map(app => (
+                <span class="application-tag">{app}</span>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    {product.fullDescription && (
+      <div class="product-detail-full">
+        <div class="product-detail-full-content">
+          <h2 class="product-detail-full-title">About this product</h2>
+          <p class="product-detail-full-text">{product.fullDescription}</p>
+        </div>
+      </div>
+    )}
+
+    {relatedProducts.length > 0 && (
+      <div class="product-detail-related">
+        <h2 class="product-detail-section-title">Related Products</h2>
+        <div class="related-grid">
+          {relatedProducts.map(rp => (
+            <a href={`/products/${rp.id}`} class="related-card">
+              <div class="related-card-image">
+                <img src={rp.image} alt={rp.name} loading="lazy" />
+              </div>
+              <div class="related-card-body">
+                <h4 class="related-card-title">{rp.name}</h4>
+                <p class="related-card-desc">{rp.description}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div>
+</article>
+
+<style>
+  .product-detail {
+    padding: 2rem 0 5rem;
+  }
+
+  .product-detail-breadcrumb {
+    margin-bottom: 2rem;
+  }
+  .breadcrumb-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .breadcrumb-link:hover {
+    color: var(--color-text);
+  }
+
+  .product-detail-hero {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-bottom: 4rem;
+  }
+
+  .product-detail-image-wrap {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: sticky;
+    top: calc(var(--nav-height) + 1rem);
+  }
+  .product-detail-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 2rem;
+  }
+
+  .product-detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .product-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .product-detail-category {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-sm);
+  }
+  .product-detail-brand {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--brand);
+    background: rgba(31, 64, 237, 0.08);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-sm);
+  }
+  .product-detail-subcategory {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+    padding: 0.3rem 0.7rem;
+    border-radius: var(--radius-sm);
+  }
+
+  .product-detail-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin: 0;
+  }
+
+  .product-detail-desc {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  .product-detail-section-title {
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.75rem 0;
+    letter-spacing: 0.02em;
+  }
+
+  .product-detail-specs {
+    margin-top: 0.5rem;
+  }
+  .specs-table {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .specs-row {
+    display: flex;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .specs-row:last-child {
+    border-bottom: none;
+  }
+  .specs-key {
+    flex: 0 0 140px;
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    background: var(--color-surface);
+  }
+  .specs-value {
+    flex: 1;
+    padding: 0.7rem 1rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-text);
+  }
+
+  .product-detail-applications {
+    margin-top: 0.5rem;
+  }
+  .applications-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+  .application-tag {
+    display: inline-block;
+    padding: 0.35rem 0.75rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 100px;
+  }
+
+  .product-detail-full {
+    padding: 3rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+  .product-detail-full-content {
+    max-width: 720px;
+  }
+  .product-detail-full-title {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0 0 1rem 0;
+  }
+  .product-detail-full-text {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .product-detail-related {
+    padding-top: 3rem;
+    border-top: 1px solid var(--color-border);
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .related-card:hover {
+    border-color: var(--greige-lightest);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+  .related-card-image {
+    aspect-ratio: 4 / 3;
+    background: var(--color-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .related-card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 1rem;
+  }
+  .related-card-body {
+    padding: 1rem;
+  }
+  .related-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--color-text);
+    margin: 0 0 0.3rem 0;
+    line-height: 1.4;
+  }
+  .related-card-desc {
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  @media (max-width: 768px) {
+    .product-detail-hero {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .product-detail-image-wrap {
+      position: static;
+    }
+    .specs-key {
+      flex: 0 0 110px;
+    }
+    .related-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

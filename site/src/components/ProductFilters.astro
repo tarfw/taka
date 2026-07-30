@@ -1,0 +1,228 @@
+---
+interface Subcategory {
+  id: string;
+  name: string;
+  count: number;
+}
+
+interface Brand {
+  id: string;
+  name: string;
+  logo?: string;
+  count: number;
+}
+
+interface Props {
+  subcategories: Subcategory[];
+  brands: Brand[];
+  selectedSubcategory?: string;
+  selectedBrand?: string;
+}
+
+const { subcategories, brands, selectedSubcategory = 'all', selectedBrand = 'all' } = Astro.props;
+const totalProducts = subcategories.reduce((sum, s) => sum + s.count, 0);
+---
+
+<aside class="filter-sidebar" id="filterSidebar">
+  <div class="filter-sidebar-section">
+    <h3 class="filter-sidebar-title">Sub-categories</h3>
+    <div class="filter-sidebar-list" id="subcategoryFilters">
+      <button class="filter-sidebar-item active" data-subcategory="all">
+        <span class="filter-sidebar-dot"></span>
+        <span class="filter-sidebar-label">All</span>
+        <span class="filter-sidebar-count">{totalProducts}</span>
+      </button>
+      {subcategories.map(sc => (
+        <button class={`filter-sidebar-item ${selectedSubcategory === sc.id ? 'active' : ''}`} data-subcategory={sc.id}>
+          <span class="filter-sidebar-dot"></span>
+          <span class="filter-sidebar-label">{sc.name}</span>
+          <span class="filter-sidebar-count">{sc.count}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div class="filter-sidebar-divider"></div>
+
+  <div class="filter-sidebar-section">
+    <h3 class="filter-sidebar-title">Brands</h3>
+    <div class="filter-sidebar-list" id="brandFilters">
+      <button class="filter-sidebar-item active" data-brand="all">
+        <span class="filter-sidebar-dot"></span>
+        <span class="filter-sidebar-label">All Brands</span>
+      </button>
+      {brands.map(brand => (
+        <button class={`filter-sidebar-item ${selectedBrand === brand.id ? 'active' : ''}`} data-brand={brand.id}>
+          <span class="filter-sidebar-dot"></span>
+          {brand.logo ? (
+            <img src={brand.logo} alt={brand.name} class="filter-sidebar-logo" />
+          ) : null}
+          <span class="filter-sidebar-label">{brand.name}</span>
+        </button>
+      ))}
+    </div>
+  </div>
+</aside>
+
+<style>
+  .filter-sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: sticky;
+    top: calc(var(--nav-height) + 1.5rem);
+    align-self: flex-start;
+    max-height: calc(100vh - var(--nav-height) - 3rem);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-border) transparent;
+  }
+  .filter-sidebar::-webkit-scrollbar { width: 4px; }
+  .filter-sidebar::-webkit-scrollbar-track { background: transparent; }
+  .filter-sidebar::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 2px; }
+
+  .filter-sidebar-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .filter-sidebar-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 0.5rem 0;
+    padding: 0 0.75rem;
+  }
+
+  .filter-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .filter-sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.12s;
+    text-align: left;
+  }
+  .filter-sidebar-item:hover {
+    background: var(--color-surface);
+    color: var(--color-text);
+  }
+  .filter-sidebar-item.active {
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-weight: 500;
+  }
+
+  .filter-sidebar-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--color-border);
+    flex-shrink: 0;
+    transition: background 0.12s;
+  }
+  .filter-sidebar-item.active .filter-sidebar-dot {
+    background: var(--color-text);
+  }
+
+  .filter-sidebar-logo {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .filter-sidebar-label {
+    flex: 1;
+    line-height: 1.3;
+  }
+
+  .filter-sidebar-count {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+    flex-shrink: 0;
+  }
+
+  .filter-sidebar-divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 0.75rem 0;
+  }
+
+  @media (max-width: 1024px) {
+    .filter-sidebar {
+      width: 180px;
+    }
+  }
+  @media (max-width: 768px) {
+    .filter-sidebar {
+      width: 100%;
+      position: static;
+      max-height: none;
+      flex-direction: row;
+      gap: 1rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: 0.5rem;
+    }
+    .filter-sidebar-divider {
+      width: 1px;
+      height: auto;
+      margin: 0;
+      background: var(--color-border);
+    }
+    .filter-sidebar-section {
+      min-width: max-content;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('filterSidebar');
+    if (!sidebar) return;
+
+    sidebar.addEventListener('click', (e) => {
+      const item = (e.target as HTMLElement).closest('.filter-sidebar-item');
+      if (!item) return;
+
+      const list = item.closest('.filter-sidebar-list');
+      if (!list) return;
+
+      list.querySelectorAll('.filter-sidebar-item').forEach(b => b.classList.remove('active'));
+      item.classList.add('active');
+
+      if (item.dataset.subcategory !== undefined) {
+        window.dispatchEvent(new CustomEvent('subcategory-change', { 
+          detail: { subcategory: item.dataset.subcategory || 'all' } 
+        }));
+      }
+
+      if (item.dataset.brand !== undefined) {
+        window.dispatchEvent(new CustomEvent('brand-change', { 
+          detail: { brand: item.dataset.brand || 'all' } 
+        }));
+      }
+    });
+  });
+</script>

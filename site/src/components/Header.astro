@@ -6,20 +6,25 @@
   <nav class="nav-desktop">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="TAKA Scientific home">
-        <span class="nav-logo-text">TAKA Scientific</span>
+        <img src="/logo5.svg" alt="TAKA Scientific" class="nav-logo-img" />
       </a>
       <div class="nav-links">
+        <a href="/" class="nav-link">Home</a>
         <div class="nav-dropdown" data-dropdown="products">
           <button class="nav-link-btn">
             Products
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
           <div class="nav-dropdown-menu">
-            <a href="/products" class="dropdown-item">Laboratory Furniture</a>
-            <a href="/products" class="dropdown-item">Scientific Equipment</a>
-            <a href="/products" class="dropdown-item">Testing Apparatus</a>
-            <a href="/products" class="dropdown-item">Hospital Equipment</a>
-            <a href="/products" class="dropdown-item">Factory Equipment</a>
+            <a href="/products" class="dropdown-item">All Products</a>
+            <a href="/products" class="dropdown-item">JASMEA</a>
+            <a href="/products" class="dropdown-item">IKA</a>
+            <a href="/products" class="dropdown-item">HACH</a>
+            <a href="/products" class="dropdown-item">Hanil Scientific</a>
+            <a href="/products" class="dropdown-item">Toption</a>
+            <a href="/products" class="dropdown-item">ELGA LabWater</a>
+            <a href="/products" class="dropdown-item">ETELUX</a>
+            <a href="/products" class="dropdown-item">Divine International</a>
           </div>
         </div>
         <div class="nav-dropdown" data-dropdown="resources">
@@ -49,17 +54,22 @@
   <!-- Mobile nav -->
   <div class="nav-mobile" id="mobile-nav">
     <div class="nav-mobile-inner">
+      <a href="/" class="mobile-link-single">Home</a>
       <div class="nav-mobile-section">
         <button class="mobile-accordion" data-mobile="products">
           <span>Products</span>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="mobile-accordion-content">
-          <a href="/products" class="mobile-link">Laboratory Furniture</a>
-          <a href="/products" class="mobile-link">Scientific Equipment</a>
-          <a href="/products" class="mobile-link">Testing Apparatus</a>
-          <a href="/products" class="mobile-link">Hospital Equipment</a>
-          <a href="/products" class="mobile-link">Factory Equipment</a>
+          <a href="/products" class="mobile-link">All Products</a>
+          <a href="/products" class="mobile-link">JASMEA</a>
+          <a href="/products" class="mobile-link">IKA</a>
+          <a href="/products" class="mobile-link">HACH</a>
+          <a href="/products" class="mobile-link">Hanil Scientific</a>
+          <a href="/products" class="mobile-link">Toption</a>
+          <a href="/products" class="mobile-link">ELGA LabWater</a>
+          <a href="/products" class="mobile-link">ETELUX</a>
+          <a href="/products" class="mobile-link">Divine International</a>
         </div>
       </div>
       <div class="nav-mobile-section">
@@ -97,11 +107,11 @@
   .nav-inner {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 1.5rem;
+    padding: 0.75rem 1.5rem 0 1.5rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: var(--nav-height);
+    height: auto;
   }
   .nav-logo {
     display: flex;
@@ -109,12 +119,11 @@
     text-decoration: none;
     color: #111;
     flex-shrink: 0;
+    flex-grow: 1;
   }
-  .nav-logo-text {
-    font-family: var(--font-sans);
-    font-size: 1.125rem;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+  .nav-logo-img {
+    height: clamp(36px, 4vw, 48px);
+    width: auto;
   }
   .nav-links {
     display: flex;
@@ -396,7 +405,7 @@
   /* Mobile */
   @media (max-width: 768px) {
     .nav-inner { padding: 0 1rem; }
-    .nav-logo-text { font-size: 1rem; }
+    .nav-logo-img { height: clamp(50px, 14vw, 72px); }
   }
 </style>
 

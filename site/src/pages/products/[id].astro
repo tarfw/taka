@@ -1,0 +1,43 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductDetail from '../../components/ProductDetail.astro';
+import productData from '../../data/products.json';
+
+export async function getStaticPaths() {
+  const paths = [];
+  for (const category of productData.categories) {
+    for (const brand of category.brands) {
+      for (const subcat of brand.subcategories) {
+        for (const product of subcat.products) {
+          paths.push({
+            params: { id: product.id },
+            props: {
+              product,
+              categoryName: category.name,
+              brandName: brand.name,
+              subcategoryName: subcat.name,
+              relatedProducts: brand.subcategories
+                .flatMap(sc => sc.products)
+                .filter(p => p.id !== product.id)
+                .slice(0, 3)
+            }
+          });
+        }
+      }
+    }
+  }
+  return paths;
+}
+
+const { product, categoryName, brandName, subcategoryName, relatedProducts } = Astro.props;
+---
+
+<Layout title={`${product.name} — TAKA Scientific`}>
+  <ProductDetail 
+    product={product}
+    categoryName={categoryName}
+    brandName={brandName}
+    subcategoryName={subcategoryName}
+    relatedProducts={relatedProducts}
+  />
+</Layout>

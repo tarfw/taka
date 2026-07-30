@@ -1,0 +1,934 @@
+{
+  "company": "TAKA Scientific",
+  "tagline": "Equipment for every facility",
+  "categories": [
+    {
+      "id": "analytical-equipments",
+      "name": "Analytical Equipments",
+      "shortName": "Analytical",
+      "description": "Advanced analytical instruments for precise chemical and material analysis.",
+      "brands": [
+        {
+          "id": "jasmea",
+          "name": "JASMEA",
+          "country": "Germany",
+          "logo": "/products/brands/jasmea.svg",
+          "website": "https://jas-mea.com",
+          "subcategories": [
+            {
+              "id": "gc-systems",
+              "name": "GC Systems",
+              "products": [
+                {
+                  "id": "natural-gas-analyzer",
+                  "name": "Natural Gas Analyzer",
+                  "fullName": "Natural Gas Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Fully configured GC system for complete analysis of natural gas composition per ASTM and ISO standards.",
+                  "fullDescription": "The Natural Gas Analyzer is a fully configured gas chromatography system designed for complete analysis of natural gas composition. It meets rigorous international standards including ASTM D1945 and ISO 6974, delivering accurate quantification of methane, ethane, propane, butanes, pentanes, CO2, N2, and H2S. The system features advanced valve switching technology for seamless multi-component analysis with minimal operator intervention.",
+                  "specs": [
+                    { "key": "Technology", "value": "Gas Chromatography" },
+                    { "key": "Standards", "value": "ASTM D1945, ISO 6974" },
+                    { "key": "Detectors", "value": "FID, TCD" },
+                    { "key": "Application", "value": "Natural gas composition" }
+                  ],
+                  "applications": ["Gas processing", "LNG terminals", "Pipeline quality control"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_JAS-RGA-Valve6-SK-UNIS-Valve-01_a5ae2818a0.png"
+                },
+                {
+                  "id": "oxygenates-analyzer",
+                  "name": "Oxygenates Analyzer",
+                  "fullName": "Oxygenates Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Specialized GC system for determination of oxygenate content in gasoline and fuel samples.",
+                  "fullDescription": "The Oxygenates Analyzer is a specialized gas chromatography system engineered for precise determination of oxygenate content in gasoline and fuel samples. Compliant with ASTM D4815 and D5599 standards, it accurately measures methanol, ethanol, MTBE, ETBE, TAME, and other oxygenated compounds.",
+                  "specs": [
+                    { "key": "Technology", "value": "Gas Chromatography" },
+                    { "key": "Standards", "value": "ASTM D4815, D5599" },
+                    { "key": "Detectors", "value": "FID" },
+                    { "key": "Application", "value": "Oxygenates in fuels" }
+                  ],
+                  "applications": ["Refineries", "Fuel testing labs", "Quality control"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_GC8890-4Valve-ALS-1_521b5b3cc7.png"
+                },
+                {
+                  "id": "refinery-gas-analyzer",
+                  "name": "Refinery Gas Analyzer (Mach-RGA)",
+                  "fullName": "Refinery Gas Analyzer — Mach-RGA",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Multi-component refinery gas analyzer for complete analysis of C1–C6+ hydrocarbons and permanent gases.",
+                  "fullDescription": "The Mach-RGA Refinery Gas Analyzer is a state-of-the-art multi-component analysis system designed for comprehensive characterization of refinery gas streams. It delivers complete analysis of C1 through C6+ hydrocarbons alongside permanent gases.",
+                  "specs": [
+                    { "key": "Technology", "value": "Multi-valve GC" },
+                    { "key": "Standards", "value": "ASTM D1945, D6730" },
+                    { "key": "Detectors", "value": "FID, TCD" },
+                    { "key": "Application", "value": "Refinery gas analysis" }
+                  ],
+                  "applications": ["Refineries", "Petrochemical plants", "Gas processing"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_RGA-GC8890-6VB-SB_5cec58bfd5.png"
+                },
+                {
+                  "id": "simdis-analyzer",
+                  "name": "SimDis Analyzer",
+                  "fullName": "SimDis Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Simulated distillation analyzer for boiling point distribution of crude oils and petroleum fractions.",
+                  "fullDescription": "The SimDis Analyzer is a high-temperature gas chromatography system specifically designed for simulated distillation analysis. It determines the boiling point distribution of crude oils and heavy petroleum fractions per ASTM D2887, D7169, and D7213 standards.",
+                  "specs": [
+                    { "key": "Technology", "value": "High-temp GC" },
+                    { "key": "Standards", "value": "ASTM D2887, D7169, D7213" },
+                    { "key": "Inlet", "value": "UNIS 3100 HT PTV" },
+                    { "key": "Software", "value": "SIMDIS Expert" }
+                  ],
+                  "applications": ["Refineries", "Crude oil labs", "Petrochemical QC"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_JAS_SimDis_Analyzer-8890-02_dc93d73ceb.png"
+                },
+                {
+                  "id": "crude-oil-analyzer",
+                  "name": "Crude Oil Analyzer",
+                  "fullName": "Crude Oil Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Comprehensive crude oil analysis system for detailed hydrocarbon characterization and quality assessment.",
+                  "fullDescription": "The Crude Oil Analyzer is a comprehensive multi-detector gas chromatography system built for detailed hydrocarbon characterization and quality assessment of crude oil samples.",
+                  "specs": [
+                    { "key": "Technology", "value": "Multi-detector GC" },
+                    { "key": "Application", "value": "Crude oil characterization" },
+                    { "key": "Detectors", "value": "FID, AED" },
+                    { "key": "Inlet", "value": "UNIS 3100 HT" }
+                  ],
+                  "applications": ["Oil & gas", "Refineries", "Research labs"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/Crude-Oil-Analyzer-scaled.png"
+                },
+                {
+                  "id": "dha-analyzer",
+                  "name": "Detailed Hydrocarbon Analyzer (DHA)",
+                  "fullName": "Detailed Hydrocarbon Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "High-resolution GC system for detailed hydrocarbon analysis of petroleum products.",
+                  "fullDescription": "The Detailed Hydrocarbon Analyzer (DHA) is a high-resolution gas chromatography system engineered for individual component identification and quantification in complex petroleum product matrices.",
+                  "specs": [
+                    { "key": "Technology", "value": "High-res GC" },
+                    { "key": "Standards", "value": "ASTM D6730, D6733" },
+                    { "key": "Detectors", "value": "FID" },
+                    { "key": "Resolution", "value": "Individual C1–C12+" }
+                  ],
+                  "applications": ["Fuels analysis", "Refineries", "Environmental testing"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/Detailed-Hydrocarbon-Analyzer_DHA-scaled.png"
+                },
+                {
+                  "id": "lpg-analyzer",
+                  "name": "LPG Analyzer (ASTM D2163)",
+                  "fullName": "LPG Analyzer — ASTM D2163",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Dedicated analyzer for compositional analysis of liquefied petroleum gas per ASTM D2163.",
+                  "fullDescription": "The LPG Analyzer is a dedicated gas chromatography system designed for precise compositional analysis of liquefied petroleum gas (LPG) in full compliance with ASTM D2163.",
+                  "specs": [
+                    { "key": "Technology", "value": "Gas Chromatography" },
+                    { "key": "Standards", "value": "ASTM D2163" },
+                    { "key": "Detectors", "value": "FID, TCD" },
+                    { "key": "Application", "value": "LPG composition" }
+                  ],
+                  "applications": ["LPG terminals", "Refineries", "Gas distribution"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/LPG-Analyser-1.png"
+                },
+                {
+                  "id": "sara-analyzer",
+                  "name": "SARA Analyzer",
+                  "fullName": "SARA Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "HPLC-based analyzer for determination of Saturates, Aromatics, Resins, and Asphaltenes in bitumen and heavy oils.",
+                  "fullDescription": "The SARA Analyzer is an HPLC-based analytical system for the determination of Saturates, Aromatics, Resins, and Asphaltenes (SARA) fractions in bitumen, crude oil, and heavy petroleum feedstocks.",
+                  "specs": [
+                    { "key": "Technology", "value": "HPLC" },
+                    { "key": "Application", "value": "SARA fraction analysis" },
+                    { "key": "Sample Types", "value": "Bitumen, crude, heavy oil" },
+                    { "key": "Method", "value": "ASTM D4124, D6560" }
+                  ],
+                  "applications": ["Asphalt labs", "Refineries", "Bitumen QC"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/LC-Valve-system_SARA-Analyser.jpeg"
+                },
+                {
+                  "id": "sulfur-trace-analyzer",
+                  "name": "Sulfur Trace Analyzer",
+                  "fullName": "Sulfur Trace Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Ultra-sensitive sulfur detection system for trace-level sulfur analysis in fuels and petrochemicals.",
+                  "fullDescription": "The Sulfur Trace Analyzer is an ultra-sensitive gas chromatography system equipped with SCD, AED, and FPD detection technologies for trace-level sulfur compound analysis.",
+                  "specs": [
+                    { "key": "Technology", "value": "GC-SCD/AED" },
+                    { "key": "Detection", "value": "Sub-ppm sulfur" },
+                    { "key": "Detectors", "value": "SCD, AED, FPD" },
+                    { "key": "Application", "value": "Sulfur in fuels" }
+                  ],
+                  "applications": ["Refineries", "Fuel testing", "Environmental compliance"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/Sulfur-Trace-Analyzer-scaled.png"
+                },
+                {
+                  "id": "transformer-oil-gas-analyzer",
+                  "name": "Transformer Oil Gas Analyzer",
+                  "fullName": "Transformer Oil Gas Analyzer (TOGA)",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Dissolved gas analysis system for transformer oil monitoring and diagnostics.",
+                  "fullDescription": "The Transformer Oil Gas Analyzer (TOGA) is a multi-detector gas chromatography system specifically designed for dissolved gas analysis (DGA) in transformer insulating oils.",
+                  "specs": [
+                    { "key": "Technology", "value": "Multi-detector GC" },
+                    { "key": "Gases", "value": "H2, CH4, C2H2, C2H4, C2H6, CO, CO2" },
+                    { "key": "Standards", "value": "IEC 60567, ASTM D3612" },
+                    { "key": "Application", "value": "Transformer diagnostics" }
+                  ],
+                  "applications": ["Power utilities", "Electrical maintenance", "Predictive diagnostics"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/TOGA_Transformer-Oil-Gas-Analyser.png"
+                },
+                {
+                  "id": "uop-603-13-analyzer",
+                  "name": "UOP 603-13 Gas Analyzer",
+                  "fullName": "UOP 603-13 Gas Analyzer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-systems",
+                  "description": "Specialized gas analyzer for refinery fuel gas and off-gas analysis per UOP method.",
+                  "fullDescription": "The UOP 603-13 Gas Analyzer is a specialized multi-valve gas chromatography system engineered for refinery fuel gas and off-gas analysis per the UOP 603-13 method.",
+                  "specs": [
+                    { "key": "Technology", "value": "Multi-valve GC" },
+                    { "key": "Standard", "value": "UOP 603-13" },
+                    { "key": "Detectors", "value": "FID, TCD" },
+                    { "key": "Application", "value": "Refinery fuel gas" }
+                  ],
+                  "applications": ["Refineries", "Gas processing", "Process monitoring"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/UOP-603-13-Analyzer.png"
+                }
+              ]
+            },
+            {
+              "id": "detectors",
+              "name": "Detectors",
+              "products": [
+                {
+                  "id": "aed-iii-hr",
+                  "name": "AED III High Resolution",
+                  "fullName": "AED III High Resolution — Atomic Emission Detector",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "detectors",
+                  "description": "The only commercially available Atomic Emission Detector for gas chromatography, detecting trace elements at picogram level sensitivity.",
+                  "fullDescription": "The AED III High Resolution is the only commercially available Atomic Emission Detector (AED) for gas chromatography, offering unparalleled elemental selectivity and picogram-level sensitivity.",
+                  "specs": [
+                    { "key": "Type", "value": "Atomic Emission Detector" },
+                    { "key": "Elements", "value": "S, N, P, Halogens, metals" },
+                    { "key": "Sensitivity", "value": "Picogram level" },
+                    { "key": "Platform", "value": "Agilent GC" }
+                  ],
+                  "applications": ["Petrochemical analysis", "Environmental monitoring", "Pharmaceutical research"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/08/csm_AED-III_WR-8890-System_85c431d72b-1.png"
+                },
+                {
+                  "id": "aed-iii-wr",
+                  "name": "AED III Wide Range",
+                  "fullName": "AED III Wide Range — Atomic Emission Detector",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "detectors",
+                  "description": "Wide-range Atomic Emission Detector with extended elemental coverage for comprehensive multi-element analysis.",
+                  "fullDescription": "The AED III Wide Range is an advanced Atomic Emission Detector offering extended elemental coverage for comprehensive multi-element analysis in a single chromatographic run.",
+                  "specs": [
+                    { "key": "Type", "value": "Atomic Emission Detector" },
+                    { "key": "Range", "value": "Wide elemental coverage" },
+                    { "key": "Channels", "value": "Simultaneous multi-channel" },
+                    { "key": "Platform", "value": "Agilent GC" }
+                  ],
+                  "applications": ["Elemental fingerprinting", "Trace analysis", "Research"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/08/csm_AED-III_WR-8890-System_85c431d72b-1.png"
+                }
+              ]
+            },
+            {
+              "id": "gc-inlets-accessories",
+              "name": "GC Inlets & Accessories",
+              "products": [
+                {
+                  "id": "vaporizer",
+                  "name": "Vaporizer",
+                  "fullName": "E-Vaporizer",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Precision vaporizer for accurate vapor-phase conversion of liquefied gases and volatile samples.",
+                  "fullDescription": "The E-Vaporizer is a precision-engineered sample vaporization system for accurate vapor-phase conversion of liquefied gases and volatile samples prior to GC injection.",
+                  "specs": [
+                    { "key": "Type", "value": "Sample vaporization" },
+                    { "key": "Temperature", "value": "Programmable" },
+                    { "key": "Material", "value": "Inert flow path" },
+                    { "key": "Compatibility", "value": "Agilent GC" }
+                  ],
+                  "applications": ["LPG analysis", "Gas sampling", "Petrochemical QC"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/12/JAS-E-Vaporizer.png"
+                },
+                {
+                  "id": "gas-bag-sampler",
+                  "name": "Automatic Gas Sampler (GBS)",
+                  "fullName": "Automatic Gas Sampler — GBS",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Fully automated gas sampling solution for precise collection from Tedlar bags, balloons, or cylinders.",
+                  "fullDescription": "The Automatic Gas Sampler (GBS) is a fully automated gas sampling solution designed for precise, reproducible collection from Tedlar bags, balloons, or gas cylinders.",
+                  "specs": [
+                    { "key": "Models", "value": "GBS-8, GBS-10" },
+                    { "key": "Pressure", "value": "Up to 3 bar" },
+                    { "key": "Control", "value": "Control Software" },
+                    { "key": "Compatibility", "value": "Agilent & 3rd-party GCs" }
+                  ],
+                  "applications": ["Environmental testing", "Gas calibration", "Refineries"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_RGA-COCO2-LPG-GBS-04_4a5cd7031e-2.jpg"
+                },
+                {
+                  "id": "gicu",
+                  "name": "Gas Injection Control Unit (GICU)",
+                  "fullName": "Gas Injection Control Unit",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Automated precision gas injection control for reproducible analytical results.",
+                  "fullDescription": "The Gas Injection Control Unit (GICU) is an automated precision gas injection system engineered to deliver highly reproducible analytical results in gas chromatography.",
+                  "specs": [
+                    { "key": "Type", "value": "Injection control" },
+                    { "key": "Precision", "value": "High reproducibility" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Compatibility", "value": "Agilent GC systems" }
+                  ],
+                  "applications": ["Gas analysis", "Process monitoring", "QC laboratories"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_GICU_7890GC_a5ee780582.png"
+                },
+                {
+                  "id": "unis-2100",
+                  "name": "UNIS 2100 PTV",
+                  "fullName": "UNIS 2100 PTV Inlet",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Programmable temperature vaporization inlet for solvent venting, VOCs, and general GC applications.",
+                  "fullDescription": "The UNIS 2100 PTV is a versatile programmable temperature vaporization inlet designed for solvent venting, volatile organic compound (VOC) analysis, and general GC applications.",
+                  "specs": [
+                    { "key": "Type", "value": "PTV inlet" },
+                    { "key": "Modes", "value": "PTV, split, splitless" },
+                    { "key": "Cooling", "value": "Air, CO2, N2" },
+                    { "key": "Application", "value": "VOCs, general GC" }
+                  ],
+                  "applications": ["Environmental testing", "Pharmaceutical", "General GC"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_UNIS_2100_0297e81b5f.jpg"
+                },
+                {
+                  "id": "unis-3100",
+                  "name": "UNIS 3100 HT PTV",
+                  "fullName": "UNIS 3100 HT PTV Inlet",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "High-temperature PTV inlet for heavy hydrocarbons, SimDis, and DHA applications.",
+                  "fullDescription": "The UNIS 3100 HT PTV is a high-temperature programmable temperature vaporization inlet engineered for the analysis of heavy hydrocarbons, simulated distillation (SimDis), and detailed hydrocarbon analysis (DHA).",
+                  "specs": [
+                    { "key": "Type", "value": "HT PTV inlet" },
+                    { "key": "Temp", "value": "Up to 500°C" },
+                    { "key": "Cooling", "value": "Cryogenic & conventional" },
+                    { "key": "Application", "value": "Heavy hydrocarbons, SimDis" }
+                  ],
+                  "applications": ["Refineries", "Heavy oil analysis", "SimDis"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_UNIS_3100_09f3d80ded.jpg"
+                },
+                {
+                  "id": "unis-500",
+                  "name": "UNIS 500 S/SL",
+                  "fullName": "UNIS 500 Split/Splitless Inlet",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Standard split/splitless inlet for routine GC, petrochemicals, and QC laboratory applications.",
+                  "fullDescription": "The UNIS 500 S/SL is a standard split/splitless inlet designed for routine gas chromatography, petrochemical analysis, and QC laboratory applications.",
+                  "specs": [
+                    { "key": "Type", "value": "Split/Splitless" },
+                    { "key": "Temp", "value": "Standard GC range" },
+                    { "key": "Cooling", "value": "Not applicable" },
+                    { "key": "Application", "value": "Routine GC, QC" }
+                  ],
+                  "applications": ["QC laboratories", "Petrochemicals", "General GC"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_UNIS_500_719d5b9593.jpg"
+                },
+                {
+                  "id": "unis-ht-simdis",
+                  "name": "UNIS HT SimDis",
+                  "fullName": "UNIS HT SimDis Inlet",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Dedicated high-temperature inlet for simulated distillation analysis.",
+                  "fullDescription": "The UNIS HT SimDis is a dedicated high-temperature inlet specifically engineered for simulated distillation analysis.",
+                  "specs": [
+                    { "key": "Type", "value": "SimDis inlet" },
+                    { "key": "Temp", "value": "Dedicated HT" },
+                    { "key": "Cooling", "value": "Air, CO2, N2" },
+                    { "key": "Application", "value": "High-temp SimDis" }
+                  ],
+                  "applications": ["SimDis analysis", "Crude oil labs", "Refineries"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_UNIS_HT_SimDis_d9374e6caf.png"
+                },
+                {
+                  "id": "cryotrap",
+                  "name": "CryoTrap",
+                  "fullName": "CryoTrap — GC Cryogenic Trapping",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Cryogenic trapping system for pre-concentration of volatile compounds in GC analysis.",
+                  "fullDescription": "The CryoTrap is a cryogenic trapping system designed for pre-concentration of volatile organic compounds in gas chromatography analysis.",
+                  "specs": [
+                    { "key": "Type", "value": "Cryo trapping" },
+                    { "key": "Cooling", "value": "Liquid nitrogen/CO2" },
+                    { "key": "Application", "value": "VOC pre-concentration" },
+                    { "key": "Compatibility", "value": "Agilent GC" }
+                  ],
+                  "applications": ["Environmental VOCs", "Flavor & fragrance", "Air quality"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_CryoTrap_Funktionsweise_914b84f25a.png"
+                },
+                {
+                  "id": "olfactometer",
+                  "name": "Olfactometer",
+                  "fullName": "Olfactometer — GC-O",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "GC-olfactometry system for sensory analysis and aroma compound identification.",
+                  "fullDescription": "The Olfactometer is a GC-olfactometry (GC-O) system that enables human sensory evaluation coupled with gas chromatographic separation for aroma compound identification.",
+                  "specs": [
+                    { "key": "Type", "value": "GC-Olfactometry" },
+                    { "key": "Detection", "value": "Sniffing port" },
+                    { "key": "Application", "value": "Aroma analysis" },
+                    { "key": "Software", "value": "Aroma detection" }
+                  ],
+                  "applications": ["Food & flavor", "Perfumery", "Quality control"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_Olfaktometer_38df6f8678.jpg"
+                },
+                {
+                  "id": "ezprep",
+                  "name": "Preparative Fraction Collector (EzPrep)",
+                  "fullName": "EzPrep — Preparative Fraction Collector",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "gc-inlets-accessories",
+                  "description": "Automated preparative fraction collector for isolation and purification of GC-separated compounds.",
+                  "fullDescription": "The EzPrep is an automated preparative fraction collector designed for isolation and purification of individual compounds separated by gas chromatography.",
+                  "specs": [
+                    { "key": "Type", "value": "Fraction collector" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Application", "value": "Compound isolation" },
+                    { "key": "Compatibility", "value": "Agilent GC" }
+                  ],
+                  "applications": ["Research labs", "Compound purification", "Forensics"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/09/csm_EzPrep_39603d95cd.jpg"
+                }
+              ]
+            },
+            {
+              "id": "automated-sample-prep",
+              "name": "Automated Sample Prep",
+              "products": [
+                {
+                  "id": "mps-robotic",
+                  "name": "MPS Robotic Smart Series",
+                  "fullName": "Gerstel MPS Robotic Smart Series",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Multi-purpose robotic sample preparation and injection system for automated GC and LC workflows.",
+                  "fullDescription": "The Gerstel MPS Robotic Smart Series is a multi-purpose robotic sample preparation and injection system that automates complex GC and LC workflows.",
+                  "specs": [
+                    { "key": "Type", "value": "Robotic autosampler" },
+                    { "key": "Positions", "value": "Up to 144 vials" },
+                    { "key": "Techniques", "value": "Liquid injection, SPME, TD" },
+                    { "key": "Control", "value": "MAESTRO software" }
+                  ],
+                  "applications": ["Automated analysis", "High-throughput labs", "Method development"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/MPS-Robotic-Smart-Series.png"
+                },
+                {
+                  "id": "auto-spe",
+                  "name": "Automated Solid Phase Extraction",
+                  "fullName": "Gerstel Automated SPE",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated solid phase extraction system for sample cleanup and concentration.",
+                  "fullDescription": "The Gerstel Automated SPE is a fully automated solid phase extraction system for sample cleanup and concentration prior to chromatographic analysis.",
+                  "specs": [
+                    { "key": "Type", "value": "Automated SPE" },
+                    { "key": "Cartridges", "value": "Various sorbents" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Application", "value": "Sample prep" }
+                  ],
+                  "applications": ["Environmental testing", "Pharmaceutical", "Food safety"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/Auto-SPE.png"
+                },
+                {
+                  "id": "auto-twister",
+                  "name": "Auto Twister-SBSE",
+                  "fullName": "Gerstel Auto Twister — SBSE",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated stir bar sorptive extraction for extraction and concentration of analytes.",
+                  "fullDescription": "The Gerstel Auto Twister is an automated stir bar sorptive extraction (SBSE) system for efficient extraction and concentration of analytes from liquid samples.",
+                  "specs": [
+                    { "key": "Type", "value": "SBSE automation" },
+                    { "key": "Extraction", "value": "Stir bar sorptive" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Application", "value": "Trace enrichment" }
+                  ],
+                  "applications": ["Environmental analysis", "Flavor & fragrance", "Toxicology"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/Auto-Twister-SBSE.png"
+                },
+                {
+                  "id": "odp",
+                  "name": "ODP — Olfactory Detection Port",
+                  "fullName": "Gerstel ODP — Olfactory Detection Port",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Olfactory detection port for human sensory evaluation coupled with GC analysis.",
+                  "fullDescription": "The Gerstel ODP (Olfactory Detection Port) enables human sensory evaluation coupled directly with gas chromatographic analysis.",
+                  "specs": [
+                    { "key": "Type", "value": "Sniffing port" },
+                    { "key": "Application", "value": "Sensory analysis" },
+                    { "key": "Heated", "value": "Temperature controlled" },
+                    { "key": "Compatibility", "value": "All GC systems" }
+                  ],
+                  "applications": ["Food & beverage", "Perfumery", "Flavor chemistry"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/ODP_Olfactory-Detection-Port.png"
+                },
+                {
+                  "id": "sample-prep-workstation",
+                  "name": "Automated Sample Prep Workstation",
+                  "fullName": "Gerstel Automated Sample Prep Workstation",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Integrated automated workstation for sample preparation including dilution, derivatization, and extraction.",
+                  "fullDescription": "The Gerstel Automated Sample Prep Workstation is an integrated robotic platform for automating complex sample preparation workflows including dilution, derivatization, extraction, and concentration.",
+                  "specs": [
+                    { "key": "Type", "value": "Sample prep workstation" },
+                    { "key": "Functions", "value": "Dilution, derivatization, extraction" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Control", "value": "MAESTRO software" }
+                  ],
+                  "applications": ["Pharmaceutical QC", "Food testing", "Clinical labs"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/Automated-Sample-Prep-Workstation.png"
+                },
+                {
+                  "id": "pyrolysis",
+                  "name": "Pyrolysis",
+                  "fullName": "Gerstel Pyrolysis System",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Thermal decomposition system for analysis of non-volatile polymers and materials.",
+                  "fullDescription": "The Gerstel Pyrolysis System is a thermal decomposition unit for analysis of non-volatile polymers, materials, and complex organic matrices.",
+                  "specs": [
+                    { "key": "Type", "value": "Pyrolyzer" },
+                    { "key": "Temp", "value": "Up to 1000°C" },
+                    { "key": "Modes", "value": "Flash, multi-step" },
+                    { "key": "Application", "value": "Polymer analysis" }
+                  ],
+                  "applications": ["Polymer testing", "Materials science", "Forensics"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/Pyrolysis.png"
+                },
+                {
+                  "id": "thermal-desorption",
+                  "name": "Thermal Desorption TD 3.5",
+                  "fullName": "Gerstel Thermal Desorption System TD 3.5",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "High-performance thermal desorption system for analysis of volatile and semi-volatile compounds.",
+                  "fullDescription": "The Gerstel Thermal Desorption System TD 3.5 is a high-performance sample introduction system for analysis of volatile and semi-volatile organic compounds (VOCs and SVOCs).",
+                  "specs": [
+                    { "key": "Type", "value": "Thermal desorption" },
+                    { "key": "Temp", "value": "Programmable" },
+                    { "key": "Cartridges", "value": "Multi-bed" },
+                    { "key": "Application", "value": "VOC/SVOC analysis" }
+                  ],
+                  "applications": ["Environmental monitoring", "Indoor air quality", "Food analysis"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/Thermal-Desorption-TD-3.5.png"
+                },
+                {
+                  "id": "dynamic-headspace",
+                  "name": "Dynamic Headspace",
+                  "fullName": "Gerstel Dynamic Headspace",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Dynamic headspace sampling system for enhanced extraction of volatile compounds.",
+                  "fullDescription": "The Gerstel Dynamic Headspace system enhances volatile compound extraction beyond static headspace analysis by continuously purging the sample with inert gas.",
+                  "specs": [
+                    { "key": "Type", "value": "Dynamic headspace" },
+                    { "key": "Extraction", "value": "Purge & trap" },
+                    { "key": "Heated", "value": "Temperature controlled" },
+                    { "key": "Application", "value": "Volatile extraction" }
+                  ],
+                  "applications": ["Food aroma", "Environmental VOCs", "Pharmaceutical"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/Dynamic-Headspace.png"
+                },
+                {
+                  "id": "vacuum-itex",
+                  "name": "Vacuum ITEX",
+                  "fullName": "Gerstel Vacuum ITEX — In-Tube Extraction",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Vacuum-assisted in-tube extraction for enhanced sensitivity in sample preparation.",
+                  "fullDescription": "The Gerstel Vacuum ITEX (In-Tube Extraction) is a vacuum-assisted sample preparation technique that enhances extraction sensitivity for volatile and semi-volatile compounds.",
+                  "specs": [
+                    { "key": "Type", "value": "In-tube extraction" },
+                    { "key": "Mode", "value": "Vacuum assisted" },
+                    { "key": "Sorbent", "value": "Various options" },
+                    { "key": "Application", "value": "Trace analysis" }
+                  ],
+                  "applications": ["Environmental testing", "Clinical analysis", "Drug testing"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/11/Vacuum_ITEX.png"
+                },
+                {
+                  "id": "auto-tube-spiking",
+                  "name": "Auto Tube Spiking and Dry Purge",
+                  "fullName": "Gerstel Auto Tube Spiking and Dry Purge+",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated internal standard spiking and dry purging for sample preparation.",
+                  "fullDescription": "The Gerstel Auto Tube Spiking and Dry Purge+ automates internal standard spiking and dry purging procedures for sample preparation.",
+                  "specs": [
+                    { "key": "Type", "value": "Automated spiking" },
+                    { "key": "Functions", "value": "Spiking + dry purge" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Application", "value": "Sample prep" }
+                  ],
+                  "applications": ["Environmental analysis", "Water testing", "TOGA/DHA"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Auto-Tube-Spiking-and-Dry-Purge.png"
+                },
+                {
+                  "id": "mvap",
+                  "name": "mVAP — Multi Position Evaporative System",
+                  "fullName": "Gerstel mVAP — Evaporative System",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Multi-position evaporation system for sample concentration and solvent removal.",
+                  "fullDescription": "The Gerstel mVAP is a multi-position evaporation system designed for sample concentration and solvent removal in preparation for chromatographic analysis.",
+                  "specs": [
+                    { "key": "Type", "value": "Evaporation system" },
+                    { "key": "Positions", "value": "Multiple" },
+                    { "key": "Gas", "value": "Nitrogen blowdown" },
+                    { "key": "Application", "value": "Sample concentration" }
+                  ],
+                  "applications": ["Food testing", "Environmental prep", "Pharmaceutical"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/07/mVAP_Multi-Position-Evaporative-System-scaled.png"
+                },
+                {
+                  "id": "dynamic-focusing",
+                  "name": "Dynamic Focusing",
+                  "fullName": "Gerstel Dynamic Focusing",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Dynamic focusing trap for enhanced pre-concentration of volatile analytes.",
+                  "fullDescription": "The Gerstel Dynamic Focusing is a pre-concentration trap system that enhances sensitivity for volatile analytes by focusing them on a sorbent or cryogenically cooled trap.",
+                  "specs": [
+                    { "key": "Type", "value": "Focusing trap" },
+                    { "key": "Mode", "value": "Dynamic" },
+                    { "key": "Cooling", "value": "Cryogenic option" },
+                    { "key": "Application", "value": "Pre-concentration" }
+                  ],
+                  "applications": ["Trace VOC analysis", "Environmental monitoring", "Flavor chemistry"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Dynamic-Focusing.png"
+                },
+                {
+                  "id": "cis-inlet",
+                  "name": "CIS Inlet",
+                  "fullName": "Gerstel CIS — Cooled Injection System",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Cooled injection system inlet for cryogenic focusing and PTV-type injection.",
+                  "fullDescription": "The Gerstel CIS (Cooled Injection System) is a multi-mode inlet for cryogenic focusing and PTV-type injection of volatile and semi-volatile compounds.",
+                  "specs": [
+                    { "key": "Type", "value": "Cooled injection" },
+                    { "key": "Temp", "value": "Cryogenic to 350°C" },
+                    { "key": "Modes", "value": "Split, splitless, PTV" },
+                    { "key": "Application", "value": "VOC/SVOC injection" }
+                  ],
+                  "applications": ["Environmental VOCs", "Petrochemical", "Pharmaceutical"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/CIS-Inlet.png"
+                },
+                {
+                  "id": "alex",
+                  "name": "ALEX — Automatic Liner Exchange",
+                  "fullName": "Gerstel ALEX — Automatic Liner Exchange",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automatic liner exchange system for elimination of carryover between samples.",
+                  "fullDescription": "The Gerstel ALEX (Automatic Liner Exchange) eliminates carryover between samples by automatically swapping GC inlet liners between injections.",
+                  "specs": [
+                    { "key": "Type", "value": "Liner exchange" },
+                    { "key": "Liners", "value": "Automatic swap" },
+                    { "key": "Benefit", "value": "No carryover" },
+                    { "key": "Application", "value": "Clean injection" }
+                  ],
+                  "applications": ["Dirty matrices", "Trace analysis", "High-throughput"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2024/11/ALEX_Automatic-Liner-Exchange-1.png"
+                },
+                {
+                  "id": "auto-quickmix",
+                  "name": "Auto QuickMix",
+                  "fullName": "Gerstel Auto QuickMix",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated sample mixing system for homogenization before analysis.",
+                  "fullDescription": "The Gerstel Auto QuickMix is an automated sample mixing system that ensures thorough homogenization of sample vials before injection.",
+                  "specs": [
+                    { "key": "Type", "value": "Sample mixing" },
+                    { "key": "Mode", "value": "Automated" },
+                    { "key": "Speed", "value": "Variable" },
+                    { "key": "Application", "value": "Homogenization" }
+                  ],
+                  "applications": ["Food analysis", "Pharmaceutical", "QC testing"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Auto-Quickmix.png"
+                },
+                {
+                  "id": "auto-centrifuge",
+                  "name": "Auto Centrifuge",
+                  "fullName": "Gerstel Auto Centrifuge",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated centrifuge for sample separation as part of integrated sample preparation.",
+                  "fullDescription": "The Gerstel Auto Centrifuge is an automated centrifuge designed for sample separation as part of integrated, unattended sample preparation workflows.",
+                  "specs": [
+                    { "key": "Type", "value": "Automated centrifuge" },
+                    { "key": "Speed", "value": "Programmable" },
+                    { "key": "Automation", "value": "Fully integrated" },
+                    { "key": "Application", "value": "Sample separation" }
+                  ],
+                  "applications": ["Clinical prep", "Food testing", "Environmental"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Auto-Centrifuge.png"
+                },
+                {
+                  "id": "auto-filtration",
+                  "name": "Auto Sample Filtration",
+                  "fullName": "Gerstel Auto Sample Filtration",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated sample filtration system for particulate removal before analysis.",
+                  "fullDescription": "The Gerstel Auto Sample Filtration system automates particulate removal from liquid samples before chromatographic injection.",
+                  "specs": [
+                    { "key": "Type", "value": "Automated filtration" },
+                    { "key": "Filter sizes", "value": "Various" },
+                    { "key": "Automation", "value": "Fully automated" },
+                    { "key": "Application", "value": "Sample cleanup" }
+                  ],
+                  "applications": ["Environmental testing", "Pharmaceutical", "Food safety"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Auto-Sample-Filtration.png"
+                },
+                {
+                  "id": "auto-ultrasonic",
+                  "name": "Automated UltraSonic",
+                  "fullName": "Gerstel Automated UltraSonic",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated ultrasonic extraction system for enhanced sample preparation.",
+                  "fullDescription": "The Gerstel Automated UltraSonic is an automated ultrasonic extraction system that enhances sample preparation through controlled ultrasonic energy application.",
+                  "specs": [
+                    { "key": "Type", "value": "Ultrasonic extraction" },
+                    { "key": "Mode", "value": "Automated" },
+                    { "key": "Power", "value": "Variable" },
+                    { "key": "Application", "value": "Extraction" }
+                  ],
+                  "applications": ["Food analysis", "Environmental prep", "Material testing"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Automated-UltraSonic.png"
+                },
+                {
+                  "id": "auto-barcode",
+                  "name": "Auto Barcode Reader",
+                  "fullName": "Gerstel Auto Barcode Reader",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Automated barcode reader for sample tracking and identification in automated workflows.",
+                  "fullDescription": "The Gerstel Auto Barcode Reader provides automated sample tracking and identification in high-throughput laboratory workflows.",
+                  "specs": [
+                    { "key": "Type", "value": "Barcode reader" },
+                    { "key": "Code types", "value": "1D, 2D" },
+                    { "key": "Integration", "value": "MAESTRO software" },
+                    { "key": "Application", "value": "Sample tracking" }
+                  ],
+                  "applications": ["High-throughput labs", "GLP/GMP compliance", "Sample management"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2025/08/Auto-Barcode-Reader.jpg"
+                }
+              ]
+            },
+            {
+              "id": "lab-support-equipment",
+              "name": "Lab Support Equipment",
+              "products": [
+                {
+                  "id": "peak-gas-generators",
+                  "name": "Peak Scientific Gas Generators",
+                  "fullName": "Peak Scientific Gas Generators",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "lab-support-equipment",
+                  "description": "High-performance gas generators for laboratory GC, LC-MS, and other analytical instruments.",
+                  "fullDescription": "Peak Scientific Gas Generators provide high-purity nitrogen, hydrogen, and zero air on-demand for laboratory GC, LC-MS, and other analytical instruments.",
+                  "specs": [
+                    { "key": "Type", "value": "Gas generation" },
+                    { "key": "Gases", "value": "Nitrogen, Hydrogen, Zero air" },
+                    { "key": "Purity", "value": "Lab-grade" },
+                    { "key": "Application", "value": "GC/LC carrier gas supply" }
+                  ],
+                  "applications": ["GC carrier gas", "LC-MS nebulizer gas", "General lab use"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2026/03/Peak-Scientific.png"
+                },
+                {
+                  "id": "vici-valves",
+                  "name": "VICI Valves and Special GC/LC Connections",
+                  "fullName": "VICI Valves and Special GC/LC Connections",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "lab-support-equipment",
+                  "description": "Precision valves and connectors for GC and LC systems for sample switching and flow control.",
+                  "fullDescription": "VICI Valves and Special GC/LC Connections provide precision-engineered valves, fittings, and connectors for gas chromatography and liquid chromatography systems.",
+                  "specs": [
+                    { "key": "Type", "value": "Valves & fittings" },
+                    { "key": "Material", "value": "Stainless steel, deactivated" },
+                    { "key": "Applications", "value": "Valve switching, sample routing" },
+                    { "key": "Compatibility", "value": "Universal GC/LC" }
+                  ],
+                  "applications": ["Multi-stream switching", "Process analyzers", "Custom configurations"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2026/03/VICI-Solutions.png"
+                },
+                {
+                  "id": "bandelin-ultrasonics",
+                  "name": "Bandelin Smart High Performance Ultrasonics",
+                  "fullName": "Bandelin Smart High Performance Ultrasonics",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "lab-support-equipment",
+                  "description": "High-performance ultrasonic homogenizers and cleaners for laboratory sample preparation.",
+                  "fullDescription": "Bandelin Smart High Performance Ultrasonics delivers high-performance ultrasonic homogenizers and cleaners for laboratory sample preparation.",
+                  "specs": [
+                    { "key": "Type", "value": "Ultrasonic systems" },
+                    { "key": "Power", "value": "High performance" },
+                    { "key": "Modes", "value": "Homogenization, cleaning" },
+                    { "key": "Application", "value": "Sample prep" }
+                  ],
+                  "applications": ["Cell disruption", "Sample homogenization", "Lab cleaning"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2026/03/Bandelin-Ultrasonics.png"
+                },
+                {
+                  "id": "ika-sample-prep",
+                  "name": "IKA Sample Prep Systems",
+                  "fullName": "IKA Sample Prep Systems",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "lab-support-equipment",
+                  "description": "Trouble-free sample preparation systems including mills, stirrers, and homogenizers by IKA.",
+                  "fullDescription": "IKA Sample Prep Systems provide trouble-free sample preparation solutions including mills, stirrers, and homogenizers from the renowned German manufacturer IKA.",
+                  "specs": [
+                    { "key": "Type", "value": "Sample prep" },
+                    { "key": "Products", "value": "Mills, stirrers, homogenizers" },
+                    { "key": "Quality", "value": "Laboratory grade" },
+                    { "key": "Application", "value": "General sample prep" }
+                  ],
+                  "applications": ["Research labs", "Quality control", "Food testing"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2026/03/IKA-Sample-Prep.png"
+                },
+                {
+                  "id": "dwk-glassware",
+                  "name": "DWK High Precision and Grade Glassware",
+                  "fullName": "DWK High Precision and Grade Glassware",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "lab-support-equipment",
+                  "description": "Precision laboratory glassware for analytical and research applications.",
+                  "fullDescription": "DWK High Precision and Grade Glassware provides precision-manufactured laboratory glassware for analytical chemistry and research applications.",
+                  "specs": [
+                    { "key": "Type", "value": "Laboratory glassware" },
+                    { "key": "Grade", "value": "High precision" },
+                    { "key": "Types", "value": "Flasks, tubes, vials" },
+                    { "key": "Application", "value": "Analytical labs" }
+                  ],
+                  "applications": ["Research labs", "Analytical chemistry", "Calibration"],
+                  "image": "https://jas-mea.com/wp-content/uploads/2026/03/DWK-Sample-Prep.png"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "scientific-equipments",
+      "name": "Scientific Equipments",
+      "shortName": "Scientific",
+      "description": "Precision scientific instruments for mixing, heating, separation, and sample preparation.",
+      "brands": []
+    },
+    {
+      "id": "testing-apparatus",
+      "name": "Testing Apparatus",
+      "shortName": "Testing",
+      "description": "Testing and quality control equipment for laboratory and field applications.",
+      "brands": []
+    },
+    {
+      "id": "laboratory-furnitures",
+      "name": "Laboratory Furnitures",
+      "shortName": "Furniture",
+      "description": "Laboratory furniture, benches, and workspace solutions.",
+      "brands": []
+    },
+    {
+      "id": "laboratory-consumables",
+      "name": "Laboratory Consumables",
+      "shortName": "Consumables",
+      "description": "Laboratory consumables, reagents, and supplies.",
+      "brands": []
+    },
+    {
+      "id": "laboratory-turnkey-projects",
+      "name": "Laboratory Turnkey Projects",
+      "shortName": "Turnkey",
+      "description": "Complete laboratory setup and turnkey project solutions.",
+      "brands": []
+    }
+  ]
+}
