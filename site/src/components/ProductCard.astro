@@ -14,7 +14,7 @@ interface Props {
 const { id, name, fullName, brand, brandName, description, specs, applications, image } = Astro.props;
 ---
 
-<a href={`/products/${id}`} class="product-card" data-brand={brand}>
+<a href={`/catalogue/${id}`} class="product-card" data-brand={brand}>
   <div class="product-card-image">
     <img src={image} alt={fullName || name} loading="lazy" />
   </div>

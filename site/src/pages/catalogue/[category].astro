@@ -1,0 +1,282 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import ProductFilters from '../../components/ProductFilters.astro';
+import productData from '../../data/products.json';
+
+export async function getStaticPaths() {
+  return productData.categories.map(category => ({
+    params: { category: category.id },
+    props: {
+      category,
+      allProducts: category.brands.flatMap(brand =>
+        brand.subcategories.flatMap(sc =>
+          sc.products.map(p => ({
+            ...p,
+            categoryName: category.name,
+            brandName: brand.name,
+            subcategoryName: sc.name
+          }))
+        )
+      )
+    }
+  }));
+}
+
+const { category, allProducts } = Astro.props;
+
+const subcategoryCategoryMap = new Map<string, { id: string; name: string; count: number; categoryId: string }>();
+category.brands.forEach(brand => {
+  brand.subcategories.forEach(sc => {
+    const key = sc.id + '|' + category.id;
+    if (subcategoryCategoryMap.has(key)) {
+      subcategoryCategoryMap.get(key)!.count += sc.products.length;
+    } else {
+      subcategoryCategoryMap.set(key, {
+        id: sc.id,
+        name: sc.name,
+        count: sc.products.length,
+        categoryId: category.id
+      });
+    }
+  });
+});
+const subcategories = Array.from(subcategoryCategoryMap.values());
+
+const brandCategoryMap = new Map<string, { id: string; name: string; logo?: string; count: number; categoryId: string }>();
+category.brands.forEach(b => {
+  const key = b.id + '|' + category.id;
+  if (brandCategoryMap.has(key)) {
+    brandCategoryMap.get(key)!.count += b.subcategories.reduce((sum, sc) => sum + sc.products.length, 0);
+  } else {
+    brandCategoryMap.set(key, {
+      id: b.id,
+      name: b.name,
+      logo: b.logo,
+      count: b.subcategories.reduce((sum, sc) => sum + sc.products.length, 0),
+      categoryId: category.id
+    });
+  }
+});
+const brands = Array.from(brandCategoryMap.values());
+---
+
+<Layout title={`${category.name} — TAKA Scientific`}>
+  <section class="page-hero">
+    <div class="container">
+      <div class="hero-toolbar">
+        <div class="search-field">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="productSearch" class="search-input" placeholder="Search products..." aria-label="Search products" />
+          <span class="search-results-count" id="searchResultsCount"></span>
+        </div>
+      </div>
+      <h1 class="category-page-title">{category.name}</h1>
+      {category.description && (
+        <p class="category-page-desc">{category.description}</p>
+      )}
+    </div>
+  </section>
+
+  <section class="section products-section">
+    <div class="container">
+      <div class="products-layout">
+        <ProductFilters subcategories={subcategories} brands={brands} />
+        
+        <div class="products-main">
+          <div class="products-grid" id="productsGrid">
+            {allProducts.map(product => (
+              <div 
+                class="product-card-wrap"
+                data-category={product.category}
+                data-brand={product.brand}
+                data-subcategory={product.subcategory}
+                data-search={`${product.name} ${product.fullName || ''} ${product.description} ${product.categoryName} ${product.brandName} ${product.subcategoryName} ${(product.applications || []).join(' ')}`.toLowerCase()}
+              >
+                <ProductCard
+                  id={product.id}
+                  name={product.name}
+                  fullName={product.fullName}
+                  brand={product.brand}
+                  brandName={product.brandName}
+                  description={product.description}
+                  specs={product.specs}
+                  applications={product.applications}
+                  image={product.image}
+                />
+              </div>
+            ))}
+          </div>
+
+          <div class="products-empty" id="productsEmpty">
+            <p>No products match your filters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center">
+      <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1.25rem;">Need a quote? Tell us about your facility and requirements.</p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <a href="https://wa.me/971557566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="/contact" class="btn btn-outline">Contact form</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 2rem 0 1.5rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .hero-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.75rem 0;
+  }
+  .search-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .search-field svg { color: var(--color-text-muted); flex-shrink: 0; }
+  .search-input {
+    border: none;
+    outline: none;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: var(--color-text);
+    background: transparent;
+    width: 200px;
+    transition: width 0.15s;
+  }
+  .search-input:focus { width: 280px; }
+  .search-input::placeholder { color: var(--color-text-muted); }
+  .search-results-count {
+    font-size: 0.68rem;
+    color: var(--color-text-muted);
+    font-family: var(--font-mono);
+    white-space: nowrap;
+  }
+  .search-results-count:empty { display: none; }
+  .category-page-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--color-text);
+    margin: 0.75rem 0 0.25rem;
+    letter-spacing: -0.02em;
+  }
+  .category-page-desc {
+    font-size: 0.95rem;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin: 0 0 0.5rem;
+  }
+
+  .products-section {
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+
+  .products-layout {
+    display: flex;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  .products-main {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  .product-card-wrap {
+    display: contents;
+  }
+  .product-card-wrap.hidden {
+    display: none !important;
+  }
+
+  .products-empty {
+    display: none;
+    text-align: center;
+    padding: 4rem 0;
+  }
+  .products-empty.visible {
+    display: block;
+  }
+  .products-empty p {
+    font-size: 1rem;
+    color: var(--color-text-muted);
+  }
+
+  @media (max-width: 1200px) {
+    .products-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .page-hero { padding: 2.5rem 0 1rem; }
+    .hero-toolbar { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+    .search-input { width: 100%; }
+    .search-input:focus { width: 100%; }
+    .products-layout { flex-direction: column; gap: 1.5rem; }
+    .products-grid { grid-template-columns: 1fr; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('productSearch') as HTMLInputElement;
+    const grid = document.getElementById('productsGrid');
+    const count = document.getElementById('searchResultsCount');
+    const empty = document.getElementById('productsEmpty');
+    const wraps = grid ? Array.from(grid.querySelectorAll<HTMLElement>('.product-card-wrap')) : [];
+    
+    let selectedSubcategory = 'all';
+    let selectedBrand = 'all';
+    let timer: ReturnType<typeof setTimeout>;
+
+    function apply() {
+      const q = searchInput.value.toLowerCase().trim();
+      let n = 0;
+
+      wraps.forEach(w => {
+        const subcatMatch = selectedSubcategory === 'all' || w.dataset.subcategory === selectedSubcategory;
+        const brandMatch = selectedBrand === 'all' || w.dataset.brand === selectedBrand;
+        const searchMatch = !q || (w.dataset.search || '').includes(q);
+        const visible = subcatMatch && brandMatch && searchMatch;
+        w.classList.toggle('hidden', !visible);
+        if (visible) n++;
+      });
+
+      if (count) count.textContent = '';
+      if (empty) empty.classList.toggle('visible', n === 0);
+    }
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        clearTimeout(timer);
+        timer = setTimeout(apply, 120);
+      });
+    }
+
+    window.addEventListener('subcategory-change', ((e: CustomEvent) => {
+      selectedSubcategory = e.detail.subcategory;
+      apply();
+    }) as EventListener);
+
+    window.addEventListener('brand-change', ((e: CustomEvent) => {
+      selectedBrand = e.detail.brand;
+      apply();
+    }) as EventListener);
+  });
+</script>

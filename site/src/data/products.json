@@ -2551,7 +2551,7 @@
                   "name": "CENTRA® R200",
                   "fullName": "ELGA CENTRA® R200 Centralized Water System",
                   "brand": "elga",
-                  "category": "testing",
+                  "category": "scientific-equipments",
                   "subcategory": "centra-series",
                   "description": "Centralized water purification system providing RO, deionization, and UV treatment for multiple lab outlets.",
                   "fullDescription": "The ELGA CENTRA® R200 is a centralized water purification system designed to supply multiple laboratory outlets with high-purity water. Combining reverse osmosis, continuous deionization, and UV treatment, it delivers Type I, II, and III water from a single unit.",
@@ -2591,7 +2591,7 @@
                   "name": "MEDICA® 160",
                   "fullName": "ELGA MEDICA® 160 Medical Water Purifier",
                   "brand": "elga",
-                  "category": "testing",
+                  "category": "scientific-equipments",
                   "subcategory": "medica-series",
                   "description": "Water purification system designed for clinical laboratory and medical applications.",
                   "fullDescription": "The ELGA MEDICA® 160 is a water purification system specifically designed for clinical laboratories and medical applications. Producing Type II water suitable for clinical analyzers, dialysis, and sterilization, it meets medical-grade water standards.",
@@ -2631,7 +2631,7 @@
                   "name": "BIOPURE® Quartz",
                   "fullName": "ELGA BIOPURE® Quartz Ultrapure Water Polishing System",
                   "brand": "elga",
-                  "category": "testing",
+                  "category": "scientific-equipments",
                   "subcategory": "biopure-series",
                   "description": "Point-of-use polishing system for producing Type I ultrapure water with low TOC and endotoxins.",
                   "fullDescription": "The ELGA BIOPURE® Quartz is a point-of-use ultrapure water polishing system that removes trace contaminants to produce Type I water. With integrated UV oxidation, ion exchange, and ultrafiltration, it delivers water with ultra-low TOC, endotoxin, and particulate levels.",
@@ -2672,7 +2672,7 @@
                   "name": "PURELAB® Pro",
                   "fullName": "ELGA PURELAB® Pro Centralized System",
                   "brand": "elga",
-                  "category": "testing",
+                  "category": "scientific-equipments",
                   "subcategory": "centralized-systems",
                   "description": "Centralized water purification system delivering multiple water grades to lab outlets.",
                   "fullDescription": "The ELGA PURELAB® Pro is a centralized water purification system that distributes multiple grades of purified water (Type I, II, and III) from a single location to multiple lab points of use. Reduces infrastructure costs and simplifies maintenance.",
@@ -2712,7 +2712,7 @@
                   "name": "Hydrogen Generator",
                   "fullName": "ELGA Hydrogen Gas Generator",
                   "brand": "elga",
-                  "category": "testing",
+                  "category": "scientific-equipments",
                   "subcategory": "hydrogen-generators",
                   "description": "On-demand hydrogen gas generation for carrier and fuel gas applications.",
                   "fullDescription": "The ELGA Hydrogen Gas Generator produces high-purity hydrogen on demand from deionized water through electrolysis. Eliminating the need for compressed gas cylinders, it provides a safe, continuous supply for GC carrier gas, FID fuel gas, and other laboratory uses.",
@@ -3343,6 +3343,850 @@
                     "Reagent storage"
                   ],
                   "image": "/products/hanil/ultra-low-freezer.svg"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "toption",
+          "name": "TOPTION",
+          "country": "China",
+          "logo": "/products/brands/toption.svg",
+          "website": "https://www.toptionlab.com",
+          "subcategories": [
+            {
+              "id": "distillation-systems",
+              "name": "Distillation Systems",
+              "products": [
+                {
+                  "id": "toption-molecular-distillation",
+                  "name": "Lab Molecular Distillation",
+                  "fullName": "TOPTION Lab Scale Molecular Distillation Equipment",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "distillation-systems",
+                  "description": "Laboratory-scale molecular distillation system for purification and separation of heat-sensitive materials.",
+                  "fullDescription": "The TOPTION Lab Scale Molecular Distillation Equipment is designed for purification and separation of heat-sensitive, high-boiling-point materials. With short-path evaporation technology, it provides efficient separation with minimal thermal degradation. Ideal for pharmaceutical, chemical, and food processing applications.",
+                  "specs": [
+                    {
+                      "key": "Evaporation area",
+                      "value": "0.05-0.5 m²"
+                    },
+                    {
+                      "key": "Temperature range",
+                      "value": "Up to 300°C"
+                    },
+                    {
+                      "key": "Vacuum",
+                      "value": "0.001-100 Pa"
+                    },
+                    {
+                      "key": "Capacity",
+                      "value": "0.5-50 L/hr"
+                    }
+                  ],
+                  "applications": [
+                    "Pharmaceutical purification",
+                    "CBD extraction",
+                    "Essential oil processing"
+                  ],
+                  "image": "/products/toption/molecular-distillation.jpg"
+                },
+                {
+                  "id": "toption-short-path",
+                  "name": "Short Path Distillation",
+                  "fullName": "TOPTION Short Path Distillation System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "distillation-systems",
+                  "description": "Short-path distillation system for high-purity separation of complex mixtures.",
+                  "fullDescription": "The TOPTION Short Path Distillation System utilizes short-path evaporation for efficient separation of complex mixtures with high purity requirements. Featuring glass or stainless steel construction, it delivers precise temperature control and vacuum operation for demanding distillation applications.",
+                  "specs": [
+                    {
+                      "key": "Flask sizes",
+                      "value": "1L-50L"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 350°C"
+                    },
+                    {
+                      "key": "Vacuum",
+                      "value": "0.01 Pa"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "Borosilicate glass / SS316"
+                    }
+                  ],
+                  "applications": [
+                    "CBD distillation",
+                    "Solvent recovery",
+                    "Natural product purification"
+                  ],
+                  "image": "/products/toption/short-path.jpg"
+                },
+                {
+                  "id": "toption-wiped-film",
+                  "name": "Wiped Film Evaporator",
+                  "fullName": "TOPTION Wiped Film Distillation System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "distillation-systems",
+                  "description": "Wiped film evaporator for continuous distillation of heat-sensitive, viscous materials.",
+                  "fullDescription": "The TOPTION Wiped Film Distillation System uses a rotating wiper to create a thin film of material on a heated wall for continuous evaporation and separation. Ideal for heat-sensitive, high-viscosity materials in pharmaceutical and chemical processing.",
+                  "specs": [
+                    {
+                      "key": "Evaporation area",
+                      "value": "0.1-2 m²"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 350°C"
+                    },
+                    {
+                      "key": "Vacuum",
+                      "value": "0.001-100 Pa"
+                    },
+                    {
+                      "key": "Throughput",
+                      "value": "0.5-50 L/hr"
+                    }
+                  ],
+                  "applications": [
+                    "CBD purification",
+                    "Vitamin E concentration",
+                    "Essential oil refining"
+                  ],
+                  "image": "/products/toption/wiped-film.svg"
+                }
+              ]
+            },
+            {
+              "id": "reactor-systems",
+              "name": "Reactor Systems",
+              "products": [
+                {
+                  "id": "toption-jacketed-reactor",
+                  "name": "Jacketed Glass Reactor",
+                  "fullName": "TOPTION Jacketed Double Glass Reactor",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "reactor-systems",
+                  "description": "Jacketed glass reactor with dual-wall design for precise temperature control during reactions.",
+                  "fullDescription": "The TOPTION Jacketed Double Glass Reactor features a dual-wall glass design allowing circulation of heating or cooling fluids for precise temperature control during chemical reactions. Available in 1L-100L sizes with interchangeable glassware and modular accessories.",
+                  "specs": [
+                    {
+                      "key": "Capacity",
+                      "value": "1L-100L"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "Borosilicate glass 3.3"
+                    },
+                    {
+                      "key": "Temperature range",
+                      "value": "-80°C to 200°C"
+                    },
+                    {
+                      "key": "Stirring speed",
+                      "value": "50-600 rpm"
+                    }
+                  ],
+                  "applications": [
+                    "Chemical synthesis",
+                    "Pharmaceutical processing",
+                    "Process development"
+                  ],
+                  "image": "/products/toption/jacketed-reactor.jpg"
+                },
+                {
+                  "id": "toption-stainless-reactor",
+                  "name": "Stainless Steel Reactor",
+                  "fullName": "TOPTION Stainless Steel Reactor",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "reactor-systems",
+                  "description": "High-pressure stainless steel reactor for chemical synthesis and material testing.",
+                  "fullDescription": "The TOPTION Stainless Steel Reactor provides high-pressure reaction environment for chemical synthesis, hydrothermal reactions, and material testing. With temperature and pressure control, it handles demanding reaction conditions.",
+                  "specs": [
+                    {
+                      "key": "Capacity",
+                      "value": "0.1-50 L"
+                    },
+                    {
+                      "key": "Pressure",
+                      "value": "Up to 35 MPa"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 500°C"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "SS316 / Hastelloy"
+                    }
+                  ],
+                  "applications": [
+                    "Hydrothermal synthesis",
+                    "Catalyst testing",
+                    "Polymerization"
+                  ],
+                  "image": "/products/toption/stainless-reactor.svg"
+                }
+              ]
+            },
+            {
+              "id": "extraction-systems",
+              "name": "Extraction Systems",
+              "products": [
+                {
+                  "id": "toption-sfe",
+                  "name": "Supercritical CO2 Extraction",
+                  "fullName": "TOPTION Supercritical Fluid Extraction SFE System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "extraction-systems",
+                  "description": "Supercritical CO2 extraction system for solvent-free extraction of natural compounds.",
+                  "fullDescription": "The TOPTION Supercritical Fluid Extraction (SFE) System uses supercritical CO2 as the extraction solvent for efficient, solvent-free extraction of natural compounds. Featuring precise temperature and pressure control, it delivers high-purity extracts for pharmaceutical, food, and botanical applications.",
+                  "specs": [
+                    {
+                      "key": "Extraction vessel",
+                      "value": "1L-50L"
+                    },
+                    {
+                      "key": "Pressure",
+                      "value": "Up to 500 bar"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 80°C"
+                    },
+                    {
+                      "key": "CO2 recovery",
+                      "value": "95%+"
+                    }
+                  ],
+                  "applications": [
+                    "CBD extraction",
+                    "Essential oils",
+                    "Natural product isolation"
+                  ],
+                  "image": "/products/toption/sfe-extraction.jpg"
+                },
+                {
+                  "id": "toption-centrifuge-ext",
+                  "name": "Centrifuge Extractor",
+                  "fullName": "TOPTION Centrifugal Extraction System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "extraction-systems",
+                  "description": "Centrifugal extractor for liquid-liquid extraction and phase separation.",
+                  "fullDescription": "The TOPTION Centrifugal Extraction System uses centrifugal force for efficient liquid-liquid extraction and phase separation. Ideal for pharmaceutical, food, and chemical applications requiring rapid and clean separation of immiscible liquids.",
+                  "specs": [
+                    {
+                      "key": "Capacity",
+                      "value": "1-100 L/hr"
+                    },
+                    {
+                      "key": "Speed",
+                      "value": "Adjustable"
+                    },
+                    {
+                      "key": "Separation",
+                      "value": "Continuous"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "SS316L"
+                    }
+                  ],
+                  "applications": [
+                    "Pharmaceutical extraction",
+                    "Food processing",
+                    "Chemical separation"
+                  ],
+                  "image": "/products/toption/centrifuge-ext.svg"
+                },
+                {
+                  "id": "toption-oil-extractor",
+                  "name": "Essential Oil Extractor",
+                  "fullName": "TOPTION Essential Oil Distillation Unit",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "extraction-systems",
+                  "description": "Steam distillation unit for extraction of essential oils from plant materials.",
+                  "fullDescription": "The TOPTION Essential Oil Distillation Unit uses steam distillation to extract essential oils from plant materials including flowers, leaves, bark, and roots. Available in lab and pilot scale for R&D and small-batch production.",
+                  "specs": [
+                    {
+                      "key": "Capacity",
+                      "value": "5-100 L"
+                    },
+                    {
+                      "key": "Method",
+                      "value": "Steam distillation"
+                    },
+                    {
+                      "key": "Condenser",
+                      "value": "Coil / Plate"
+                    },
+                    {
+                      "key": "Recovery",
+                      "value": "Separator included"
+                    }
+                  ],
+                  "applications": [
+                    "Aromatherapy oils",
+                    "Herbal extracts",
+                    "Flavor compounds"
+                  ],
+                  "image": "/products/toption/oil-extractor.svg"
+                }
+              ]
+            },
+            {
+              "id": "rotary-evaporators",
+              "name": "Rotary Evaporators",
+              "products": [
+                {
+                  "id": "toption-rotovap",
+                  "name": "Rotary Evaporator",
+                  "fullName": "TOPTION Rotary Evaporator",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "rotary-evaporators",
+                  "description": "Rotary evaporator for efficient solvent removal and concentration under vacuum.",
+                  "fullDescription": "The TOPTION Rotary Evaporator (Rotovap) efficiently removes solvents from samples through evaporation under reduced pressure. With motorized lift, digital temperature and speed control, it serves laboratory distillation and concentration tasks.",
+                  "specs": [
+                    {
+                      "key": "Flask capacity",
+                      "value": "1-50 L"
+                    },
+                    {
+                      "key": "Temperature range",
+                      "value": "20-180°C"
+                    },
+                    {
+                      "key": "Speed",
+                      "value": "20-280 rpm"
+                    },
+                    {
+                      "key": "Vacuum",
+                      "value": "Adjustable"
+                    }
+                  ],
+                  "applications": [
+                    "Solvent recovery",
+                    "Concentration",
+                    "Extraction"
+                  ],
+                  "image": "/products/toption/rotary-evaporator.svg"
+                }
+              ]
+            },
+            {
+              "id": "spray-dryers",
+              "name": "Spray Dryers",
+              "products": [
+                {
+                  "id": "toption-spray-dry",
+                  "name": "Spray Dryer",
+                  "fullName": "TOPTION Laboratory Spray Dryer",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "spray-dryers",
+                  "description": "Laboratory spray dryer for producing powder from liquid solutions and emulsions.",
+                  "fullDescription": "The TOPTION Laboratory Spray Dryer converts liquid solutions, emulsions, and suspensions into dry powder through atomization and hot air drying. With cyclone separator and collection vessel, it produces uniform particles for food, pharma, and materials applications.",
+                  "specs": [
+                    {
+                      "key": "Inlet temperature",
+                      "value": "Up to 300°C"
+                    },
+                    {
+                      "key": "Evaporation capacity",
+                      "value": "1-3 L/hr"
+                    },
+                    {
+                      "key": "Atomization",
+                      "value": "Two-fluid nozzle"
+                    },
+                    {
+                      "key": "Collection",
+                      "value": "Cyclone separator"
+                    }
+                  ],
+                  "applications": [
+                    "Food powder production",
+                    "Pharmaceutical encapsulation",
+                    "Nanoparticle synthesis"
+                  ],
+                  "image": "/products/toption/spray-dryer.svg"
+                }
+              ]
+            },
+            {
+              "id": "drying-systems",
+              "name": "Drying Systems",
+              "products": [
+                {
+                  "id": "toption-freeze-dryer",
+                  "name": "Freeze Dryer",
+                  "fullName": "TOPTION Food Freeze-Drying Equipment",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "drying-systems",
+                  "description": "Lyophilization system for preservation of sensitive biological and food materials.",
+                  "fullDescription": "The TOPTION Food Freeze-Drying Equipment (Lyophilizer) is designed for preservation of sensitive biological, pharmaceutical, and food materials through sublimation. With precise temperature control and vacuum operation, it maintains product integrity while removing water content.",
+                  "specs": [
+                    {
+                      "key": "Shelf area",
+                      "value": "0.5-5 m²"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "-50°C to +60°C"
+                    },
+                    {
+                      "key": "Vacuum",
+                      "value": "10-100 Pa"
+                    },
+                    {
+                      "key": "Condenser capacity",
+                      "value": "3-15 L"
+                    }
+                  ],
+                  "applications": [
+                    "Food preservation",
+                    "Pharmaceutical drying",
+                    "Biological sample storage"
+                  ],
+                  "image": "/products/toption/freeze-dryer.jpg"
+                }
+              ]
+            },
+            {
+              "id": "filtration-systems",
+              "name": "Filtration Systems",
+              "products": [
+                {
+                  "id": "toption-nutsche",
+                  "name": "Nutsche Filter",
+                  "fullName": "TOPTION Nutsche Filtration System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "filtration-systems",
+                  "description": "Nutsche filter for vacuum filtration and isolation of solid-liquid mixtures.",
+                  "fullDescription": "The TOPTION Nutsche Filtration System combines filtration and drying in one vessel for efficient solid-liquid separation. With vacuum capability and temperature control, it processes pharmaceutical and chemical intermediates.",
+                  "specs": [
+                    {
+                      "key": "Volume",
+                      "value": "1-50 L"
+                    },
+                    {
+                      "key": "Filtration area",
+                      "value": "0.02-1 m²"
+                    },
+                    {
+                      "key": "Vacuum",
+                      "value": "Up to -0.09 MPa"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 200°C"
+                    }
+                  ],
+                  "applications": [
+                    "Pharmaceutical isolation",
+                    "Chemical synthesis",
+                    "API production"
+                  ],
+                  "image": "/products/toption/nutsche-filter.svg"
+                }
+              ]
+            },
+            {
+              "id": "evaporators",
+              "name": "Evaporators",
+              "products": [
+                {
+                  "id": "toption-rising-film",
+                  "name": "Rising Film Evaporator",
+                  "fullName": "TOPTION Rising Film Evaporation System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "evaporators",
+                  "description": "Rising film evaporator for concentration of heat-sensitive liquid solutions.",
+                  "fullDescription": "The TOPTION Rising Film Evaporator allows liquid to rise as a thin film along heated tube walls for rapid evaporation. Ideal for concentrating heat-sensitive solutions in food, pharmaceutical, and chemical industries.",
+                  "specs": [
+                    {
+                      "key": "Evaporation capacity",
+                      "value": "10-500 L/hr"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 150°C"
+                    },
+                    {
+                      "key": "Concentration ratio",
+                      "value": "2-10x"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "SS316L / Hastelloy"
+                    }
+                  ],
+                  "applications": [
+                    "Food concentration",
+                    "Pharmaceutical concentration",
+                    "Chemical processing"
+                  ],
+                  "image": "/products/toption/rising-film.svg"
+                },
+                {
+                  "id": "toption-falling-film",
+                  "name": "Falling Film Evaporator",
+                  "fullName": "TOPTION Falling Film Evaporation System",
+                  "brand": "toption",
+                  "category": "scientific-equipments",
+                  "subcategory": "evaporators",
+                  "description": "Falling film evaporator for continuous evaporation of heat-sensitive liquids.",
+                  "fullDescription": "The TOPTION Falling Film Evaporator distributes liquid as a thin film on the inside of heated tubes, allowing rapid, continuous evaporation. Ideal for concentrating heat-sensitive products with short residence time.",
+                  "specs": [
+                    {
+                      "key": "Evaporation capacity",
+                      "value": "50-5000 L/hr"
+                    },
+                    {
+                      "key": "Temperature",
+                      "value": "Up to 200°C"
+                    },
+                    {
+                      "key": "Film type",
+                      "value": "Falling"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "SS316L"
+                    }
+                  ],
+                  "applications": [
+                    "Milk concentration",
+                    "Juice concentration",
+                    "Pharmaceutical processing"
+                  ],
+                  "image": "/products/toption/falling-film.svg"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "etelux",
+          "name": "ETELUX",
+          "country": "China",
+          "logo": "/products/brands/etelux.svg",
+          "website": "https://www.etelux-glovebox.com",
+          "subcategories": [
+            {
+              "id": "glove-boxes",
+              "name": "Glove Boxes",
+              "products": [
+                {
+                  "id": "etelux-standard-glovebox",
+                  "name": "Standard Glove Box",
+                  "fullName": "ETELUX Inert Controlled Standard Glovebox",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "glove-boxes",
+                  "description": "Standard inert atmosphere glovebox for air-sensitive research and material handling.",
+                  "fullDescription": "The ETELUX Standard Glovebox provides an inert atmosphere environment with less than 1 ppm H2O and O2 for air-sensitive research applications. Featuring stainless steel construction, antechamber, and integrated purification system, it is ideal for lithium battery research, materials science, and pharmaceutical applications.",
+                  "specs": [
+                    {
+                      "key": "H2O level",
+                      "value": "<1 ppm"
+                    },
+                    {
+                      "key": "O2 level",
+                      "value": "<1 ppm"
+                    },
+                    {
+                      "key": "Glove ports",
+                      "value": "2"
+                    },
+                    {
+                      "key": "Material",
+                      "value": "Stainless steel 304"
+                    }
+                  ],
+                  "applications": [
+                    "Lithium battery research",
+                    "Materials synthesis",
+                    "Pharmaceutical handling"
+                  ],
+                  "image": "/products/etelux/standard-glovebox.svg"
+                },
+                {
+                  "id": "etelux-vacuum-glovebox",
+                  "name": "Vacuum Glove Box",
+                  "fullName": "ETELUX Vacuum Glove Box",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "glove-boxes",
+                  "description": "High-vacuum glovebox for ultra-pure inert atmosphere applications.",
+                  "fullDescription": "The ETELUX Vacuum Glove Box provides ultra-pure inert atmosphere with deep vacuum capability for demanding applications requiring extremely low oxygen and moisture levels. Ideal for semiconductor research, advanced materials, and OLED development.",
+                  "specs": [
+                    {
+                      "key": "Vacuum level",
+                      "value": "<10⁻³ Pa"
+                    },
+                    {
+                      "key": "H2O level",
+                      "value": "<0.1 ppm"
+                    },
+                    {
+                      "key": "Glove ports",
+                      "value": "2-4"
+                    },
+                    {
+                      "key": "Purification",
+                      "value": "Cu catalyst + molecular sieve"
+                    }
+                  ],
+                  "applications": [
+                    "Semiconductor research",
+                    "OLED development",
+                    "Advanced materials"
+                  ],
+                  "image": "/products/etelux/vacuum-glovebox.svg"
+                },
+                {
+                  "id": "etelux-cr-glovebox",
+                  "name": "Cleanroom Glovebox",
+                  "fullName": "ETELUX Cleanroom Glovebox",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "glove-boxes",
+                  "description": "Glovebox with integrated HEPA filtration for cleanroom-compatible inert atmosphere work.",
+                  "fullDescription": "The ETELUX Cleanroom Glovebox combines high-purity inert atmosphere control with integrated HEPA filtration for cleanroom-compatible operations. Designed for semiconductor and pharmaceutical manufacturing environments requiring ISO Class 5 or better air quality.",
+                  "specs": [
+                    {
+                      "key": "Atmosphere",
+                      "value": "N₂ / Ar"
+                    },
+                    {
+                      "key": "H₂O/O₂",
+                      "value": "<1 ppm"
+                    },
+                    {
+                      "key": "Filtration",
+                      "value": "HEPA"
+                    },
+                    {
+                      "key": "Class",
+                      "value": "ISO 5"
+                    }
+                  ],
+                  "applications": [
+                    "Semiconductor processing",
+                    "Pharmaceutical production",
+                    "Battery R&D"
+                  ],
+                  "image": "/products/etelux/cleanroom-glovebox.svg"
+                },
+                {
+                  "id": "etelux-acrylic-glovebox",
+                  "name": "Acrylic Glovebox",
+                  "fullName": "ETELUX Acrylic Display Glovebox",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "glove-boxes",
+                  "description": "Transparent acrylic glovebox for demonstration and low-demand inert atmosphere work.",
+                  "fullDescription": "The ETELUX Acrylic Glovebox provides a transparent, cost-effective enclosure for demonstration, display, and low-demand inert atmosphere work. Its clear acrylic walls allow full visibility, making it ideal for educational and display purposes.",
+                  "specs": [
+                    {
+                      "key": "Material",
+                      "value": "Transparent acrylic"
+                    },
+                    {
+                      "key": "Glove ports",
+                      "value": "2"
+                    },
+                    {
+                      "key": "Atmosphere",
+                      "value": "N₂ purge"
+                    },
+                    {
+                      "key": "Visibility",
+                      "value": "360°"
+                    }
+                  ],
+                  "applications": [
+                    "Educational display",
+                    "Museum exhibits",
+                    "Low-demand R&D"
+                  ],
+                  "image": "/products/etelux/acrylic-glovebox.svg"
+                }
+              ]
+            },
+            {
+              "id": "gas-purifiers",
+              "name": "Gas Purifiers",
+              "products": [
+                {
+                  "id": "etelux-gp20",
+                  "name": "GP20 Gas Purifier",
+                  "fullName": "ETELUX GP20 Gas Purification System",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "gas-purifiers",
+                  "description": "Gas purification system for removing O2 and H2O from inert gas supplies.",
+                  "fullDescription": "The ETELUX GP20 Gas Purification System removes oxygen and moisture from inert gas supplies (N2, Ar, He) to deliver ultra-pure gas for glovebox and process applications. Featuring automatic regeneration and long-life purification columns.",
+                  "specs": [
+                    {
+                      "key": "Purity",
+                      "value": "99.9999%"
+                    },
+                    {
+                      "key": "Flow rate",
+                      "value": "Up to 20 L/min"
+                    },
+                    {
+                      "key": "Removal",
+                      "value": "O2, H2O, N2"
+                    },
+                    {
+                      "key": "Regeneration",
+                      "value": "Automatic"
+                    }
+                  ],
+                  "applications": [
+                    "Glovebox gas supply",
+                    "Process gas purification",
+                    "Semiconductor manufacturing"
+                  ],
+                  "image": "/products/etelux/gp20-purifier.svg"
+                }
+              ]
+            },
+            {
+              "id": "solvent-purifiers",
+              "name": "Solvent Purifiers",
+              "products": [
+                {
+                  "id": "etelux-solvent-purifier",
+                  "name": "Solvent Purifier",
+                  "fullName": "ETELUX Solvent Purification System",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "solvent-purifiers",
+                  "description": "Inline solvent purification column for removing water, oxygen, and protic impurities from organic solvents.",
+                  "fullDescription": "The ETELUX Solvent Purification System uses activated alumina, molecular sieves, and metal catalyst columns to remove water, oxygen, and protic impurities from common organic solvents inline. Compatible with standard solvent dispensing systems.",
+                  "specs": [
+                    {
+                      "key": "Solvents",
+                      "value": "THF, Toluene, DCM, Hexane, etc."
+                    },
+                    {
+                      "key": "Purity",
+                      "value": "Sub-ppm H₂O/O₂"
+                    },
+                    {
+                      "key": "Column type",
+                      "value": "Alumina / Molecular sieve"
+                    },
+                    {
+                      "key": "Flow rate",
+                      "value": "Adjustable"
+                    }
+                  ],
+                  "applications": [
+                    "Air-sensitive chemistry",
+                    "Organometallic synthesis",
+                    "Polymer research"
+                  ],
+                  "image": "/products/etelux/solvent-purifier.svg"
+                }
+              ]
+            },
+            {
+              "id": "vacuum-coating",
+              "name": "Vacuum Coating Systems",
+              "products": [
+                {
+                  "id": "etelux-vacuum-coater",
+                  "name": "Vacuum Coating System",
+                  "fullName": "ETELUX Vacuum Thermal Evaporation Coater",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "vacuum-coating",
+                  "description": "Vacuum thermal evaporation system for thin film deposition of metals and organics.",
+                  "fullDescription": "The ETELUX Vacuum Thermal Evaporation Coater deposits thin films of metals, organics, and other materials under high vacuum by resistive heating. Used for research-scale thin film production in electronics, optics, and materials science.",
+                  "specs": [
+                    {
+                      "key": "Vacuum",
+                      "value": "<10⁻⁴ Pa"
+                    },
+                    {
+                      "key": "Deposition",
+                      "value": "Thermal evaporation"
+                    },
+                    {
+                      "key": "Substrate",
+                      "value": "Up to 6\" diameter"
+                    },
+                    {
+                      "key": "Heating",
+                      "value": "Resistive boats / crucibles"
+                    }
+                  ],
+                  "applications": [
+                    "OLED research",
+                    "Solar cell prototyping",
+                    "Optical coatings"
+                  ],
+                  "image": "/products/etelux/vacuum-coater.svg"
+                }
+              ]
+            },
+            {
+              "id": "isolators",
+              "name": "Isolators",
+              "products": [
+                {
+                  "id": "etelux-isolator",
+                  "name": "Laboratory Isolator",
+                  "fullName": "ETELUX Containment Isolator",
+                  "brand": "etelux",
+                  "category": "scientific-equipments",
+                  "subcategory": "isolators",
+                  "description": "Positive/negative pressure isolator for containment of hazardous materials and potent compounds.",
+                  "fullDescription": "The ETELUX Containment Isolator provides operator and product protection through controlled positive or negative pressure environments. HEPA-filtered exhaust and supply air ensure containment of hazardous powders, potent APIs, and cytotoxic materials.",
+                  "specs": [
+                    {
+                      "key": "Pressure",
+                      "value": "Positive / Negative"
+                    },
+                    {
+                      "key": "Filtration",
+                      "value": "HEPA H14"
+                    },
+                    {
+                      "key": "Containment",
+                      "value": "OEB 4/5"
+                    },
+                    {
+                      "key": "Glove ports",
+                      "value": "4-6"
+                    }
+                  ],
+                  "applications": [
+                    "Potent compound handling",
+                    "Cytotoxic drug preparation",
+                    "Hazardous material containment"
+                  ],
+                  "image": "/products/etelux/isolator.svg"
                 }
               ]
             }
@@ -4426,29 +5270,7 @@
               ]
             }
           ]
-        }
-      ]
-    },
-    {
-      "id": "laboratory-furnitures",
-      "name": "Laboratory Furnitures",
-      "shortName": "Laboratory Furnitures",
-      "description": "Laboratory furniture, benches, and workspace solutions.",
-      "brands": []
-    },
-    {
-      "id": "laboratory-consumables",
-      "name": "Laboratory Consumables",
-      "shortName": "Laboratory Consumables",
-      "description": "Laboratory consumables and disposable supplies.",
-      "brands": []
-    },
-    {
-      "id": "turnkey",
-      "name": "Turnkey",
-      "shortName": "Turnkey Projects",
-      "description": "Complete integrated solutions and systems ready for deployment.",
-      "brands": [
+        },
         {
           "id": "toption",
           "name": "TOPTION",
@@ -4457,410 +5279,16 @@
           "website": "https://www.toptionlab.com",
           "subcategories": [
             {
-              "id": "distillation",
-              "name": "Distillation Systems",
-              "products": [
-                {
-                  "id": "toption-molecular-distillation",
-                  "name": "Lab Molecular Distillation",
-                  "fullName": "TOPTION Lab Scale Molecular Distillation Equipment",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "distillation",
-                  "description": "Laboratory-scale molecular distillation system for purification and separation of heat-sensitive materials.",
-                  "fullDescription": "The TOPTION Lab Scale Molecular Distillation Equipment is designed for purification and separation of heat-sensitive, high-boiling-point materials. With short-path evaporation technology, it provides efficient separation with minimal thermal degradation. Ideal for pharmaceutical, chemical, and food processing applications.",
-                  "specs": [
-                    {
-                      "key": "Evaporation area",
-                      "value": "0.05-0.5 m²"
-                    },
-                    {
-                      "key": "Temperature range",
-                      "value": "Up to 300°C"
-                    },
-                    {
-                      "key": "Vacuum",
-                      "value": "0.001-100 Pa"
-                    },
-                    {
-                      "key": "Capacity",
-                      "value": "0.5-50 L/hr"
-                    }
-                  ],
-                  "applications": [
-                    "Pharmaceutical purification",
-                    "CBD extraction",
-                    "Essential oil processing"
-                  ],
-                  "image": "/products/toption/molecular-distillation.jpg"
-                },
-                {
-                  "id": "toption-short-path",
-                  "name": "Short Path Distillation",
-                  "fullName": "TOPTION Short Path Distillation System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "distillation",
-                  "description": "Short-path distillation system for high-purity separation of complex mixtures.",
-                  "fullDescription": "The TOPTION Short Path Distillation System utilizes short-path evaporation for efficient separation of complex mixtures with high purity requirements. Featuring glass or stainless steel construction, it delivers precise temperature control and vacuum operation for demanding distillation applications.",
-                  "specs": [
-                    {
-                      "key": "Flask sizes",
-                      "value": "1L-50L"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 350°C"
-                    },
-                    {
-                      "key": "Vacuum",
-                      "value": "0.01 Pa"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "Borosilicate glass / SS316"
-                    }
-                  ],
-                  "applications": [
-                    "CBD distillation",
-                    "Solvent recovery",
-                    "Natural product purification"
-                  ],
-                  "image": "/products/toption/short-path.jpg"
-                }
-              ]
-            },
-            {
-              "id": "reactors",
-              "name": "Reactor Systems",
-              "products": [
-                {
-                  "id": "toption-jacketed-reactor",
-                  "name": "Jacketed Glass Reactor",
-                  "fullName": "TOPTION Jacketed Double Glass Reactor",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "reactors",
-                  "description": "Jacketed glass reactor with dual-wall design for precise temperature control during reactions.",
-                  "fullDescription": "The TOPTION Jacketed Double Glass Reactor features a dual-wall glass design allowing circulation of heating or cooling fluids for precise temperature control during chemical reactions. Available in 1L-100L sizes with interchangeable glassware and modular accessories.",
-                  "specs": [
-                    {
-                      "key": "Capacity",
-                      "value": "1L-100L"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "Borosilicate glass 3.3"
-                    },
-                    {
-                      "key": "Temperature range",
-                      "value": "-80°C to 200°C"
-                    },
-                    {
-                      "key": "Stirring speed",
-                      "value": "50-600 rpm"
-                    }
-                  ],
-                  "applications": [
-                    "Chemical synthesis",
-                    "Pharmaceutical processing",
-                    "Process development"
-                  ],
-                  "image": "/products/toption/jacketed-reactor.jpg"
-                }
-              ]
-            },
-            {
-              "id": "extraction",
-              "name": "Extraction Systems",
-              "products": [
-                {
-                  "id": "toption-sfe",
-                  "name": "Supercritical CO2 Extraction",
-                  "fullName": "TOPTION Supercritical Fluid Extraction SFE System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "extraction",
-                  "description": "Supercritical CO2 extraction system for solvent-free extraction of natural compounds.",
-                  "fullDescription": "The TOPTION Supercritical Fluid Extraction (SFE) System uses supercritical CO2 as the extraction solvent for efficient, solvent-free extraction of natural compounds. Featuring precise temperature and pressure control, it delivers high-purity extracts for pharmaceutical, food, and botanical applications.",
-                  "specs": [
-                    {
-                      "key": "Extraction vessel",
-                      "value": "1L-50L"
-                    },
-                    {
-                      "key": "Pressure",
-                      "value": "Up to 500 bar"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 80°C"
-                    },
-                    {
-                      "key": "CO2 recovery",
-                      "value": "95%+"
-                    }
-                  ],
-                  "applications": [
-                    "CBD extraction",
-                    "Essential oils",
-                    "Natural product isolation"
-                  ],
-                  "image": "/products/toption/sfe-extraction.jpg"
-                }
-              ]
-            },
-            {
-              "id": "drying",
-              "name": "Drying Systems",
-              "products": [
-                {
-                  "id": "toption-freeze-dryer",
-                  "name": "Freeze Dryer",
-                  "fullName": "TOPTION Food Freeze-Drying Equipment",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "drying",
-                  "description": "Lyophilization system for preservation of sensitive biological and food materials.",
-                  "fullDescription": "The TOPTION Food Freeze-Drying Equipment (Lyophilizer) is designed for preservation of sensitive biological, pharmaceutical, and food materials through sublimation. With precise temperature control and vacuum operation, it maintains product integrity while removing water content.",
-                  "specs": [
-                    {
-                      "key": "Shelf area",
-                      "value": "0.5-5 m²"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "-50°C to +60°C"
-                    },
-                    {
-                      "key": "Vacuum",
-                      "value": "10-100 Pa"
-                    },
-                    {
-                      "key": "Condenser capacity",
-                      "value": "3-15 L"
-                    }
-                  ],
-                  "applications": [
-                    "Food preservation",
-                    "Pharmaceutical drying",
-                    "Biological sample storage"
-                  ],
-                  "image": "/products/toption/freeze-dryer.jpg"
-                }
-              ]
-            },
-            {
-              "id": "wiped-film-distillation",
-              "name": "Wiped Film Distillation",
-              "products": [
-                {
-                  "id": "toption-wiped-film",
-                  "name": "Wiped Film Evaporator",
-                  "fullName": "TOPTION Wiped Film Distillation System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "wiped-film-distillation",
-                  "description": "Wiped film evaporator for continuous distillation of heat-sensitive, viscous materials.",
-                  "fullDescription": "The TOPTION Wiped Film Distillation System uses a rotating wiper to create a thin film of material on a heated wall for continuous evaporation and separation. Ideal for heat-sensitive, high-viscosity materials in pharmaceutical and chemical processing.",
-                  "specs": [
-                    {
-                      "key": "Evaporation area",
-                      "value": "0.1-2 m²"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 350°C"
-                    },
-                    {
-                      "key": "Vacuum",
-                      "value": "0.001-100 Pa"
-                    },
-                    {
-                      "key": "Throughput",
-                      "value": "0.5-50 L/hr"
-                    }
-                  ],
-                  "applications": [
-                    "CBD purification",
-                    "Vitamin E concentration",
-                    "Essential oil refining"
-                  ],
-                  "image": "/products/toption/wiped-film.svg"
-                }
-              ]
-            },
-            {
-              "id": "rotary-evaporators",
-              "name": "Rotary Evaporators",
-              "products": [
-                {
-                  "id": "toption-rotovap",
-                  "name": "Rotary Evaporator",
-                  "fullName": "TOPTION Rotary Evaporator",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "rotary-evaporators",
-                  "description": "Rotary evaporator for efficient solvent removal and concentration under vacuum.",
-                  "fullDescription": "The TOPTION Rotary Evaporator (Rotovap) efficiently removes solvents from samples through evaporation under reduced pressure. With motorized lift, digital temperature and speed control, it serves laboratory distillation and concentration tasks.",
-                  "specs": [
-                    {
-                      "key": "Flask capacity",
-                      "value": "1-50 L"
-                    },
-                    {
-                      "key": "Temperature range",
-                      "value": "20-180°C"
-                    },
-                    {
-                      "key": "Speed",
-                      "value": "20-280 rpm"
-                    },
-                    {
-                      "key": "Vacuum",
-                      "value": "Adjustable"
-                    }
-                  ],
-                  "applications": [
-                    "Solvent recovery",
-                    "Concentration",
-                    "Extraction"
-                  ],
-                  "image": "/products/toption/rotary-evaporator.svg"
-                }
-              ]
-            },
-            {
-              "id": "reactor-systems",
-              "name": "Reactor Systems",
-              "products": [
-                {
-                  "id": "toption-stainless-reactor",
-                  "name": "Stainless Steel Reactor",
-                  "fullName": "TOPTION Stainless Steel Reactor",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "reactor-systems",
-                  "description": "High-pressure stainless steel reactor for chemical synthesis and material testing.",
-                  "fullDescription": "The TOPTION Stainless Steel Reactor provides high-pressure reaction environment for chemical synthesis, hydrothermal reactions, and material testing. With temperature and pressure control, it handles demanding reaction conditions.",
-                  "specs": [
-                    {
-                      "key": "Capacity",
-                      "value": "0.1-50 L"
-                    },
-                    {
-                      "key": "Pressure",
-                      "value": "Up to 35 MPa"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 500°C"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "SS316 / Hastelloy"
-                    }
-                  ],
-                  "applications": [
-                    "Hydrothermal synthesis",
-                    "Catalyst testing",
-                    "Polymerization"
-                  ],
-                  "image": "/products/toption/stainless-reactor.svg"
-                }
-              ]
-            },
-            {
-              "id": "centrifuge-extractors",
-              "name": "Centrifuge Extractors",
-              "products": [
-                {
-                  "id": "toption-centrifuge-ext",
-                  "name": "Centrifuge Extractor",
-                  "fullName": "TOPTION Centrifugal Extraction System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "centrifuge-extractors",
-                  "description": "Centrifugal extractor for liquid-liquid extraction and phase separation.",
-                  "fullDescription": "The TOPTION Centrifugal Extraction System uses centrifugal force for efficient liquid-liquid extraction and phase separation. Ideal for pharmaceutical, food, and chemical applications requiring rapid and clean separation of immiscible liquids.",
-                  "specs": [
-                    {
-                      "key": "Capacity",
-                      "value": "1-100 L/hr"
-                    },
-                    {
-                      "key": "Speed",
-                      "value": "Adjustable"
-                    },
-                    {
-                      "key": "Separation",
-                      "value": "Continuous"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "SS316L"
-                    }
-                  ],
-                  "applications": [
-                    "Pharmaceutical extraction",
-                    "Food processing",
-                    "Chemical separation"
-                  ],
-                  "image": "/products/toption/centrifuge-ext.svg"
-                }
-              ]
-            },
-            {
-              "id": "essential-oil-extractors",
-              "name": "Essential Oil Extractors",
-              "products": [
-                {
-                  "id": "toption-oil-extractor",
-                  "name": "Essential Oil Extractor",
-                  "fullName": "TOPTION Essential Oil Distillation Unit",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "essential-oil-extractors",
-                  "description": "Steam distillation unit for extraction of essential oils from plant materials.",
-                  "fullDescription": "The TOPTION Essential Oil Distillation Unit uses steam distillation to extract essential oils from plant materials including flowers, leaves, bark, and roots. Available in lab and pilot scale for R&D and small-batch production.",
-                  "specs": [
-                    {
-                      "key": "Capacity",
-                      "value": "5-100 L"
-                    },
-                    {
-                      "key": "Method",
-                      "value": "Steam distillation"
-                    },
-                    {
-                      "key": "Condenser",
-                      "value": "Coil / Plate"
-                    },
-                    {
-                      "key": "Recovery",
-                      "value": "Separator included"
-                    }
-                  ],
-                  "applications": [
-                    "Aromatherapy oils",
-                    "Herbal extracts",
-                    "Flavor compounds"
-                  ],
-                  "image": "/products/toption/oil-extractor.svg"
-                }
-              ]
-            },
-            {
-              "id": "heater-chillers",
-              "name": "Heater & Chiller",
+              "id": "temperature-control",
+              "name": "Temperature Control",
               "products": [
                 {
                   "id": "toption-heater-chiller",
                   "name": "Temperature Control Unit",
                   "fullName": "TOPTION Heater & Chiller Temperature Control",
                   "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "heater-chillers",
+                  "category": "testing-apparatus",
+                  "subcategory": "temperature-control",
                   "description": "Heating and cooling circulator for precise temperature control of reactors and processes.",
                   "fullDescription": "The TOPTION Temperature Control Unit provides heating and cooling circulation for precise temperature control of reactors, evaporators, and process equipment. With digital PID control and safety features, it ensures stable operation.",
                   "specs": [
@@ -4891,16 +5319,16 @@
               ]
             },
             {
-              "id": "ice-bath",
-              "name": "Ice Bath Series",
+              "id": "cooling-systems",
+              "name": "Cooling Systems",
               "products": [
                 {
                   "id": "toption-ice-bath",
                   "name": "Ice Bath Chiller",
                   "fullName": "TOPTION Ice Bath Chiller System",
                   "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "ice-bath",
+                  "category": "testing-apparatus",
+                  "subcategory": "cooling-systems",
                   "description": "Ice bath system for rapid cooling of samples and reactions.",
                   "fullDescription": "The TOPTION Ice Bath Chiller System provides rapid, controlled cooling for samples, reactions, and extractions. Maintaining temperatures from 0°C to -20°C, it replaces traditional ice baths with consistent, automated cooling.",
                   "specs": [
@@ -4931,86 +5359,6 @@
               ]
             },
             {
-              "id": "filtration-systems",
-              "name": "Filtration & Separation Systems",
-              "products": [
-                {
-                  "id": "toption-nutsche",
-                  "name": "Nutsche Filter",
-                  "fullName": "TOPTION Nutsche Filtration System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "filtration-systems",
-                  "description": "Nutsche filter for vacuum filtration and isolation of solid-liquid mixtures.",
-                  "fullDescription": "The TOPTION Nutsche Filtration System combines filtration and drying in one vessel for efficient solid-liquid separation. With vacuum capability and temperature control, it processes pharmaceutical and chemical intermediates.",
-                  "specs": [
-                    {
-                      "key": "Volume",
-                      "value": "1-50 L"
-                    },
-                    {
-                      "key": "Filtration area",
-                      "value": "0.02-1 m²"
-                    },
-                    {
-                      "key": "Vacuum",
-                      "value": "Up to -0.09 MPa"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 200°C"
-                    }
-                  ],
-                  "applications": [
-                    "Pharmaceutical isolation",
-                    "Chemical synthesis",
-                    "API production"
-                  ],
-                  "image": "/products/toption/nutsche-filter.svg"
-                }
-              ]
-            },
-            {
-              "id": "spray-dryers",
-              "name": "Spray Dryers",
-              "products": [
-                {
-                  "id": "toption-spray-dry",
-                  "name": "Spray Dryer",
-                  "fullName": "TOPTION Laboratory Spray Dryer",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "spray-dryers",
-                  "description": "Laboratory spray dryer for producing powder from liquid solutions and emulsions.",
-                  "fullDescription": "The TOPTION Laboratory Spray Dryer converts liquid solutions, emulsions, and suspensions into dry powder through atomization and hot air drying. With cyclone separator and collection vessel, it produces uniform particles for food, pharma, and materials applications.",
-                  "specs": [
-                    {
-                      "key": "Inlet temperature",
-                      "value": "Up to 300°C"
-                    },
-                    {
-                      "key": "Evaporation capacity",
-                      "value": "1-3 L/hr"
-                    },
-                    {
-                      "key": "Atomization",
-                      "value": "Two-fluid nozzle"
-                    },
-                    {
-                      "key": "Collection",
-                      "value": "Cyclone separator"
-                    }
-                  ],
-                  "applications": [
-                    "Food powder production",
-                    "Pharmaceutical encapsulation",
-                    "Nanoparticle synthesis"
-                  ],
-                  "image": "/products/toption/spray-dryer.svg"
-                }
-              ]
-            },
-            {
               "id": "vacuum-ovens",
               "name": "Vacuum Ovens",
               "products": [
@@ -5019,7 +5367,7 @@
                   "name": "Vacuum Oven",
                   "fullName": "TOPTION Vacuum Drying Oven",
                   "brand": "toption",
-                  "category": "turnkey",
+                  "category": "testing-apparatus",
                   "subcategory": "vacuum-ovens",
                   "description": "Vacuum drying oven for low-temperature drying of heat-sensitive materials.",
                   "fullDescription": "The TOPTION Vacuum Drying Oven provides low-temperature drying under vacuum for heat-sensitive, oxidizable, and complex compounds. With precise temperature control and vacuum gauge, it ensures gentle, efficient dehydration.",
@@ -5049,413 +5397,31 @@
                   "image": "/products/toption/vacuum-oven.svg"
                 }
               ]
-            },
-            {
-              "id": "rising-film-evaporators",
-              "name": "Rising Film Evaporators",
-              "products": [
-                {
-                  "id": "toption-rising-film",
-                  "name": "Rising Film Evaporator",
-                  "fullName": "TOPTION Rising Film Evaporation System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "rising-film-evaporators",
-                  "description": "Rising film evaporator for concentration of heat-sensitive liquid solutions.",
-                  "fullDescription": "The TOPTION Rising Film Evaporator allows liquid to rise as a thin film along heated tube walls for rapid evaporation. Ideal for concentrating heat-sensitive solutions in food, pharmaceutical, and chemical industries.",
-                  "specs": [
-                    {
-                      "key": "Evaporation capacity",
-                      "value": "10-500 L/hr"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 150°C"
-                    },
-                    {
-                      "key": "Concentration ratio",
-                      "value": "2-10x"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "SS316L / Hastelloy"
-                    }
-                  ],
-                  "applications": [
-                    "Food concentration",
-                    "Pharmaceutical concentration",
-                    "Chemical processing"
-                  ],
-                  "image": "/products/toption/rising-film.svg"
-                }
-              ]
-            },
-            {
-              "id": "falling-film-evaporators",
-              "name": "Falling Film Evaporators",
-              "products": [
-                {
-                  "id": "toption-falling-film",
-                  "name": "Falling Film Evaporator",
-                  "fullName": "TOPTION Falling Film Evaporation System",
-                  "brand": "toption",
-                  "category": "turnkey",
-                  "subcategory": "falling-film-evaporators",
-                  "description": "Falling film evaporator for continuous evaporation of heat-sensitive liquids.",
-                  "fullDescription": "The TOPTION Falling Film Evaporator distributes liquid as a thin film on the inside of heated tubes, allowing rapid, continuous evaporation. Ideal for concentrating heat-sensitive products with short residence time.",
-                  "specs": [
-                    {
-                      "key": "Evaporation capacity",
-                      "value": "50-5000 L/hr"
-                    },
-                    {
-                      "key": "Temperature",
-                      "value": "Up to 200°C"
-                    },
-                    {
-                      "key": "Film type",
-                      "value": "Falling"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "SS316L"
-                    }
-                  ],
-                  "applications": [
-                    "Milk concentration",
-                    "Juice concentration",
-                    "Pharmaceutical processing"
-                  ],
-                  "image": "/products/toption/falling-film.svg"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "id": "etelux",
-          "name": "ETELUX",
-          "country": "China",
-          "logo": "/products/brands/etelux.svg",
-          "website": "https://www.etelux-glovebox.com",
-          "subcategories": [
-            {
-              "id": "glove-boxes",
-              "name": "Glove Boxes",
-              "products": [
-                {
-                  "id": "etelux-standard-glovebox",
-                  "name": "Standard Glove Box",
-                  "fullName": "ETELUX Inert Controlled Standard Glovebox",
-                  "brand": "etelux",
-                  "category": "turnkey",
-                  "subcategory": "glove-boxes",
-                  "description": "Standard inert atmosphere glovebox for air-sensitive research and material handling.",
-                  "fullDescription": "The ETELUX Standard Glovebox provides an inert atmosphere environment with less than 1 ppm H2O and O2 for air-sensitive research applications. Featuring stainless steel construction, antechamber, and integrated purification system, it is ideal for lithium battery research, materials science, and pharmaceutical applications.",
-                  "specs": [
-                    {
-                      "key": "H2O level",
-                      "value": "<1 ppm"
-                    },
-                    {
-                      "key": "O2 level",
-                      "value": "<1 ppm"
-                    },
-                    {
-                      "key": "Glove ports",
-                      "value": "2"
-                    },
-                    {
-                      "key": "Material",
-                      "value": "Stainless steel 304"
-                    }
-                  ],
-                  "applications": [
-                    "Lithium battery research",
-                    "Materials synthesis",
-                    "Pharmaceutical handling"
-                  ],
-                  "image": "/products/etelux/standard-glovebox.svg"
-                },
-                {
-                  "id": "etelux-vacuum-glovebox",
-                  "name": "Vacuum Glove Box",
-                  "fullName": "ETELUX Vacuum Glove Box",
-                  "brand": "etelux",
-                  "category": "turnkey",
-                  "subcategory": "glove-boxes",
-                  "description": "High-vacuum glovebox for ultra-pure inert atmosphere applications.",
-                  "fullDescription": "The ETELUX Vacuum Glove Box provides ultra-pure inert atmosphere with deep vacuum capability for demanding applications requiring extremely low oxygen and moisture levels. Ideal for semiconductor research, advanced materials, and OLED development.",
-                  "specs": [
-                    {
-                      "key": "Vacuum level",
-                      "value": "<10⁻³ Pa"
-                    },
-                    {
-                      "key": "H2O level",
-                      "value": "<0.1 ppm"
-                    },
-                    {
-                      "key": "Glove ports",
-                      "value": "2-4"
-                    },
-                    {
-                      "key": "Purification",
-                      "value": "Cu catalyst + molecular sieve"
-                    }
-                  ],
-                  "applications": [
-                    "Semiconductor research",
-                    "OLED development",
-                    "Advanced materials"
-                  ],
-                  "image": "/products/etelux/vacuum-glovebox.svg"
-                }
-              ]
-            },
-            {
-              "id": "gas-purifiers",
-              "name": "Gas Purifiers",
-              "products": [
-                {
-                  "id": "etelux-gp20",
-                  "name": "GP20 Gas Purifier",
-                  "fullName": "ETELUX GP20 Gas Purification System",
-                  "brand": "etelux",
-                  "category": "turnkey",
-                  "subcategory": "gas-purifiers",
-                  "description": "Gas purification system for removing O2 and H2O from inert gas supplies.",
-                  "fullDescription": "The ETELUX GP20 Gas Purification System removes oxygen and moisture from inert gas supplies (N2, Ar, He) to deliver ultra-pure gas for glovebox and process applications. Featuring automatic regeneration and long-life purification columns.",
-                  "specs": [
-                    {
-                      "key": "Purity",
-                      "value": "99.9999%"
-                    },
-                    {
-                      "key": "Flow rate",
-                      "value": "Up to 20 L/min"
-                    },
-                    {
-                      "key": "Removal",
-                      "value": "O2, H2O, N2"
-                    },
-                    {
-                      "key": "Regeneration",
-                      "value": "Automatic"
-                    }
-                  ],
-                  "applications": [
-                    "Glovebox gas supply",
-                    "Process gas purification",
-                    "Semiconductor manufacturing"
-                  ],
-                  "image": "/products/etelux/gp20-purifier.svg"
-                }
-              ]
-            },
-            {
-              "id": "cleanroom-gloveboxes",
-              "name": "Cleanroom Gloveboxes",
-              "products": [
-                {
-                  "id": "etelux-cr-glovebox",
-                  "name": "Cleanroom Glovebox",
-                  "fullName": "ETELUX Cleanroom Glovebox",
-                  "brand": "etelux",
-                  "category": "testing",
-                  "subcategory": "cleanroom-gloveboxes",
-                  "description": "Glovebox with integrated HEPA filtration for cleanroom-compatible inert atmosphere work.",
-                  "fullDescription": "The ETELUX Cleanroom Glovebox combines high-purity inert atmosphere control with integrated HEPA filtration for cleanroom-compatible operations. Designed for semiconductor and pharmaceutical manufacturing environments requiring ISO Class 5 or better air quality.",
-                  "specs": [
-                    {
-                      "key": "Atmosphere",
-                      "value": "N₂ / Ar"
-                    },
-                    {
-                      "key": "H₂O/O₂",
-                      "value": "<1 ppm"
-                    },
-                    {
-                      "key": "Filtration",
-                      "value": "HEPA"
-                    },
-                    {
-                      "key": "Class",
-                      "value": "ISO 5"
-                    }
-                  ],
-                  "applications": [
-                    "Semiconductor processing",
-                    "Pharmaceutical production",
-                    "Battery R&D"
-                  ],
-                  "image": "/products/etelux/cleanroom-glovebox.svg"
-                }
-              ]
-            },
-            {
-              "id": "acrylic-gloveboxes",
-              "name": "Acrylic Gloveboxes",
-              "products": [
-                {
-                  "id": "etelux-acrylic-glovebox",
-                  "name": "Acrylic Glovebox",
-                  "fullName": "ETELUX Acrylic Display Glovebox",
-                  "brand": "etelux",
-                  "category": "testing",
-                  "subcategory": "acrylic-gloveboxes",
-                  "description": "Transparent acrylic glovebox for demonstration and low-demand inert atmosphere work.",
-                  "fullDescription": "The ETELUX Acrylic Glovebox provides a transparent, cost-effective enclosure for demonstration, display, and low-demand inert atmosphere work. Its clear acrylic walls allow full visibility, making it ideal for educational and display purposes.",
-                  "specs": [
-                    {
-                      "key": "Material",
-                      "value": "Transparent acrylic"
-                    },
-                    {
-                      "key": "Glove ports",
-                      "value": "2"
-                    },
-                    {
-                      "key": "Atmosphere",
-                      "value": "N₂ purge"
-                    },
-                    {
-                      "key": "Visibility",
-                      "value": "360°"
-                    }
-                  ],
-                  "applications": [
-                    "Educational display",
-                    "Museum exhibits",
-                    "Low-demand R&D"
-                  ],
-                  "image": "/products/etelux/acrylic-glovebox.svg"
-                }
-              ]
-            },
-            {
-              "id": "solvent-purifiers",
-              "name": "Solvent Purifiers",
-              "products": [
-                {
-                  "id": "etelux-solvent-purifier",
-                  "name": "Solvent Purifier",
-                  "fullName": "ETELUX Solvent Purification System",
-                  "brand": "etelux",
-                  "category": "testing",
-                  "subcategory": "solvent-purifiers",
-                  "description": "Inline solvent purification column for removing water, oxygen, and protic impurities from organic solvents.",
-                  "fullDescription": "The ETELUX Solvent Purification System uses activated alumina, molecular sieves, and metal catalyst columns to remove water, oxygen, and protic impurities from common organic solvents inline. Compatible with standard solvent dispensing systems.",
-                  "specs": [
-                    {
-                      "key": "Solvents",
-                      "value": "THF, Toluene, DCM, Hexane, etc."
-                    },
-                    {
-                      "key": "Purity",
-                      "value": "Sub-ppm H₂O/O₂"
-                    },
-                    {
-                      "key": "Column type",
-                      "value": "Alumina / Molecular sieve"
-                    },
-                    {
-                      "key": "Flow rate",
-                      "value": "Adjustable"
-                    }
-                  ],
-                  "applications": [
-                    "Air-sensitive chemistry",
-                    "Organometallic synthesis",
-                    "Polymer research"
-                  ],
-                  "image": "/products/etelux/solvent-purifier.svg"
-                }
-              ]
-            },
-            {
-              "id": "vacuum-coating",
-              "name": "Vacuum Coating Systems",
-              "products": [
-                {
-                  "id": "etelux-vacuum-coater",
-                  "name": "Vacuum Coating System",
-                  "fullName": "ETELUX Vacuum Thermal Evaporation Coater",
-                  "brand": "etelux",
-                  "category": "testing",
-                  "subcategory": "vacuum-coating",
-                  "description": "Vacuum thermal evaporation system for thin film deposition of metals and organics.",
-                  "fullDescription": "The ETELUX Vacuum Thermal Evaporation Coater deposits thin films of metals, organics, and other materials under high vacuum by resistive heating. Used for research-scale thin film production in electronics, optics, and materials science.",
-                  "specs": [
-                    {
-                      "key": "Vacuum",
-                      "value": "<10⁻⁴ Pa"
-                    },
-                    {
-                      "key": "Deposition",
-                      "value": "Thermal evaporation"
-                    },
-                    {
-                      "key": "Substrate",
-                      "value": "Up to 6\" diameter"
-                    },
-                    {
-                      "key": "Heating",
-                      "value": "Resistive boats / crucibles"
-                    }
-                  ],
-                  "applications": [
-                    "OLED research",
-                    "Solar cell prototyping",
-                    "Optical coatings"
-                  ],
-                  "image": "/products/etelux/vacuum-coater.svg"
-                }
-              ]
-            },
-            {
-              "id": "isolators",
-              "name": "Isolators",
-              "products": [
-                {
-                  "id": "etelux-isolator",
-                  "name": "Laboratory Isolator",
-                  "fullName": "ETELUX Containment Isolator",
-                  "brand": "etelux",
-                  "category": "testing",
-                  "subcategory": "isolators",
-                  "description": "Positive/negative pressure isolator for containment of hazardous materials and potent compounds.",
-                  "fullDescription": "The ETELUX Containment Isolator provides operator and product protection through controlled positive or negative pressure environments. HEPA-filtered exhaust and supply air ensure containment of hazardous powders, potent APIs, and cytotoxic materials.",
-                  "specs": [
-                    {
-                      "key": "Pressure",
-                      "value": "Positive / Negative"
-                    },
-                    {
-                      "key": "Filtration",
-                      "value": "HEPA H14"
-                    },
-                    {
-                      "key": "Containment",
-                      "value": "OEB 4/5"
-                    },
-                    {
-                      "key": "Glove ports",
-                      "value": "4-6"
-                    }
-                  ],
-                  "applications": [
-                    "Potent compound handling",
-                    "Cytotoxic drug preparation",
-                    "Hazardous material containment"
-                  ],
-                  "image": "/products/etelux/isolator.svg"
-                }
-              ]
             }
           ]
         }
       ]
+    },
+    {
+      "id": "laboratory-furnitures",
+      "name": "Laboratory Furnitures",
+      "shortName": "Laboratory Furnitures",
+      "description": "Laboratory furniture, benches, and workspace solutions.",
+      "brands": []
+    },
+    {
+      "id": "laboratory-consumables",
+      "name": "Laboratory Consumables",
+      "shortName": "Laboratory Consumables",
+      "description": "Laboratory consumables and disposable supplies.",
+      "brands": []
+    },
+    {
+      "id": "turnkey",
+      "name": "Turnkey",
+      "shortName": "Turnkey Projects",
+      "description": "Complete integrated solutions and systems ready for deployment.",
+      "brands": []
     }
   ]
 }
