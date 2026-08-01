@@ -1,0 +1,311 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import ProductCard from '../../components/ProductCard.astro';
+import productData from '../../data/products.json';
+
+const category = productData.categories.find(c => c.id === 'analytical-equipments');
+if (!category) throw new Error('Category not found');
+
+const subcategories = category.brands.flatMap(brand =>
+  brand.subcategories.map(sc => ({
+    id: sc.id,
+    name: sc.name,
+    brandId: brand.id,
+    brandName: brand.name,
+    products: sc.products.map(p => ({
+      ...p,
+      brandName: brand.name,
+      subcategoryName: sc.name,
+      categoryName: category.name
+    }))
+  }))
+);
+
+const tabConfig = [
+  { id: 'atomic-emission-detector', name: 'Atomic Emission Detector' },
+  { id: 'sample-introduction-systems', name: 'Sample Introduction Systems' },
+  { id: 'unis-inlets-range', name: 'UNIS Inlets Range' },
+  { id: 'gc-specials', name: 'Gas Chromatography Specials' },
+  { id: 'customized-analyzers', name: 'Customized Analyzers' },
+  { id: 'gerstel-products', name: 'Gerstel Products' },
+  { id: 'special-products', name: 'Special Products' },
+];
+
+const sampleIntroIds = new Set(['vaporizer', 'gas-bag-sampler', 'gicu', 'odp']);
+const unisInletIds = new Set(['unis-2100', 'unis-3100', 'unis-500', 'unis-ht-simdis']);
+const gcSpecialIds = new Set(['cryotrap', 'olfactometer', 'ezprep']);
+
+const getTabId = (product: any) => {
+  if (product.subcategory === 'detectors') return 'atomic-emission-detector';
+  if (product.subcategory === 'gc-systems') return 'gc-specials';
+  if (product.subcategory === 'automated-sample-prep') return 'gerstel-products';
+  if (product.subcategory === 'lab-support-equipment') return 'special-products';
+  if (product.subcategory === 'gc-inlets-accessories') {
+    if (sampleIntroIds.has(product.id)) return 'sample-introduction-systems';
+    if (unisInletIds.has(product.id)) return 'unis-inlets-range';
+    if (gcSpecialIds.has(product.id)) return 'gc-specials';
+  }
+  return 'gc-specials';
+};
+
+const tabGroups = tabConfig.map(tab => ({
+  ...tab,
+  products: subcategories.flatMap(sc => sc.products.filter(p => getTabId(p) === tab.id))
+}));
+
+const tabDescriptions: Record<string, string> = {
+  'atomic-emission-detector': 'The only commercially available Atomic Emission Detector for gas chromatography, delivering unparalleled elemental selectivity and picogram-level sensitivity.',
+  'sample-introduction-systems': 'Automated and manual sample introduction solutions including gas samplers, injection control units, vaporizers, and olfactory detection ports for reproducible analytical results.',
+  'unis-inlets-range': 'Programmable temperature vaporization inlets for solvent venting, VOCs, heavy hydrocarbons, simulated distillation, and general GC applications.',
+  'gc-specials': 'Specialty GC accessories and systems including cryogenic trapping, GC-olfactometry, preparative fraction collection, and complete gas chromatography systems.',
+  'customized-analyzers': 'Customized analytical solutions designed for specific laboratory requirements and unique application challenges.',
+  'gerstel-products': 'Automated sample preparation, extraction, and concentration systems for high-throughput laboratories.',
+  'special-products': 'Laboratory support equipment including gas generators, ultrasonic cleaners, valves, glassware, and other essential ancillary instruments.'
+};
+---
+
+<Layout title="Analytical Equipments — TAKA Scientific" hasHero={true}>
+
+  <!-- HERO -->
+  <section class="hero-container ae-hero">
+    <div class="hero-video" style="background-image: url('/bg4.jpg'); background-size: cover; background-position: center;"></div>
+    <div class="ae-hero-inner">
+      <h1 class="ae-hero-title">Precision analytical<br />instrumentation</h1>
+      <p class="ae-hero-stats">Authorized JAS distributor.</p>
+    </div>
+  </section>
+
+  <!-- TABS + CONTENT -->
+  <section class="ae-section">
+    <div class="container">
+
+      <div class="ae-tabs-wrap">
+        <button class="ae-scroll-btn ae-scroll-left" aria-label="Scroll tabs left">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 3 5 8 10 13"/></svg>
+        </button>
+        <nav class="ae-tabs" role="tablist">
+          {tabGroups.map((group, i) => (
+            <button
+              class={`ae-tab${i === 0 ? ' active' : ''}`}
+              data-tab={group.id}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >{group.name}</button>
+          ))}
+        </nav>
+        <button class="ae-scroll-btn ae-scroll-right" aria-label="Scroll tabs right">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 11 8 6 13"/></svg>
+        </button>
+      </div>
+
+      {tabGroups.map((group, i) => (
+        <div class={`ae-panel${i === 0 ? ' active' : ''}`} data-panel={group.id} role="tabpanel">
+          <p class="ae-panel-desc">{tabDescriptions[group.id] || ''}</p>
+          <div class="ae-products-grid">
+            {group.products.map(product => (
+              <ProductCard
+                id={product.id}
+                name={product.name}
+                fullName={product.fullName}
+                brand={product.brand}
+                brandName={product.brandName}
+                description={product.description}
+                specs={product.specs}
+                applications={product.applications}
+                image={product.image}
+              />
+            ))}
+          </div>
+        </div>
+      ))}
+
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2 class="cta-heading">Need analytical<br />equipment?</h2>
+      <p class="cta-subtitle">Tell us about your laboratory requirements. We'll recommend the right instruments and provide a tailored quote.</p>
+      <div class="cta-actions">
+        <a href="/contact" class="btn btn-dark">Request a quote</a>
+        <a href="https://wa.me/97157566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll<HTMLButtonElement>('.ae-tab');
+    const panels = document.querySelectorAll<HTMLElement>('.ae-panel');
+    const tabsWrap = document.querySelector('.ae-tabs');
+    const scrollLeft = document.querySelector('.ae-scroll-left');
+    const scrollRight = document.querySelector('.ae-scroll-right');
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        if (!target) return;
+
+        tabs.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        panels.forEach(p => {
+          p.classList.toggle('active', p.dataset.panel === target);
+        });
+      });
+    });
+
+    if (scrollLeft && tabsWrap) {
+      scrollLeft.addEventListener('click', () => {
+        tabsWrap.scrollBy({ left: -200, behavior: 'smooth' });
+      });
+    }
+    if (scrollRight && tabsWrap) {
+      scrollRight.addEventListener('click', () => {
+        tabsWrap.scrollBy({ left: 200, behavior: 'smooth' });
+      });
+    }
+  });
+</script>
+
+<style>
+  /* ═══ HERO ═══ */
+  .ae-hero {
+    min-height: 100vh;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .ae-hero-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    padding: 0 1.5rem;
+  }
+  .ae-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.4rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: #fff;
+    margin-bottom: 0.75rem;
+  }
+  .ae-hero-stats {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  /* ═══ TAB SECTION ═══ */
+  .ae-section {
+    padding: 0 0 4rem;
+  }
+
+/* ═══ TABS ═══ */
+  .ae-tabs-wrap {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+  }
+  .ae-tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    flex: 1;
+  }
+  .ae-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .ae-scroll-btn {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1;
+  }
+  .ae-tabs-wrap:hover .ae-scroll-btn {
+    opacity: 1;
+  }
+  .ae-scroll-btn:hover {
+    color: var(--color-text);
+  }
+  .ae-scroll-left {
+    margin-right: 0.5rem;
+  }
+  .ae-scroll-right {
+    margin-left: 0.5rem;
+  }
+  .ae-tab {
+    flex-shrink: 0;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 0.15s;
+    white-space: nowrap;
+    margin-bottom: -1px;
+  }
+  .ae-tab:hover {
+    color: var(--color-text);
+  }
+  .ae-tab.active {
+    color: #111;
+    font-weight: 600;
+    border-bottom-color: #111;
+  }
+
+  /* ═══ PANELS ═══ */
+  .ae-panel {
+    display: none;
+  }
+  .ae-panel.active {
+    display: block;
+  }
+  .ae-panel-desc {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin-bottom: 2rem;
+  }
+  .ae-products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  @media (max-width: 1200px) {
+    .ae-products-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .ae-hero { min-height: 100vh; }
+    .ae-hero-inner { padding: 0 1rem; }
+    .ae-section { padding-bottom: 3rem; }
+    .ae-tabs-wrap { margin-bottom: 2rem; }
+    .ae-products-grid { grid-template-columns: 1fr; }
+  }
+</style>

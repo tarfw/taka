@@ -8,10 +8,12 @@ import '../styles/global.css';
 export interface Props {
   title: string;
   description?: string;
+  hasHero?: boolean;
 }
 
-const { title, description } = Astro.props;
+const { title, description, hasHero } = Astro.props;
 const isHome = title === 'Home';
+const showHero = isHome || hasHero;
 ---
 
 <!DOCTYPE html>
@@ -34,7 +36,7 @@ const isHome = title === 'Home';
     <link rel="preload" href="/fonts/GeistMono-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/GeistMono-Medium.woff2" as="font" type="font/woff2" crossorigin />
   </head>
-  <body class:list={[{ 'has-hero': isHome }]}>
+  <body class:list={[{ 'has-hero': showHero }]}>
     <Header />
     <main>
       <slot />
