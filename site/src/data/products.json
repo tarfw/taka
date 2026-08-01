@@ -1,4 +1,4 @@
-{
+﻿{
   "company": "TAKA Scientific",
   "tagline": "Equipment for every facility",
   "categories": [
@@ -6,7 +6,7 @@
       "id": "analytical-equipments",
       "name": "Analytical Equipments",
       "shortName": "Analytical Equipments",
-      "description": "Advanced analytical instruments for precise chemical and material analysis.",
+      "description": "Precision chemical and material analysis instruments.",
       "brands": [
         {
           "id": "jasmea",
@@ -26,7 +26,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Fully configured GC system for complete analysis of natural gas composition per ASTM and ISO standards.",
+                  "description": "Natural gas analysis per ASTM/ISO.",
                   "fullDescription": "The Natural Gas Analyzer is a fully configured gas chromatography system designed for complete analysis of natural gas composition. It meets rigorous international standards including ASTM D1945 and ISO 6974, delivering accurate quantification of methane, ethane, propane, butanes, pentanes, CO2, N2, and H2S. The system features advanced valve switching technology for seamless multi-component analysis with minimal operator intervention.",
                   "specs": [
                     {
@@ -60,7 +60,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Specialized GC system for determination of oxygenate content in gasoline and fuel samples.",
+                  "description": "Oxygenate analysis for gasoline and fuels.",
                   "fullDescription": "The Oxygenates Analyzer is a specialized gas chromatography system engineered for precise determination of oxygenate content in gasoline and fuel samples. Compliant with ASTM D4815 and D5599 standards, it accurately measures methanol, ethanol, MTBE, ETBE, TAME, and other oxygenated compounds.",
                   "specs": [
                     {
@@ -94,7 +94,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Multi-component refinery gas analyzer for complete analysis of C1–C6+ hydrocarbons and permanent gases.",
+                  "description": "C1–C6+ hydrocarbon and gas analysis.",
                   "fullDescription": "The Mach-RGA Refinery Gas Analyzer is a state-of-the-art multi-component analysis system designed for comprehensive characterization of refinery gas streams. It delivers complete analysis of C1 through C6+ hydrocarbons alongside permanent gases.",
                   "specs": [
                     {
@@ -128,7 +128,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Simulated distillation analyzer for boiling point distribution of crude oils and petroleum fractions.",
+                  "description": "Boiling point distribution of crude oils.",
                   "fullDescription": "The SimDis Analyzer is a high-temperature gas chromatography system specifically designed for simulated distillation analysis. It determines the boiling point distribution of crude oils and heavy petroleum fractions per ASTM D2887, D7169, and D7213 standards.",
                   "specs": [
                     {
@@ -162,7 +162,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Comprehensive crude oil analysis system for detailed hydrocarbon characterization and quality assessment.",
+                  "description": "Crude oil hydrocarbon characterization.",
                   "fullDescription": "The Crude Oil Analyzer is a comprehensive multi-detector gas chromatography system built for detailed hydrocarbon characterization and quality assessment of crude oil samples.",
                   "specs": [
                     {
@@ -196,7 +196,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "High-resolution GC system for detailed hydrocarbon analysis of petroleum products.",
+                  "description": "Petroleum product hydrocarbon analysis.",
                   "fullDescription": "The Detailed Hydrocarbon Analyzer (DHA) is a high-resolution gas chromatography system engineered for individual component identification and quantification in complex petroleum product matrices.",
                   "specs": [
                     {
@@ -230,7 +230,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Dedicated analyzer for compositional analysis of liquefied petroleum gas per ASTM D2163.",
+                  "description": "LPG composition per ASTM D2163.",
                   "fullDescription": "The LPG Analyzer is a dedicated gas chromatography system designed for precise compositional analysis of liquefied petroleum gas (LPG) in full compliance with ASTM D2163.",
                   "specs": [
                     {
@@ -264,7 +264,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "HPLC-based analyzer for determination of Saturates, Aromatics, Resins, and Asphaltenes in bitumen and heavy oils.",
+                  "description": "SARA analysis for bitumen and heavy oils.",
                   "fullDescription": "The SARA Analyzer is an HPLC-based analytical system for the determination of Saturates, Aromatics, Resins, and Asphaltenes (SARA) fractions in bitumen, crude oil, and heavy petroleum feedstocks.",
                   "specs": [
                     {
@@ -298,7 +298,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Ultra-sensitive sulfur detection system for trace-level sulfur analysis in fuels and petrochemicals.",
+                  "description": "Trace sulfur detection in fuels.",
                   "fullDescription": "The Sulfur Trace Analyzer is an ultra-sensitive gas chromatography system equipped with SCD, AED, and FPD detection technologies for trace-level sulfur compound analysis.",
                   "specs": [
                     {
@@ -332,7 +332,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Dissolved gas analysis system for transformer oil monitoring and diagnostics.",
+                  "description": "Transformer oil dissolved gas analysis.",
                   "fullDescription": "The Transformer Oil Gas Analyzer (TOGA) is a multi-detector gas chromatography system specifically designed for dissolved gas analysis (DGA) in transformer insulating oils.",
                   "specs": [
                     {
@@ -366,7 +366,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-systems",
-                  "description": "Specialized gas analyzer for refinery fuel gas and off-gas analysis per UOP method.",
+                  "description": "Refinery fuel gas analysis per UOP.",
                   "fullDescription": "The UOP 603-13 Gas Analyzer is a specialized multi-valve gas chromatography system engineered for refinery fuel gas and off-gas analysis per the UOP 603-13 method.",
                   "specs": [
                     {
@@ -406,7 +406,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "detectors",
-                  "description": "The only commercially available Atomic Emission Detector for gas chromatography, detecting trace elements at picogram level sensitivity.",
+                  "description": "Picogram-level elemental detection for GC.",
                   "fullDescription": "The AED III High Resolution is the only commercially available Atomic Emission Detector (AED) for gas chromatography, offering unparalleled elemental selectivity and picogram-level sensitivity.",
                   "specs": [
                     {
@@ -440,7 +440,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "detectors",
-                  "description": "Wide-range Atomic Emission Detector with extended elemental coverage for comprehensive multi-element analysis.",
+                  "description": "Wide-range multi-element GC detection.",
                   "fullDescription": "The AED III Wide Range is an advanced Atomic Emission Detector offering extended elemental coverage for comprehensive multi-element analysis in a single chromatographic run.",
                   "specs": [
                     {
@@ -480,7 +480,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Precision vaporizer for accurate vapor-phase conversion of liquefied gases and volatile samples.",
+                  "description": "Vapor-phase conversion of liquefied gases.",
                   "fullDescription": "The E-Vaporizer is a precision-engineered sample vaporization system for accurate vapor-phase conversion of liquefied gases and volatile samples prior to GC injection.",
                   "specs": [
                     {
@@ -514,7 +514,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Fully automated gas sampling solution for precise collection from Tedlar bags, balloons, or cylinders.",
+                  "description": "Automated gas sampling from bags/cylinders.",
                   "fullDescription": "The Automatic Gas Sampler (GBS) is a fully automated gas sampling solution designed for precise, reproducible collection from Tedlar bags, balloons, or gas cylinders.",
                   "specs": [
                     {
@@ -548,7 +548,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Automated precision gas injection control for reproducible analytical results.",
+                  "description": "Precision automated gas injection.",
                   "fullDescription": "The Gas Injection Control Unit (GICU) is an automated precision gas injection system engineered to deliver highly reproducible analytical results in gas chromatography.",
                   "specs": [
                     {
@@ -582,7 +582,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Programmable temperature vaporization inlet for solvent venting, VOCs, and general GC applications.",
+                  "description": "PTV inlet for solvent venting/VOCs.",
                   "fullDescription": "The UNIS 2100 PTV is a versatile programmable temperature vaporization inlet designed for solvent venting, volatile organic compound (VOC) analysis, and general GC applications.",
                   "specs": [
                     {
@@ -616,7 +616,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "High-temperature PTV inlet for heavy hydrocarbons, SimDis, and DHA applications.",
+                  "description": "High-temp PTV for heavy hydrocarbons.",
                   "fullDescription": "The UNIS 3100 HT PTV is a high-temperature programmable temperature vaporization inlet engineered for the analysis of heavy hydrocarbons, simulated distillation (SimDis), and detailed hydrocarbon analysis (DHA).",
                   "specs": [
                     {
@@ -650,7 +650,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Standard split/splitless inlet for routine GC, petrochemicals, and QC laboratory applications.",
+                  "description": "Standard split/splitless GC inlet.",
                   "fullDescription": "The UNIS 500 S/SL is a standard split/splitless inlet designed for routine gas chromatography, petrochemical analysis, and QC laboratory applications.",
                   "specs": [
                     {
@@ -684,7 +684,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Dedicated high-temperature inlet for simulated distillation analysis.",
+                  "description": "High-temp inlet for SimDis.",
                   "fullDescription": "The UNIS HT SimDis is a dedicated high-temperature inlet specifically engineered for simulated distillation analysis.",
                   "specs": [
                     {
@@ -718,7 +718,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Cryogenic trapping system for pre-concentration of volatile compounds in GC analysis.",
+                  "description": "Cryogenic trapping for volatile pre-concentration.",
                   "fullDescription": "The CryoTrap is a cryogenic trapping system designed for pre-concentration of volatile organic compounds in gas chromatography analysis.",
                   "specs": [
                     {
@@ -752,7 +752,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "GC-olfactometry system for sensory analysis and aroma compound identification.",
+                  "description": "GC-olfactometry for aroma identification.",
                   "fullDescription": "The Olfactometer is a GC-olfactometry (GC-O) system that enables human sensory evaluation coupled with gas chromatographic separation for aroma compound identification.",
                   "specs": [
                     {
@@ -786,7 +786,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "gc-inlets-accessories",
-                  "description": "Automated preparative fraction collector for isolation and purification of GC-separated compounds.",
+                  "description": "Preparative fraction collection for GC.",
                   "fullDescription": "The EzPrep is an automated preparative fraction collector designed for isolation and purification of individual compounds separated by gas chromatography.",
                   "specs": [
                     {
@@ -826,7 +826,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Multi-purpose robotic sample preparation and injection system for automated GC and LC workflows.",
+                  "description": "Robotic sample prep for GC/LC.",
                   "fullDescription": "The Gerstel MPS Robotic Smart Series is a multi-purpose robotic sample preparation and injection system that automates complex GC and LC workflows.",
                   "specs": [
                     {
@@ -860,7 +860,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated solid phase extraction system for sample cleanup and concentration.",
+                  "description": "Automated solid phase extraction.",
                   "fullDescription": "The Gerstel Automated SPE is a fully automated solid phase extraction system for sample cleanup and concentration prior to chromatographic analysis.",
                   "specs": [
                     {
@@ -894,7 +894,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated stir bar sorptive extraction for extraction and concentration of analytes.",
+                  "description": "Automated stir bar extraction.",
                   "fullDescription": "The Gerstel Auto Twister is an automated stir bar sorptive extraction (SBSE) system for efficient extraction and concentration of analytes from liquid samples.",
                   "specs": [
                     {
@@ -928,7 +928,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Olfactory detection port for human sensory evaluation coupled with GC analysis.",
+                  "description": "Olfactory detection port for GC.",
                   "fullDescription": "The Gerstel ODP (Olfactory Detection Port) enables human sensory evaluation coupled directly with gas chromatographic analysis.",
                   "specs": [
                     {
@@ -962,7 +962,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Integrated automated workstation for sample preparation including dilution, derivatization, and extraction.",
+                  "description": "Automated sample prep workstation.",
                   "fullDescription": "The Gerstel Automated Sample Prep Workstation is an integrated robotic platform for automating complex sample preparation workflows including dilution, derivatization, extraction, and concentration.",
                   "specs": [
                     {
@@ -996,7 +996,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Thermal decomposition system for analysis of non-volatile polymers and materials.",
+                  "description": "Thermal decomposition for polymer analysis.",
                   "fullDescription": "The Gerstel Pyrolysis System is a thermal decomposition unit for analysis of non-volatile polymers, materials, and complex organic matrices.",
                   "specs": [
                     {
@@ -1030,7 +1030,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "High-performance thermal desorption system for analysis of volatile and semi-volatile compounds.",
+                  "description": "Thermal desorption for volatile analysis.",
                   "fullDescription": "The Gerstel Thermal Desorption System TD 3.5 is a high-performance sample introduction system for analysis of volatile and semi-volatile organic compounds (VOCs and SVOCs).",
                   "specs": [
                     {
@@ -1064,7 +1064,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Dynamic headspace sampling system for enhanced extraction of volatile compounds.",
+                  "description": "Dynamic headspace for volatile extraction.",
                   "fullDescription": "The Gerstel Dynamic Headspace system enhances volatile compound extraction beyond static headspace analysis by continuously purging the sample with inert gas.",
                   "specs": [
                     {
@@ -1098,7 +1098,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Vacuum-assisted in-tube extraction for enhanced sensitivity in sample preparation.",
+                  "description": "Vacuum in-tube extraction.",
                   "fullDescription": "The Gerstel Vacuum ITEX (In-Tube Extraction) is a vacuum-assisted sample preparation technique that enhances extraction sensitivity for volatile and semi-volatile compounds.",
                   "specs": [
                     {
@@ -1132,7 +1132,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated internal standard spiking and dry purging for sample preparation.",
+                  "description": "Automated internal standard spiking.",
                   "fullDescription": "The Gerstel Auto Tube Spiking and Dry Purge+ automates internal standard spiking and dry purging procedures for sample preparation.",
                   "specs": [
                     {
@@ -1166,7 +1166,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Multi-position evaporation system for sample concentration and solvent removal.",
+                  "description": "Multi-position sample evaporation.",
                   "fullDescription": "The Gerstel mVAP is a multi-position evaporation system designed for sample concentration and solvent removal in preparation for chromatographic analysis.",
                   "specs": [
                     {
@@ -1200,7 +1200,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Dynamic focusing trap for enhanced pre-concentration of volatile analytes.",
+                  "description": "Dynamic focusing trap for volatiles.",
                   "fullDescription": "The Gerstel Dynamic Focusing is a pre-concentration trap system that enhances sensitivity for volatile analytes by focusing them on a sorbent or cryogenically cooled trap.",
                   "specs": [
                     {
@@ -1234,7 +1234,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Cooled injection system inlet for cryogenic focusing and PTV-type injection.",
+                  "description": "Cooled injection system inlet.",
                   "fullDescription": "The Gerstel CIS (Cooled Injection System) is a multi-mode inlet for cryogenic focusing and PTV-type injection of volatile and semi-volatile compounds.",
                   "specs": [
                     {
@@ -1268,7 +1268,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automatic liner exchange system for elimination of carryover between samples.",
+                  "description": "Automatic liner exchange system.",
                   "fullDescription": "The Gerstel ALEX (Automatic Liner Exchange) eliminates carryover between samples by automatically swapping GC inlet liners between injections.",
                   "specs": [
                     {
@@ -1302,7 +1302,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated sample mixing system for homogenization before analysis.",
+                  "description": "Automated sample mixing.",
                   "fullDescription": "The Gerstel Auto QuickMix is an automated sample mixing system that ensures thorough homogenization of sample vials before injection.",
                   "specs": [
                     {
@@ -1336,7 +1336,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated centrifuge for sample separation as part of integrated sample preparation.",
+                  "description": "Automated centrifuge for sample prep.",
                   "fullDescription": "The Gerstel Auto Centrifuge is an automated centrifuge designed for sample separation as part of integrated, unattended sample preparation workflows.",
                   "specs": [
                     {
@@ -1370,7 +1370,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated sample filtration system for particulate removal before analysis.",
+                  "description": "Automated sample filtration.",
                   "fullDescription": "The Gerstel Auto Sample Filtration system automates particulate removal from liquid samples before chromatographic injection.",
                   "specs": [
                     {
@@ -1404,7 +1404,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated ultrasonic extraction system for enhanced sample preparation.",
+                  "description": "Automated ultrasonic extraction.",
                   "fullDescription": "The Gerstel Automated UltraSonic is an automated ultrasonic extraction system that enhances sample preparation through controlled ultrasonic energy application.",
                   "specs": [
                     {
@@ -1438,7 +1438,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "automated-sample-prep",
-                  "description": "Automated barcode reader for sample tracking and identification in automated workflows.",
+                  "description": "Automated barcode sample tracking.",
                   "fullDescription": "The Gerstel Auto Barcode Reader provides automated sample tracking and identification in high-throughput laboratory workflows.",
                   "specs": [
                     {
@@ -1478,7 +1478,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "lab-support-equipment",
-                  "description": "High-performance gas generators for laboratory GC, LC-MS, and other analytical instruments.",
+                  "description": "Gas generators for GC/LC-MS.",
                   "fullDescription": "Peak Scientific Gas Generators provide high-purity nitrogen, hydrogen, and zero air on-demand for laboratory GC, LC-MS, and other analytical instruments.",
                   "specs": [
                     {
@@ -1512,7 +1512,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "lab-support-equipment",
-                  "description": "Precision valves and connectors for GC and LC systems for sample switching and flow control.",
+                  "description": "Precision GC/LC valves and connectors.",
                   "fullDescription": "VICI Valves and Special GC/LC Connections provide precision-engineered valves, fittings, and connectors for gas chromatography and liquid chromatography systems.",
                   "specs": [
                     {
@@ -1546,7 +1546,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "lab-support-equipment",
-                  "description": "High-performance ultrasonic homogenizers and cleaners for laboratory sample preparation.",
+                  "description": "Ultrasonic homogenizers and cleaners.",
                   "fullDescription": "Bandelin Smart High Performance Ultrasonics delivers high-performance ultrasonic homogenizers and cleaners for laboratory sample preparation.",
                   "specs": [
                     {
@@ -1580,7 +1580,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "lab-support-equipment",
-                  "description": "Trouble-free sample preparation systems including mills, stirrers, and homogenizers by IKA.",
+                  "description": "IKA sample preparation systems.",
                   "fullDescription": "IKA Sample Prep Systems provide trouble-free sample preparation solutions including mills, stirrers, and homogenizers from the renowned German manufacturer IKA.",
                   "specs": [
                     {
@@ -1614,7 +1614,7 @@
                   "brand": "jasmea",
                   "category": "analytical-equipments",
                   "subcategory": "lab-support-equipment",
-                  "description": "Precision laboratory glassware for analytical and research applications.",
+                  "description": "Precision laboratory glassware.",
                   "fullDescription": "DWK High Precision and Grade Glassware provides precision-manufactured laboratory glassware for analytical chemistry and research applications.",
                   "specs": [
                     {
@@ -1651,7 +1651,7 @@
       "id": "scientific-equipments",
       "name": "Scientific Equipments",
       "shortName": "Scientific Equipments",
-      "description": "Precision scientific instruments for mixing, heating, separation, and sample preparation.",
+      "description": "Scientific instruments for sample prep.",
       "brands": [
         {
           "id": "ika",
@@ -1671,7 +1671,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "magnetic-stirrers",
-                  "description": "Heating magnetic stirrer with ceramic hot plate for temperatures up to 310°C.",
+                  "description": "Heating stirrer up to 310°C.",
                   "fullDescription": "The IKA RCT basic is a versatile heating magnetic stirrer featuring a durable ceramic hot plate capable of reaching 310°C. With a stirring capacity of up to 20 liters and speed range of 50-1500 rpm, it handles a wide range of laboratory mixing and heating applications. The RCT basic offers excellent value with robust construction and reliable performance.",
                   "specs": [
                     {
@@ -1705,7 +1705,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "magnetic-stirrers",
-                  "description": "Premium heating magnetic stirrer with integrated temperature control for precise applications.",
+                  "description": "Heating stirrer with temp control.",
                   "fullDescription": "The IKA RET basic is a premium heating magnetic stirrer with integrated temperature control capability, supporting external temperature sensors for precise medium temperature regulation. With stirring capacity up to 20 liters and speeds up to 1700 rpm, it delivers reliable performance for demanding laboratory applications requiring accurate temperature control.",
                   "specs": [
                     {
@@ -1739,7 +1739,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "magnetic-stirrers",
-                  "description": "Ceramic hotplate stirrer with extended temperature range up to 500°C.",
+                  "description": "Ceramic hotplate stirrer up to 500°C.",
                   "fullDescription": "The IKA C-MAG HS 7 is a powerful ceramic hotplate magnetic stirrer capable of reaching temperatures up to 500°C. With 10-liter stirring capacity and 1500 rpm speed, it provides robust heating and mixing for demanding applications. The ceramic plate offers excellent chemical resistance and easy cleaning.",
                   "specs": [
                     {
@@ -1779,7 +1779,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "overhead-stirrers",
-                  "description": "Digital overhead stirrer for mixing viscous substances up to 200,000 mPa·s.",
+                  "description": "Digital overhead stirrer for viscous.",
                   "fullDescription": "The IKA EUROSTAR 200 is a powerful digital overhead stirrer designed for mixing viscous substances up to 200,000 mPa·s. With adjustable speed from 6 to 2000 rpm and a maximum torque of 200 Ncm, it handles demanding mixing tasks in chemical, pharmaceutical, and food laboratories. The digital display provides precise speed and torque feedback.",
                   "specs": [
                     {
@@ -1813,7 +1813,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "overhead-stirrers",
-                  "description": "High-performance overhead stirrer with integrated temperature control.",
+                  "description": "Overhead stirrer with temp control.",
                   "fullDescription": "The IKA KS 4000 i control is a high-performance digital overhead stirrer with integrated temperature control for precise viscosity-dependent mixing. With maximum torque of 400 Ncm and speed up to 2000 rpm, it handles the most demanding mixing applications. The integrated control system ensures reproducible results.",
                   "specs": [
                     {
@@ -1853,7 +1853,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "hot-plates-mixers",
-                  "description": "Ceramic hotplate without stirring function for pure heating applications.",
+                  "description": "Ceramic hotplate for heating.",
                   "fullDescription": "The IKA C-MAG hotplate HS 7 is a ceramic hotplate designed for pure heating applications without stirring. Capable of reaching 500°C, it provides uniform heating for a variety of laboratory tasks. The ceramic plate offers excellent chemical resistance and easy maintenance.",
                   "specs": [
                     {
@@ -1887,7 +1887,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "hot-plates-mixers",
-                  "description": "Multi-position magnetic stirrer for high-throughput parallel mixing.",
+                  "description": "Multi-position magnetic stirrer.",
                   "fullDescription": "The IKA polygine C-MAG 1 is a multi-position magnetic stirrer capable of simultaneous mixing of up to 4 positions. With independent speed control and ceramic hotplates, it enables efficient parallel sample preparation for research and quality control applications.",
                   "specs": [
                     {
@@ -1927,7 +1927,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "dispersers",
-                  "description": "High-performance disperser for homogenization, emulsification, and particle size reduction.",
+                  "description": "Disperser for homogenization/emulsification.",
                   "fullDescription": "The IKA T 25 digital ULTRA-TURRAX is a high-performance disperser designed for efficient homogenization, emulsification, and particle size reduction of liquid samples. With speed up to 25,000 rpm and various dispersing elements, it delivers consistent results for sample preparation in research and quality control laboratories.",
                   "specs": [
                     {
@@ -1961,7 +1961,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "dispersers",
-                  "description": "Standalone disperser system for reproducible sample preparation.",
+                  "description": "Standalone disperser system.",
                   "fullDescription": "The IKA ULTRA-TURRAX UTT-s 1000 Solo is a standalone disperser system providing consistent and reproducible sample homogenization. Designed for routine laboratory applications, it offers ease of use with reliable performance for sample preparation across various industries.",
                   "specs": [
                     {
@@ -2001,7 +2001,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "mills",
-                  "description": "Analytical mill for grinding of soft, medium-hard, and fibrous materials.",
+                  "description": "Mill for soft/fibrous materials.",
                   "fullDescription": "The IKA A 11 basic is an analytical mill designed for efficient grinding of soft, medium-hard, and fibrous materials. With a powerful motor and stainless steel cutting blades, it provides rapid size reduction for sample preparation in analytical laboratories.",
                   "specs": [
                     {
@@ -2035,7 +2035,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "mills",
-                  "description": "Universal mill for grinding of soft, hard, brittle, and fibrous samples.",
+                  "description": "Universal mill for all samples.",
                   "fullDescription": "The IKA M 20 universal mill is designed for grinding of soft, hard, brittle, and fibrous samples with interchangeable cutting and impact blades. It provides flexible sample preparation for a wide range of materials in research and quality control laboratories.",
                   "specs": [
                     {
@@ -2075,7 +2075,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "shakers",
-                  "description": "Compact shaker for mixing tasks in laboratory applications.",
+                  "description": "Compact laboratory shaker.",
                   "fullDescription": "The IKA MS 3 basic is a compact shaker designed for mixing tasks in laboratory applications. With adjustable speed and various attachment options, it handles tubes, flasks, and microplates efficiently.",
                   "specs": [
                     {
@@ -2115,7 +2115,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "thermoshakers",
-                  "description": "Temperature-controlled shaker for simultaneous heating and mixing.",
+                  "description": "Temp-controlled shaker.",
                   "fullDescription": "The IKA TS 100 Thermoshaker combines heating and shaking in one unit for applications requiring temperature-controlled mixing. Ideal for enzyme reactions, incubation, and sample preparation.",
                   "specs": [
                     {
@@ -2155,7 +2155,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "dry-block-heaters",
-                  "description": "Dry block heater for precise temperature control of samples in tubes.",
+                  "description": "Dry block heater for tubes.",
                   "fullDescription": "The IKA Calyos NS1 Dry Block Heater provides precise temperature control for samples in tubes and vials. With interchangeable blocks and digital temperature control, it ensures uniform heating for laboratory applications.",
                   "specs": [
                     {
@@ -2195,7 +2195,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "heating-baths",
-                  "description": "Heating bath for temperature control of samples in water or oil.",
+                  "description": "Heating bath for samples.",
                   "fullDescription": "The IKA Heating Bath provides precise temperature control for samples immersed in water or oil. With digital temperature control and various bath sizes, it serves as a reliable heat source for laboratory applications.",
                   "specs": [
                     {
@@ -2235,7 +2235,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "temperature-control",
-                  "description": "External temperature controller for precise bath and reactor temperature regulation.",
+                  "description": "External temp controller.",
                   "fullDescription": "The IKA ETS-D5 is an external temperature controller for precise regulation of bath and reactor temperatures. With Pt100 sensor input and PID control, it delivers accurate temperature management for demanding applications.",
                   "specs": [
                     {
@@ -2275,7 +2275,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "tempering-chambers",
-                  "description": "Incubator for temperature-controlled sample storage and cultivation.",
+                  "description": "Incubator for sample storage.",
                   "fullDescription": "The IKA ITC-1 Incubator provides temperature-controlled environment for sample storage, cultivation, and incubation. With precise temperature control and uniform heat distribution, it serves biological and chemical laboratory applications.",
                   "specs": [
                     {
@@ -2315,7 +2315,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "single-use-crushing",
-                  "description": "Single-use disperser element for sterile sample homogenization.",
+                  "description": "Single-use disperser element.",
                   "fullDescription": "The IKA T 10 basic ULTRA-TURRAX with single-use dispersing element provides sterile homogenization of samples without cross-contamination. Ideal for clinical, pharmaceutical, and biological applications requiring single-use components.",
                   "specs": [
                     {
@@ -2355,7 +2355,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "viscosity-measurement",
-                  "description": "Rotational viscometer for viscosity measurement of liquids and semi-solids.",
+                  "description": "Rotational viscometer.",
                   "fullDescription": "The IKA viscostar is a rotational viscometer designed for accurate viscosity measurement of liquids, pastes, and semi-solids. With multiple spindle options and adjustable speed, it covers a wide viscosity range for laboratory and QC applications.",
                   "specs": [
                     {
@@ -2395,7 +2395,7 @@
                   "brand": "ika",
                   "category": "scientific-equipments",
                   "subcategory": "calorimetry",
-                  "description": "Oxygen bomb calorimeter for heat of combustion measurement.",
+                  "description": "Oxygen bomb calorimeter.",
                   "fullDescription": "The IKA C2000 is an oxygen bomb calorimeter for precise measurement of heat of combustion in solid and liquid samples. Featuring automatic ignition and adiabatic design, it delivers accurate calorific value determination for fuels, food, and materials.",
                   "specs": [
                     {
@@ -2444,7 +2444,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "water-purification",
-                  "description": "Point-of-use water purification system delivering Type 1 ultrapure water on demand.",
+                  "description": "Type 1 ultrapure water system.",
                   "fullDescription": "The ELGA PURELAB Flex is a compact point-of-use water purification system that delivers Type 1 ultrapure water on demand. Featuring integrated monitoring and a compact design, it provides consistent high-purity water for critical laboratory applications including HPLC, ICP-MS, and molecular biology.",
                   "specs": [
                     {
@@ -2479,7 +2479,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "water-purification",
-                  "description": "Centralized water purification system providing Type 1 ultrapure water for multiple users.",
+                  "description": "Centralized Type 1 water system.",
                   "fullDescription": "The ELGA PURELAB Quest is a centralized water purification system designed to deliver consistent Type 1 ultrapure water to multiple users simultaneously. Ideal for laboratories requiring a continuous supply of high-purity water for critical analytical and research applications.",
                   "specs": [
                     {
@@ -2513,7 +2513,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "water-purification",
-                  "description": "Modular water purification system delivering pure and ultrapure water from potable source.",
+                  "description": "Modular water purification system.",
                   "fullDescription": "The ELGA PURELAB Chorus is a modular water purification system that produces both pure (Type 2) and ultrapure (Type 1) water directly from potable water. With multiple configurations available, it adapts to varying laboratory water quality requirements and flow demands.",
                   "specs": [
                     {
@@ -2553,7 +2553,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "centra-series",
-                  "description": "Centralized water purification system providing RO, deionization, and UV treatment for multiple lab outlets.",
+                  "description": "Centralized RO/DI/UV water system.",
                   "fullDescription": "The ELGA CENTRA® R200 is a centralized water purification system designed to supply multiple laboratory outlets with high-purity water. Combining reverse osmosis, continuous deionization, and UV treatment, it delivers Type I, II, and III water from a single unit.",
                   "specs": [
                     {
@@ -2593,7 +2593,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "medica-series",
-                  "description": "Water purification system designed for clinical laboratory and medical applications.",
+                  "description": "Clinical water purification system.",
                   "fullDescription": "The ELGA MEDICA® 160 is a water purification system specifically designed for clinical laboratories and medical applications. Producing Type II water suitable for clinical analyzers, dialysis, and sterilization, it meets medical-grade water standards.",
                   "specs": [
                     {
@@ -2633,7 +2633,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "biopure-series",
-                  "description": "Point-of-use polishing system for producing Type I ultrapure water with low TOC and endotoxins.",
+                  "description": "Type I ultrapure water polishing.",
                   "fullDescription": "The ELGA BIOPURE® Quartz is a point-of-use ultrapure water polishing system that removes trace contaminants to produce Type I water. With integrated UV oxidation, ion exchange, and ultrafiltration, it delivers water with ultra-low TOC, endotoxin, and particulate levels.",
                   "specs": [
                     {
@@ -2674,7 +2674,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "centralized-systems",
-                  "description": "Centralized water purification system delivering multiple water grades to lab outlets.",
+                  "description": "Multi-grade centralized water system.",
                   "fullDescription": "The ELGA PURELAB® Pro is a centralized water purification system that distributes multiple grades of purified water (Type I, II, and III) from a single location to multiple lab points of use. Reduces infrastructure costs and simplifies maintenance.",
                   "specs": [
                     {
@@ -2714,7 +2714,7 @@
                   "brand": "elga",
                   "category": "scientific-equipments",
                   "subcategory": "hydrogen-generators",
-                  "description": "On-demand hydrogen gas generation for carrier and fuel gas applications.",
+                  "description": "Hydrogen gas generator.",
                   "fullDescription": "The ELGA Hydrogen Gas Generator produces high-purity hydrogen on demand from deionized water through electrolysis. Eliminating the need for compressed gas cylinders, it provides a safe, continuous supply for GC carrier gas, FID fuel gas, and other laboratory uses.",
                   "specs": [
                     {
@@ -2763,7 +2763,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "centrifuges",
-                  "description": "Compact benchtop microcentrifuge for molecular biology and clinical applications.",
+                  "description": "Benchtop microcentrifuge.",
                   "fullDescription": "The Hanil HiMACTM Micro is a compact benchtop microcentrifuge designed for molecular biology, clinical, and research applications. With a maximum speed of 14,000 rpm and various rotor options, it provides efficient separation of small-volume samples in microtubes and PCR tubes.",
                   "specs": [
                     {
@@ -2797,7 +2797,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "centrifuges",
-                  "description": "Refrigerated benchtop centrifuge for temperature-sensitive sample separation.",
+                  "description": "Refrigerated benchtop centrifuge.",
                   "fullDescription": "The Hanil HiMACTM Refrigerated Centrifuge features a built-in cooling system for temperature-sensitive sample separation. With a temperature range of -20°C to +40°C and multiple rotor options, it handles a wide range of centrifugation applications in research and clinical laboratories.",
                   "specs": [
                     {
@@ -2837,7 +2837,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "low-speed-centrifuges",
-                  "description": "Low speed centrifuge for routine sample separation in clinical and research labs.",
+                  "description": "Low-speed clinical centrifuge.",
                   "fullDescription": "The Hanil LF-100 Low Speed Centrifuge is designed for routine sample separation in clinical, research, and industrial laboratories. With programmable speed and time, it provides reliable separation of blood, urine, and other biological samples.",
                   "specs": [
                     {
@@ -2877,7 +2877,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "ultra-centrifuges",
-                  "description": "Ultracentrifuge for high-speed separation of subcellular components and macromolecules.",
+                  "description": "Ultracentrifuge for subcellular separation.",
                   "fullDescription": "The Hanil UH-6500 Ultracentrifuge operates at ultra-high speeds for separation of subcellular organelles, viruses, and macromolecules. With vacuum system and temperature control, it handles demanding molecular biology and biochemistry applications.",
                   "specs": [
                     {
@@ -2917,7 +2917,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "high-speed-centrifuges",
-                  "description": "High speed centrifuge for separation of cell organelles and protein precipitates.",
+                  "description": "High-speed cell organelle centrifuge.",
                   "fullDescription": "The Hanil HF-16000 High Speed Centrifuge provides high RCF for separation of cell organelles, protein precipitates, and subcellular fractions. With multiple rotor options and refrigeration capability, it serves research and pharmaceutical laboratories.",
                   "specs": [
                     {
@@ -2957,7 +2957,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "multi-purpose-centrifuges",
-                  "description": "Versatile multi-purpose centrifuge for a wide range of laboratory applications.",
+                  "description": "Multi-purpose laboratory centrifuge.",
                   "fullDescription": "The Hanil HDC-12000 Multi-Purpose Centrifuge offers versatility for clinical, research, and industrial applications. Compatible with numerous rotor types, it handles microcentrifuge tubes, blood bags, and large-volume containers.",
                   "specs": [
                     {
@@ -2997,7 +2997,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "large-capacity-centrifuges",
-                  "description": "Large capacity centrifuge for high-volume sample processing in industrial labs.",
+                  "description": "Large capacity industrial centrifuge.",
                   "fullDescription": "The Hanil HC-6000 Large Capacity Centrifuge handles high-volume sample processing for industrial and clinical applications. With swing-out rotors and large-capacity buckets, it processes blood bags, urine samples, and industrial suspensions efficiently.",
                   "specs": [
                     {
@@ -3037,7 +3037,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "clinical-centrifuges",
-                  "description": "Clinical centrifuge for blood and body fluid separation in hospitals and clinics.",
+                  "description": "Clinical blood/fluid centrifuge.",
                   "fullDescription": "The Hanil HFC-3000 Clinical Centrifuge is designed for routine blood and body fluid separation in hospitals, clinics, and point-of-care settings. With pre-programmed clinical protocols, it ensures consistent and compliant sample preparation.",
                   "specs": [
                     {
@@ -3077,7 +3077,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "industrial-centrifuges",
-                  "description": "Industrial centrifuge for production-scale separation in manufacturing.",
+                  "description": "Industrial production centrifuge.",
                   "fullDescription": "The Hanil HIC-8000 Industrial Centrifuge handles production-scale separation for pharmaceutical, chemical, and food manufacturing. With stainless steel construction and GMP-compliant design, it meets industrial quality standards.",
                   "specs": [
                     {
@@ -3117,7 +3117,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "sample-concentrators",
-                  "description": "Sample concentrator for evaporation and concentration of biological samples.",
+                  "description": "Sample concentrator.",
                   "fullDescription": "The Hanil HSC-500 Sample Concentrator provides gentle evaporation and concentration of biological samples including nucleic acids, proteins, and metabolites. With nitrogen blow-down technology, it concentrates samples without thermal degradation.",
                   "specs": [
                     {
@@ -3157,7 +3157,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "centrifugal-vacuum-concentrators",
-                  "description": "Centrifugal vacuum concentrator for rapid sample drying without heat damage.",
+                  "description": "Vacuum centrifugal concentrator.",
                   "fullDescription": "The Hanil HVP-100 Centrifugal Vacuum Concentrator combines centrifugal force with vacuum evaporation for rapid, heat-sensitive sample drying. Ideal for concentrating nucleic acids, proteins, and other biomolecules without thermal degradation.",
                   "specs": [
                     {
@@ -3197,7 +3197,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "freeze-dryers",
-                  "description": "Freeze dryer for lyophilization of biological and pharmaceutical samples.",
+                  "description": "Freeze dryer for lyophilization.",
                   "fullDescription": "The Hanil HFD-1000 Freeze Dryer provides efficient lyophilization for preservation of biological samples, pharmaceuticals, and food products. With programmable drying cycles and ice condenser, it maintains sample integrity during dehydration.",
                   "specs": [
                     {
@@ -3237,7 +3237,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "gas-purging-evaporators",
-                  "description": "Gas purging evaporator for rapid solvent evaporation from multiple samples.",
+                  "description": "Gas purging evaporator.",
                   "fullDescription": "The Hanil HGP-200 Gas Purging Evaporator uses inert gas purging to rapidly evaporate solvents from multiple samples simultaneously. With adjustable gas flow and temperature control, it accelerates sample preparation in analytical laboratories.",
                   "specs": [
                     {
@@ -3277,7 +3277,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "co2-incubators",
-                  "description": "CO₂ incubator for cell culture and tissue engineering applications.",
+                  "description": "CO₂ incubator for cell culture.",
                   "fullDescription": "The Hanil HIC-80 CO₂ Incubator provides precise temperature, humidity, and CO₂ control for cell culture, tissue engineering, and microbiological applications. With HEPA filtration and contamination control, it maintains sterile culture conditions.",
                   "specs": [
                     {
@@ -3317,7 +3317,7 @@
                   "brand": "hanil",
                   "category": "scientific-equipments",
                   "subcategory": "ultra-low-freezers",
-                  "description": "Ultra-low temperature freezer for long-term storage of biological samples.",
+                  "description": "Ultra-low temp biological freezer.",
                   "fullDescription": "The Hanil HUF-86 Ultra-Low Freezer maintains temperatures down to -86°C for long-term storage of biological samples, cell lines, sera, and reagents. With dual compressor system and alarm, it ensures reliable sample preservation.",
                   "specs": [
                     {
@@ -3366,7 +3366,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "distillation-systems",
-                  "description": "Laboratory-scale molecular distillation system for purification and separation of heat-sensitive materials.",
+                  "description": "Molecular distillation system.",
                   "fullDescription": "The TOPTION Lab Scale Molecular Distillation Equipment is designed for purification and separation of heat-sensitive, high-boiling-point materials. With short-path evaporation technology, it provides efficient separation with minimal thermal degradation. Ideal for pharmaceutical, chemical, and food processing applications.",
                   "specs": [
                     {
@@ -3400,7 +3400,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "distillation-systems",
-                  "description": "Short-path distillation system for high-purity separation of complex mixtures.",
+                  "description": "Short-path distillation system.",
                   "fullDescription": "The TOPTION Short Path Distillation System utilizes short-path evaporation for efficient separation of complex mixtures with high purity requirements. Featuring glass or stainless steel construction, it delivers precise temperature control and vacuum operation for demanding distillation applications.",
                   "specs": [
                     {
@@ -3434,7 +3434,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "distillation-systems",
-                  "description": "Wiped film evaporator for continuous distillation of heat-sensitive, viscous materials.",
+                  "description": "Wiped film evaporator.",
                   "fullDescription": "The TOPTION Wiped Film Distillation System uses a rotating wiper to create a thin film of material on a heated wall for continuous evaporation and separation. Ideal for heat-sensitive, high-viscosity materials in pharmaceutical and chemical processing.",
                   "specs": [
                     {
@@ -3474,7 +3474,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "reactor-systems",
-                  "description": "Jacketed glass reactor with dual-wall design for precise temperature control during reactions.",
+                  "description": "Jacketed glass reactor.",
                   "fullDescription": "The TOPTION Jacketed Double Glass Reactor features a dual-wall glass design allowing circulation of heating or cooling fluids for precise temperature control during chemical reactions. Available in 1L-100L sizes with interchangeable glassware and modular accessories.",
                   "specs": [
                     {
@@ -3508,7 +3508,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "reactor-systems",
-                  "description": "High-pressure stainless steel reactor for chemical synthesis and material testing.",
+                  "description": "High-pressure steel reactor.",
                   "fullDescription": "The TOPTION Stainless Steel Reactor provides high-pressure reaction environment for chemical synthesis, hydrothermal reactions, and material testing. With temperature and pressure control, it handles demanding reaction conditions.",
                   "specs": [
                     {
@@ -3548,7 +3548,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "extraction-systems",
-                  "description": "Supercritical CO2 extraction system for solvent-free extraction of natural compounds.",
+                  "description": "Supercritical CO2 extraction.",
                   "fullDescription": "The TOPTION Supercritical Fluid Extraction (SFE) System uses supercritical CO2 as the extraction solvent for efficient, solvent-free extraction of natural compounds. Featuring precise temperature and pressure control, it delivers high-purity extracts for pharmaceutical, food, and botanical applications.",
                   "specs": [
                     {
@@ -3582,7 +3582,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "extraction-systems",
-                  "description": "Centrifugal extractor for liquid-liquid extraction and phase separation.",
+                  "description": "Centrifugal liquid-liquid extractor.",
                   "fullDescription": "The TOPTION Centrifugal Extraction System uses centrifugal force for efficient liquid-liquid extraction and phase separation. Ideal for pharmaceutical, food, and chemical applications requiring rapid and clean separation of immiscible liquids.",
                   "specs": [
                     {
@@ -3616,7 +3616,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "extraction-systems",
-                  "description": "Steam distillation unit for extraction of essential oils from plant materials.",
+                  "description": "Steam distillation for essential oils.",
                   "fullDescription": "The TOPTION Essential Oil Distillation Unit uses steam distillation to extract essential oils from plant materials including flowers, leaves, bark, and roots. Available in lab and pilot scale for R&D and small-batch production.",
                   "specs": [
                     {
@@ -3656,7 +3656,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "rotary-evaporators",
-                  "description": "Rotary evaporator for efficient solvent removal and concentration under vacuum.",
+                  "description": "Rotary evaporator.",
                   "fullDescription": "The TOPTION Rotary Evaporator (Rotovap) efficiently removes solvents from samples through evaporation under reduced pressure. With motorized lift, digital temperature and speed control, it serves laboratory distillation and concentration tasks.",
                   "specs": [
                     {
@@ -3696,7 +3696,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "spray-dryers",
-                  "description": "Laboratory spray dryer for producing powder from liquid solutions and emulsions.",
+                  "description": "Laboratory spray dryer.",
                   "fullDescription": "The TOPTION Laboratory Spray Dryer converts liquid solutions, emulsions, and suspensions into dry powder through atomization and hot air drying. With cyclone separator and collection vessel, it produces uniform particles for food, pharma, and materials applications.",
                   "specs": [
                     {
@@ -3736,7 +3736,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "drying-systems",
-                  "description": "Lyophilization system for preservation of sensitive biological and food materials.",
+                  "description": "Lyophilization preservation system.",
                   "fullDescription": "The TOPTION Food Freeze-Drying Equipment (Lyophilizer) is designed for preservation of sensitive biological, pharmaceutical, and food materials through sublimation. With precise temperature control and vacuum operation, it maintains product integrity while removing water content.",
                   "specs": [
                     {
@@ -3776,7 +3776,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "filtration-systems",
-                  "description": "Nutsche filter for vacuum filtration and isolation of solid-liquid mixtures.",
+                  "description": "Nutsche vacuum filter.",
                   "fullDescription": "The TOPTION Nutsche Filtration System combines filtration and drying in one vessel for efficient solid-liquid separation. With vacuum capability and temperature control, it processes pharmaceutical and chemical intermediates.",
                   "specs": [
                     {
@@ -3816,7 +3816,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "evaporators",
-                  "description": "Rising film evaporator for concentration of heat-sensitive liquid solutions.",
+                  "description": "Rising film evaporator.",
                   "fullDescription": "The TOPTION Rising Film Evaporator allows liquid to rise as a thin film along heated tube walls for rapid evaporation. Ideal for concentrating heat-sensitive solutions in food, pharmaceutical, and chemical industries.",
                   "specs": [
                     {
@@ -3850,7 +3850,7 @@
                   "brand": "toption",
                   "category": "scientific-equipments",
                   "subcategory": "evaporators",
-                  "description": "Falling film evaporator for continuous evaporation of heat-sensitive liquids.",
+                  "description": "Falling film evaporator.",
                   "fullDescription": "The TOPTION Falling Film Evaporator distributes liquid as a thin film on the inside of heated tubes, allowing rapid, continuous evaporation. Ideal for concentrating heat-sensitive products with short residence time.",
                   "specs": [
                     {
@@ -3899,7 +3899,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "glove-boxes",
-                  "description": "Standard inert atmosphere glovebox for air-sensitive research and material handling.",
+                  "description": "Inert atmosphere glovebox.",
                   "fullDescription": "The ETELUX Standard Glovebox provides an inert atmosphere environment with less than 1 ppm H2O and O2 for air-sensitive research applications. Featuring stainless steel construction, antechamber, and integrated purification system, it is ideal for lithium battery research, materials science, and pharmaceutical applications.",
                   "specs": [
                     {
@@ -3933,7 +3933,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "glove-boxes",
-                  "description": "High-vacuum glovebox for ultra-pure inert atmosphere applications.",
+                  "description": "High-vacuum glovebox.",
                   "fullDescription": "The ETELUX Vacuum Glove Box provides ultra-pure inert atmosphere with deep vacuum capability for demanding applications requiring extremely low oxygen and moisture levels. Ideal for semiconductor research, advanced materials, and OLED development.",
                   "specs": [
                     {
@@ -3967,7 +3967,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "glove-boxes",
-                  "description": "Glovebox with integrated HEPA filtration for cleanroom-compatible inert atmosphere work.",
+                  "description": "HEPA-filtered cleanroom glovebox.",
                   "fullDescription": "The ETELUX Cleanroom Glovebox combines high-purity inert atmosphere control with integrated HEPA filtration for cleanroom-compatible operations. Designed for semiconductor and pharmaceutical manufacturing environments requiring ISO Class 5 or better air quality.",
                   "specs": [
                     {
@@ -4001,7 +4001,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "glove-boxes",
-                  "description": "Transparent acrylic glovebox for demonstration and low-demand inert atmosphere work.",
+                  "description": "Transparent acrylic glovebox.",
                   "fullDescription": "The ETELUX Acrylic Glovebox provides a transparent, cost-effective enclosure for demonstration, display, and low-demand inert atmosphere work. Its clear acrylic walls allow full visibility, making it ideal for educational and display purposes.",
                   "specs": [
                     {
@@ -4041,7 +4041,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "gas-purifiers",
-                  "description": "Gas purification system for removing O2 and H2O from inert gas supplies.",
+                  "description": "Gas purification system.",
                   "fullDescription": "The ETELUX GP20 Gas Purification System removes oxygen and moisture from inert gas supplies (N2, Ar, He) to deliver ultra-pure gas for glovebox and process applications. Featuring automatic regeneration and long-life purification columns.",
                   "specs": [
                     {
@@ -4081,7 +4081,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "solvent-purifiers",
-                  "description": "Inline solvent purification column for removing water, oxygen, and protic impurities from organic solvents.",
+                  "description": "Inline solvent purification column.",
                   "fullDescription": "The ETELUX Solvent Purification System uses activated alumina, molecular sieves, and metal catalyst columns to remove water, oxygen, and protic impurities from common organic solvents inline. Compatible with standard solvent dispensing systems.",
                   "specs": [
                     {
@@ -4121,7 +4121,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "vacuum-coating",
-                  "description": "Vacuum thermal evaporation system for thin film deposition of metals and organics.",
+                  "description": "Vacuum thermal evaporation system.",
                   "fullDescription": "The ETELUX Vacuum Thermal Evaporation Coater deposits thin films of metals, organics, and other materials under high vacuum by resistive heating. Used for research-scale thin film production in electronics, optics, and materials science.",
                   "specs": [
                     {
@@ -4161,7 +4161,7 @@
                   "brand": "etelux",
                   "category": "scientific-equipments",
                   "subcategory": "isolators",
-                  "description": "Positive/negative pressure isolator for containment of hazardous materials and potent compounds.",
+                  "description": "Pressure isolator for containment.",
                   "fullDescription": "The ETELUX Containment Isolator provides operator and product protection through controlled positive or negative pressure environments. HEPA-filtered exhaust and supply air ensure containment of hazardous powders, potent APIs, and cytotoxic materials.",
                   "specs": [
                     {
@@ -4198,7 +4198,7 @@
       "id": "testing-apparatus",
       "name": "Testing Apparatus",
       "shortName": "Testing Apparatus",
-      "description": "Testing and quality control equipment for laboratory and field applications.",
+      "description": "Testing and QC equipment.",
       "brands": [
         {
           "id": "hach",
@@ -4218,7 +4218,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "spectrophotometers",
-                  "description": "Benchtop spectrophotometer with touchscreen for drinking water and wastewater analysis.",
+                  "description": "Benchtop water spectrophotometer.",
                   "fullDescription": "The HACH DR3900 is a high-end benchtop spectrophotometer designed for drinking water and wastewater analysis. Featuring a 7-inch touchscreen display and over 340 pre-programmed methods, it delivers accurate and reliable results for a wide range of water quality parameters. Built-in data management with USB and Ethernet connectivity for seamless data transfer.",
                   "specs": [
                     {
@@ -4252,7 +4252,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "spectrophotometers",
-                  "description": "UV-Vis spectrophotometer for advanced water quality analysis with 3D scanning capability.",
+                  "description": "UV-Vis water quality analyzer.",
                   "fullDescription": "The HACH DR6000 UV-Vis spectrophotometer is designed for advanced water quality analysis with full UV-Vis scanning capability (190-1100 nm). It features 3D scanning for advanced method development and comes with over 340 pre-programmed methods. Ideal for laboratories requiring high-precision UV-Vis measurements.",
                   "specs": [
                     {
@@ -4286,7 +4286,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "spectrophotometers",
-                  "description": "Versatile benchtop spectrophotometer for routine water quality testing.",
+                  "description": "Routine water spectrophotometer.",
                   "fullDescription": "The HACH DR1900 is a versatile benchtop spectrophotometer designed for routine water quality testing. With over 200 pre-programmed methods and a user-friendly interface, it provides reliable results for drinking water, wastewater, and environmental applications. Compact design fits any laboratory workspace.",
                   "specs": [
                     {
@@ -4326,7 +4326,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "ph-meters",
-                  "description": "Advanced multi-parameter digital meter for pH, conductivity, DO, and turbidity measurements.",
+                  "description": "Multi-parameter digital meter.",
                   "fullDescription": "The HACH HQ40d is an advanced multi-parameter digital meter that accepts up to two IntelliCAL or LDO probes simultaneously. With automatic method selection, digital connectivity, and rugged design, it delivers accurate and reliable measurements for pH, conductivity, dissolved oxygen, and turbidity in the field and laboratory.",
                   "specs": [
                     {
@@ -4360,7 +4360,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "ph-meters",
-                  "description": "Benchtop pH meter with advanced electrode diagnostics for laboratory precision.",
+                  "description": "Benchtop pH meter.",
                   "fullDescription": "The HACH sensION+ PH is a high-performance benchtop pH meter designed for laboratory use. Featuring advanced electrode diagnostics, auto-calibration, and GLP data management, it delivers precise pH measurements with full traceability. Ideal for QC labs and research applications.",
                   "specs": [
                     {
@@ -4400,7 +4400,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "turbidimeters",
-                  "description": "EPA-compliant benchtop turbidimeter for drinking water and wastewater monitoring.",
+                  "description": "EPA benchtop turbidimeter.",
                   "fullDescription": "The HACH 2100Q turbidimeter is an EPA-compliant instrument designed for accurate turbidity measurements in drinking water and wastewater applications. Featuring ratio measurement technology and adaptive algorithms, it delivers reliable results from 0-4000 NTU with excellent low-end sensitivity.",
                   "specs": [
                     {
@@ -4440,7 +4440,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "dissolved-oxygen",
-                  "description": "Luminescent DO probe with no membrane maintenance for accurate oxygen measurement.",
+                  "description": "Luminescent DO probe.",
                   "fullDescription": "The HACH LDO luminescent dissolved oxygen probe uses optical technology to deliver accurate DO measurements without the maintenance required by membrane-based sensors. With no electrolyte to refill and no membrane to replace, it provides reliable, long-term monitoring for wastewater treatment and environmental applications.",
                   "specs": [
                     {
@@ -4480,7 +4480,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "colorimeters",
-                  "description": "Portable colorimeter for field water testing of chlorine, pH, and other parameters.",
+                  "description": "Portable water colorimeter.",
                   "fullDescription": "The HACH DR900 Portable Colorimeter is designed for field water quality testing with pre-programmed methods for chlorine, pH, nitrate, and other parameters. Compact and rugged, it delivers accurate results in harsh field conditions.",
                   "specs": [
                     {
@@ -4520,7 +4520,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "titrators",
-                  "description": "Automatic titration system for alkalinity, hardness, and chloride measurement.",
+                  "description": "Automatic titration system.",
                   "fullDescription": "The HACH Titralab Titrator provides fully automated potentiometric titration for alkalinity, hardness, chloride, and other water quality parameters. With multiple method storage and auto-sampler compatibility, it increases laboratory throughput.",
                   "specs": [
                     {
@@ -4560,7 +4560,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "benchtop-meters",
-                  "description": "Multi-parameter benchtop meter for pH, conductivity, DO, and turbidity.",
+                  "description": "Multi-parameter benchtop meter.",
                   "fullDescription": "The HACH sensION+ MM374 is a multi-parameter benchtop meter supporting pH, conductivity, dissolved oxygen, and turbidity measurements. With dual channels and GLP compliance, it serves as a versatile laboratory workhorse.",
                   "specs": [
                     {
@@ -4600,7 +4600,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "electrochemical-probes",
-                  "description": "Digital pH probe with IntelliCAL technology for automatic calibration recognition.",
+                  "description": "IntelliCAL pH probe.",
                   "fullDescription": "The HACH IntelliCAL PHC101 is a digital pH probe featuring IntelliCAL technology for automatic method and calibration recognition. With gel electrolyte and built-in temperature sensor, it delivers reliable pH measurements in field and lab.",
                   "specs": [
                     {
@@ -4640,7 +4640,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "vial-tests",
-                  "description": "Pre-measured reagent vials for rapid colorimetric water quality testing.",
+                  "description": "Pre-measured reagent vials.",
                   "fullDescription": "HACH TNTplus Vial Chemistry Tests are pre-measured, pre-filled reagent vials for rapid colorimetric analysis of water quality parameters. Simply add sample, incubate, and read in a compatible HACH spectrophotometer for fast, accurate results.",
                   "specs": [
                     {
@@ -4680,7 +4680,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "field-chem",
-                  "description": "Handheld colorimeter for quick field measurement of chlorine and pH.",
+                  "description": "Handheld field colorimeter.",
                   "fullDescription": "The HACH Pocket Pro is a compact handheld colorimeter for quick field measurement of free/total chlorine, pH, and bromine. Waterproof and rugged, it fits in a pocket for on-the-go water quality testing.",
                   "specs": [
                     {
@@ -4720,7 +4720,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "calibration-standards",
-                  "description": "NIST-traceable calibration standards for pH, conductivity, and turbidity instruments.",
+                  "description": "NIST-traceable calibration standards.",
                   "fullDescription": "HACH Calibration Standard Solutions are NIST-traceable reference solutions for accurate calibration of pH, conductivity, turbidity, and dissolved oxygen instruments. Available in various concentrations and volumes.",
                   "specs": [
                     {
@@ -4760,7 +4760,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "process-analyzers",
-                  "description": "Online UV-Vis analyzer for continuous monitoring of water quality parameters.",
+                  "description": "Online UV-Vis water analyzer.",
                   "fullDescription": "The HACH DR6000 Online Analyzer provides continuous UV-Vis absorption measurement for real-time monitoring of organic compounds, nitrate, and turbidity in water and wastewater streams.",
                   "specs": [
                     {
@@ -4800,7 +4800,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "toc-analyzers",
-                  "description": "TOC analyzer for measurement of total organic carbon in ultrapure and process water.",
+                  "description": "TOC analyzer for water.",
                   "fullDescription": "The HACH Total Organic Carbon (TOC) Analyzer measures organic carbon contamination in ultrapure water, pharmaceutical water, and wastewater. Using UV/persulfate oxidation, it provides accurate TOC measurement for regulatory compliance.",
                   "specs": [
                     {
@@ -4840,7 +4840,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "automated-analyzers",
-                  "description": "Automated wet chemistry analyzer for high-throughput nutrient and parameter testing.",
+                  "description": "Automated wet chemistry analyzer.",
                   "fullDescription": "The HACH Astream Automated Analyzer performs simultaneous measurement of multiple water quality parameters including ammonia, nitrate, phosphate, and silica. With continuous flow analysis, it handles high-throughput laboratory testing.",
                   "specs": [
                     {
@@ -4880,7 +4880,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "controllers",
-                  "description": "Smart controller for online process monitoring and data acquisition.",
+                  "description": "Smart process controller.",
                   "fullDescription": "The HACH Smart Sensor Controller (SSC) connects multiple online sensors and provides centralized process monitoring, data logging, and control outputs. With web-based interface, it simplifies water treatment plant automation.",
                   "specs": [
                     {
@@ -4920,7 +4920,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "samplers",
-                  "description": "Portable peristaltic sampler for composite and discrete wastewater sampling.",
+                  "description": "Portable peristaltic sampler.",
                   "fullDescription": "The HACH AS950 Peristaltic Sampler collects composite and discrete wastewater samples for laboratory analysis. Portable and weather-resistant, it supports flow-paced and time-paced sampling protocols.",
                   "specs": [
                     {
@@ -4960,7 +4960,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "test-kits",
-                  "description": "Quick-test strips for visual and instrument-based water quality screening.",
+                  "description": "Quick-test water quality strips.",
                   "fullDescription": "HACH Water Test Strips provide quick, on-site screening for pH, chlorine, hardness, iron, and other water quality parameters. Color-changing pads allow visual reading or instrument verification.",
                   "specs": [
                     {
@@ -5000,7 +5000,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "microbiology",
-                  "description": "Ready-to-use culture media for coliform and heterotrophic plate count testing.",
+                  "description": "Ready-to-use culture media.",
                   "fullDescription": "HACH Culture Media provides ready-to-use agar plates and broth for coliform, E. coli, and heterotrophic plate count (HPC) testing in drinking water and wastewater applications.",
                   "specs": [
                     {
@@ -5040,7 +5040,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "lab-glassware",
-                  "description": "Laboratory glassware including beakers, flasks, and sample containers for water testing.",
+                  "description": "Water testing glassware.",
                   "fullDescription": "HACH Laboratory Glassware includes high-quality borosilicate beakers, Erlenmeyer flasks, graduated cylinders, and sample containers designed for water quality testing procedures.",
                   "specs": [
                     {
@@ -5080,7 +5080,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "sample-prep",
-                  "description": "Sample preparation tools including filtration, digestion, and mixing equipment.",
+                  "description": "Sample prep tools.",
                   "fullDescription": "HACH Sample Preparation Tools includes filtration apparatus, digestion blocks, magnetic stirrers, and mixing equipment for preparing water samples before analysis.",
                   "specs": [
                     {
@@ -5120,7 +5120,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "field-testing",
-                  "description": "Complete field testing systems for on-site water quality analysis.",
+                  "description": "Complete field water testing.",
                   "fullDescription": "HACH Field Testing & Analysis Systems provide complete portable solutions for on-site water quality testing. Including spectrophotometers, pH meters, and test kits in rugged field cases for environmental monitoring and wastewater compliance.",
                   "specs": [
                     {
@@ -5160,7 +5160,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "claros-system",
-                  "description": "Cloud-based water intelligence platform for real-time monitoring and predictive analytics.",
+                  "description": "Cloud water intelligence platform.",
                   "fullDescription": "The HACH Claros™ Water Intelligence System is a cloud-based platform that connects HACH instruments, provides real-time data visualization, predictive maintenance alerts, and compliance reporting. Enables data-driven decision making for water quality operations.",
                   "specs": [
                     {
@@ -5200,7 +5200,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "instrument-management",
-                  "description": "Instrument management services including calibration, maintenance, and compliance support.",
+                  "description": "Instrument management services.",
                   "fullDescription": "HACH Instrument Management Services provide comprehensive calibration, preventive maintenance, and compliance support for water quality instruments. Ensures instruments are always accurate and compliant with regulatory requirements.",
                   "specs": [
                     {
@@ -5240,7 +5240,7 @@
                   "brand": "hach",
                   "category": "testing-apparatus",
                   "subcategory": "electrochemistry",
-                  "description": "Electrochemical electrodes and sensors for pH, ORP, conductivity, and dissolved oxygen measurement.",
+                  "description": "Electrochemical sensors/electrodes.",
                   "fullDescription": "HACH Electrochemical Electrodes & Sensors provide accurate measurement of pH, ORP, conductivity, and dissolved oxygen. Available in combinations, gel-filled, and refillable types for laboratory and process applications.",
                   "specs": [
                     {
@@ -5289,7 +5289,7 @@
                   "brand": "toption",
                   "category": "testing-apparatus",
                   "subcategory": "temperature-control",
-                  "description": "Heating and cooling circulator for precise temperature control of reactors and processes.",
+                  "description": "Heating/cooling circulator.",
                   "fullDescription": "The TOPTION Temperature Control Unit provides heating and cooling circulation for precise temperature control of reactors, evaporators, and process equipment. With digital PID control and safety features, it ensures stable operation.",
                   "specs": [
                     {
@@ -5329,7 +5329,7 @@
                   "brand": "toption",
                   "category": "testing-apparatus",
                   "subcategory": "cooling-systems",
-                  "description": "Ice bath system for rapid cooling of samples and reactions.",
+                  "description": "Ice bath system.",
                   "fullDescription": "The TOPTION Ice Bath Chiller System provides rapid, controlled cooling for samples, reactions, and extractions. Maintaining temperatures from 0°C to -20°C, it replaces traditional ice baths with consistent, automated cooling.",
                   "specs": [
                     {
@@ -5369,7 +5369,7 @@
                   "brand": "toption",
                   "category": "testing-apparatus",
                   "subcategory": "vacuum-ovens",
-                  "description": "Vacuum drying oven for low-temperature drying of heat-sensitive materials.",
+                  "description": "Vacuum drying oven.",
                   "fullDescription": "The TOPTION Vacuum Drying Oven provides low-temperature drying under vacuum for heat-sensitive, oxidizable, and complex compounds. With precise temperature control and vacuum gauge, it ensures gentle, efficient dehydration.",
                   "specs": [
                     {
@@ -5406,21 +5406,21 @@
       "id": "laboratory-furnitures",
       "name": "Laboratory Furnitures",
       "shortName": "Laboratory Furnitures",
-      "description": "Laboratory furniture, benches, and workspace solutions.",
+      "description": "Laboratory furniture solutions.",
       "brands": []
     },
     {
       "id": "laboratory-consumables",
       "name": "Laboratory Consumables",
       "shortName": "Laboratory Consumables",
-      "description": "Laboratory consumables and disposable supplies.",
+      "description": "Laboratory consumables.",
       "brands": []
     },
     {
       "id": "turnkey",
       "name": "Turnkey",
       "shortName": "Turnkey Projects",
-      "description": "Complete integrated solutions and systems ready for deployment.",
+      "description": "Integrated solutions.",
       "brands": []
     }
   ]

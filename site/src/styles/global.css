@@ -542,6 +542,12 @@ ul, ol { list-style: none; }
   background-position: center;
   z-index: 0;
 }
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%);
+}
 
 /* Canvas visualization */
 .hero-canvas-wrap {
