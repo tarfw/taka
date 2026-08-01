@@ -25,6 +25,12 @@ const categories = productData.categories.map(c => ({
   shortName: c.shortName,
 }));
 
+const tabConfig = productData.categories.map(c => ({
+  id: c.id,
+  name: c.name,
+  description: c.description || '',
+}));
+
 const subcategoryCategoryMap = new Map<string, { id: string; name: string; count: number; categoryId: string }>();
 productData.categories.forEach(cat => {
   cat.brands.forEach(brand => {
@@ -74,12 +80,25 @@ const brands = Array.from(brandCategoryMap.values());
           <input type="text" id="productSearch" class="search-input" placeholder="Search products..." aria-label="Search products" />
           <span class="search-results-count" id="searchResultsCount"></span>
         </div>
-        <div class="filter-categories" id="categoryFilters">
-          <button class="filter-category active" data-category="all">All</button>
-          {categories.map(cat => (
-            <button class="filter-category" data-category={cat.id}>{cat.shortName}</button>
+      </div>
+
+      <div class="ae-tabs-wrap">
+        <button class="ae-scroll-btn ae-scroll-left" aria-label="Scroll tabs left">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 3 5 8 10 13"/></svg>
+        </button>
+        <nav class="ae-tabs" role="tablist">
+          {tabConfig.map((tab, i) => (
+            <button
+              class={`ae-tab${i === 0 ? ' active' : ''}`}
+              data-tab={tab.id}
+              role="tab"
+              aria-selected={i === 0 ? 'true' : 'false'}
+            >{tab.name}</button>
           ))}
-        </div>
+        </nav>
+        <button class="ae-scroll-btn ae-scroll-right" aria-label="Scroll tabs right">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 11 8 6 13"/></svg>
+        </button>
       </div>
     </div>
   </section>
@@ -134,9 +153,15 @@ const brands = Array.from(brandCategoryMap.values());
 </Layout>
 
 <style>
+  .page-hero .container,
+  .products-section .container {
+    max-width: 1600px;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .page-hero {
-    padding: 2rem 0 0;
-    border-bottom: 1px solid var(--color-border);
+    padding: 2rem 0 1rem;
   }
   .hero-toolbar {
     display: flex;
@@ -171,33 +196,74 @@ const brands = Array.from(brandCategoryMap.values());
   }
   .search-results-count:empty { display: none; }
 
-  .filter-categories {
+  /* ═══ TABS ═══ */
+  .ae-tabs-wrap {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.3rem;
+    align-items: center;
+    position: relative;
+  }
+  .ae-tabs {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
     flex: 1;
   }
-  .filter-category {
-    padding: 0.4rem 0.9rem;
-    font-family: var(--font-sans);
-    font-size: 0.8rem;
-    font-weight: 500;
-    color: var(--color-text-secondary);
+  .ae-tabs::-webkit-scrollbar {
+    display: none;
+  }
+  .ae-scroll-btn {
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: none;
-    border: 1px solid var(--color-border);
-    border-radius: 100px;
+    border: none;
+    color: var(--color-text-muted);
     cursor: pointer;
-    transition: all 0.15s;
-    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 1;
   }
-  .filter-category:hover {
+  .ae-tabs-wrap:hover .ae-scroll-btn {
+    opacity: 1;
+  }
+  .ae-scroll-btn:hover {
     color: var(--color-text);
-    border-color: var(--greige-lightest);
   }
-  .filter-category.active {
-    background: var(--color-text);
+  .ae-scroll-left {
+    margin-right: 0.5rem;
+  }
+  .ae-scroll-right {
+    margin-left: 0.5rem;
+  }
+  .ae-tab {
+    flex-shrink: 0;
+    padding: 0.9rem 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--color-text-muted);
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    transition: color 0.15s;
+    white-space: nowrap;
+    margin-bottom: -1px;
+  }
+  .ae-tab:hover {
+    color: var(--color-text);
+  }
+  .ae-tab.active {
     color: #fff;
-    border-color: var(--color-text);
+    font-weight: 600;
+    background: #044ab3;
   }
 
   .products-section {
@@ -207,7 +273,7 @@ const brands = Array.from(brandCategoryMap.values());
 
   .products-layout {
     display: flex;
-    gap: 2.5rem;
+    gap: 1.5rem;
     align-items: flex-start;
   }
 
@@ -218,8 +284,8 @@ const brands = Array.from(brandCategoryMap.values());
 
   .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
   }
   .product-card-wrap {
     display: contents;
@@ -242,6 +308,9 @@ const brands = Array.from(brandCategoryMap.values());
   }
 
   @media (max-width: 1200px) {
+    .products-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 992px) {
     .products-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
@@ -263,42 +332,48 @@ const brands = Array.from(brandCategoryMap.values());
     const productsCount = document.getElementById('productsCount');
     const empty = document.getElementById('productsEmpty');
     const wraps = grid ? Array.from(grid.querySelectorAll<HTMLElement>('.product-card-wrap')) : [];
-    const categoryFilters = document.getElementById('categoryFilters');
+    const tabsNav = document.querySelector('.ae-tabs');
     
-    let selectedCategory = 'all';
+    let selectedCategory = 'analytical-equipments';
     let selectedSubcategory = 'all';
     let selectedBrand = 'all';
     let timer: ReturnType<typeof setTimeout>;
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const initialCategory = urlParams.get('category');
-    if (initialCategory && initialCategory !== 'all') {
-      selectedCategory = initialCategory;
-      const btn = categoryFilters?.querySelector(`[data-category="${initialCategory}"]`);
-      if (btn) {
-        categoryFilters?.querySelectorAll('.filter-category').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-      }
+    function syncSidebarFilters() {
       const subcatFilters = document.getElementById('subcategoryFilters');
       const brandFilters = document.getElementById('brandFilters');
+      const showForCat = (el: Element) => {
+        const itemCat = el.getAttribute('data-category');
+        (el as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+      };
       if (subcatFilters) {
         subcatFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
           b.classList.remove('active');
-          const itemCat = b.getAttribute('data-category');
-          (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+          showForCat(b);
         });
         subcatFilters.querySelector('[data-subcategory="all"]')?.classList.add('active');
       }
       if (brandFilters) {
         brandFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
           b.classList.remove('active');
-          const itemCat = b.getAttribute('data-category');
-          (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
+          showForCat(b);
         });
         brandFilters.querySelector('[data-brand="all"]')?.classList.add('active');
       }
-      apply();
     }
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const initialCategory = urlParams.get('category');
+    if (initialCategory && initialCategory !== 'all') {
+      selectedCategory = initialCategory;
+      const btn = tabsNav?.querySelector(`[data-tab="${initialCategory}"]`);
+      if (btn) {
+        tabsNav?.querySelectorAll('.ae-tab').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+    }
+    syncSidebarFilters();
+    apply();
 
     function apply() {
       const q = searchInput.value.toLowerCase().trim();
@@ -325,45 +400,19 @@ const brands = Array.from(brandCategoryMap.values());
       });
     }
 
-    if (categoryFilters) {
-      categoryFilters.addEventListener('click', (e) => {
-        const btn = (e.target as HTMLElement).closest('.filter-category');
+    if (tabsNav) {
+      tabsNav.addEventListener('click', (e) => {
+        const btn = (e.target as HTMLElement).closest('.ae-tab');
         if (!btn) return;
         
-        categoryFilters.querySelectorAll('.filter-category').forEach(b => b.classList.remove('active'));
+        tabsNav.querySelectorAll('.ae-tab').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         
-        selectedCategory = btn.dataset.category || 'all';
+        selectedCategory = btn.dataset.tab || 'all';
         selectedSubcategory = 'all';
         selectedBrand = 'all';
-        
-        const subcatFilters = document.getElementById('subcategoryFilters');
-        const brandFilters = document.getElementById('brandFilters');
-        if (subcatFilters) {
-          subcatFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
-            b.classList.remove('active');
-            const itemCat = b.getAttribute('data-category');
-            if (selectedCategory === 'all') {
-              (b as HTMLElement).style.display = '';
-            } else {
-              (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
-            }
-          });
-          subcatFilters.querySelector('[data-subcategory="all"]')?.classList.add('active');
-        }
-        if (brandFilters) {
-          brandFilters.querySelectorAll('.filter-sidebar-item').forEach(b => {
-            b.classList.remove('active');
-            const itemCat = b.getAttribute('data-category');
-            if (selectedCategory === 'all') {
-              (b as HTMLElement).style.display = '';
-            } else {
-              (b as HTMLElement).style.display = itemCat === selectedCategory ? '' : 'none';
-            }
-          });
-          brandFilters.querySelector('[data-brand="all"]')?.classList.add('active');
-        }
-        
+
+        syncSidebarFilters();
         apply();
       });
     }
@@ -377,5 +426,18 @@ const brands = Array.from(brandCategoryMap.values());
       selectedBrand = e.detail.brand;
       apply();
     }) as EventListener);
+
+    const scrollLeft = document.querySelector('.ae-scroll-left');
+    const scrollRight = document.querySelector('.ae-scroll-right');
+    if (scrollLeft && tabsNav) {
+      scrollLeft.addEventListener('click', () => {
+        tabsNav.scrollBy({ left: -200, behavior: 'smooth' });
+      });
+    }
+    if (scrollRight && tabsNav) {
+      scrollRight.addEventListener('click', () => {
+        tabsNav.scrollBy({ left: 200, behavior: 'smooth' });
+      });
+    }
   });
 </script>
