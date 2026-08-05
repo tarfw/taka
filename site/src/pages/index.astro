@@ -70,9 +70,9 @@ import Layout from '../layouts/Layout.astro';
       ];
 
       const orbits = [
-        { rx: 160, ry: 55, rot: -20, speed: 0.15, electrons: 2 },
-        { rx: 185, ry: 48, rot: 30, speed: 0.1, electrons: 2 },
-        { rx: 145, ry: 65, rot: -55, speed: 0.2, electrons: 2 }
+        { rx: 130, ry: 44, rot: -20, speed: 0.15, electrons: 2 },
+        { rx: 150, ry: 38, rot: 30, speed: 0.1, electrons: 2 },
+        { rx: 115, ry: 52, rot: -55, speed: 0.2, electrons: 2 }
       ];
 
       function resize() {
@@ -145,40 +145,40 @@ import Layout from '../layouts/Layout.astro';
         const pulse = 1 + Math.sin(time * 0.5) * 0.12;
 
         // Outer glow — large and bright
-        const g1 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 90 * pulse);
+        const g1 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 72 * pulse);
         g1.addColorStop(0, 'rgba(255,255,255,0.45)');
         g1.addColorStop(0.3, 'rgba(255,255,255,0.2)');
         g1.addColorStop(0.6, 'rgba(255,255,255,0.06)');
         g1.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = g1;
         ctx.beginPath();
-        ctx.arc(cx, cy, 90 * pulse, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 72 * pulse, 0, Math.PI * 2);
         ctx.fill();
 
         // Mid glow
-        const gMid = ctx.createRadialGradient(cx, cy, 0, cx, cy, 40);
+        const gMid = ctx.createRadialGradient(cx, cy, 0, cx, cy, 32);
         gMid.addColorStop(0, 'rgba(255,255,255,0.7)');
         gMid.addColorStop(0.5, 'rgba(255,255,255,0.25)');
         gMid.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = gMid;
         ctx.beginPath();
-        ctx.arc(cx, cy, 40, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 32, 0, Math.PI * 2);
         ctx.fill();
 
         // Inner glow — bright core
-        const g2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 16);
+        const g2 = ctx.createRadialGradient(cx, cy, 0, cx, cy, 13);
         g2.addColorStop(0, 'rgba(255,255,255,1)');
         g2.addColorStop(0.4, 'rgba(255,255,255,0.7)');
         g2.addColorStop(1, 'rgba(255,255,255,0)');
         ctx.fillStyle = g2;
         ctx.beginPath();
-        ctx.arc(cx, cy, 16, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 13, 0, Math.PI * 2);
         ctx.fill();
 
         // Solid core
         ctx.fillStyle = '#fff';
         ctx.beginPath();
-        ctx.arc(cx, cy, 6, 0, Math.PI * 2);
+        ctx.arc(cx, cy, 5, 0, Math.PI * 2);
         ctx.fill();
       }
 
@@ -189,7 +189,7 @@ import Layout from '../layouts/Layout.astro';
 
         products.forEach((label, i) => {
           const angle = (i * Math.PI * 2) / products.length - Math.PI / 2 + Math.sin(time * 0.2) * 0.03;
-          const dist = 210 + Math.sin(time * 0.3 + i) * 8;
+          const dist = 170 + Math.sin(time * 0.3 + i) * 8;
           const lx = cx + Math.cos(angle) * dist;
           const ly = cy + Math.sin(angle) * dist;
 

@@ -1,6 +1,6 @@
----
+﻿---
 import Layout from '../../layouts/Layout.astro';
-import ProductCard from '../../components/ProductCard.astro';
+import IceProductCard from '../../components/IceProductCard.astro';
 import productData from '../../data/products.json';
 
 const category = productData.categories.find(c => c.id === 'analytical-equipments');
@@ -21,312 +21,1004 @@ const subcategories = category.brands.flatMap(brand =>
   }))
 );
 
-const tabConfig = [
-  { id: 'atomic-emission-detector', name: 'Atomic Emission Detector' },
-  { id: 'sample-introduction-systems', name: 'Sample Introduction Systems' },
-  { id: 'unis-inlets-range', name: 'UNIS Inlets Range' },
-  { id: 'gc-specials', name: 'Gas Chromatography Specials' },
-  { id: 'customized-analyzers', name: 'Customized Analyzers' },
-  { id: 'gerstel-products', name: 'Gerstel Products' },
-  { id: 'special-products', name: 'Special Products' },
+const allProducts = subcategories.flatMap(sc => sc.products);
+const gcSystems = (subcategories.find(sc => sc.id === 'gc-systems')?.products ?? []);
+const inletsProducts = subcategories
+  .filter(sc => ['gc-inlets-accessories', 'automated-sample-prep'].includes(sc.id))
+  .flatMap(sc => sc.products);
+
+const categoryCards = [
+  { name: 'Atomic Emission Detector', image: '/products/jasmea/aed-iii-hr.png', href: '/catalogue/aed-iii-hr' },
+  { name: 'Sample Introduction Systems', image: '/products/jasmea/vaporizer.png', href: '/catalogue/vaporizer' },
+  { name: 'UNIS Inlets Range', image: '/products/jasmea/unis-2100.jpg', href: '/catalogue/unis-2100' },
+  { name: 'Gas Chromatography Specials', image: '/products/jasmea/cryotrap.png', href: '/catalogue/cryotrap' },
+  { name: 'Customized Analyzers', image: '/products/jasmea/simdis-analyzer.png', href: '/catalogue/simdis-analyzer' },
+  { name: 'Automated Sample Prep', image: '/products/jasmea/mps-robotic.png', href: '/catalogue/mps-robotic' },
+  { name: 'Lab Support Equipment', image: '/products/jasmea/peak-gas-generators.png', href: '/catalogue/peak-gas-generators' },
 ];
-
-const sampleIntroIds = new Set(['vaporizer', 'gas-bag-sampler', 'gicu', 'odp']);
-const unisInletIds = new Set(['unis-2100', 'unis-3100', 'unis-500', 'unis-ht-simdis']);
-const gcSpecialIds = new Set(['cryotrap', 'olfactometer', 'ezprep']);
-
-const getTabId = (product: any) => {
-  if (product.subcategory === 'detectors') return 'atomic-emission-detector';
-  if (product.subcategory === 'gc-systems') return 'gc-specials';
-  if (product.subcategory === 'automated-sample-prep') return 'gerstel-products';
-  if (product.subcategory === 'lab-support-equipment') return 'special-products';
-  if (product.subcategory === 'gc-inlets-accessories') {
-    if (sampleIntroIds.has(product.id)) return 'sample-introduction-systems';
-    if (unisInletIds.has(product.id)) return 'unis-inlets-range';
-    if (gcSpecialIds.has(product.id)) return 'gc-specials';
-  }
-  return 'gc-specials';
-};
-
-const tabGroups = tabConfig.map(tab => ({
-  ...tab,
-  products: subcategories.flatMap(sc => sc.products.filter(p => getTabId(p) === tab.id))
-}));
-
-const tabDescriptions: Record<string, string> = {
-  'atomic-emission-detector': 'The only commercially available Atomic Emission Detector for gas chromatography, delivering unparalleled elemental selectivity and picogram-level sensitivity.',
-  'sample-introduction-systems': 'Automated and manual sample introduction solutions including gas samplers, injection control units, vaporizers, and olfactory detection ports for reproducible analytical results.',
-  'unis-inlets-range': 'Programmable temperature vaporization inlets for solvent venting, VOCs, heavy hydrocarbons, simulated distillation, and general GC applications.',
-  'gc-specials': 'Specialty GC accessories and systems including cryogenic trapping, GC-olfactometry, preparative fraction collection, and complete gas chromatography systems.',
-  'customized-analyzers': 'Customized analytical solutions designed for specific laboratory requirements and unique application challenges.',
-  'gerstel-products': 'Automated sample preparation, extraction, and concentration systems for high-throughput laboratories.',
-  'special-products': 'Laboratory support equipment including gas generators, ultrasonic cleaners, valves, glassware, and other essential ancillary instruments.'
-};
 ---
 
-<Layout title="Analytical Equipments — TAKA Scientific" hasHero={true}>
+<Layout title="Analytical Equipments â€” TAKA Scientific" hasHero={true}>
 
-  <!-- HERO -->
-  <section class="hero-container ae-hero">
-    <div class="ae-hero-bg" style="background-image: url('/bg4.jpg');"></div>
-    <div class="ae-hero-inner">
-      <h1 class="ae-hero-title">Precision analytical<br />instrumentation</h1>
-      <p class="ae-hero-stats">Authorized JAS distributor.</p>
-    </div>
-  </section>
+<div class="ice-page">
 
-  <!-- TABS + CONTENT -->
-  <section class="ae-section">
-    <div class="container">
-
-      <div class="ae-tabs-wrap">
-        <button class="ae-scroll-btn ae-scroll-left" aria-label="Scroll tabs left">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 3 5 8 10 13"/></svg>
-        </button>
-        <nav class="ae-tabs" role="tablist">
-          {tabGroups.map((group, i) => (
-            <button
-              class={`ae-tab${i === 0 ? ' active' : ''}`}
-              data-tab={group.id}
-              role="tab"
-              aria-selected={i === 0 ? 'true' : 'false'}
-            >{group.name}</button>
-          ))}
-        </nav>
-        <button class="ae-scroll-btn ae-scroll-right" aria-label="Scroll tabs right">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 3 11 8 6 13"/></svg>
-        </button>
-      </div>
-
-      {tabGroups.map((group, i) => (
-        <div class={`ae-panel${i === 0 ? ' active' : ''}`} data-panel={group.id} role="tabpanel">
-          <p class="ae-panel-desc">{tabDescriptions[group.id] || ''}</p>
-          <div class="ae-products-grid">
-            {group.products.map(product => (
-              <ProductCard
-                id={product.id}
-                name={product.name}
-                fullName={product.fullName}
-                brand={product.brand}
-                brandName={product.brandName}
-                description={product.description}
-                specs={product.specs}
-                applications={product.applications}
-                image={product.image}
-              />
-            ))}
-          </div>
+  <!-- â•â•â• HERO â€” ModuleHighlight â•â•â• -->
+  <section class="ice-hero hero-container">
+    <div class="ice-hero-image">
+      <img src="/bg4.jpg" alt="TAKA Scientific analytical instrumentation" class="ice-hero-img" fetchpriority="high" />
+      <div class="ice-hero-overlay">
+        <h1>One instrument for every analysis</h1>
+        <div class="ice-hero-buttons">
+          <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+          <a href="/catalogue" class="ice-btn ice-btn-outlined"><span>Shop now</span></a>
         </div>
-      ))}
-
-    </div>
-  </section>
-
-  <section class="cta-section">
-    <div class="cta-content">
-      <h2 class="cta-heading">Need analytical<br />equipment?</h2>
-      <p class="cta-subtitle">Tell us about your laboratory requirements. We'll recommend the right instruments and provide a tailored quote.</p>
-      <div class="cta-actions">
-        <a href="/contact" class="btn btn-dark">Request a quote</a>
-        <a href="https://wa.me/97157566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+      </div>
+      <div class="ice-hero-trust">
+        <p>Authorized JASMEA distributor</p>
+        <p>ASTM &amp; ISO compliant methods</p>
+        <p>German engineering since 1997</p>
+        <p>Application support that lasts</p>
       </div>
     </div>
   </section>
+
+  <!-- â•â•â• PRODUCT SLIDER â€” Featured â•â•â• -->
+  <section class="ice-slider-section">
+    <div class="ice-slider">
+      <div class="ice-slider-title">
+        <div class="ice-slider-title-wrapper">
+          <h2>Featured products</h2>
+          <a href="/catalogue">Shop all</a>
+        </div>
+        <div class="ice-slider-controls">
+          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+        </div>
+      </div>
+      <div class="ice-slider-items">
+        <div class="ice-slider-track">
+          {allProducts.map(p => (
+            <div class="ice-slider-item">
+              <IceProductCard
+                id={p.id}
+                name={p.name}
+                fullName={p.fullName}
+                brandName={p.brandName}
+                subcategoryName={p.subcategoryName}
+                image={p.image}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• HEADLINE TEXT â•â•â• -->
+  <section class="ice-headline-text">
+    <div class="ice-headline-wrapper">
+      <p class="ice-headline-big">Precision instrumentation. Built to last. Analysis you can trust.</p>
+      <a href="/catalogue" class="ice-btn"><span>Explore JASMEA</span></a>
+    </div>
+  </section>
+
+  <!-- â•â•â• FEATURE SLIDER â€” Explore the range â•â•â• -->
+  <section class="ice-slider-section" id="range">
+    <div class="ice-slider">
+      <div class="ice-slider-title">
+        <div class="ice-slider-title-wrapper">
+          <h2>Explore the range</h2>
+          <a href="/catalogue">Shop all</a>
+        </div>
+        <div class="ice-slider-controls">
+          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+        </div>
+      </div>
+      <div class="ice-feature-items">
+        <div class="ice-slider-track">
+          {categoryCards.map(card => (
+            <div class="ice-slider-item">
+              <a href={card.href} class="ice-feature-card">
+                <div class="ice-feature-image">
+                  <img src={card.image} alt={card.name} loading="lazy" decoding="async" />
+                </div>
+                <span class="ice-feature-category">{card.name}</span>
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• HIGHLIGHT â€” ModuleHighlight â•â•â• -->
+  <section class="ice-highlight">
+    <div class="ice-highlight-image">
+      <img src="/bg3.jpg" alt="Gas chromatography laboratory" loading="lazy" />
+    </div>
+    <div class="ice-highlight-overlay">
+      <p>Gas chromatography</p>
+      <h2>Analyze with unrivaled sensitivity</h2>
+      <div class="ice-hero-buttons">
+        <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>Explore systems</span></a>
+        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• PRODUCT SLIDER â€” GC Systems â•â•â• -->
+  <section class="ice-slider-section" id="gc-systems">
+    <div class="ice-slider">
+      <div class="ice-slider-title">
+        <div class="ice-slider-title-wrapper">
+          <h2>Gas chromatography systems</h2>
+          <a href="/catalogue">Shop all</a>
+        </div>
+        <div class="ice-slider-controls">
+          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+        </div>
+      </div>
+      <p class="ice-slider-sub">Complete gas analysis systems — natural gas, refinery gas, oxygenates and simulated distillation.</p>
+      <div class="ice-slider-items">
+        <div class="ice-slider-track">
+          {gcSystems.map(p => (
+            <div class="ice-slider-item">
+              <IceProductCard
+                id={p.id}
+                name={p.name}
+                fullName={p.fullName}
+                brandName={p.brandName}
+                subcategoryName={p.subcategoryName}
+                image={p.image}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• PRODUCT SLIDER â€” Sample Introduction & Inlets â•â•â• -->
+  <section class="ice-slider-section" id="inlets">
+    <div class="ice-slider">
+      <div class="ice-slider-title">
+        <div class="ice-slider-title-wrapper">
+          <h2>Sample introduction &amp; inlets</h2>
+          <a href="/catalogue">Shop all</a>
+        </div>
+        <div class="ice-slider-controls">
+          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+        </div>
+      </div>
+      <p class="ice-slider-sub">Precision inlets and automated sample preparation for maximum sensitivity and reproducibility.</p>
+      <div class="ice-slider-items">
+        <div class="ice-slider-track">
+          {inletsProducts.map(p => (
+            <div class="ice-slider-item">
+              <IceProductCard
+                id={p.id}
+                name={p.name}
+                fullName={p.fullName}
+                brandName={p.brandName}
+                subcategoryName={p.subcategoryName}
+                image={p.image}
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• APPLICATIONS â€” Built for your industry â•â•â• -->
+  <section class="ice-grid-section">
+    <div class="ice-grid-head">
+      <h2>Built for your industry</h2>
+    </div>
+    <div class="ice-grid">
+      <a href="/catalogue" class="ice-grid-card">
+        <span class="ice-grid-label">Natural gas</span>
+        <p>Complete natural gas composition analysis per ASTM D1945 and ISO 6974.</p>
+      </a>
+      <a href="/catalogue" class="ice-grid-card">
+        <span class="ice-grid-label">Refinery &amp; petrochemical</span>
+        <p>Refinery gas, oxygenates and simulated distillation for process control.</p>
+      </a>
+      <a href="/catalogue" class="ice-grid-card">
+        <span class="ice-grid-label">Environmental</span>
+        <p>Trace sulfur and atomic emission detection with picogram-level sensitivity.</p>
+      </a>
+      <a href="/catalogue" class="ice-grid-card">
+        <span class="ice-grid-label">Research &amp; academia</span>
+        <p>Flexible, modular platforms for method development and advanced research.</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- â•â•â• SERVICES â€” Support that lasts â•â•â• -->
+  <section class="ice-grid-section">
+    <div class="ice-grid-head">
+      <h2>Support that lasts</h2>
+    </div>
+    <div class="ice-grid">
+      <div class="ice-grid-card">
+        <span class="ice-grid-label">Installation &amp; training</span>
+        <p>On-site installation and hands-on training for your team.</p>
+      </div>
+      <div class="ice-grid-card">
+        <span class="ice-grid-label">Method development</span>
+        <p>Application engineers help you validate and optimize your methods.</p>
+      </div>
+      <div class="ice-grid-card">
+        <span class="ice-grid-label">Calibration &amp; service</span>
+        <p>Scheduled maintenance, calibration and fast-turnaround repairs.</p>
+      </div>
+      <div class="ice-grid-card">
+        <span class="ice-grid-label">Genuine spare parts</span>
+        <p>Original JASMEA parts and consumables, ready when you need them.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• HEADLINE TEXT â€” Our promise â•â•â• -->
+  <section class="ice-headline-text">
+    <div class="ice-headline-wrapper">
+      <p class="ice-headline-big">Genuine instruments. Honest advice. Support that lasts.</p>
+      <a href="/about" class="ice-btn"><span>Read our promises</span></a>
+    </div>
+  </section>
+
+  <!-- â•â•â• EDITORIAL HIGHLIGHT â•â•â• -->
+  <section class="ice-editorial">
+    <div class="ice-editorial-image">
+      <img src="/heroanlytical.webp" alt="TAKA Scientific analytical laboratory" loading="lazy" />
+    </div>
+    <div class="ice-editorial-overlay">
+      <div class="ice-editorial-text">
+        <h2 class="ice-editorial-title">We&#39;re in it for the long run. â€” and so is our instrumentation.</h2>
+        <p class="ice-editorial-text-p">While most suppliers put the margin first, TAKA puts our customers, our people and our partners first — with instruments that keep running, year after year.</p>
+        <a href="/about" class="ice-btn ice-btn-outlined"><span>Our story</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- â•â•â• CONTACT CTA â•â•â• -->
+  <section class="ice-cta">
+    <h2>Ready to find your instrument?</h2>
+    <p>Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
+    <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to an expert</span></a>
+  </section>
+
+</div>
 
 </Layout>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const tabs = document.querySelectorAll<HTMLButtonElement>('.ae-tab');
-    const panels = document.querySelectorAll<HTMLElement>('.ae-panel');
-    const tabsWrap = document.querySelector('.ae-tabs');
-    const scrollLeft = document.querySelector('.ae-scroll-left');
-    const scrollRight = document.querySelector('.ae-scroll-right');
+  document.querySelectorAll('.ice-slider').forEach(slider => {
+    const scroller = slider.querySelector('.ice-slider-items, .ice-feature-items');
+    const prev = slider.querySelector('.ice-slider-prev');
+    const next = slider.querySelector('.ice-slider-next');
+    if (!scroller || !prev || !next) return;
 
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const target = tab.dataset.tab;
-        if (!target) return;
+    const update = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      prev.disabled = scroller.scrollLeft <= 1;
+      next.disabled = scroller.scrollLeft >= max - 1;
+    };
+    const step = () => {
+      const item = scroller.querySelector('.ice-slider-item');
+      return item ? item.offsetWidth : scroller.clientWidth;
+    };
 
-        tabs.forEach(t => {
-          t.classList.remove('active');
-          t.setAttribute('aria-selected', 'false');
-        });
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected', 'true');
-
-        panels.forEach(p => {
-          p.classList.toggle('active', p.dataset.panel === target);
-        });
-      });
-    });
-
-    if (scrollLeft && tabsWrap) {
-      scrollLeft.addEventListener('click', () => {
-        tabsWrap.scrollBy({ left: -200, behavior: 'smooth' });
-      });
-    }
-    if (scrollRight && tabsWrap) {
-      scrollRight.addEventListener('click', () => {
-        tabsWrap.scrollBy({ left: 200, behavior: 'smooth' });
-      });
-    }
+    prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+    scroller.addEventListener('scroll', update, { passive: true });
+    update();
+    window.addEventListener('resize', update);
   });
 </script>
 
 <style>
-  /* ═══ HERO ═══ */
-  .ae-hero {
-    min-height: 100vh;
-    align-items: center;
-    justify-content: flex-start;
+  .ice-page {
+    --ice-pad: 24px;
+    --ice-black: #262626;
+    --ice-white: #ffffff;
+    --ice-border: #ececec;
+    --ice-image-bg: #ececec;
+    --ice-sans: var(--font-sans);
+    --ice-mono: var(--font-mono);
+    --ice-opacity: 0.35;
+    --ice-underline-offset: 0.3em;
+    --ice-btn-height: 32px;
+    --ice-page-gap: 120px;
+    --ice-header-height: 52px;
+    background: var(--ice-white);
+    color: var(--ice-black);
+    font-size: 10px;
+    flex-direction: column;
+    gap: var(--ice-page-gap);
+    display: flex;
   }
-  .ae-hero-bg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    z-index: 0;
-  }
-  .ae-hero-bg::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%);
-  }
-  .ae-hero-inner {
-    position: relative;
-    z-index: 2;
-    max-width: 680px;
-    padding: 0 1.5rem;
-  }
-  .ae-hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.4rem, 5.5vw, 4rem);
-    font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    color: #fff;
-    margin-bottom: 0.75rem;
-  }
-  .ae-hero-stats {
-    font-size: 1rem;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.6;
+  @media (max-width: 1024px) {
+    .ice-page { --ice-page-gap: 72px; }
   }
 
-  /* ═══ TAB SECTION ═══ */
-  .ae-section {
-    padding: 0 0 4rem;
-  }
-
-/* ═══ TABS ═══ */
-  .ae-tabs-wrap {
-    border-top: 1px solid var(--color-border);
-    border-bottom: 1px solid var(--color-border);
-    margin-bottom: 3rem;
-    display: flex;
-    align-items: center;
-    position: relative;
-  }
-  .ae-tabs {
-    display: flex;
-    gap: 0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    flex: 1;
-  }
-  .ae-tabs::-webkit-scrollbar {
-    display: none;
-  }
-  .ae-scroll-btn {
-    flex-shrink: 0;
-    width: 2rem;
-    height: 2rem;
-    display: flex;
+  /* â•â•â• BUTTONS â•â•â• */
+  .ice-btn {
+    display: inline-flex;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    background: var(--ice-black);
+    color: var(--ice-white);
+    height: var(--ice-btn-height);
+    padding: 0 36px;
+    border: 1px solid var(--ice-black);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+  @media (max-width: 1024px) {
+    .ice-btn { padding: 0 28px; }
+  }
+  .ice-btn span { pointer-events: none; }
+
+  .ice-btn-white {
+    background: var(--ice-white);
+    color: var(--ice-black);
+    border-color: var(--ice-white);
+  }
+
+  .ice-btn-outlined {
+    background: transparent;
+    color: var(--ice-white);
+    border-color: rgba(255, 255, 255, 0.5);
+    padding: 0 12px;
+  }
+  @media (hover: hover) {
+    .ice-btn:hover {
+      background: rgba(38, 38, 38, 0.9);
+      color: var(--ice-white);
+      border-color: rgba(38, 38, 38, 0.9);
+    }
+    .ice-btn-white:hover {
+      background: var(--ice-black);
+      color: var(--ice-white);
+      border-color: var(--ice-black);
+    }
+    .ice-btn-outlined:hover {
+      border-color: var(--ice-white);
+      background: transparent;
+    }
+  }
+
+  /* â•â•â• HERO â€” ModuleHighlight â•â•â• */
+  .ice-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .ice-hero-image {
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .ice-hero-image:after {
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
+    position: absolute;
+    inset: 0;
+  }
+  .ice-hero-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-hero-overlay {
+    padding-left: var(--ice-pad);
+    color: var(--ice-white);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 150px;
+    display: flex;
+    position: absolute;
+    inset: 0;
+  }
+  .ice-hero-overlay h1 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 25px;
+  }
+  @media (min-width: 1024px) {
+    .ice-hero-overlay h1 {
+      letter-spacing: -0.02em;
+      font-size: 88px;
+      line-height: 0.9;
+      max-width: 55%;
+    }
+    .ice-hero-overlay { padding-bottom: 76px; }
+  }
+  .ice-hero-buttons {
+    flex-flow: wrap;
+    gap: 12px;
+    display: flex;
+  }
+
+  /* â•â•â• SLIDER BASE â€” FeatureSlider â•â•â• */
+  .ice-slider-section {
+    padding: 0;
+  }
+  .ice-slider {
+    flex-direction: column;
+    display: flex;
+  }
+  .ice-slider-title {
+    padding: 0 var(--ice-pad) 14px;
+    width: 100%;
+    color: var(--ice-black);
+    align-items: center;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-title { padding: 0 var(--ice-pad) 17px; }
+  }
+  .ice-slider-title h2 {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
+  }
+  .ice-slider-controls {
+    font-family: var(--ice-mono);
+    letter-spacing: -0.01em;
+    gap: 14px;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .ice-slider-controls button {
+    font-family: var(--ice-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
     background: none;
     border: none;
-    color: var(--color-text-muted);
+    padding: 0;
+    color: var(--ice-black);
     cursor: pointer;
-    opacity: 0;
-    transition: opacity 0.2s;
+    text-transform: uppercase;
+  }
+  .ice-slider-controls button:disabled {
+    opacity: var(--ice-opacity);
+    pointer-events: none;
+  }
+  @media (max-width: 1024px) {
+    .ice-slider-title { padding-bottom: 14px; }
+    .ice-slider-controls { display: none; }
+    .ice-slider-title-wrapper { justify-content: space-between; }
+  }
+  .ice-slider-title-wrapper {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .ice-slider-title-wrapper a {
+    opacity: var(--ice-opacity);
+    text-decoration: none;
+    color: inherit;
+  }
+  @media (hover: hover) {
+    .ice-slider-title-wrapper a:hover {
+      opacity: 1;
+      text-underline-offset: var(--ice-underline-offset);
+      text-decoration: underline;
+    }
+  }
+  @media (max-width: 1024px) {
+    .ice-slider-title-wrapper a {
+      text-underline-offset: var(--ice-underline-offset);
+      text-decoration: underline;
+    }
+  }
+
+  .ice-slider-items,
+  .ice-feature-items {
+    width: calc(100% + var(--ice-gap));
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-left: calc(var(--ice-gap) * -1);
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+  .ice-slider-items::-webkit-scrollbar,
+  .ice-feature-items::-webkit-scrollbar { display: none; }
+  .ice-slider-track {
+    display: flex;
+  }
+  .ice-slider-item {
+    flex: 0 0 var(--ice-flex);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-width: 0;
+    padding-left: var(--ice-gap);
+    position: relative;
+  }
+
+  /* Product slider */
+  .ice-slider-items {
+    --ice-gap: 1px;
+    --ice-flex: calc(100% / 1.3);
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-items {
+      --ice-flex: calc(100% / 5);
+    }
+  }
+
+  /* Feature slider (categories) */
+  .ice-feature-items {
+    --ice-gap: 60px;
+    --ice-flex: 100%;
+  }
+  @media (min-width: 1024px) {
+    .ice-feature-items {
+      --ice-gap: 98px;
+      --ice-flex: calc(100% / 5);
+    }
+  }
+
+  /* â•â•â• FEATURE ITEM (category card) â•â•â• */
+  .ice-feature-card {
+    display: block;
+    position: relative;
+    color: inherit;
+    text-decoration: none;
+  }
+  .ice-feature-image {
+    aspect-ratio: 4 / 5;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    background: var(--ice-image-bg);
+  }
+  .ice-feature-image:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 33.33%;
+    background: linear-gradient(#0000 0%, #00000080 50%, #000c 100%);
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  .ice-feature-image img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    padding: 24px;
+  }
+  .ice-feature-category {
+    position: absolute;
+    bottom: 20px;
+    left: var(--ice-pad);
+    right: 30px;
+    font-family: var(--ice-sans);
+    color: var(--ice-white);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-feature-category { bottom: 22px; }
+  }
+
+  /* â•â•â• HEADLINE TEXT â•â•â• */
+  .ice-headline-text {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-text {
+      gap: var(--ice-pad);
+      padding: 0 var(--ice-pad);
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+    }
+  }
+  .ice-headline-wrapper {
+    text-align: center;
+    max-width: 750px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-wrapper {
+      grid-column: 5 / span 8;
+      gap: 30px;
+    }
+  }
+  .ice-headline-big {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-big {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
+  /* â•â•â• HIGHLIGHT â€” ModuleHighlight (banner) â•â•â• */
+  .ice-highlight {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ice-highlight-image {
+    aspect-ratio: 2;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  @media (max-width: 1024px) {
+    .ice-highlight-image {
+      height: calc(100svh - var(--ice-header-height));
+      aspect-ratio: auto;
+    }
+  }
+  .ice-highlight-image:after {
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
+    position: absolute;
+    inset: 0;
+  }
+  .ice-highlight-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-highlight-overlay {
+    padding-left: var(--ice-pad);
+    color: var(--ice-white);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 56px;
+    display: flex;
+    position: absolute;
+    inset: 0;
+  }
+  .ice-highlight-overlay p {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-highlight-overlay h2 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 25px;
+  }
+  @media (min-width: 1024px) {
+    .ice-highlight-overlay h2 {
+      letter-spacing: -0.02em;
+      font-size: 88px;
+      line-height: 0.9;
+      max-width: 55%;
+    }
+  }
+
+  /* â•â•â• EDITORIAL HIGHLIGHT â•â•â• */
+  .ice-editorial,
+  .ice-editorial-image {
+    position: relative;
+  }
+  .ice-editorial-image:after {
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(#0003 0% 100%);
+    position: absolute;
+    inset: 0;
+  }
+  .ice-editorial-image {
+    aspect-ratio: 2;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-image {
+      height: calc(100svh - var(--ice-header-height));
+      aspect-ratio: auto;
+    }
+  }
+  .ice-editorial-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-editorial-overlay {
+    width: 100%;
+    padding: var(--ice-pad);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-overlay {
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 0 55px 0 59px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+  }
+  .ice-editorial-text {
+    color: var(--ice-white);
+    flex-direction: row;
+    justify-content: space-between;
+    gap: var(--ice-pad);
+    display: flex;
+    width: 100%;
+  }
+  @media (min-width: 1024px) {
+    .ice-editorial-text {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      column-gap: var(--ice-pad);
+    }
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-text {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .ice-editorial-title {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    max-width: 33ch;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-editorial-title { grid-column: 1 / span 3; }
+  }
+  .ice-editorial-text-p {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 19px;
+    line-height: 1.2;
+    font-weight: 600;
+    max-width: 30ch;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-editorial-text-p {
+      letter-spacing: -0.01em;
+      font-size: 28px;
+      line-height: 1.1;
+      grid-column: 6 / span 6;
+    }
+    .ice-editorial-text .ice-btn { grid-column: 16; justify-self: end; align-self: start; margin-top: 2px; }
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-text-p {
+      max-width: 18ch;
+      margin: 18px 0 28px;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+  }
+
+  /* â•â•â• HERO TRUST OVERLAY â•â•â• */
+  .ice-hero-trust {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 14px var(--ice-pad);
+    flex-flow: wrap;
+    gap: 8px 48px;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+    background: linear-gradient(#0000, #0009 100%);
+  }
+  .ice-hero-trust p {
+    margin: 0;
+    opacity: 0.8;
+    color: var(--ice-white);
+    position: relative;
+  }
+  .ice-hero-trust p + p:before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ice-white);
+    opacity: 0.45;
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* â•â•â• SLIDER SUBTITLE â•â•â• */
+  .ice-slider-sub {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0 var(--ice-pad) 20px;
+    opacity: 0.65;
+    max-width: 62ch;
+  }
+
+  /* â•â•â• GRID SECTIONS â€” applications / services â•â•â• */
+  .ice-grid-section {
+    padding: 0 var(--ice-pad);
+  }
+  .ice-grid-head {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    padding-bottom: 17px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-grid-head h2 {
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+  }
+  .ice-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    display: grid;
+  }
+  @media (min-width: 768px) {
+    .ice-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  @media (min-width: 1024px) {
+    .ice-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  .ice-grid-card {
+    border: 1px solid var(--ice-border);
+    padding: var(--ice-pad);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ice-grid-label {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-grid-card p {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.75;
+  }
+  @media (hover: hover) {
+    a.ice-grid-card:hover {
+      border-color: var(--ice-black);
+    }
+  }
+
+  /* â•â•â• CONTACT CTA â•â•â• */
+  .ice-cta {
+    background: #1a1a1a;
+    color: var(--ice-white);
+    padding: 80px var(--ice-pad);
+    margin-top: calc(-1 * var(--ice-page-gap));
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    position: relative;
     z-index: 1;
   }
-  .ae-tabs-wrap:hover .ae-scroll-btn {
-    opacity: 1;
-  }
-  .ae-scroll-btn:hover {
-    color: var(--color-text);
-  }
-  .ae-scroll-left {
-    margin-right: 0.5rem;
-  }
-  .ae-scroll-right {
-    margin-left: 0.5rem;
-  }
-  .ae-tab {
-    flex-shrink: 0;
-    padding: 0.9rem 1.5rem;
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 400;
-    color: var(--color-text-muted);
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    transition: color 0.15s;
-    white-space: nowrap;
-    margin-bottom: -1px;
-  }
-  .ae-tab:hover {
-    color: var(--color-text);
-  }
-  .ae-tab.active {
-    color: #111;
+  .ice-cta h2 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
     font-weight: 600;
-    border-bottom-color: #111;
+    margin: 0;
+    max-width: 20ch;
   }
-
-  /* ═══ PANELS ═══ */
-  .ae-panel {
-    display: none;
+  .ice-cta p {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    max-width: 44ch;
   }
-  .ae-panel.active {
-    display: block;
-  }
-  .ae-panel-desc {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--color-text-secondary);
-    max-width: 600px;
-    margin-bottom: 2rem;
-  }
-  .ae-products-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-  }
-
-  @media (max-width: 1200px) {
-    .ae-products-grid { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (max-width: 992px) {
-    .ae-products-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 768px) {
-    .ae-hero { min-height: 100vh; }
-    .ae-hero-inner { padding: 0 1rem; }
-    .ae-section { padding-bottom: 3rem; }
-    .ae-tabs-wrap { margin-bottom: 2rem; }
-    .ae-products-grid { grid-template-columns: 1fr; }
-  }
-  @media (max-width: 480px) {
-    .ae-products-grid { grid-template-columns: 1fr; }
+  @media (min-width: 1024px) {
+    .ice-cta {
+      gap: 30px;
+    }
+    .ice-cta h2 {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
   }
 </style>

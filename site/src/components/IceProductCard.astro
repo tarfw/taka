@@ -1,0 +1,109 @@
+﻿---
+interface Props {
+  id: string;
+  name: string;
+  fullName?: string;
+  brandName?: string;
+  subcategoryName?: string;
+  image: string;
+  tag?: string;
+}
+
+const { id, name, fullName, brandName, subcategoryName, image, tag } = Astro.props;
+---
+
+<article class="ice-card">
+  <a href={`/catalogue/${id}`}>
+    <div class="ice-card-image">
+      <img src={image} alt={fullName || name} loading="lazy" decoding="async" />
+      {tag && <span class="ice-card-tag">{tag}</span>}
+    </div>
+    <div class="ice-card-info">
+      <p class="ice-card-name"><span class="ice-card-name-part">{name}</span></p>
+      <p class="ice-card-sub">{subcategoryName || brandName}</p>
+    </div>
+  </a>
+</article>
+
+<style>
+  .ice-card {
+    background-color: var(--ice-white);
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+  .ice-card a {
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ice-card-image {
+    aspect-ratio: 1 / 1;
+    background-color: var(--ice-white);
+    position: relative;
+    overflow: hidden;
+  }
+  .ice-card-image img {
+    object-fit: contain;
+    object-position: center center;
+    position: absolute;
+    width: calc(100% - 88px);
+    height: calc(100% - 88px);
+    margin: 44px;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .ice-card:hover .ice-card-image img {
+    transform: scale(1.04);
+  }
+  .ice-card-tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 1.4;
+    color: var(--ice-black);
+    background: var(--ice-white);
+    padding: 4px 8px;
+  }
+  .ice-card-info {
+    padding: 0 var(--ice-pad) 20px;
+    flex-direction: column;
+    flex: 1;
+    gap: 10px;
+    display: flex;
+  }
+  .ice-card-name {
+    font-family: var(--font-sans);
+    letter-spacing: 0.01em;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .ice-card-sub {
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    color: var(--ice-black);
+  }
+  @media (min-width: 1024px) {
+    .ice-card-info {
+      gap: 15px;
+    }
+    .ice-card-name {
+      font-size: 15px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .ice-card-image {
+      background-color: transparent;
+    }
+  }
+</style>

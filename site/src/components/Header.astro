@@ -6,7 +6,9 @@
   <nav class="nav-desktop">
     <div class="nav-inner">
       <a href="/" class="nav-logo" aria-label="TAKA Scientific home">
-        <img src="/logo5.svg" alt="TAKA Scientific" class="nav-logo-img" />
+        <span class="nav-logo-container">
+          <img src="/logo5.svg" alt="TAKA Scientific" class="nav-logo-img" />
+        </span>
       </a>
 
       <!-- Center pill nav — Cantor8 style -->
@@ -18,7 +20,6 @@
             <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
           <div class="nav-pill-dropdown-menu">
-            <a href="/catalogue" class="dropdown-item">All Products</a>
             <a href="/catalogue/analytical-equipments" class="dropdown-item">Analytical Equipments</a>
             <a href="/catalogue/scientific-equipments" class="dropdown-item">Scientific Equipments</a>
             <a href="/catalogue/testing-apparatus" class="dropdown-item">Testing Apparatus</a>
@@ -61,7 +62,6 @@
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         <div class="mobile-accordion-content">
-          <a href="/catalogue" class="mobile-link">All Products</a>
           <a href="/catalogue/analytical-equipments" class="mobile-link">Analytical Equipments</a>
           <a href="/catalogue/scientific-equipments" class="mobile-link">Scientific Equipments</a>
           <a href="/catalogue/testing-apparatus" class="mobile-link">Testing Apparatus</a>
@@ -114,13 +114,17 @@
     flex-shrink: 0;
     z-index: 10;
   }
-  .nav-logo-img {
-    height: clamp(30px, 3.5vw, 42px);
-    width: auto;
-    transition: filter 0.3s;
+  .nav-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 6px;
+    padding: 5px 10px;
   }
-  .header.transparent .nav-logo-img {
-    filter: brightness(0) invert(1);
+  .nav-logo-img {
+    height: 32px;
+    width: auto;
   }
 
   /* ═══ Center pill nav — Cantor8 style ═══ */
@@ -448,7 +452,7 @@
   }
   @media (max-width: 768px) {
     .nav-inner { padding: 0 1rem; }
-    .nav-logo-img { height: clamp(48px, 12vw, 68px); }
+    .nav-logo-img { height: 26px; }
   }
 </style>
 
