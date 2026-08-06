@@ -1,0 +1,382 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { caseStudies, getFeaturedCaseStudy } from '../../data/caseStudies';
+
+const featured = getFeaturedCaseStudy();
+const rest = caseStudies.filter((c) => !c.featured);
+---
+
+<Layout
+  title="Case Studies"
+  description="Case studies from schools, hospitals, research laboratories and government institutions across the UAE supplied and installed by TAKA Scientific."
+>
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">Case studies</span>
+      <h1 class="page-hero-title">Trusted by institutions<br />across the UAE.</h1>
+      <p class="page-hero-sub">
+        Schools, hospitals, research laboratories and government facilities rely on TAKA
+        for equipment supply, delivery and installation. Here is how a few of them work with us.
+      </p>
+    </div>
+  </section>
+
+  {featured && (
+    <section class="featured-section">
+      <div class="container">
+        <a href={`/case-studies/${featured.slug}`} class="featured-card">
+          <div class="featured-visual">
+            <img src={featured.image} alt={featured.imageAlt} class="featured-img" loading="lazy" />
+            <span class="featured-tag">{featured.sector}</span>
+          </div>
+          <div class="featured-content">
+            <div class="featured-meta">
+              <span class="featured-org">{featured.organization}</span>
+              <span class="featured-eyebrow">{featured.emirate} &middot; {featured.timeframe}</span>
+            </div>
+            <h2 class="featured-headline">{featured.headline}</h2>
+            <p class="featured-quote">&ldquo;{featured.quote}&rdquo;</p>
+            <div class="featured-author">
+              <p class="featured-name">{featured.author}</p>
+              <p class="featured-role">{featured.role}</p>
+            </div>
+            <span class="featured-cta">Read case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      </div>
+    </section>
+  )}
+
+  <section class="list-section">
+    <div class="container">
+      <div class="list-grid">
+        {rest.map((c) => (
+          <a href={`/case-studies/${c.slug}`} class="study-card">
+            <div class="study-card-img-wrap">
+              <img src={c.image} alt={c.imageAlt} class="study-card-img" loading="lazy" />
+            </div>
+            <div class="study-card-top">
+              <span class="study-sector">{c.sector}</span>
+              <span class="study-meta">{c.emirate}</span>
+            </div>
+            <h3 class="study-org">{c.organization}</h3>
+            <p class="study-headline">{c.headline}</p>
+            <p class="study-summary">{c.summary}</p>
+            <div class="study-stats">
+              {c.stats.map((s) => (
+                <div class="study-stat">
+                  <span class="study-stat-value">{s.value}</span>
+                  <span class="study-stat-label">{s.label}</span>
+                </div>
+              ))}
+            </div>
+            <span class="study-cta">Read case study
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="quote-band">
+    <div class="container">
+      <p class="quote-band-text">
+        Every project starts with a conversation about your facility, your requirements and your timeline.
+        We handle the rest.
+      </p>
+      <div class="quote-band-actions">
+        <a href="/contact" class="btn btn-dark">Talk to our team</a>
+        <a href="https://wa.me/971557566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": caseStudies.map((c, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "item": {
+        "@type": "CreativeWork",
+        "name": `${c.organization} — ${c.headline}`,
+        "url": `https://taka.ae/case-studies/${c.slug}`,
+        "creator": { "@type": "Organization", "name": "TAKA Scientific" },
+      },
+    })),
+  })} />
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+    line-height: 1.1;
+  }
+  .page-hero-sub {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 560px;
+  }
+
+  /* ═══ Featured card ═══ */
+  .featured-section {
+    padding: 4rem 0 2rem;
+  }
+  .featured-card {
+    display: grid;
+    grid-template-columns: 42% 1fr;
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    background: #fff;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .featured-card:hover { border-color: var(--greige-lightest); }
+  .featured-visual {
+    position: relative;
+    min-height: 340px;
+    overflow: hidden;
+    background: #1a365d;
+  }
+  .featured-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .featured-tag {
+    position: absolute;
+    top: 1.25rem;
+    left: 1.25rem;
+    padding: 0.3rem 0.65rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    background: rgba(26,54,93,0.82);
+    backdrop-filter: blur(6px);
+    border-radius: 4px;
+  }
+  .featured-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2.5rem 2.25rem;
+  }
+  .featured-meta { display: flex; flex-direction: column; gap: 0.15rem; margin-bottom: 1.25rem; }
+  .featured-org {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111;
+  }
+  .featured-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .featured-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: #111;
+    margin-bottom: 1.25rem;
+  }
+  .featured-quote {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.5rem;
+  }
+  .featured-author { margin-bottom: 1.75rem; }
+  .featured-name {
+    font-family: var(--font-serif);
+    font-size: 1.05rem;
+    color: #111;
+  }
+  .featured-role {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+  }
+  .featured-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    padding: 0.55rem 0.9rem;
+    background: #1a365d;
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: background 0.15s;
+  }
+  .featured-card:hover .featured-cta { background: #163052; }
+
+  /* ═══ Cards grid ═══ */
+  .list-section { padding: 2rem 0 4rem; }
+  .list-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .study-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    padding: 2rem;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .study-card:hover { background: var(--cream-darker); }
+  .study-card-img-wrap {
+    margin: -2rem -2rem 1.75rem;
+    height: 190px;
+    overflow: hidden;
+    background: #1a365d;
+  }
+  .study-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+  }
+  .study-card:hover .study-card-img { transform: scale(1.03); }
+  .study-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .study-sector {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1a365d;
+    background: #e8edf5;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+  }
+  .study-meta {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+  }
+  .study-org {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.5rem;
+  }
+  .study-headline {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #111;
+    margin-bottom: 0.75rem;
+  }
+  .study-summary {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 1.75rem;
+  }
+  .study-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1.5rem;
+    margin-top: auto;
+    margin-bottom: 1.5rem;
+  }
+  .study-stat { display: flex; flex-direction: column; gap: 0.25rem; }
+  .study-stat-value {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    line-height: 1;
+    color: #111;
+  }
+  .study-stat-label {
+    font-size: 0.78rem;
+    line-height: 1.35;
+    color: var(--color-text-muted);
+  }
+  .study-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    align-self: flex-start;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1a365d;
+    transition: gap 0.15s;
+  }
+  .study-card:hover .study-cta { gap: 0.75rem; }
+
+  /* ═══ Quote band ═══ */
+  .quote-band {
+    background: #1a365d;
+    padding: 4.5rem 1.5rem;
+  }
+  .quote-band .container { max-width: 720px; text-align: center; }
+  .quote-band-text {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 2rem;
+  }
+  .quote-band-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 900px) {
+    .featured-card { grid-template-columns: 1fr; }
+    .featured-visual { min-height: 240px; }
+    .list-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero-title { font-size: 2rem; }
+    .featured-section { padding: 2.5rem 0 1.5rem; }
+    .featured-content { padding: 1.75rem 1.5rem; }
+    .study-card { padding: 1.5rem; }
+    .study-stats { grid-template-columns: 1fr; gap: 1rem; }
+  }
+</style>

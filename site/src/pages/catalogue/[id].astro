@@ -13,6 +13,7 @@ export async function getStaticPaths() {
             params: { id: product.id },
             props: {
               product,
+              categoryId: category.id,
               categoryName: category.name,
               brandName: brand.name,
               subcategoryName: subcat.name,
@@ -29,12 +30,13 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { product, categoryName, brandName, subcategoryName, relatedProducts } = Astro.props;
+const { product, categoryId, categoryName, brandName, subcategoryName, relatedProducts } = Astro.props;
 ---
 
 <Layout title={`${product.name} — TAKA Scientific`}>
   <ProductDetail 
     product={product}
+    categoryId={categoryId}
     categoryName={categoryName}
     brandName={brandName}
     subcategoryName={subcategoryName}

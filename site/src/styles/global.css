@@ -839,6 +839,55 @@ ul, ol { list-style: none; }
   background: rgba(255,255,255,0.15);
   margin-bottom: 2.5rem;
 }
+
+.trust-badges {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+.trust-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+.trust-badge-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  flex-shrink: 0;
+}
+.trust-badge-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.trust-badge-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+.trust-badge-name {
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.2;
+}
+.trust-badge-desc {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
 .trust-features {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -856,9 +905,32 @@ ul, ol { list-style: none; }
   line-height: 1.7;
   color: rgba(255,255,255,0.6);
 }
+@media (max-width: 900px) {
+  .trust-badges {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 @media (max-width: 768px) {
   .trust-header {
     flex-direction: column;
+    align-items: flex-start;
+  }
+  .trust-badges {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  .trust-badge {
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    text-align: left;
+  }
+  .trust-badge-icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+  }
+  .trust-badge-text {
     align-items: flex-start;
   }
   .trust-features {
@@ -939,6 +1011,7 @@ ul, ol { list-style: none; }
 }
 .trusted-btn:hover { background: #163052; }
 .trusted-main {
+  display: block;
   margin-bottom: 1rem;
   border-radius: 6px;
   overflow: hidden;
@@ -956,9 +1029,6 @@ ul, ol { list-style: none; }
   width: 100%;
   min-height: 260px;
   background: #e8e6e3;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   overflow: hidden;
 }
 @media (min-width: 768px) {
@@ -967,15 +1037,13 @@ ul, ol { list-style: none; }
     min-height: 360px;
   }
 }
-.trusted-main-placeholder {
-  width: 100px;
-  height: 100px;
-  background: rgba(255,255,255,0.6);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #999;
+.trusted-main-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .trusted-main-overlay {
   position: absolute;
@@ -1105,6 +1173,7 @@ ul, ol { list-style: none; }
   margin-top: 1rem;
 }
 .trusted-image-card {
+  display: block;
   position: relative;
   min-height: 260px;
   border-radius: 6px;
@@ -1116,7 +1185,16 @@ ul, ol { list-style: none; }
 .trusted-image-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #2c5282, #1a365d, #2d3748);
+  background-image: url('/case-studies/khalifa-research-lab.jpg');
+  background-size: cover;
+  background-position: center;
+  background-color: #1a365d;
+}
+.trusted-image-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,20,40,0.15) 0%, rgba(10,20,40,0.55) 100%);
 }
 .trusted-image-content {
   position: relative;

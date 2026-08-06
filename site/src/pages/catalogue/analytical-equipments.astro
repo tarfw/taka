@@ -25,8 +25,12 @@ const subcategories = category.brands.flatMap(brand =>
 const productsIn = (ids) =>
   subcategories.filter(sc => ids.includes(sc.id)).flatMap(sc => sc.products);
 
+const gcSpecialsIds = ['cryotrap', 'olfactometer', 'ezprep'];
 const gcSystems = productsIn(['gc-systems']);
-const inletsProducts = productsIn(['gc-inlets-accessories']);
+const inletsProducts = productsIn(['gc-inlets-accessories']).filter(p => !gcSpecialsIds.includes(p.id));
+const gcSpecialsProducts = productsIn(['gc-inlets-accessories'])
+  .filter(p => gcSpecialsIds.includes(p.id))
+  .map(p => ({ ...p, subcategoryName: 'GC Specials' }));
 const detectorProducts = productsIn(['detectors']);
 const samplePrepProducts = productsIn(['automated-sample-prep']);
 const labSupportProducts = productsIn(['lab-support-equipment']);
@@ -51,6 +55,12 @@ const productSections = [
     products: inletsProducts,
   },
   {
+    id: 'gc-specials',
+    title: 'Gas chromatography specials',
+    sub: 'Special GC modules — cryogenic trapping, olfactory detection and preparative fraction collection.',
+    products: gcSpecialsProducts,
+  },
+  {
     id: 'automated-sample-prep',
     title: 'Automated sample preparation',
     sub: 'Robotic and fully automated sample preparation for reproducible, unattended analysis.',
@@ -68,7 +78,7 @@ const categoryCards = [
   { name: 'Atomic Emission Detector', image: '/atomic.jpg', href: '#detectors' },
   { name: 'Sample Introduction Systems', image: '/gassampler.jpg', href: '#inlets' },
   { name: 'UNIS Inlets Range', image: '/unix.png', href: '#inlets' },
-  { name: 'Gas Chromatography Specials', image: '/jaschromo.png', href: '#inlets', contain: true },
+  { name: 'Gas Chromatography Specials', image: '/jaschromo.png', href: '#gc-specials', contain: true },
   { name: 'Customized Analyzers', image: '/customanalyzer.png', href: '#gc-systems' },
   { name: 'Automated Sample Prep', image: '/gerstel.png', href: '#automated-sample-prep' },
   { name: 'Lab Support Equipment', image: '/labsupport.png', href: '#lab-support-equipment', contain: true },
@@ -91,7 +101,7 @@ const categoryCards = [
         <h1>Precision analytical instruments for every analysis</h1>
         <div class="ice-hero-buttons">
           <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
-          <a href="/catalogue" class="ice-btn ice-btn-outlined"><span>Shop now</span></a>
+          <a href="/contact" class="ice-btn ice-btn-outlined"><span>Talk to our team</span></a>
         </div>
       </div>
       <div class="ice-hero-trust">
@@ -107,12 +117,12 @@ const categoryCards = [
   <section class="ice-headline-text ice-headline-footer">
     <div class="ice-headline-wrapper">
       <p class="ice-headline-big">Precision gas chromatography. Robust systems. Results you can trust.</p>
-      <a href="/catalogue" class="ice-btn"><span>Explore Analytical products</span></a>
+      <a href="/contact" class="ice-btn"><span>Talk to our team</span></a>
     </div>
   </section>
 
   <!-- â•â•â• CATEGORIES â€” Explore the range â•â•â• -->
-  <section class="ice-cat-section">
+  <section class="ice-cat-section" id="range">
     <div class="ice-cat-grid">
       {categoryCards.map(card => (
         <a href={card.href} class="ice-cat-card">
@@ -149,7 +159,7 @@ const categoryCards = [
         <div class="ice-slider-title">
           <div class="ice-slider-title-wrapper">
             <h2>{section.title}</h2>
-            <a href="/catalogue">Shop all</a>
+            <a href="/contact">Get a quote</a>
           </div>
           <div class="ice-slider-controls">
             <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
@@ -191,22 +201,22 @@ const categoryCards = [
       <h2>Built for your industry</h2>
     </div>
     <div class="ice-grid">
-      <a href="/catalogue" class="ice-grid-card">
+      <div class="ice-grid-card">
         <span class="ice-grid-label">Natural gas</span>
         <p>Complete natural gas composition analysis per ASTM D1945 and ISO 6974.</p>
-      </a>
-      <a href="/catalogue" class="ice-grid-card">
+      </div>
+      <div class="ice-grid-card">
         <span class="ice-grid-label">Refinery &amp; petrochemical</span>
         <p>Refinery gas, oxygenates and simulated distillation for process control.</p>
-      </a>
-      <a href="/catalogue" class="ice-grid-card">
+      </div>
+      <div class="ice-grid-card">
         <span class="ice-grid-label">Environmental</span>
         <p>Trace sulfur and atomic emission detection with picogram-level sensitivity.</p>
-      </a>
-      <a href="/catalogue" class="ice-grid-card">
+      </div>
+      <div class="ice-grid-card">
         <span class="ice-grid-label">Research &amp; academia</span>
         <p>Flexible, modular platforms for method development and advanced research.</p>
-      </a>
+      </div>
     </div>
   </section>
 
@@ -253,7 +263,7 @@ const categoryCards = [
   <section class="ice-cta">
     <h2>Ready to find your instrument?</h2>
     <p>Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
-    <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to an expert</span></a>
+    <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to our team</span></a>
   </section>
 
 </div>
@@ -561,6 +571,7 @@ const categoryCards = [
   /* â•â•â• CATEGORIES â€” Explore the range â•â•â• */
   .ice-cat-section {
     padding: 0 var(--ice-pad);
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
   }
   .ice-cat-grid {
     grid-template-columns: repeat(2, 1fr);

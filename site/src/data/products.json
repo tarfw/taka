@@ -922,6 +922,40 @@
                   "image": "/products/jasmea/auto-twister.png"
                 },
                 {
+                  "id": "labworks",
+                  "name": "LabWorks",
+                  "fullName": "Gerstel LabWorks — Method Development Software",
+                  "brand": "jasmea",
+                  "category": "analytical-equipments",
+                  "subcategory": "automated-sample-prep",
+                  "description": "Intelligent method development software.",
+                  "fullDescription": "LabWorks is Gerstel's intelligent method development software that automatically determines and validates optimal instrument and method parameters, eliminating doubt and discovering unknown optimums.",
+                  "specs": [
+                    {
+                      "key": "Type",
+                      "value": "Method development software"
+                    },
+                    {
+                      "key": "Function",
+                      "value": "Automated parameter optimization"
+                    },
+                    {
+                      "key": "Platform",
+                      "value": "MAESTRO software"
+                    },
+                    {
+                      "key": "Application",
+                      "value": "Method development"
+                    }
+                  ],
+                  "applications": [
+                    "Method development",
+                    "Laboratory automation",
+                    "Optimization workflows"
+                  ],
+                  "image": "/products/jasmea/labworks.png"
+                },
+                {
                   "id": "odp",
                   "name": "ODP — Olfactory Detection Port",
                   "fullName": "Gerstel ODP — Olfactory Detection Port",

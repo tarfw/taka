@@ -1,0 +1,424 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { caseStudies, getCaseStudy, getRelatedCaseStudies } from '../../data/caseStudies';
+
+export function getStaticPaths() {
+  return caseStudies.map((c) => ({
+    params: { slug: c.slug },
+    props: { study: c },
+  }));
+}
+
+const { study } = Astro.props;
+const related = getRelatedCaseStudies(study.slug, 3);
+const canonical = `https://taka.ae/case-studies/${study.slug}`;
+---
+
+<Layout
+  title={`${study.organization} case study`}
+  description={`${study.organization} — ${study.headline}. ${study.summary} Read the case study on the TAKA Scientific website.`}
+>
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "CaseStudy",
+    "name": `${study.organization} — ${study.headline}`,
+    "headline": study.headline,
+    "url": canonical,
+    "description": study.summary,
+    "creator": { "@type": "Organization", "name": "TAKA Scientific", "url": "https://taka.ae" },
+    "about": { "@type": "Organization", "name": study.organization },
+    "locationCreated": { "@type": "Place", "address": { "@type": "PostalAddress", "addressRegion": study.emirate, "addressCountry": "AE" } },
+    "datePublished": "2025-01-01",
+  })} />
+
+  <section class="page-hero">
+    <div class="container">
+      <span class="eyebrow">{study.sector}</span>
+      <h1 class="page-hero-title">{study.organization}</h1>
+      <p class="page-hero-headline">{study.headline}</p>
+      <p class="page-hero-sub">{study.summary}</p>
+      <div class="page-hero-meta">
+        <span class="meta-item">{study.sector}</span>
+        <span class="meta-item">{study.emirate}</span>
+        <span class="meta-item">{study.timeframe}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero-image-section">
+    <div class="container">
+      <figure class="hero-figure">
+        <img src={study.image} alt={study.imageAlt} class="hero-image" />
+        {study.credit && (
+          <figcaption class="hero-credit">
+            {study.creditUrl ? <a href={study.creditUrl} target="_blank" rel="noopener">{study.credit}</a> : study.credit}
+            {study.slug === 'sheikh-khalifa-medical-city' && ' — CC BY-SA 3.0'}
+          </figcaption>
+        )}
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="detail-grid">
+        <div class="detail-main">
+          <div class="body-block">
+            <h2 class="body-title">The brief</h2>
+            <p class="body-text">{study.challenge}</p>
+          </div>
+          <div class="body-block">
+            <h2 class="body-title">What we did</h2>
+            <p class="body-text">{study.solution}</p>
+          </div>
+          <div class="body-block">
+            <h2 class="body-title">The outcome</h2>
+            <ul class="result-list">
+              {study.results.map((r) => (
+                <li class="result-item">{r}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <aside class="detail-side">
+          <div class="side-card">
+            <p class="side-card-label">What we supplied</p>
+            <ul class="deliverable-list">
+              {study.deliverables.map((d) => (
+                <li class="deliverable-item">{d}</li>
+              ))}
+            </ul>
+          </div>
+          <div class="side-card side-card-quote">
+            <blockquote class="side-quote">&ldquo;{study.quote}&rdquo;</blockquote>
+            <p class="side-author">{study.author}</p>
+            <p class="side-role">{study.role}</p>
+          </div>
+          <div class="side-card side-card-cta">
+            <p class="side-cta-title">Planning a similar project?</p>
+            <p class="side-cta-text">Send us your requirements and we will respond within the working day.</p>
+            <a href="/contact" class="btn btn-dark">Request a quote</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="stats-band">
+        {study.stats.map((s) => (
+          <div class="stats-band-item">
+            <span class="stats-band-value">{s.value}</span>
+            <span class="stats-band-label">{s.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="related-section">
+    <div class="container">
+      <div class="related-header">
+        <h2 class="related-title">More case studies</h2>
+        <a href="/case-studies" class="related-link">View all case studies &rarr;</a>
+      </div>
+      <div class="related-grid">
+        {related.map((c) => (
+          <a href={`/case-studies/${c.slug}`} class="related-card">
+            <span class="related-sector">{c.sector}</span>
+            <h3 class="related-org">{c.organization}</h3>
+            <p class="related-headline">{c.headline}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <div class="container text-center">
+      <h2 class="section-title">Ready to equip your facility?</h2>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+        <a href="/contact" class="btn btn-dark">Request a quote</a>
+        <a href="https://wa.me/971557566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .page-hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 400;
+    letter-spacing: -0.03em;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+    line-height: 1.1;
+  }
+  .page-hero-headline {
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 1rem;
+  }
+  .page-hero-sub {
+    font-size: 1.05rem;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    max-width: 620px;
+    margin-bottom: 1.5rem;
+  }
+  .page-hero-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+  .meta-item {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+  }
+
+  /* ═══ Hero image ═══ */
+  .hero-image-section { padding: 3rem 0 0; }
+  .hero-figure { margin: 0; }
+  .hero-image {
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    display: block;
+    border-radius: 6px;
+    border: 1px solid var(--color-border);
+  }
+  .hero-credit {
+    margin-top: 0.6rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+  }
+  .hero-credit a { color: var(--color-text-muted); text-decoration: underline; }
+  .hero-credit a:hover { color: var(--color-text-secondary); }
+
+  /* ═══ Detail layout ═══ */
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 4rem;
+    align-items: start;
+  }
+  .body-block { margin-bottom: 2.5rem; }
+  .body-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    margin-bottom: 0.75rem;
+  }
+  .body-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: var(--color-text-secondary);
+  }
+  .result-list { display: flex; flex-direction: column; gap: 0.75rem; }
+  .result-item {
+    position: relative;
+    padding-left: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+  }
+  .result-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1a365d;
+  }
+
+  /* ═══ Sidebar ═══ */
+  .detail-side { display: flex; flex-direction: column; gap: 1rem; }
+  .side-card {
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 1.5rem;
+    background: #fff;
+  }
+  .side-card-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+  }
+  .deliverable-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .deliverable-item {
+    position: relative;
+    padding-left: 1.25rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+  }
+  .deliverable-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--greige-lightest);
+  }
+  .side-card-quote {
+    background: var(--cream);
+    border-color: transparent;
+  }
+  .side-quote {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.45;
+    color: #111;
+    margin-bottom: 1.25rem;
+  }
+  .side-author {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: #111;
+  }
+  .side-role {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .side-card-cta {
+    background: #1a365d;
+    border-color: #1a365d;
+  }
+  .side-cta-title {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    color: #fff;
+    margin-bottom: 0.5rem;
+  }
+  .side-cta-text {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 1.25rem;
+  }
+  .side-card-cta .btn-dark { background: #fff; color: #1a365d; }
+  .side-card-cta .btn-dark:hover { background: #f0f0f0; }
+
+  /* ═══ Stats band ═══ */
+  .stats-band {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+    margin-top: 4rem;
+  }
+  .stats-band-item {
+    background: #fff;
+    padding: 2rem 1.5rem;
+  }
+  .stats-band-value {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    line-height: 1;
+    color: #111;
+    margin-bottom: 0.5rem;
+  }
+  .stats-band-label {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+  }
+
+  /* ═══ Related ═══ */
+  .related-section { padding: 0 0 4rem; }
+  .related-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .related-title {
+    font-family: var(--font-serif);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #111;
+  }
+  .related-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1a365d;
+    white-space: nowrap;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .related-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--cream);
+    padding: 1.75rem;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .related-card:hover { background: var(--cream-darker); }
+  .related-sector {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1a365d;
+    background: #e8edf5;
+    padding: 0.3rem 0.6rem;
+    border-radius: 4px;
+    align-self: flex-start;
+    margin-bottom: 1.25rem;
+  }
+  .related-org {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111;
+    margin-bottom: 0.5rem;
+  }
+  .related-headline {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+  }
+
+  @media (max-width: 1024px) {
+    .detail-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  }
+  @media (max-width: 900px) {
+    .related-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero-title { font-size: 2rem; }
+    .stats-band { grid-template-columns: 1fr; margin-top: 3rem; }
+    .related-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  }
+</style>

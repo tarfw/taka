@@ -41,8 +41,8 @@ import Layout from '../layouts/Layout.astro';
 
       <!-- CTA button -->
       <div class="hero-actions">
-        <a href="/catalogue" class="hero-cta">
-          <span class="hero-cta-text">Browse products</span>
+        <a href="/contact" class="hero-cta">
+          <span class="hero-cta-text">Talk to our team</span>
           <span class="hero-cta-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </span>
@@ -415,23 +415,15 @@ import Layout from '../layouts/Layout.astro';
     <div class="trusted-wrap">
       <div class="trusted-header">
         <h2 class="trusted-heading">Trusted by leading institutions<br class="hidden sm:block" /> across the UAE</h2>
-        <a href="/contact" class="trusted-btn">View all case studies</a>
+        <a href="/case-studies" class="trusted-btn">View all case studies</a>
       </div>
 
       <!-- Main testimonial card -->
-      <div class="trusted-main">
+      <a href="/case-studies/abu-dhabi-education-council" class="trusted-main">
         <div class="trusted-main-inner">
           <!-- Image side -->
           <div class="trusted-main-image">
-            <div class="trusted-main-placeholder">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-            </div>
-            <div class="trusted-main-overlay">
-              <span class="trusted-main-play">
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.25"></circle><path d="M6 4.75L11 7.5L6 10.25V4.75Z" fill="currentColor"></path></svg>
-                <span>Watch Video</span>
-              </span>
-            </div>
+            <img src="/case-studies/adec-school-lab.jpg" alt="Student in a school science laboratory" class="trusted-main-img" loading="lazy" />
           </div>
           <!-- Quote side -->
           <div class="trusted-main-content">
@@ -445,12 +437,12 @@ import Layout from '../layouts/Layout.astro';
             </div>
           </div>
         </div>
-      </div>
+      </a>
 
       <!-- Bottom cards -->
       <div class="trusted-bottom">
         <!-- Stats card -->
-        <a href="/contact" class="trusted-stats-card">
+        <a href="/case-studies/sheikh-khalifa-medical-city" class="trusted-stats-card">
           <div class="trusted-stats-logo">Sheikh Khalifa Medical City</div>
           <div class="trusted-stats-content">
             <div class="trusted-stats-item">
@@ -466,16 +458,15 @@ import Layout from '../layouts/Layout.astro';
         </a>
 
         <!-- Image card -->
-        <div class="trusted-image-card">
+        <a href="/case-studies/khalifa-university" class="trusted-image-card">
           <div class="trusted-image-bg"></div>
-          <div class="trusted-image-content">
-            <div class="trusted-image-logo">Khalifa University</div>
+          <div class="trusted-image-content">            <div class="trusted-image-logo">Khalifa University</div>
             <div class="trusted-image-bottom">
               <p class="trusted-image-text">Equipping research labs with modern scientific apparatus</p>
               <span class="trusted-image-cta">Read case study</span>
             </div>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
@@ -485,13 +476,60 @@ import Layout from '../layouts/Layout.astro';
     <div class="trust-wrap">
       <div class="trust-header">
         <h2 class="trust-heading">Quality standards<br />and compliance</h2>
-        <a href="/contact" class="trust-btn">Talk to an expert &rarr;</a>
+        <a href="/contact" class="trust-btn">Talk to our team &rarr;</a>
       </div>
       <div class="trust-divider"></div>
+      <div class="trust-badges">
+        <div class="trust-badge">
+          <span class="trust-badge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5.5 3.8 9.5 9 11 5.2-1.5 9-5.5 9-11V6l-9-4Z"/><path d="m9 12 2 2 4-4"/></svg>
+          </span>
+          <div class="trust-badge-text">
+            <span class="trust-badge-name">ISO 9001</span>
+            <span class="trust-badge-desc">Quality Management</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2v6.292a.5.5 0 0 1-.2.4L3 14v2c0 3.5 3.5 6 9 6s9-2.5 9-6v-2l-6.8-5.308a.5.5 0 0 1-.2-.4V2"/><path d="M8.5 15h7"/><path d="M12 15v3"/></svg>
+          </span>
+          <div class="trust-badge-text">
+            <span class="trust-badge-name">ISO/IEC 17025</span>
+            <span class="trust-badge-desc">Testing &amp; Calibration</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.9C15.5 4.9 20 2 20 2s-1 6-4 9"/><path d="M11 20v-8"/></svg>
+          </span>
+          <div class="trust-badge-text">
+            <span class="trust-badge-name">ISO 14001</span>
+            <span class="trust-badge-desc">Environmental</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 18h20"/><path d="M6 18v3h12v-3"/><path d="M12 3a5 5 0 0 1 5 5v5H7V8a5 5 0 0 1 5-5Z"/></svg>
+          </span>
+          <div class="trust-badge-text">
+            <span class="trust-badge-name">ISO 45001</span>
+            <span class="trust-badge-desc">Health &amp; Safety</span>
+          </div>
+        </div>
+        <div class="trust-badge">
+          <span class="trust-badge-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8 5.8 21.3l2.4-7.4L2 9.4h7.6Z"/></svg>
+          </span>
+          <div class="trust-badge-text">
+            <span class="trust-badge-name">ICV</span>
+            <span class="trust-badge-desc">In-Country Value</span>
+          </div>
+        </div>
+      </div>
       <div class="trust-features">
         <div class="trust-feature">
-          <h3 class="trust-feature-title">ISO 9001 Certified</h3>
-          <p class="trust-feature-desc">Our quality management system meets international standards. Consistent product quality and reliable supply chain processes for every order.</p>
+          <h3 class="trust-feature-title">International Standards</h3>
+          <p class="trust-feature-desc">Products supplied in accordance with British, European and international standards. A quality management system that meets the strictest compliance requirements.</p>
         </div>
         <div class="trust-feature">
           <h3 class="trust-feature-title">Authorized Distributor</h3>
@@ -512,7 +550,6 @@ import Layout from '../layouts/Layout.astro';
       <p class="cta-subtitle">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
       <div class="cta-actions">
         <a href="/contact" class="btn btn-dark">Request a quote</a>
-        <a href="/catalogue" class="btn btn-ghost">Browse products</a>
       </div>
     </div>
   </section>
