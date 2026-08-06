@@ -21,24 +21,65 @@ const subcategories = category.brands.flatMap(brand =>
   }))
 );
 
-const allProducts = subcategories.flatMap(sc => sc.products);
-const gcSystems = (subcategories.find(sc => sc.id === 'gc-systems')?.products ?? []);
-const inletsProducts = subcategories
-  .filter(sc => ['gc-inlets-accessories', 'automated-sample-prep'].includes(sc.id))
-  .flatMap(sc => sc.products);
+
+const productsIn = (ids) =>
+  subcategories.filter(sc => ids.includes(sc.id)).flatMap(sc => sc.products);
+
+const gcSystems = productsIn(['gc-systems']);
+const inletsProducts = productsIn(['gc-inlets-accessories']);
+const detectorProducts = productsIn(['detectors']);
+const samplePrepProducts = productsIn(['automated-sample-prep']);
+const labSupportProducts = productsIn(['lab-support-equipment']);
+
+const productSections = [
+  {
+    id: 'gc-systems',
+    title: 'Gas chromatography systems',
+    sub: 'Complete gas analysis systems — natural gas, refinery gas, oxygenates and simulated distillation.',
+    products: gcSystems,
+  },
+  {
+    id: 'detectors',
+    title: 'Detectors',
+    sub: 'Atomic emission detection with elemental selectivity and picogram-level sensitivity.',
+    products: detectorProducts,
+  },
+  {
+    id: 'inlets',
+    title: 'Sample introduction & inlets',
+    sub: 'Precision inlets and accessories for maximum sensitivity and reproducibility.',
+    products: inletsProducts,
+  },
+  {
+    id: 'automated-sample-prep',
+    title: 'Automated sample preparation',
+    sub: 'Robotic and fully automated sample preparation for reproducible, unattended analysis.',
+    products: samplePrepProducts,
+  },
+  {
+    id: 'lab-support-equipment',
+    title: 'Lab support equipment',
+    sub: 'Gas generators and support equipment that keep your lab running.',
+    products: labSupportProducts,
+  },
+];
 
 const categoryCards = [
-  { name: 'Atomic Emission Detector', image: '/products/jasmea/aed-iii-hr.png', href: '/catalogue/aed-iii-hr' },
-  { name: 'Sample Introduction Systems', image: '/products/jasmea/vaporizer.png', href: '/catalogue/vaporizer' },
-  { name: 'UNIS Inlets Range', image: '/products/jasmea/unis-2100.jpg', href: '/catalogue/unis-2100' },
-  { name: 'Gas Chromatography Specials', image: '/products/jasmea/cryotrap.png', href: '/catalogue/cryotrap' },
-  { name: 'Customized Analyzers', image: '/products/jasmea/simdis-analyzer.png', href: '/catalogue/simdis-analyzer' },
-  { name: 'Automated Sample Prep', image: '/products/jasmea/mps-robotic.png', href: '/catalogue/mps-robotic' },
-  { name: 'Lab Support Equipment', image: '/products/jasmea/peak-gas-generators.png', href: '/catalogue/peak-gas-generators' },
+  { name: 'Atomic Emission Detector', image: '/atomic.jpg', href: '#detectors' },
+  { name: 'Sample Introduction Systems', image: '/gassampler.jpg', href: '#inlets' },
+  { name: 'UNIS Inlets Range', image: '/unix.png', href: '#inlets' },
+  { name: 'Gas Chromatography Specials', image: '/jaschromo.png', href: '#inlets', contain: true },
+  { name: 'Customized Analyzers', image: '/customanalyzer.png', href: '#gc-systems' },
+  { name: 'Automated Sample Prep', image: '/gerstel.png', href: '#automated-sample-prep' },
+  { name: 'Lab Support Equipment', image: '/labsupport.png', href: '#lab-support-equipment', contain: true },
 ];
 ---
 
-<Layout title="Analytical Equipments â€” TAKA Scientific" hasHero={true}>
+<Layout
+  title="Analytical Instruments — Gas Chromatography Systems"
+  hasHero={true}
+  description="Precision analytical instruments from JASMEA — gas chromatography systems, sample introduction inlets and detectors for natural gas, refinery and environmental analysis. Authorized JASMEA distributor."
+>
 
 <div class="ice-page">
 
@@ -47,7 +88,7 @@ const categoryCards = [
     <div class="ice-hero-image">
       <img src="/bg4.jpg" alt="TAKA Scientific analytical instrumentation" class="ice-hero-img" fetchpriority="high" />
       <div class="ice-hero-overlay">
-        <h1>One instrument for every analysis</h1>
+        <h1>Precision analytical instruments for every analysis</h1>
         <div class="ice-hero-buttons">
           <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
           <a href="/catalogue" class="ice-btn ice-btn-outlined"><span>Shop now</span></a>
@@ -62,154 +103,85 @@ const categoryCards = [
     </div>
   </section>
 
-  <!-- â•â•â• PRODUCT SLIDER â€” Featured â•â•â• -->
-  <section class="ice-slider-section">
-    <div class="ice-slider">
-      <div class="ice-slider-title">
-        <div class="ice-slider-title-wrapper">
-          <h2>Featured products</h2>
-          <a href="/catalogue">Shop all</a>
-        </div>
-        <div class="ice-slider-controls">
-          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
-          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
-        </div>
-      </div>
-      <div class="ice-slider-items">
-        <div class="ice-slider-track">
-          {allProducts.map(p => (
-            <div class="ice-slider-item">
-              <IceProductCard
-                id={p.id}
-                name={p.name}
-                fullName={p.fullName}
-                brandName={p.brandName}
-                subcategoryName={p.subcategoryName}
-                image={p.image}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- â•â•â• HEADLINE TEXT â•â•â• -->
-  <section class="ice-headline-text">
+  <section class="ice-headline-text ice-headline-footer">
     <div class="ice-headline-wrapper">
-      <p class="ice-headline-big">Precision instrumentation. Built to last. Analysis you can trust.</p>
-      <a href="/catalogue" class="ice-btn"><span>Explore JASMEA</span></a>
+      <p class="ice-headline-big">Precision gas chromatography. Robust systems. Results you can trust.</p>
+      <a href="/catalogue" class="ice-btn"><span>Explore Analytical products</span></a>
     </div>
   </section>
 
-  <!-- â•â•â• FEATURE SLIDER â€” Explore the range â•â•â• -->
-  <section class="ice-slider-section" id="range">
-    <div class="ice-slider">
-      <div class="ice-slider-title">
-        <div class="ice-slider-title-wrapper">
-          <h2>Explore the range</h2>
-          <a href="/catalogue">Shop all</a>
-        </div>
-        <div class="ice-slider-controls">
-          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
-          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
-        </div>
-      </div>
-      <div class="ice-feature-items">
-        <div class="ice-slider-track">
-          {categoryCards.map(card => (
-            <div class="ice-slider-item">
-              <a href={card.href} class="ice-feature-card">
-                <div class="ice-feature-image">
-                  <img src={card.image} alt={card.name} loading="lazy" decoding="async" />
-                </div>
-                <span class="ice-feature-category">{card.name}</span>
-              </a>
-            </div>
-          ))}
-        </div>
-      </div>
+  <!-- â•â•â• CATEGORIES â€” Explore the range â•â•â• -->
+  <section class="ice-cat-section">
+    <div class="ice-cat-grid">
+      {categoryCards.map(card => (
+        <a href={card.href} class="ice-cat-card">
+          <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
+            <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
+          </span>
+          <span class="ice-cat-name">
+            <span class="ice-cat-name-text">{card.name}</span>
+            <span class="ice-cat-arrow" aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+      ))}
     </div>
   </section>
 
   <!-- â•â•â• HIGHLIGHT â€” ModuleHighlight â•â•â• -->
   <section class="ice-highlight">
     <div class="ice-highlight-image">
-      <img src="/bg3.jpg" alt="Gas chromatography laboratory" loading="lazy" />
+      <img src="/ans3.jpg" alt="Analytical instruments laboratory" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
-      <p>Gas chromatography</p>
-      <h2>Analyze with unrivaled sensitivity</h2>
+      <h2>Explore the full range of analytical instruments</h2>
       <div class="ice-hero-buttons">
-        <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>Explore systems</span></a>
+        <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
         <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
       </div>
     </div>
   </section>
 
-  <!-- â•â•â• PRODUCT SLIDER â€” GC Systems â•â•â• -->
-  <section class="ice-slider-section" id="gc-systems">
-    <div class="ice-slider">
-      <div class="ice-slider-title">
-        <div class="ice-slider-title-wrapper">
-          <h2>Gas chromatography systems</h2>
-          <a href="/catalogue">Shop all</a>
+  <!-- â•â•â• PRODUCT SECTIONS â•â•â• -->
+  {productSections.map(section => (
+    <section class="ice-slider-section" id={section.id}>
+      <div class="ice-slider">
+        <div class="ice-slider-title">
+          <div class="ice-slider-title-wrapper">
+            <h2>{section.title}</h2>
+            <a href="/catalogue">Shop all</a>
+          </div>
+          <div class="ice-slider-controls">
+            <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+            <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+          </div>
         </div>
-        <div class="ice-slider-controls">
-          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
-          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+        <p class="ice-slider-sub">{section.sub}</p>
+        <div class="ice-slider-items">
+          <div class="ice-slider-track">
+            {section.products.map(p => (
+              <div class="ice-slider-item">
+                <IceProductCard
+                  id={p.id}
+                  name={p.name}
+                  fullName={p.fullName}
+                  brandName={p.brandName}
+                  subcategoryName={p.subcategoryName}
+                  image={p.image}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <p class="ice-slider-sub">Complete gas analysis systems — natural gas, refinery gas, oxygenates and simulated distillation.</p>
-      <div class="ice-slider-items">
-        <div class="ice-slider-track">
-          {gcSystems.map(p => (
-            <div class="ice-slider-item">
-              <IceProductCard
-                id={p.id}
-                name={p.name}
-                fullName={p.fullName}
-                brandName={p.brandName}
-                subcategoryName={p.subcategoryName}
-                image={p.image}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  ))}
 
-  <!-- â•â•â• PRODUCT SLIDER â€” Sample Introduction & Inlets â•â•â• -->
-  <section class="ice-slider-section" id="inlets">
-    <div class="ice-slider">
-      <div class="ice-slider-title">
-        <div class="ice-slider-title-wrapper">
-          <h2>Sample introduction &amp; inlets</h2>
-          <a href="/catalogue">Shop all</a>
-        </div>
-        <div class="ice-slider-controls">
-          <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
-          <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
-        </div>
-      </div>
-      <p class="ice-slider-sub">Precision inlets and automated sample preparation for maximum sensitivity and reproducibility.</p>
-      <div class="ice-slider-items">
-        <div class="ice-slider-track">
-          {inletsProducts.map(p => (
-            <div class="ice-slider-item">
-              <IceProductCard
-                id={p.id}
-                name={p.name}
-                fullName={p.fullName}
-                brandName={p.brandName}
-                subcategoryName={p.subcategoryName}
-                image={p.image}
-              />
-            </div>
-          ))}
-        </div>
-      </div>
+  <!-- â•â•â• HEADLINE TEXT â€” Our promise â•â•â• -->
+  <section class="ice-headline-text ice-headline-footer">
+    <div class="ice-headline-wrapper">
+      <p class="ice-headline-big">Genuine instruments. Honest advice. Support that lasts.</p>
+      <a href="/about" class="ice-btn"><span>Read our promises</span></a>
     </div>
   </section>
 
@@ -263,22 +235,14 @@ const categoryCards = [
     </div>
   </section>
 
-  <!-- â•â•â• HEADLINE TEXT â€” Our promise â•â•â• -->
-  <section class="ice-headline-text">
-    <div class="ice-headline-wrapper">
-      <p class="ice-headline-big">Genuine instruments. Honest advice. Support that lasts.</p>
-      <a href="/about" class="ice-btn"><span>Read our promises</span></a>
-    </div>
-  </section>
-
   <!-- â•â•â• EDITORIAL HIGHLIGHT â•â•â• -->
   <section class="ice-editorial">
     <div class="ice-editorial-image">
-      <img src="/heroanlytical.webp" alt="TAKA Scientific analytical laboratory" loading="lazy" />
+      <img src="/anbg2.jpg" alt="TAKA Scientific analytical laboratory" loading="lazy" />
     </div>
     <div class="ice-editorial-overlay">
       <div class="ice-editorial-text">
-        <h2 class="ice-editorial-title">We&#39;re in it for the long run. â€” and so is our instrumentation.</h2>
+        <h2 class="ice-editorial-title">We&#39;re in it for the long run &mdash; and so is our instrumentation.</h2>
         <p class="ice-editorial-text-p">While most suppliers put the margin first, TAKA puts our customers, our people and our partners first — with instruments that keep running, year after year.</p>
         <a href="/about" class="ice-btn ice-btn-outlined"><span>Our story</span></a>
       </div>
@@ -298,7 +262,7 @@ const categoryCards = [
 
 <script>
   document.querySelectorAll('.ice-slider').forEach(slider => {
-    const scroller = slider.querySelector('.ice-slider-items, .ice-feature-items');
+    const scroller = slider.querySelector('.ice-slider-items');
     const prev = slider.querySelector('.ice-slider-prev');
     const next = slider.querySelector('.ice-slider-next');
     if (!scroller || !prev || !next) return;
@@ -376,6 +340,18 @@ const categoryCards = [
     background: var(--ice-white);
     color: var(--ice-black);
     border-color: var(--ice-white);
+  }
+
+  .ice-cta .ice-btn-white {
+    background: #1a365d;
+    color: var(--ice-white);
+    border-color: #1a365d;
+  }
+
+  .ice-cta .ice-btn-white:hover {
+    background: var(--ice-white) !important;
+    color: #1a365d !important;
+    border-color: #1a365d !important;
   }
 
   .ice-btn-outlined {
@@ -464,6 +440,7 @@ const categoryCards = [
   /* â•â•â• SLIDER BASE â€” FeatureSlider â•â•â• */
   .ice-slider-section {
     padding: 0;
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
   }
   .ice-slider {
     flex-direction: column;
@@ -548,8 +525,7 @@ const categoryCards = [
     }
   }
 
-  .ice-slider-items,
-  .ice-feature-items {
+  .ice-slider-items {
     width: calc(100% + var(--ice-gap));
     -webkit-overflow-scrolling: touch;
     scroll-snap-type: x mandatory;
@@ -558,8 +534,7 @@ const categoryCards = [
     overflow-x: scroll;
     scrollbar-width: none;
   }
-  .ice-slider-items::-webkit-scrollbar,
-  .ice-feature-items::-webkit-scrollbar { display: none; }
+  .ice-slider-items::-webkit-scrollbar { display: none; }
   .ice-slider-track {
     display: flex;
   }
@@ -583,63 +558,96 @@ const categoryCards = [
     }
   }
 
-  /* Feature slider (categories) */
-  .ice-feature-items {
-    --ice-gap: 60px;
-    --ice-flex: 100%;
+  /* â•â•â• CATEGORIES â€” Explore the range â•â•â• */
+  .ice-cat-section {
+    padding: 0 var(--ice-pad);
   }
-  @media (min-width: 1024px) {
-    .ice-feature-items {
-      --ice-gap: 98px;
-      --ice-flex: calc(100% / 5);
+  .ice-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+    display: grid;
+  }
+  @media (min-width: 768px) {
+    .ice-cat-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--ice-pad);
     }
   }
-
-  /* â•â•â• FEATURE ITEM (category card) â•â•â• */
-  .ice-feature-card {
+  @media (min-width: 1024px) {
+    .ice-cat-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  .ice-cat-card {
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+  }
+  .ice-cat-image {
+    aspect-ratio: 4 / 3;
+    background: var(--ice-image-bg);
+    overflow: hidden;
     display: block;
     position: relative;
-    color: inherit;
-    text-decoration: none;
   }
-  .ice-feature-image {
-    aspect-ratio: 4 / 5;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    background: var(--ice-image-bg);
-  }
-  .ice-feature-image:after {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 33.33%;
-    background: linear-gradient(#0000 0%, #00000080 50%, #000c 100%);
-    opacity: 0.6;
-    pointer-events: none;
-  }
-  .ice-feature-image img {
-    object-fit: contain;
+  .ice-cat-image img {
+    object-fit: cover;
     width: 100%;
     height: 100%;
-    padding: 24px;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  .ice-feature-category {
-    position: absolute;
-    bottom: 20px;
-    left: var(--ice-pad);
-    right: 30px;
+  @media (hover: hover) {
+    .ice-cat-card:hover .ice-cat-image img {
+      transform: scale(1.05);
+    }
+  }
+  .ice-cat-image-contain {
+    background: #fff;
+  }
+  .ice-cat-image img.ice-cat-img-contain {
+    object-fit: contain;
+    padding: 20px;
+  }
+  .ice-cat-name {
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
     font-family: var(--ice-sans);
-    color: var(--ice-white);
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.3;
     font-weight: 500;
-    line-height: 1.2;
-    margin: 0;
+    display: flex;
   }
-  @media (min-width: 1024px) {
-    .ice-feature-category { bottom: 22px; }
+  .ice-cat-name-text {
+    text-underline-offset: var(--ice-underline-offset);
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.25s ease;
+  }
+  .ice-cat-arrow {
+    font-family: var(--ice-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .ice-cat-card:hover .ice-cat-name-text {
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+    }
+    .ice-cat-card:hover .ice-cat-arrow {
+      transform: translateX(5px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ice-cat-image img,
+    .ice-cat-name-text,
+    .ice-cat-arrow {
+      transition: none;
+    }
   }
 
   /* â•â•â• HEADLINE TEXT â•â•â• */
@@ -649,6 +657,13 @@ const categoryCards = [
     align-items: center;
     padding: 0;
     display: flex;
+  }
+  .ice-headline-footer {
+    color: #1a365d;
+  }
+  .ice-headline-footer .ice-btn {
+    background: #1a365d;
+    border-color: #1a365d;
   }
   @media (min-width: 1024px) {
     .ice-headline-text {
@@ -710,7 +725,10 @@ const categoryCards = [
   .ice-highlight-image:after {
     content: "";
     pointer-events: none;
-    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
+    background:
+      linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
+      linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.18'/%3E%3C/svg%3E");
     position: absolute;
     inset: 0;
   }
@@ -748,10 +766,10 @@ const categoryCards = [
   }
   @media (min-width: 1024px) {
     .ice-highlight-overlay h2 {
-      letter-spacing: -0.02em;
-      font-size: 88px;
-      line-height: 0.9;
-      max-width: 55%;
+      letter-spacing: -0.01em;
+      font-size: 56px;
+      line-height: 1.05;
+      max-width: 65%;
     }
   }
 
@@ -982,8 +1000,8 @@ const categoryCards = [
 
   /* â•â•â• CONTACT CTA â•â•â• */
   .ice-cta {
-    background: #1a1a1a;
-    color: var(--ice-white);
+    background: #fff;
+    color: #1a365d;
     padding: 80px var(--ice-pad);
     margin-top: calc(-1 * var(--ice-page-gap));
     text-align: center;
