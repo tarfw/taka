@@ -54,18 +54,18 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
 
 <div class="ice-page">
 
-  <section class="ice-hero hero-container">
+  <section class="ice-hero hero-container" data-view>
     <div class="ice-hero-image">
-      <img src={hero.image} alt="TAKA Scientific" class="ice-hero-img" fetchpriority="high" />
+      <img src={hero.image} alt="TAKA Scientific" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
       <div class="ice-hero-overlay">
-        <h1>{hero.title}</h1>
-        <div class="ice-hero-buttons">
-          {(hero.buttons ?? [{ label: 'Explore the range', href: '#range' }, { label: 'Talk to our team', href: '/contact' }]).map(btn => (
+        <h1 data-splitting="words">{hero.title}</h1>
+        <div class="ice-hero-buttons t--fade t--delay_200">
+          {(hero.buttons ?? [{ label: 'Explore the range', href: '#range' }]).map(btn => (
             <a href={btn.href} class="ice-btn ice-btn-outlined"><span>{btn.label}</span></a>
           ))}
         </div>
       </div>
-      <div class="ice-hero-trust">
+      <div class="ice-hero-trust t--fade t--delay_300">
         {hero.trust.map(item => (
           <p>{item}</p>
         ))}
@@ -74,19 +74,19 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
   </section>
 
   {headline.text && (
-    <section class="ice-headline-text ice-headline-footer">
+    <section class="ice-headline-text ice-headline-footer" data-view>
       <div class="ice-headline-wrapper">
-        <p class="ice-headline-big">{headline.text}</p>
-        {headline.button && <a href={headline.button.href} class="ice-btn"><span>{headline.button.label}</span></a>}
+        <p class="ice-headline-big t--fadedown">{headline.text}</p>
+        {headline.button && <a href={headline.button.href} class="ice-btn t--fade t--delay_300"><span>{headline.button.label}</span></a>}
       </div>
     </section>
   )}
 
   {categoryCards.length > 0 && (
-    <section class="ice-cat-section" id="range">
+    <section class="ice-cat-section" id="range" data-view>
       <div class="ice-cat-grid">
-        {categoryCards.map(card => (
-          <a href={card.href} class="ice-cat-card">
+        {categoryCards.map((card, i) => (
+          <a href={card.href} class="ice-cat-card t--fade t--delay_{(i % 4) * 100 + 100}">
             <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
               <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
             </span>
@@ -101,13 +101,13 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
   )}
 
   {highlight && (
-    <section class="ice-highlight">
-      <div class="ice-highlight-image">
+    <section class="ice-highlight" data-view>
+      <div class="ice-highlight-image clip--top_left">
         <img src={highlight.image} alt={highlight.title} loading="lazy" />
       </div>
       <div class="ice-highlight-overlay">
-        <h2>{highlight.title}</h2>
-        <div class="ice-hero-buttons">
+        <h2 class="t--fadedown">{highlight.title}</h2>
+        <div class="ice-hero-buttons t--fade t--delay_300">
           {(highlight.buttons ?? [{ label: 'Explore the range', href: '#range' }, { label: 'Get a quote', href: '/contact' }]).map(btn => (
             <a href={btn.href} class="ice-btn ice-btn-outlined"><span>{btn.label}</span></a>
           ))}
@@ -118,19 +118,19 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
 
   {sections.map(section => (
     section.products && section.products.length > 0 ? (
-      <section class="ice-slider-section" id={section.id}>
+      <section class="ice-slider-section" id={section.id} data-view>
         <div class="ice-slider">
           <div class="ice-slider-title">
             <div class="ice-slider-title-wrapper">
-              <h2>{section.title}</h2>
-              <a href="/contact">Get a quote</a>
+              <h2 class="t--fadedown">{section.title}</h2>
+              <a href="/contact" class="t--fade t--delay_200">Get a quote</a>
             </div>
             <div class="ice-slider-controls">
               <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
               <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
             </div>
           </div>
-          <p class="ice-slider-sub">{section.sub}</p>
+          <p class="ice-slider-sub t--fade t--delay_300">{section.sub}</p>
           <div class="ice-slider-items">
             <div class="ice-slider-track">
               {section.products.map(p => (
@@ -150,20 +150,20 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
         </div>
       </section>
     ) : (
-      <section class="ice-grid-section" id={section.id}>
+      <section class="ice-grid-section" id={section.id} data-view>
         <div class="ice-grid-head">
-          <h2>{section.title}</h2>
+          <h2 class="t--fadedown">{section.title}</h2>
         </div>
-        <p class="ice-slider-sub">{section.sub}</p>
+        <p class="ice-slider-sub t--fade t--delay_200">{section.sub}</p>
         <div class="ice-grid">
-          {(section.cards ?? []).map(card => (
+          {(section.cards ?? []).map((card, i) => (
             card.href ? (
-              <a href={card.href} class="ice-grid-card">
+              <a href={card.href} class="ice-grid-card t--fade t--delay_{(i % 4) * 100 + 100}">
                 <span class="ice-grid-label">{card.label}</span>
                 <p>{card.text}</p>
               </a>
             ) : (
-              <div class="ice-grid-card">
+              <div class="ice-grid-card t--fade t--delay_{(i % 4) * 100 + 100}">
                 <span class="ice-grid-label">{card.label}</span>
                 <p>{card.text}</p>
               </div>
@@ -174,10 +174,10 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
     )
   ))}
 
-  <section class="ice-cta">
-    <h2>{cta.title}</h2>
-    <p>{cta.text}</p>
-    <a href={(cta.button ?? { label: 'Talk to our team', href: '/contact' }).href} class="ice-btn ice-btn-white"><span>{(cta.button ?? { label: 'Talk to our team', href: '/contact' }).label}</span></a>
+  <section class="ice-cta" data-view>
+    <h2 class="t--fadedown">{cta.title}</h2>
+    <p class="t--fade t--delay_200">{cta.text}</p>
+    <a href={(cta.button ?? { label: 'Talk to our team', href: '/contact' }).href} class="ice-btn ice-btn-white t--fade t--delay_400"><span>{(cta.button ?? { label: 'Talk to our team', href: '/contact' }).label}</span></a>
   </section>
 
 </div>

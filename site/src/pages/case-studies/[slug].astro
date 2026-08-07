@@ -33,13 +33,13 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     "datePublished": "2025-01-01",
   })} />
 
-  <section class="page-hero">
+  <section class="page-hero" data-view>
     <div class="container">
-      <span class="eyebrow">{study.sector}</span>
-      <h1 class="page-hero-title">{study.organization}</h1>
-      <p class="page-hero-headline">{study.headline}</p>
-      <p class="page-hero-sub">{study.summary}</p>
-      <div class="page-hero-meta">
+      <span class="eyebrow t--fade">{study.sector}</span>
+      <h1 class="page-hero-title t--fadedown t--delay_200">{study.organization}</h1>
+      <p class="page-hero-headline t--fade t--delay_300">{study.headline}</p>
+      <p class="page-hero-sub t--fade t--delay_400">{study.summary}</p>
+      <div class="page-hero-meta t--fade t--delay_200">
         <span class="meta-item">{study.sector}</span>
         <span class="meta-item">{study.emirate}</span>
         <span class="meta-item">{study.timeframe}</span>
@@ -47,9 +47,9 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     </div>
   </section>
 
-  <section class="hero-image-section">
+  <section class="hero-image-section" data-view>
     <div class="container">
-      <figure class="hero-figure">
+      <figure class="hero-figure clip--top_left">
         <img src={study.image} alt={study.imageAlt} class="hero-image" />
         {study.credit && (
           <figcaption class="hero-credit">
@@ -61,19 +61,19 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" data-view>
     <div class="container">
       <div class="detail-grid">
         <div class="detail-main">
-          <div class="body-block">
+          <div class="body-block t--fade t--delay_100">
             <h2 class="body-title">The brief</h2>
             <p class="body-text">{study.challenge}</p>
           </div>
-          <div class="body-block">
+          <div class="body-block t--fade t--delay_200">
             <h2 class="body-title">What we did</h2>
             <p class="body-text">{study.solution}</p>
           </div>
-          <div class="body-block">
+          <div class="body-block t--fade t--delay_300">
             <h2 class="body-title">The outcome</h2>
             <ul class="result-list">
               {study.results.map((r) => (
@@ -84,7 +84,7 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
         </div>
 
         <aside class="detail-side">
-          <div class="side-card">
+          <div class="side-card t--fade t--delay_200">
             <p class="side-card-label">What we supplied</p>
             <ul class="deliverable-list">
               {study.deliverables.map((d) => (
@@ -92,12 +92,12 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
               ))}
             </ul>
           </div>
-          <div class="side-card side-card-quote">
+          <div class="side-card side-card-quote t--fade t--delay_300">
             <blockquote class="side-quote">&ldquo;{study.quote}&rdquo;</blockquote>
             <p class="side-author">{study.author}</p>
             <p class="side-role">{study.role}</p>
           </div>
-          <div class="side-card side-card-cta">
+          <div class="side-card side-card-cta t--fade t--delay_400">
             <p class="side-cta-title">Planning a similar project?</p>
             <p class="side-cta-text">Send us your requirements and we will respond within the working day.</p>
             <a href="/contact" class="btn btn-dark">Request a quote</a>
@@ -106,8 +106,8 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
       </div>
 
       <div class="stats-band">
-        {study.stats.map((s) => (
-          <div class="stats-band-item">
+        {study.stats.map((s, i) => (
+          <div class="stats-band-item t--fade t--delay_{i * 100 + 200}">
             <span class="stats-band-value">{s.value}</span>
             <span class="stats-band-label">{s.label}</span>
           </div>
@@ -116,15 +116,15 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     </div>
   </section>
 
-  <section class="related-section">
+  <section class="related-section" data-view>
     <div class="container">
       <div class="related-header">
-        <h2 class="related-title">More case studies</h2>
-        <a href="/case-studies" class="related-link">View all case studies &rarr;</a>
+        <h2 class="related-title t--fadedown">More case studies</h2>
+        <a href="/case-studies" class="related-link t--fade t--delay_200">View all case studies &rarr;</a>
       </div>
       <div class="related-grid">
-        {related.map((c) => (
-          <a href={`/case-studies/${c.slug}`} class="related-card">
+        {related.map((c, i) => (
+          <a href={`/case-studies/${c.slug}`} class="related-card t--fade t--delay_{(i % 3) * 100 + 200}">
             <span class="related-sector">{c.sector}</span>
             <h3 class="related-org">{c.organization}</h3>
             <p class="related-headline">{c.headline}</p>
@@ -134,13 +134,13 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section" data-view>
     <div class="container text-center">
-      <h2 class="section-title">Ready to equip your facility?</h2>
-      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
-      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
+      <h2 class="section-title t--fadedown">Ready to equip your facility?</h2>
+      <p class="section-subtitle t--fade t--delay_200" style="margin-left: auto; margin-right: auto;">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
+      <div class="t--fade t--delay_400" style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
         <a href="/contact" class="btn btn-dark">Request a quote</a>
-        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="javascript:void(0)" target="_blank" class="btn btn-outline">WhatsApp</a>
       </div>
     </div>
   </section>

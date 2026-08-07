@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import productData from '../data/products.json';
+import WaveButton from '../components/WaveButton.astro';
 
 const supplyCards = [
   {
@@ -56,8 +57,8 @@ const categoryItemList = {
 <Layout title="Home">
 
   <!-- HERO — Cantor8-inspired layout with chemical atom canvas -->
-  <section class="hero-container">
-    <div class="hero-bg" style="background-image: url('/bg3.jpg');"></div>
+  <section class="hero-container" data-view>
+    <div class="hero-bg" style="background-image: url('/bg3.jpg');" data-parallax="zoom"></div>
 
     <!-- Chemical atom canvas visualization -->
     <div class="hero-canvas-wrap">
@@ -66,20 +67,17 @@ const categoryItemList = {
 
     <div class="hero-content">
       <div class="hero-text-block">
-        <h1 class="hero-title">Scientific equipment &amp; lab furniture, delivered &amp; installed across the UAE.</h1>
-        <p class="hero-subtitle">TAKA Scientific supplies analytical instruments, testing apparatus, laboratory furniture and consumables to schools, hospitals, research labs and factories in Abu Dhabi, Dubai and across the Emirates.</p>
+        <h1 class="hero-title" data-splitting="words">Scientific equipment &amp; lab furniture, delivered &amp; installed across the UAE.</h1>
+        <p class="hero-subtitle t--fade t--delay_100">TAKA Scientific supplies analytical instruments, testing apparatus, laboratory furniture and consumables to schools, hospitals, research labs and factories in Abu Dhabi, Dubai and across the Emirates.</p>
       </div>
 
       <!-- CTA buttons -->
       <div class="hero-actions">
-        <a href="/catalogue/analytical-equipments" class="hero-cta">
+        <a href="#supply" class="hero-cta t--fade t--delay_200">
           <span class="hero-cta-text">Browse the catalogue</span>
           <span class="hero-cta-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </span>
-        </a>
-        <a href="/contact" class="hero-cta hero-cta-ghost">
-          <span class="hero-cta-text">Talk to our team</span>
         </a>
       </div>
     </div>
@@ -280,16 +278,16 @@ const categoryItemList = {
   </script>
 
   <!-- WHAT WE SUPPLY -->
-  <section class="section">
+  <section class="section" id="supply" data-view>
     <div class="container">
       <div class="section-head">
-        <span class="eyebrow">What we supply</span>
-        <h2 class="section-title">Scientific equipment &amp; laboratory supplies</h2>
-        <p class="section-subtitle">One supplier for every facility — instruments, furniture, consumables and complete projects, delivered and installed across the UAE.</p>
+        <span class="eyebrow t--fade">What we supply</span>
+        <h2 class="section-title t--fadedown t--delay_200">Scientific equipment &amp; laboratory supplies</h2>
+        <p class="section-subtitle t--fade t--delay_400">One supplier for every facility — instruments, furniture, consumables and complete projects, delivered and installed across the UAE.</p>
       </div>
       <div class="supply-grid">
-        {supplyCards.map((card) => (
-          <a href={`/catalogue/${card.id}`} class="supply-card">
+        {supplyCards.map((card, i) => (
+          <a href={`/catalogue/${card.id}`} class="supply-card t--fade t--delay_{(i + 1) * 100}">
             <div class="supply-icon">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={card.icon} />
             </div>
@@ -303,31 +301,31 @@ const categoryItemList = {
   </section>
 
   <!-- BUILT FOR EVERY SECTOR -->
-  <section class="sector-section">
+  <section class="sector-section" data-view>
     <div class="sector-wrap">
       <div class="sector-left">
-        <h2 class="sector-heading">Built for every<br />sector</h2>
-        <p class="sector-desc">One supplier for schools, hospitals, labs, and factories across the UAE.</p>
+        <h2 class="sector-heading t--fadedown">Built for every<br />sector</h2>
+        <p class="sector-desc t--fade t--delay_200">One supplier for schools, hospitals, labs, and factories across the UAE.</p>
         <div class="sector-list">
-          <button class="sector-item active" data-sector="education">
+          <button class="sector-item active t--fade t--delay_300" data-sector="education">
             <span class="sector-item-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
             </span>
             Education &amp; Schools
           </button>
-          <button class="sector-item" data-sector="healthcare">
+          <button class="sector-item t--fade t--delay_400" data-sector="healthcare">
             <span class="sector-item-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M12 14v4"/><path d="M10 16h4"/></svg>
             </span>
             Healthcare &amp; Hospitals
           </button>
-          <button class="sector-item" data-sector="research">
+          <button class="sector-item t--fade t--delay_500" data-sector="research">
             <span class="sector-item-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
             </span>
             Research Laboratories
           </button>
-          <button class="sector-item" data-sector="industrial">
+          <button class="sector-item t--fade t--delay_600" data-sector="industrial">
             <span class="sector-item-icon">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
             </span>
@@ -336,7 +334,7 @@ const categoryItemList = {
         </div>
       </div>
       <div class="sector-right">
-        <div class="sector-panel">
+        <div class="sector-panel t--faderight t--delay_400">
           <div id="sector-result">
             <h3 class="sector-result-title">Education &amp; Schools</h3>
             <p class="sector-result-subtitle">Equipping classrooms and school laboratories across the UAE</p>
@@ -430,32 +428,32 @@ const categoryItemList = {
   </script>
 
   <!-- EDITORIAL HIGHLIGHT — our story, image background -->
-  <section class="ice-editorial" aria-label="Our story">
-    <div class="ice-editorial-image">
+  <section class="ice-editorial" aria-label="Our story" data-view>
+    <div class="ice-editorial-image clip--top_left">
       <img src="/anbg2.jpg" alt="TAKA Scientific analytical laboratory" loading="lazy" />
     </div>
     <div class="ice-editorial-overlay">
       <div class="ice-editorial-text">
-        <h2 class="ice-editorial-title">We&#39;re in it for the long run &mdash; and so is our instrumentation.</h2>
-        <p class="ice-editorial-text-p">While most suppliers put the margin first, TAKA puts our customers, our people and our partners first — with instruments that keep running, year after year.</p>
-        <a href="/about" class="ice-btn ice-btn-outlined"><span>Our story</span></a>
+        <h2 class="ice-editorial-title t--fade t--delay_300">We&#39;re in it for the long run &mdash; and so is our instrumentation.</h2>
+        <p class="ice-editorial-text-p t--fadedown t--delay_500">While most suppliers put the margin first, TAKA puts our customers, our people and our partners first — with instruments that keep running, year after year.</p>
+        <a href="/about" class="ice-btn ice-btn-outlined t--fade t--delay_700"><span>Our story</span></a>
       </div>
     </div>
   </section>
 
   <!-- TRUSTED BY — exact exa.ai style -->
-  <section class="trusted-section">
+  <section class="trusted-section" data-view>
     <div class="trusted-wrap">
       <div class="trusted-header">
-        <h2 class="trusted-heading">Trusted by leading institutions<br class="hidden sm:block" /> across the UAE</h2>
-        <a href="/case-studies" class="trusted-btn">View all case studies</a>
+        <h2 class="trusted-heading t--fadedown">Trusted by leading institutions<br class="hidden sm:block" /> across the UAE</h2>
+        <a href="/case-studies" class="trusted-btn t--fade t--delay_300">View all case studies</a>
       </div>
 
       <!-- Main testimonial card -->
-      <a href="/case-studies/abu-dhabi-education-council" class="trusted-main">
+      <a href="/case-studies/abu-dhabi-education-council" class="trusted-main t--fade t--delay_200">
         <div class="trusted-main-inner">
           <!-- Image side -->
-          <div class="trusted-main-image">
+          <div class="trusted-main-image clip--top_right">
             <img src="/case-studies/adec-school-lab.jpg" alt="Student in a school science laboratory" class="trusted-main-img" loading="lazy" />
           </div>
           <!-- Quote side -->
@@ -475,7 +473,7 @@ const categoryItemList = {
       <!-- Bottom cards -->
       <div class="trusted-bottom">
         <!-- Stats card -->
-        <a href="/case-studies/sheikh-khalifa-medical-city" class="trusted-stats-card">
+        <a href="/case-studies/sheikh-khalifa-medical-city" class="trusted-stats-card t--fade t--delay_300">
           <div class="trusted-stats-logo">Sheikh Khalifa Medical City</div>
           <div class="trusted-stats-content">
             <div class="trusted-stats-item">
@@ -491,7 +489,7 @@ const categoryItemList = {
         </a>
 
         <!-- Image card -->
-        <a href="/case-studies/khalifa-university" class="trusted-image-card">
+        <a href="/case-studies/khalifa-university" class="trusted-image-card t--fade t--delay_500">
           <div class="trusted-image-bg"></div>
           <div class="trusted-image-content">            <div class="trusted-image-logo">Khalifa University</div>
             <div class="trusted-image-bottom">
@@ -509,17 +507,16 @@ const categoryItemList = {
     <div class="trust-wrap">
       <div class="trust-header">
         <h2 class="trust-heading">Quality standards<br />and compliance</h2>
-        <a href="/contact" class="trust-btn">Talk to our team &rarr;</a>
       </div>
       <div class="trust-divider"></div>
       <div class="trust-badges">
         <div class="trust-badge trust-badge-featured">
           <span class="trust-badge-icon trust-badge-icv">
-            <img src="/icv.avif" alt="ICV logo" width="200" height="200" />
+            <img src="/icv.avif" alt="ICV logo" width="260" height="260" />
           </span>
           <div class="trust-badge-text">
             <span class="trust-badge-name">ICV</span>
-            <span class="trust-badge-desc">In-Country Value</span>
+            <span class="trust-badge-desc">In-Country Value Certified</span>
           </div>
         </div>
         <div class="trust-col-right">
@@ -568,12 +565,12 @@ const categoryItemList = {
   </section>
 
   <!-- CONTACT CTA — exa.ai large serif style -->
-  <section class="cta-section">
+  <section class="cta-section" data-view>
     <div class="cta-content">
-      <h2 class="cta-heading">Ready to equip<br>your facility?</h2>
-      <p class="cta-subtitle">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
-      <div class="cta-actions">
-        <a href="/contact" class="btn btn-dark">Request a quote</a>
+      <h2 class="cta-heading t--fadedown">Ready to equip<br>your facility?</h2>
+      <p class="cta-subtitle t--fade t--delay_300">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
+      <div class="cta-actions t--fade t--delay_500">
+        <WaveButton href="/contact" label="Request a quote" variant="dark" />
       </div>
     </div>
   </section>
@@ -582,6 +579,7 @@ const categoryItemList = {
 </Layout>
 
 <style>
+  #supply { scroll-margin-top: var(--nav-height); }
   .section-head {
     max-width: 640px;
     margin-bottom: 2.5rem;

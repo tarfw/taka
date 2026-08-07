@@ -8,24 +8,24 @@ import Layout from '../layouts/Layout.astro';
   hasHero={true}
   headerSolid={true}
 >
-  <section class="page-hero">
+  <section class="page-hero" data-view>
     <div class="container">
-      <span class="eyebrow">About TAKA Scientific</span>
-      <h1 class="page-hero-title">The trusted equipment partner for labs &amp; facilities in the UAE.</h1>
-      <p class="page-hero-sub">
+      <span class="eyebrow t--fade">About TAKA Scientific</span>
+      <h1 class="page-hero-title" data-splitting="words">The trusted equipment partner for labs &amp; facilities in the UAE.</h1>
+      <p class="page-hero-sub t--fade t--delay_200">
         Based in Abu Dhabi, we help organisations across the country select, install,
         and maintain the scientific and industrial equipment their operations depend on.
       </p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" data-view>
     <div class="container">
       <div class="about-grid">
         <div class="about-left">
-          <h2 class="section-title">Who we are.</h2>
+          <h2 class="section-title t--fadedown">Who we are.</h2>
         </div>
-        <div class="about-right">
+        <div class="about-right t--fade t--delay_200">
           <p class="about-text">
             TAKA Scientific is an Abu Dhabi-based supplier of scientific equipment,
             laboratory furniture, testing apparatus, and factory machinery. We guide
@@ -50,20 +50,20 @@ import Layout from '../layouts/Layout.astro';
 
   <div class="divider container"></div>
 
-  <section class="section">
+  <section class="section" data-view>
     <div class="container">
       <div class="values-grid">
-        <div class="value-card">
+        <div class="value-card t--fade t--delay_100">
           <span class="value-number">01</span>
           <h3 class="value-title">Quality first</h3>
           <p class="value-desc">We work only with trusted manufacturers and verify that every product meets the relevant industry standards.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card t--fade t--delay_250">
           <span class="value-number">02</span>
           <h3 class="value-title">Complete service</h3>
           <p class="value-desc">From first consultation to final installation, we handle every step of the process so you can stay focused on your work.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card t--fade t--delay_400">
           <span class="value-number">03</span>
           <h3 class="value-title">Local expertise</h3>
           <p class="value-desc">Deep knowledge of UAE regulations, standards, and institutional requirements across all seven emirates.</p>
@@ -72,13 +72,13 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section" data-view>
     <div class="container text-center">
-      <h2 class="section-title">Get in touch.</h2>
-      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Browse our catalog or contact us directly.</p>
+      <h2 class="section-title t--fadedown">Get in touch.</h2>
+      <p class="section-subtitle t--fade t--delay_200" style="margin-left: auto; margin-right: auto;">Browse our catalog or contact us directly.</p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-        <a href="/products" class="btn btn-dark">Products</a>
-        <a href="/contact" class="btn btn-outline">Contact</a>
+        <a href="/products" class="btn btn-dark t--fade t--delay_300">Products</a>
+        <a href="/contact" class="btn btn-outline t--fade t--delay_500">Contact</a>
       </div>
     </div>
   </section>

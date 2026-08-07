@@ -36,46 +36,50 @@
       <!-- Right side — CTA with arrow -->
       <div class="nav-right">
         <a href="/contact" class="nav-cta">
-          <span class="nav-cta-text">Contact</span>
+          <span class="nav-cta-text">Talk to Team</span>
           <span class="nav-cta-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </span>
         </a>
-      </div>
 
-      <!-- Burger — mobile -->
-      <button class="nav-burger" id="mobile-toggle" aria-label="Toggle menu" data-state="closed">
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-        <span class="burger-line"></span>
-      </button>
+        <!-- Burger — opens fullscreen AUAR-style menu -->
+        <button class="nav-burger" id="mobile-toggle" aria-label="Toggle menu" data-state="closed">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
     </div>
   </nav>
 
-  <!-- Mobile nav -->
-  <div class="nav-mobile" id="mobile-nav">
-    <div class="nav-mobile-inner">
-      <a href="/" class="mobile-link-single">Home</a>
-      <div class="nav-mobile-section">
-        <button class="mobile-accordion" data-mobile="products">
-          <span>Products</span>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-        </button>
-        <div class="mobile-accordion-content">
-          <a href="/catalogue/analytical-equipments" class="mobile-link">Analytical Equipments</a>
-          <a href="/catalogue/scientific-equipments" class="mobile-link">Scientific Equipments</a>
-          <a href="/catalogue/testing-apparatus" class="mobile-link">Testing Apparatus</a>
-          <a href="/catalogue/laboratory-furnitures" class="mobile-link">Laboratory Furnitures</a>
-          <a href="/catalogue/laboratory-consumables" class="mobile-link">Laboratory Consumables</a>
-          <a href="/catalogue/turnkey" class="mobile-link">Turnkey Projects</a>
-        </div>
+  <!-- Fullscreen menu — AUAR-style expanding blur overlay -->
+  <div class="nav-overlay" id="mobile-nav">
+    <div class="nav-overlay-menu">
+      <span class="nav-overlay-label">Menu</span>
+      <ul class="nav-overlay-list">
+        <li><a href="/" class="nav-overlay-link">Home</a></li>
+        <li class="nav-mobile-section">
+          <button class="mobile-accordion" data-mobile="products">
+            <span>Products</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div class="mobile-accordion-content">
+            <a href="/catalogue/analytical-equipments" class="mobile-link">Analytical Equipments</a>
+            <a href="/catalogue/scientific-equipments" class="mobile-link">Scientific Equipments</a>
+            <a href="/catalogue/testing-apparatus" class="mobile-link">Testing Apparatus</a>
+            <a href="/catalogue/laboratory-furnitures" class="mobile-link">Laboratory Furnitures</a>
+            <a href="/catalogue/laboratory-consumables" class="mobile-link">Laboratory Consumables</a>
+            <a href="/catalogue/turnkey" class="mobile-link">Turnkey Projects</a>
+          </div>
+        </li>
+        <li><a href="/services" class="nav-overlay-link">Services</a></li>
+        <li><a href="/about" class="nav-overlay-link">About</a></li>
+        <li><a href="/case-studies" class="nav-overlay-link">Case Studies</a></li>
+      </ul>
+      <div class="nav-overlay-bottom">
+        <div class="nav-overlay-bottom-tag">Build together</div>
+        <a href="/contact" class="mobile-btn-dark">Talk to Team</a>
       </div>
-      <a href="/services" class="mobile-link-single">Services</a>
-      <a href="/about" class="mobile-link-single">About</a>
-      <a href="/case-studies" class="mobile-link-single">Case Studies</a>
-    </div>
-    <div class="nav-mobile-actions">
-      <a href="/contact" class="mobile-btn-dark">Contact</a>
     </div>
   </div>
 </header>
@@ -94,6 +98,51 @@
   }
   .header.transparent {
     background: transparent;
+  }
+
+  /* ═══ AUAR expanding blur pill ═══
+     backdrop-filter is only applied once the menu is open — leaving a
+     fixed blurred pseudo-element present on load can cause a white
+     render flash at the top of the page. */
+  .header::before {
+    content: '';
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: rgba(97, 97, 97, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 99;
+    transition:
+      opacity 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      top 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      right 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      width 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      height 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      border-radius 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      visibility 0s 0.75s;
+  }
+  .header.menu-open::before {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100dvh;
+    border-radius: 0;
+    opacity: 1;
+    visibility: visible;
+    backdrop-filter: blur(41px);
+    -webkit-backdrop-filter: blur(41px);
+    transition:
+      opacity 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      top 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      right 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      width 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      height 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
+      border-radius 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99);
   }
 
   /* ═══ Desktop layout ═══ */
@@ -212,7 +261,9 @@
     left: 50%;
     transform: translateX(-50%) translateY(8px);
     min-width: 220px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.92);
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     border-radius: 10px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.12), 0 0 0 1px rgba(0,0,0,0.05);
     padding: 0.4rem;
@@ -220,7 +271,7 @@
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
-    transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+    transition: opacity 0.25s var(--ease-soft), transform 0.25s var(--ease-soft), visibility 0.25s;
   }
   .nav-pill-dropdown:hover .nav-pill-dropdown-menu,
   .nav-pill-dropdown.open .nav-pill-dropdown-menu {
@@ -366,50 +417,89 @@
   .nav-burger[data-state="open"] .burger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
   .nav-burger[data-state="open"] .burger-line:nth-child(3) { transform: rotate(-45deg); }
 
-  /* ═══ Mobile nav ═══ */
-  .nav-mobile {
-    display: none;
+  /* ═══ Fullscreen menu (AUAR-style) ═══ */
+  .nav-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: #fff;
+    inset: 0;
     z-index: 100;
-    flex-direction: column;
+    pointer-events: none;
+    opacity: 0;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
-    padding-top: 70px;
   }
-  .nav-mobile.open { display: flex; }
-  .nav-mobile-inner { flex: 1; }
-  .nav-mobile-section { border-bottom: 1px solid #e8e6e5; }
-  .nav-mobile-actions {
-    padding: 1rem 1.5rem;
-    padding-bottom: max(1rem, env(safe-area-inset-bottom));
-    border-top: 1px solid #e8e6e5;
-    display: flex;
-    gap: 0.75rem;
-    background: #fff;
-    position: sticky;
-    bottom: 0;
+  .nav-overlay.open {
+    pointer-events: auto;
+    opacity: 1;
+  }
+  .nav-overlay-menu {
+    position: relative;
+    padding: 100px 2rem 2rem;
+    min-height: 100vh;
+  }
+  .nav-overlay-label {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.3s var(--ease-soft), transform 0.4s var(--ease-snappy);
+  }
+  .nav-overlay.open .nav-overlay-label {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.2s;
+  }
+  .nav-overlay-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-overlay-list > li {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.3s var(--ease-soft), transform 0.4s var(--ease-snappy);
+  }
+  .nav-overlay.open .nav-overlay-list > li { opacity: 1; transform: none; }
+  .nav-overlay.open .nav-overlay-list > li:nth-child(1) { transition-delay: 0.2s; }
+  .nav-overlay.open .nav-overlay-list > li:nth-child(2) { transition-delay: 0.28s; }
+  .nav-overlay.open .nav-overlay-list > li:nth-child(3) { transition-delay: 0.36s; }
+  .nav-overlay.open .nav-overlay-list > li:nth-child(4) { transition-delay: 0.44s; }
+  .nav-overlay.open .nav-overlay-list > li:nth-child(5) { transition-delay: 0.52s; }
+  .nav-overlay.open .nav-overlay-list > li:nth-child(6) { transition-delay: 0.6s; }
+  .nav-overlay-link {
+    display: block;
+    padding: 0.9rem 0;
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    font-weight: 500;
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-overlay-link:hover { color: rgba(255,255,255,0.6); }
+  .nav-mobile-section {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
   }
   .mobile-accordion {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 1.125rem 1.5rem;
-    font-family: var(--font-sans);
-    font-size: 1rem;
+    padding: 0.9rem 0;
+    font-family: var(--font-serif);
+    font-size: 2rem;
     font-weight: 500;
-    color: #111;
+    color: #fff;
     background: none;
     border: none;
     cursor: pointer;
     text-align: left;
   }
-  .mobile-accordion svg { transition: transform 0.2s; color: #999; }
+  .mobile-accordion svg { transition: transform 0.2s; color: rgba(255,255,255,0.5); }
   .mobile-accordion.open svg { transform: rotate(180deg); }
   .mobile-accordion-content {
     max-height: 0;
@@ -420,48 +510,48 @@
   .mobile-accordion-content.open { max-height: 500px; padding: 0 0 0.5rem; }
   .mobile-link {
     display: block;
-    padding: 0.75rem 1.5rem 0.75rem 2.25rem;
-    font-size: 0.9375rem;
-    color: #555;
+    padding: 0.55rem 0 0.55rem 1.5rem;
+    font-size: 1rem;
+    color: rgba(255,255,255,0.6);
     text-decoration: none;
     transition: color 0.15s;
   }
-  .mobile-link:hover { color: #111; }
-  .mobile-link-single {
-    display: block;
-    padding: 1.125rem 1.5rem;
-    font-size: 1rem;
-    font-weight: 500;
-    color: #111;
-    text-decoration: none;
-    border-bottom: 1px solid #e8e6e5;
+  .mobile-link:hover { color: #fff; }
+  .nav-overlay-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.3s var(--ease-soft), transform 0.4s var(--ease-snappy);
   }
-  .mobile-btn-ghost {
-    flex: 1;
-    text-align: center;
-    padding: 0.875rem 1rem;
-    background: #f2f0ef;
-    color: #514837;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.15s;
+  .nav-overlay.open .nav-overlay-bottom {
+    opacity: 1;
+    transform: none;
+    transition-delay: 0.6s;
   }
-  .mobile-btn-ghost:hover { background: #e8e6e5; }
+  .nav-overlay-bottom-tag {
+    font-family: var(--font-sans);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1rem;
+  }
   .mobile-btn-dark {
-    flex: 1;
-    text-align: center;
-    padding: 0.875rem 1rem;
-    background: #1a365d;
-    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.875rem 2rem;
+    background: #fff;
+    color: #0f1f38;
     font-size: 0.9375rem;
     font-weight: 500;
     border-radius: 8px;
     text-decoration: none;
-    transition: background 0.15s;
+    transition: background 0.2s;
   }
-  .mobile-btn-dark:hover { background: #142f54; }
+  .mobile-btn-dark:hover { background: rgba(255,255,255,0.85); }
 
   /* ═══ Responsive ═══ */
   @media (max-width: 1280px) {
@@ -469,7 +559,7 @@
   }
   @media (max-width: 1024px) {
     .nav-inner { grid-template-columns: 1fr auto; }
-    .nav-pill, .nav-right { display: none; }
+    .nav-pill, .nav-cta { display: none; }
     .nav-burger { display: flex; }
   }
   @media (max-width: 768px) {
@@ -513,18 +603,21 @@
   // Mobile menu toggle
   const burger = document.getElementById('mobile-toggle');
   const mobileNav = document.getElementById('mobile-nav');
+  const headerEl = document.getElementById('navbar');
   if (burger && mobileNav) {
     burger.addEventListener('click', () => {
       const isOpen = mobileNav.classList.contains('open');
       mobileNav.classList.toggle('open');
       burger.setAttribute('data-state', isOpen ? 'closed' : 'open');
       document.body.style.overflow = isOpen ? '' : 'hidden';
+      if (headerEl) headerEl.classList.toggle('menu-open', !isOpen);
     });
     mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileNav.classList.remove('open');
         burger.setAttribute('data-state', 'closed');
         document.body.style.overflow = '';
+        if (headerEl) headerEl.classList.remove('menu-open');
       });
     });
   }

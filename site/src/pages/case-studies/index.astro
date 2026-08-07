@@ -12,11 +12,11 @@ const rest = caseStudies.filter((c) => !c.featured);
   headerSolid={true}
   description="Case studies from schools, hospitals, research laboratories and government institutions across the UAE supplied and installed by TAKA Scientific."
 >
-  <section class="page-hero">
+  <section class="page-hero" data-view>
     <div class="container">
-      <span class="eyebrow">Case studies</span>
-      <h1 class="page-hero-title">Real projects,<br />real handovers.</h1>
-      <p class="page-hero-sub">
+      <span class="eyebrow t--fade">Case studies</span>
+      <h1 class="page-hero-title" data-splitting="words">Real projects,<br />real handovers.</h1>
+      <p class="page-hero-sub t--fade t--delay_200">
         The equipment we've supplied and installed for UAE schools, hospitals, research
         laboratories and government facilities — and the results each project delivered.
       </p>
@@ -24,10 +24,10 @@ const rest = caseStudies.filter((c) => !c.featured);
   </section>
 
   {featured && (
-    <section class="featured-section">
+    <section class="featured-section" data-view>
       <div class="container">
-        <a href={`/case-studies/${featured.slug}`} class="featured-card">
-          <div class="featured-visual">
+        <a href={`/case-studies/${featured.slug}`} class="featured-card t--fade">
+          <div class="featured-visual clip--top_right">
             <img src={featured.image} alt={featured.imageAlt} class="featured-img" loading="lazy" />
             <span class="featured-tag">{featured.sector}</span>
           </div>
@@ -51,11 +51,11 @@ const rest = caseStudies.filter((c) => !c.featured);
     </section>
   )}
 
-  <section class="list-section">
+  <section class="list-section" data-view>
     <div class="container">
       <div class="list-grid">
-        {rest.map((c) => (
-          <a href={`/case-studies/${c.slug}`} class="study-card">
+        {rest.map((c, i) => (
+          <a href={`/case-studies/${c.slug}`} class="study-card t--fade t--delay_{(i % 2) * 200 + 100}">
             <div class="study-card-img-wrap">
               <img src={c.image} alt={c.imageAlt} class="study-card-img" loading="lazy" />
             </div>
@@ -83,13 +83,13 @@ const rest = caseStudies.filter((c) => !c.featured);
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section" data-view>
     <div class="container text-center">
-      <h2 class="section-title">Every project starts with a conversation.</h2>
-      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Tell us about your facility, your requirements and your timeline. We handle the rest.</p>
+      <h2 class="section-title t--fadedown">Every project starts with a conversation.</h2>
+      <p class="section-subtitle t--fade t--delay_200" style="margin-left: auto; margin-right: auto;">Tell us about your facility, your requirements and your timeline. We handle the rest.</p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-        <a href="/contact" class="btn btn-dark">Talk to our team</a>
-        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="/contact" class="btn btn-dark t--fade t--delay_300">Talk to our team</a>
+        <a href="javascript:void(0)" target="_blank" class="btn btn-outline t--fade t--delay_500">WhatsApp</a>
       </div>
     </div>
   </section>

@@ -1,0 +1,28 @@
+---
+// Legal.astro — shared hero + document shell for Privacy / Terms pages
+interface Props {
+  title: string;
+  intro: string;
+  updated: string;
+  eyebrow?: string;
+}
+
+const { title, intro, updated, eyebrow = 'Legal' } = Astro.props;
+---
+
+<section class="legal-hero" data-view>
+  <div class="container">
+    <span class="eyebrow t--fade">{eyebrow}</span>
+    <h1 class="legal-title" data-splitting="words">{title}</h1>
+    <p class="legal-intro t--fade t--delay_300">{intro}</p>
+    <p class="legal-updated t--fade t--delay_200">Last updated: {updated}</p>
+  </div>
+</section>
+
+<section class="legal-body" data-view>
+  <div class="container">
+    <div class="legal-doc">
+      <slot />
+    </div>
+  </div>
+</section>

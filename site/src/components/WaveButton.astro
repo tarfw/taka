@@ -1,0 +1,34 @@
+---
+// Rollover (word-wave) button inspired by AUAR.
+// Renders two copies of the label; on hover the first copy rolls up
+// while the second rolls in, with a per-word stagger.
+interface Props {
+  href: string;
+  label: string;
+  variant?: 'dark' | 'light' | 'ghost';
+  class?: string;
+  target?: string;
+  rel?: string;
+}
+
+const { href, label, variant = 'dark', class: className = '', target, rel } = Astro.props;
+const words = label.trim().split(/\s+/);
+---
+
+<a
+  href={href}
+  class={`btn-roll btn-roll--${variant} ${className}`.trim()}
+  target={target}
+  rel={rel}
+>
+  <span class="btn-roll__copy" aria-hidden="false">
+    {words.map((word, i) => (
+      <span class="btn-roll__word" style={`--word-index:${i}`}>{word}</span>
+    ))}
+  </span>
+  <span class="btn-roll__copy" aria-hidden="true">
+    {words.map((word, i) => (
+      <span class="btn-roll__word" style={`--word-index:${i}`}>{word}</span>
+    ))}
+  </span>
+</a>

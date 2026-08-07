@@ -3,13 +3,13 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Page Not Found" headerSolid={true}>
-  <section class="not-found">
+  <section class="not-found" data-view>
     <div class="container text-center">
-      <h1 class="not-found-title">Page not found.</h1>
-      <p class="not-found-text">The page you're looking for doesn't exist or has been moved.</p>
+      <h1 class="not-found-title t--fadedown">Page not found.</h1>
+      <p class="not-found-text t--fade t--delay_250">The page you're looking for doesn't exist or has been moved.</p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-        <a href="/" class="btn btn-primary">Back to home</a>
-        <a href="/contact" class="btn btn-outline">Contact us</a>
+        <a href="/" class="btn btn-primary t--fade t--delay_400">Back to home</a>
+        <a href="/contact" class="btn btn-outline t--fade t--delay_600">Contact us</a>
       </div>
     </div>
   </section>

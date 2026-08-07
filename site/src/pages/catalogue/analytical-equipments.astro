@@ -94,17 +94,16 @@ const categoryCards = [
 <div class="ice-page">
 
   <!-- â•â•â• HERO â€” ModuleHighlight â•â•â• -->
-  <section class="ice-hero hero-container">
+  <section class="ice-hero hero-container" data-view>
     <div class="ice-hero-image">
-      <img src="/bg4.jpg" alt="TAKA Scientific analytical instrumentation" class="ice-hero-img" fetchpriority="high" />
+      <img src="/bg4.jpg" alt="TAKA Scientific analytical instrumentation" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
       <div class="ice-hero-overlay">
-        <h1>Precision analytical instruments for every analysis</h1>
-        <div class="ice-hero-buttons">
+        <h1 data-splitting="words">Precision analytical instruments for every analysis</h1>
+        <div class="ice-hero-buttons t--fade t--delay_200">
           <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
-          <a href="/contact" class="ice-btn ice-btn-outlined"><span>Talk to our team</span></a>
         </div>
       </div>
-      <div class="ice-hero-trust">
+      <div class="ice-hero-trust t--fade t--delay_300">
         <p>Authorized JASMEA distributor</p>
         <p>ASTM &amp; ISO compliant methods</p>
         <p>German engineering since 1997</p>
@@ -114,18 +113,17 @@ const categoryCards = [
   </section>
 
   <!-- â•â•â• HEADLINE TEXT â•â•â• -->
-  <section class="ice-headline-text ice-headline-footer">
+  <section class="ice-headline-text ice-headline-footer" data-view>
     <div class="ice-headline-wrapper">
-      <p class="ice-headline-big">Precision gas chromatography. Robust systems. Results you can trust.</p>
-      <a href="/contact" class="ice-btn"><span>Talk to our team</span></a>
+      <p class="ice-headline-big t--fadedown">Precision gas chromatography. Robust systems. Results you can trust.</p>
     </div>
   </section>
 
   <!-- â•â•â• CATEGORIES â€” Explore the range â•â•â• -->
-  <section class="ice-cat-section" id="range">
+  <section class="ice-cat-section" id="range" data-view>
     <div class="ice-cat-grid">
-      {categoryCards.map(card => (
-        <a href={card.href} class="ice-cat-card">
+      {categoryCards.map((card, i) => (
+        <a href={card.href} class={'ice-cat-card t--fade t--delay_' + ((i % 4) * 100 + 100)}>
           <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
             <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
           </span>
@@ -139,13 +137,13 @@ const categoryCards = [
   </section>
 
   <!-- â•â•â• HIGHLIGHT â€” ModuleHighlight â•â•â• -->
-  <section class="ice-highlight">
-    <div class="ice-highlight-image">
+  <section class="ice-highlight" data-view>
+    <div class="ice-highlight-image clip--top_left">
       <img src="/ans3.jpg" alt="Analytical instruments laboratory" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
-      <h2>Explore the full range of analytical instruments</h2>
-      <div class="ice-hero-buttons">
+      <h2 class="t--fadedown">Explore the full range of analytical instruments</h2>
+      <div class="ice-hero-buttons t--fade t--delay_300">
         <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
         <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
       </div>
@@ -154,19 +152,19 @@ const categoryCards = [
 
   <!-- â•â•â• PRODUCT SECTIONS â•â•â• -->
   {productSections.map(section => (
-    <section class="ice-slider-section" id={section.id}>
+    <section class="ice-slider-section" id={section.id} data-view>
       <div class="ice-slider">
         <div class="ice-slider-title">
           <div class="ice-slider-title-wrapper">
-            <h2>{section.title}</h2>
-            <a href="/contact">Get a quote</a>
+            <h2 class="t--fadedown">{section.title}</h2>
+            <a href="/contact" class="t--fade t--delay_200">Get a quote</a>
           </div>
           <div class="ice-slider-controls">
             <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
             <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
           </div>
         </div>
-        <p class="ice-slider-sub">{section.sub}</p>
+        <p class="ice-slider-sub t--fade t--delay_300">{section.sub}</p>
         <div class="ice-slider-items">
           <div class="ice-slider-track">
             {section.products.map(p => (
@@ -188,10 +186,10 @@ const categoryCards = [
   ))}
 
   <!-- â•â•â• CONTACT CTA â•â•â• -->
-  <section class="ice-cta">
-    <h2>Ready to find your instrument?</h2>
-    <p>Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
-    <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to our team</span></a>
+  <section class="ice-cta" data-view>
+    <h2 class="t--fadedown">Ready to find your instrument?</h2>
+    <p class="t--fade t--delay_200">Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
+    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Talk to our team</span></a>
   </section>
 
 </div>

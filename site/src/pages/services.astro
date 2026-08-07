@@ -3,39 +3,39 @@ import Layout from '../layouts/Layout.astro';
 ---
 
 <Layout title="Services" hasHero={true} headerSolid={true}>
-  <section class="page-hero">
+  <section class="page-hero" data-view>
     <div class="container">
-      <span class="eyebrow">Services</span>
-      <h1 class="page-hero-title">Delivery, installation<br><em>and</em> support.</h1>
-      <p class="page-hero-sub">We handle the complete process — from product selection to on-site installation and ongoing maintenance.</p>
+      <span class="eyebrow t--fade">Services</span>
+      <h1 class="page-hero-title" data-splitting="words">Delivery, installation<br><em>and</em> support.</h1>
+      <p class="page-hero-sub t--fade t--delay_200">We handle the complete process — from product selection to on-site installation and ongoing maintenance.</p>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" data-view>
     <div class="container">
       <div class="services-grid">
-        <div class="service-card">
+        <div class="service-card t--fade t--delay_100">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
           </div>
           <h3 class="service-title">Delivery & logistics</h3>
           <p class="service-desc">We coordinate safe delivery of furniture and equipment across all seven emirates. Our logistics team handles scheduling, transport, and site access coordination.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card t--fade t--delay_250">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
           </div>
           <h3 class="service-title">Installation</h3>
           <p class="service-desc">Our trained technicians install laboratory furniture, fume hoods, workbenches, and scientific equipment to manufacturer specifications and safety standards.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card t--fade t--delay_400">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           </div>
           <h3 class="service-title">Quality assurance</h3>
           <p class="service-desc">Every product we supply is inspected for quality and compliance. We ensure all equipment meets relevant UAE and international standards.</p>
         </div>
-        <div class="service-card">
+        <div class="service-card t--fade t--delay_550">
           <div class="service-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
           </div>
@@ -48,36 +48,36 @@ import Layout from '../layouts/Layout.astro';
 
   <div class="divider container"></div>
 
-  <section class="section">
+  <section class="section" data-view>
     <div class="container">
       <div class="process-grid">
         <div class="process-left">
-          <span class="eyebrow">How it works</span>
-          <h2 class="section-title">From inquiry<br>to installation.</h2>
+          <span class="eyebrow t--fade">How it works</span>
+          <h2 class="section-title t--fadedown t--delay_200">From inquiry<br>to installation.</h2>
         </div>
         <div class="process-right">
-          <div class="process-step">
+          <div class="process-step t--fade t--delay_100">
             <span class="process-number">01</span>
             <div>
               <h4 class="process-title">Consultation</h4>
               <p class="process-desc">Tell us about your facility, requirements, and budget. We'll recommend the right products.</p>
             </div>
           </div>
-          <div class="process-step">
+          <div class="process-step t--fade t--delay_250">
             <span class="process-number">02</span>
             <div>
               <h4 class="process-title">Quote & selection</h4>
               <p class="process-desc">We provide a detailed quote with product specifications, pricing, and delivery timelines.</p>
             </div>
           </div>
-          <div class="process-step">
+          <div class="process-step t--fade t--delay_400">
             <span class="process-number">03</span>
             <div>
               <h4 class="process-title">Delivery</h4>
               <p class="process-desc">We coordinate delivery to your site across the UAE, with scheduling that minimizes disruption.</p>
             </div>
           </div>
-          <div class="process-step">
+          <div class="process-step t--fade t--delay_550">
             <span class="process-number">04</span>
             <div>
               <h4 class="process-title">Installation</h4>
@@ -89,13 +89,13 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section" data-view>
     <div class="container text-center">
-      <h2 class="section-title">Need service or support?</h2>
-      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Our team is ready to help. Reach out and we'll respond within the working day.</p>
+      <h2 class="section-title t--fadedown">Need service or support?</h2>
+      <p class="section-subtitle t--fade t--delay_200" style="margin-left: auto; margin-right: auto;">Our team is ready to help. Reach out and we'll respond within the working day.</p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-        <a href="/contact" class="btn btn-dark">Contact us</a>
-        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="/contact" class="btn btn-dark t--fade t--delay_300">Contact us</a>
+        <a href="javascript:void(0)" target="_blank" class="btn btn-outline t--fade t--delay_500">WhatsApp</a>
       </div>
     </div>
   </section>

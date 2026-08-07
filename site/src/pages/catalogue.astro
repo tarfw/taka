@@ -72,9 +72,9 @@ const brands = Array.from(brandCategoryMap.values());
 ---
 
 <Layout title="Catalogue — TAKA Scientific" headerSolid={true}>
-  <section class="page-hero">
+  <section class="page-hero" data-view>
     <div class="container">
-      <div class="hero-toolbar">
+      <div class="hero-toolbar t--fade">
         <div class="search-field">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input type="text" id="productSearch" class="search-input" placeholder="Search products..." aria-label="Search products" />
@@ -82,7 +82,7 @@ const brands = Array.from(brandCategoryMap.values());
         </div>
       </div>
 
-      <div class="ae-tabs-wrap">
+      <div class="ae-tabs-wrap t--fade t--delay_300">
         <button class="ae-scroll-btn ae-scroll-left" aria-label="Scroll tabs left">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 3 5 8 10 13"/></svg>
         </button>
@@ -103,9 +103,9 @@ const brands = Array.from(brandCategoryMap.values());
     </div>
   </section>
 
-  <section class="section products-section">
+  <section class="section products-section" data-view>
     <div class="container">
-      <div class="products-layout">
+      <div class="products-layout t--fade t--delay_100">
         <ProductFilters subcategories={subcategories} brands={brands} />
         
         <div class="products-main">
@@ -141,11 +141,11 @@ const brands = Array.from(brandCategoryMap.values());
     </div>
   </section>
 
-  <section class="cta-section">
+  <section class="cta-section" data-view>
     <div class="container text-center">
-      <p style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1.25rem;">Need a quote? Tell us about your facility and requirements.</p>
-      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
+      <p class="t--fade" style="font-size: 0.95rem; color: var(--color-text-secondary); margin-bottom: 1.25rem;">Need a quote? Tell us about your facility and requirements.</p>
+      <div class="t--fade t--delay_300" style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <a href="javascript:void(0)" target="_blank" class="btn btn-outline">WhatsApp</a>
         <a href="/contact" class="btn btn-outline">Contact form</a>
       </div>
     </div>

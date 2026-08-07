@@ -39,21 +39,21 @@ const { product, categoryId, categoryName, brandName, subcategoryName, relatedPr
       </a>
     </nav>
 
-    <div class="product-detail-hero">
-      <div class="product-detail-image-wrap">
+    <div class="product-detail-hero" data-view>
+      <div class="product-detail-image-wrap clip--top_left">
         <img src={product.image} alt={product.fullName || product.name} class="product-detail-image" />
       </div>
       <div class="product-detail-info">
-        <div class="product-detail-meta">
+        <div class="product-detail-meta t--fade t--delay_200">
           {categoryName && <span class="product-detail-category">{categoryName}</span>}
           {brandName && <span class="product-detail-brand">{brandName}</span>}
           {subcategoryName && <span class="product-detail-subcategory">{subcategoryName}</span>}
         </div>
-        <h1 class="product-detail-title">{product.fullName || product.name}</h1>
-        <p class="product-detail-desc">{product.description}</p>
+        <h1 class="product-detail-title t--fadedown t--delay_300">{product.fullName || product.name}</h1>
+        <p class="product-detail-desc t--fade t--delay_400">{product.description}</p>
         
         {product.specs && product.specs.length > 0 && (
-          <div class="product-detail-specs">
+          <div class="product-detail-specs t--fade t--delay_500">
             <h3 class="product-detail-section-title">Specifications</h3>
             <div class="specs-table">
               {product.specs.map(spec => (
@@ -67,7 +67,7 @@ const { product, categoryId, categoryName, brandName, subcategoryName, relatedPr
         )}
 
         {product.applications && product.applications.length > 0 && (
-          <div class="product-detail-applications">
+          <div class="product-detail-applications t--fade t--delay_500">
             <h3 class="product-detail-section-title">Applications</h3>
             <div class="applications-list">
               {product.applications.map(app => (
@@ -80,20 +80,20 @@ const { product, categoryId, categoryName, brandName, subcategoryName, relatedPr
     </div>
 
     {product.fullDescription && (
-      <div class="product-detail-full">
+      <div class="product-detail-full" data-view>
         <div class="product-detail-full-content">
-          <h2 class="product-detail-full-title">About this product</h2>
-          <p class="product-detail-full-text">{product.fullDescription}</p>
+          <h2 class="product-detail-full-title t--fadedown">About this product</h2>
+          <p class="product-detail-full-text t--fade t--delay_200">{product.fullDescription}</p>
         </div>
       </div>
     )}
 
     {relatedProducts.length > 0 && (
-      <div class="product-detail-related">
-        <h2 class="product-detail-section-title">Related Products</h2>
+      <div class="product-detail-related" data-view>
+        <h2 class="product-detail-section-title t--fadedown">Related Products</h2>
         <div class="related-grid">
-          {relatedProducts.map(rp => (
-            <a href={`/catalogue/${rp.id}`} class="related-card">
+          {relatedProducts.map((rp, i) => (
+            <a href={`/catalogue/${rp.id}`} class="related-card t--fade t--delay_{(i % 3) * 100 + 200}">
               <div class="related-card-image">
                 <img src={rp.image} alt={rp.name} loading="lazy" />
               </div>
