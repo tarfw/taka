@@ -1,6 +1,6 @@
 ---
 // src/layouts/Layout.astro
-// Main layout with navigation and footer
+// Main layout with navigation, footer, and SEO head
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -10,11 +10,40 @@ export interface Props {
   description?: string;
   hasHero?: boolean;
   headerSolid?: boolean;
+  noindex?: boolean;
 }
 
-const { title, description, hasHero, headerSolid } = Astro.props;
-const isHome = title === 'Home';
+const { title, description, hasHero, headerSolid, noindex } = Astro.props;
+
+const SITE = Astro.site ?? new URL('https://taka.ae');
+const path = Astro.url.pathname;
+const canonicalURL = new URL(path, SITE).href;
+const isHome = path === '/';
 const showHero = isHome || hasHero;
+
+const pageTitle = isHome
+  ? 'TAKA Scientific | Scientific Equipment & Laboratory Furniture Supplier in the UAE'
+  : `${title} | TAKA Scientific`;
+
+const defaultDescription =
+  'TAKA Scientific supplies scientific equipment, laboratory furniture, testing apparatus, laboratory consumables and turnkey lab projects across the UAE. Delivered and installed for schools, hospitals, research labs and factories.';
+const pageDescription = description || defaultDescription;
+const ogImage = new URL('/bg3.jpg', SITE).href;
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'TAKA Scientific',
+  url: new URL('/', SITE).href,
+  logo: new URL('/logo5.svg', SITE).href,
+  description: defaultDescription,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: '+971 2 555 4047',
+    email: 'info@taka.ae',
+    contactType: 'sales',
+  },
+};
 ---
 
 <!DOCTYPE html>
@@ -22,13 +51,26 @@ const showHero = isHome || hasHero;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta http-equiv="Expires" content="0" />
-    <title>{title} | TAKA Scientific</title>
-    <meta name="description" content={description || "TAKA Scientific — Retail of scientific equipment, laboratory furniture, testing apparatus, and factory equipment across the UAE."} />
-    <meta name="robots" content="index, follow" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index, follow" />
+    )}
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="TAKA Scientific" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={ogImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
     <link rel="preload" href="/fonts/ABCArizonaFlare-Light.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/ABCArizonaFlare-Regular.woff2" as="font" type="font/woff2" crossorigin />
     <link rel="preload" href="/fonts/ABCArizonaFlare-Medium.woff2" as="font" type="font/woff2" crossorigin />

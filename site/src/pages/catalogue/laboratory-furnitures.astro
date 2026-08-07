@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IceCatalogue from '../../components/IceCatalogue.astro';
+---
+
+<Layout
+  title="Laboratory Furnitures — Lab Furniture & Installation"
+  description="Laboratory furniture from TAKA Scientific — workbenches, fume hoods, safety cabinets and seating, designed, supplied and installed across the UAE."
+  hasHero={true}
+>
+
+<IceCatalogue
+  hero={{
+    image: '/bg4.jpg',
+    title: 'Laboratory furniture, designed and installed',
+    trust: [
+      'Design & layout',
+      'Installation included',
+      'EN & ISO certified',
+      'Made to last',
+    ],
+  }}
+  headline={{
+    text: 'Workspaces engineered for safety, efficiency and long-term durability.',
+    button: { label: 'Plan your lab', href: '/contact' },
+  }}
+  categoryCards={[
+    { name: 'Laboratory Workbenches', image: '/products/furniture/lab-bench.svg', href: '#benches', contain: true },
+    { name: 'Fume Hoods', image: '/products/furniture/fume-hood.svg', href: '#fume-hoods', contain: true },
+    { name: 'Safety & Storage Cabinets', image: '/products/furniture/safety-cabinet.svg', href: '#storage', contain: true },
+  ]}
+  highlight={{
+    image: '/ans2.jpg',
+    title: 'Explore laboratory furniture solutions',
+  }}
+  sections={[
+    {
+      id: 'benches',
+      title: 'Workbenches & stations',
+      sub: 'Modular bench systems and workstations for teaching, research and industrial laboratories.',
+      cards: [
+        { label: 'Laboratory Workbenches', text: 'Modular bench systems with chemical-resistant tops and epoxy resin surfaces.' },
+        { label: 'Student Desks', text: 'Adjustable-height lab desks with powder-coated steel frames for schools.' },
+        { label: 'ESD Workbenches', text: 'Anti-static surfaces for electronics and semiconductor laboratories.' },
+        { label: 'Demonstration Desks', text: 'Raised teaching benches with service spines for instructor-led labs.' },
+      ],
+    },
+    {
+      id: 'fume-hoods',
+      title: 'Fume hoods & ventilation',
+      sub: 'Ducted and ductless containment solutions that protect people and samples.',
+      cards: [
+        { label: 'Ducted Fume Hoods', text: 'EN 14175 certified fume hoods with variable air volume control.' },
+        { label: 'Ductless Fume Hoods', text: 'Carbon-filtered containment for non-hazardous solvent work.' },
+        { label: 'Fume Extraction', text: 'Bench-top and ceiling-mounted source extraction systems.' },
+        { label: 'Canopy Hoods', text: 'Overhead capture hoods for heat and vapor release.' },
+      ],
+    },
+    {
+      id: 'storage',
+      title: 'Storage & cabinets',
+      sub: 'Safe, compliant storage for chemicals, instruments and laboratory supplies.',
+      cards: [
+        { label: 'Safety Cabinets', text: 'Flammable and corrosive storage, EN 14470 certified.' },
+        { label: 'Chemical Storage', text: 'Vented acid cabinets and bulk chemical storage units.' },
+        { label: 'Sterile Storage Cabinets', text: 'Laminar flow cabinets and clean-room shelving.' },
+        { label: 'Mobile Carts & Trolleys', text: 'Stainless steel and epoxy-coated carts for lab logistics.' },
+      ],
+    },
+    {
+      id: 'seating',
+      title: 'Seating & accessories',
+      sub: 'Ergonomic seating and service accessories to complete every workstation.',
+      cards: [
+        { label: 'Lab Stools & Chairs', text: 'Height-adjustable, chemical-resistant seating for lab work.' },
+        { label: 'Sinks & Wash Stations', text: 'Epoxy resin and stainless steel lab sinks with fixtures.' },
+        { label: 'Gas & Utility Fixtures', text: 'Valves, outlets and service panels integrated into benches.' },
+        { label: 'Shelving & Racks', text: 'Heavy-duty storage racks and wall shelving for equipment.' },
+      ],
+    },
+  ]}
+  cta={{
+    title: 'Plan your laboratory layout?',
+    text: 'Tell us about your space and workflow and we\u2019ll design, supply and install your laboratory furniture.',
+  }}
+/>
+
+</Layout>

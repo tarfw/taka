@@ -1,5 +1,56 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import productData from '../data/products.json';
+
+const supplyCards = [
+  {
+    id: 'analytical-equipments',
+    name: 'Analytical Equipments',
+    desc: 'GC, spectroscopy and precision instruments for chemical analysis.',
+    icon: '<path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/>',
+  },
+  {
+    id: 'scientific-equipments',
+    name: 'Scientific Equipments',
+    desc: 'Instruments and apparatus for sample preparation and lab research.',
+    icon: '<path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M12 14v4"/><path d="M10 16h4"/>',
+  },
+  {
+    id: 'testing-apparatus',
+    name: 'Testing Apparatus',
+    desc: 'QC, testing and calibration equipment for quality assurance.',
+    icon: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+  },
+  {
+    id: 'laboratory-furnitures',
+    name: 'Laboratory Furnitures',
+    desc: 'Workbenches, fume hoods and lab furniture built for durability.',
+    icon: '<path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8L8 13V8L2 12z"/>',
+  },
+  {
+    id: 'laboratory-consumables',
+    name: 'Laboratory Consumables',
+    desc: 'Glassware, reagents and everyday supplies for every lab.',
+    icon: '<path d="M10 2v6.292a.5.5 0 0 1-.2.4L3 14v2c0 3.5 3.5 6 9 6s9-2.5 9-6v-2l-6.8-5.308a.5.5 0 0 1-.2-.4V2"/><path d="M8.5 15h7"/><path d="M12 15v3"/>',
+  },
+  {
+    id: 'turnkey',
+    name: 'Turnkey Projects',
+    desc: 'Complete lab design, supply, installation and commissioning.',
+    icon: '<path d="M3 3h18v18H3z"/><path d="M3 9h18"/><path d="M9 21V9"/>',
+  },
+];
+
+const categoryItemList = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  itemListElement: supplyCards.map((c, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: c.name,
+    url: new URL(`/catalogue/${c.id}`, Astro.site ?? 'https://taka.ae').href,
+  })),
+};
 ---
 
 <Layout title="Home">
@@ -16,36 +67,19 @@ import Layout from '../layouts/Layout.astro';
     <div class="hero-content">
       <div class="hero-text-block">
         <h1 class="hero-title">Scientific equipment &amp; lab furniture, delivered &amp; installed across the UAE.</h1>
+        <p class="hero-subtitle">TAKA Scientific supplies analytical instruments, testing apparatus, laboratory furniture and consumables to schools, hospitals, research labs and factories in Abu Dhabi, Dubai and across the Emirates.</p>
       </div>
 
-      <!-- Search box -->
-      <div class="hero-search-wrapper">
-        <div class="hero-search-box">
-          <input type="text" class="hero-search-input" placeholder="Find lab furniture, testing apparatus..." />
-          <button class="hero-search-submit">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- Logo strip -->
-      <div class="hero-logos">
-        <div class="hero-logos-track">
-          <span class="hero-logo-item">Abu Dhabi Education Council</span>
-          <span class="hero-logo-item">Sheikh Khalifa Medical City</span>
-          <span class="hero-logo-item">Khalifa University</span>
-          <span class="hero-logo-item">SEHA</span>
-          <span class="hero-logo-item">Abu Dhabi Police</span>
-        </div>
-      </div>
-
-      <!-- CTA button -->
+      <!-- CTA buttons -->
       <div class="hero-actions">
-        <a href="/contact" class="hero-cta">
-          <span class="hero-cta-text">Talk to our team</span>
+        <a href="/catalogue/analytical-equipments" class="hero-cta">
+          <span class="hero-cta-text">Browse the catalogue</span>
           <span class="hero-cta-arrow">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </span>
+        </a>
+        <a href="/contact" class="hero-cta hero-cta-ghost">
+          <span class="hero-cta-text">Talk to our team</span>
         </a>
       </div>
     </div>
@@ -248,40 +282,25 @@ import Layout from '../layouts/Layout.astro';
   <!-- WHAT WE SUPPLY -->
   <section class="section">
     <div class="container">
+      <div class="section-head">
+        <span class="eyebrow">What we supply</span>
+        <h2 class="section-title">Scientific equipment &amp; laboratory supplies</h2>
+        <p class="section-subtitle">One supplier for every facility — instruments, furniture, consumables and complete projects, delivered and installed across the UAE.</p>
+      </div>
       <div class="supply-grid">
-        <div class="supply-card">
-          <div class="supply-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 2 12 7 7 2"/></svg>
-          </div>
-          <h3 class="supply-title">Schools & Hospitals</h3>
-          <p class="supply-desc">Classroom furniture, hospital beds, medical carts, and institutional equipment designed for durability and hygiene.</p>
-        </div>
-        <div class="supply-card">
-          <div class="supply-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2V9M9 21H5a2 2 0 0 1-2-2V9m0 0h18"/></svg>
-          </div>
-          <h3 class="supply-title">Scientific Equipment</h3>
-          <p class="supply-desc">Practical devices, measuring instruments, and scientific apparatus for research institutions and laboratories.</p>
-        </div>
-        <div class="supply-card">
-          <div class="supply-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-          </div>
-          <h3 class="supply-title">Testing & Commissioning</h3>
-          <p class="supply-desc">Testing equipment, calibration apparatus, and commissioning tools for quality assurance and compliance.</p>
-        </div>
-        <div class="supply-card">
-          <div class="supply-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8L8 13V8L2 12z"/></svg>
-          </div>
-          <h3 class="supply-title">Laboratory & Factory</h3>
-          <p class="supply-desc">Workbenches, storage solutions, fume hoods, and industrial furniture for laboratories and manufacturing facilities.</p>
-        </div>
+        {supplyCards.map((card) => (
+          <a href={`/catalogue/${card.id}`} class="supply-card">
+            <div class="supply-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" set:html={card.icon} />
+            </div>
+            <h3 class="supply-title">{card.name}</h3>
+            <p class="supply-desc">{card.desc}</p>
+            <span class="supply-link">Browse {card.name} &rarr;</span>
+          </a>
+        ))}
       </div>
     </div>
   </section>
-
-  <div class="container"><div class="rule"></div></div>
 
   <!-- BUILT FOR EVERY SECTOR -->
   <section class="sector-section">
@@ -409,6 +428,20 @@ import Layout from '../layouts/Layout.astro';
       });
     });
   </script>
+
+  <!-- EDITORIAL HIGHLIGHT — our story, image background -->
+  <section class="ice-editorial" aria-label="Our story">
+    <div class="ice-editorial-image">
+      <img src="/anbg2.jpg" alt="TAKA Scientific analytical laboratory" loading="lazy" />
+    </div>
+    <div class="ice-editorial-overlay">
+      <div class="ice-editorial-text">
+        <h2 class="ice-editorial-title">We&#39;re in it for the long run &mdash; and so is our instrumentation.</h2>
+        <p class="ice-editorial-text-p">While most suppliers put the margin first, TAKA puts our customers, our people and our partners first — with instruments that keep running, year after year.</p>
+        <a href="/about" class="ice-btn ice-btn-outlined"><span>Our story</span></a>
+      </div>
+    </div>
+  </section>
 
   <!-- TRUSTED BY — exact exa.ai style -->
   <section class="trusted-section">
@@ -554,4 +587,183 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
+  <script type="application/ld+json" set:html={JSON.stringify(categoryItemList)} />
 </Layout>
+
+<style>
+  .section-head {
+    max-width: 640px;
+    margin-bottom: 2.5rem;
+  }
+  .supply-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: inherit;
+  }
+  .supply-card:hover { background: var(--color-surface); }
+  .supply-link {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1a365d;
+  }
+  .hero-cta-ghost {
+    background: transparent;
+  }
+  .hero-actions {
+    gap: 0.75rem;
+  }
+
+  /* ═══ EDITORIAL HIGHLIGHT ═══ */
+  .ice-editorial,
+  .ice-editorial-image {
+    position: relative;
+  }
+  .ice-editorial-image:after {
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(#0003 0% 100%);
+    position: absolute;
+    inset: 0;
+  }
+  .ice-editorial-image {
+    aspect-ratio: 2;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-image {
+      height: calc(100svh - 52px);
+      aspect-ratio: auto;
+    }
+  }
+  .ice-editorial-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-editorial-overlay {
+    width: 100%;
+    padding: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-overlay {
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      padding: 0 55px 0 59px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: none;
+    }
+  }
+  .ice-editorial-text {
+    color: #ffffff;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+    display: flex;
+    width: 100%;
+  }
+  @media (min-width: 1024px) {
+    .ice-editorial-text {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      column-gap: 24px;
+    }
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-text {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+  }
+  .ice-editorial-title {
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    max-width: 33ch;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-editorial-title { grid-column: 1 / span 3; }
+  }
+  .ice-editorial-text-p {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    font-size: 19px;
+    line-height: 1.2;
+    font-weight: 600;
+    max-width: 30ch;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-editorial-text-p {
+      letter-spacing: -0.01em;
+      font-size: 28px;
+      line-height: 1.1;
+      grid-column: 6 / span 6;
+    }
+    .ice-editorial-text .ice-btn { grid-column: 16; justify-self: end; align-self: start; margin-top: 2px; }
+  }
+  @media (max-width: 1024px) {
+    .ice-editorial-text-p {
+      max-width: 18ch;
+      margin: 18px 0 28px;
+      font-size: 23px;
+      line-height: 1.2;
+    }
+  }
+
+  /* Editorial button */
+  .ice-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    height: 32px;
+    padding: 0 36px;
+    border: 1px solid var(--charcoal);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+  .ice-btn span { pointer-events: none; }
+  .ice-btn-outlined {
+    background: transparent;
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.5);
+    padding: 0 12px;
+  }
+  @media (hover: hover) {
+    .ice-btn-outlined:hover {
+      border-color: #ffffff;
+      background: transparent;
+    }
+  }
+  @media (max-width: 480px) {
+    .ice-editorial-overlay { padding: 0 20px; }
+  }
+</style>

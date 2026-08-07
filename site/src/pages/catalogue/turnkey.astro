@@ -1,0 +1,89 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IceCatalogue from '../../components/IceCatalogue.astro';
+---
+
+<Layout
+  title="Turnkey Projects — Complete Laboratory Solutions"
+  description="Turnkey laboratory projects from TAKA Scientific — design, supply, installation, testing and commissioning of complete laboratories across the UAE."
+  hasHero={true}
+>
+
+<IceCatalogue
+  hero={{
+    image: '/bg1.webp',
+    title: 'Turnkey laboratory projects, delivered end-to-end',
+    trust: [
+      'Design to handover',
+      'Project management',
+      'On-time delivery',
+      'Ongoing support',
+    ],
+  }}
+  headline={{
+    text: 'One partner for your entire lab — from concept and design to commissioning and beyond.',
+    button: { label: 'Start your project', href: '/contact' },
+  }}
+  categoryCards={[
+    { name: 'School Laboratories', image: '/case-studies/adec-school-lab.jpg', href: '#design' },
+    { name: 'Hospital Facilities', image: '/case-studies/seha-clinic.jpg', href: '#supply' },
+    { name: 'Research Laboratories', image: '/case-studies/khalifa-research-lab.jpg', href: '#commissioning' },
+    { name: 'Clinic Fit-Outs', image: '/case-studies/skmc-opd.jpg', href: '#support' },
+  ]}
+  highlight={{
+    image: '/ans3.jpg',
+    title: 'Explore turnkey project delivery',
+  }}
+  sections={[
+    {
+      id: 'design',
+      title: 'Design & planning',
+      sub: 'We start with your workflows and turn them into an efficient, compliant laboratory plan.',
+      cards: [
+        { label: 'Laboratory Layout & Design', text: 'Space planning, bench layout and zoning for clean and dirty workflows.' },
+        { label: 'Utility Planning', text: 'Gas, water, power and ventilation requirements engineered in from day one.' },
+        { label: 'Equipment Selection', text: 'The right instruments and furniture specified against your applications.' },
+        { label: 'Budgeting & Procurement', text: 'Transparent cost planning and single-source procurement for the whole lab.' },
+      ],
+    },
+    {
+      id: 'supply',
+      title: 'Supply & installation',
+      sub: 'Everything delivered, installed and set up by our own team.',
+      cards: [
+        { label: 'Equipment Supply', text: 'Genuine instruments and furniture from our authorized brands.' },
+        { label: 'Furniture Installation', text: 'Workbenches, fume hoods and storage installed and aligned.' },
+        { label: 'Delivery & Logistics', text: 'Careful crating, transport and placement of sensitive equipment.' },
+        { label: 'Unpacking & Setup', text: 'Unpacking, assembly and initial configuration on site.' },
+      ],
+    },
+    {
+      id: 'commissioning',
+      title: 'Testing & commissioning',
+      sub: 'We prove it works before we hand it over.',
+      cards: [
+        { label: 'Functional Testing', text: 'Every instrument and system tested against specification.' },
+        { label: 'Calibration', text: 'Calibration certificates and traceable documentation provided.' },
+        { label: 'Documentation', text: 'Complete O&M manuals, compliance files and as-built drawings.' },
+        { label: 'Handover & Training', text: 'On-site training so your team is confident from day one.' },
+      ],
+    },
+    {
+      id: 'support',
+      title: 'Ongoing support',
+      sub: 'Long after handover, we stay with you.',
+      cards: [
+        { label: 'Preventive Maintenance', text: 'Scheduled maintenance programs that keep your lab running.' },
+        { label: 'Spare Parts', text: 'Genuine consumables and parts, stocked and ready.' },
+        { label: 'Warranty Service', text: 'Fast-turnaround repairs and full warranty management.' },
+        { label: 'Extensions & Upgrades', text: 'Grow your lab with furniture, instruments and new capabilities.' },
+      ],
+    },
+  ]}
+  cta={{
+    title: 'Ready to build your laboratory?',
+    text: 'Tell us about your facility and requirements and we\u2019ll take your project from concept to handover.',
+  }}
+/>
+
+</Layout>

@@ -1,0 +1,91 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IceCatalogue from '../../components/IceCatalogue.astro';
+---
+
+<Layout
+  title="Laboratory Consumables — Glassware, Filtration & Reagents"
+  description="Laboratory consumables from TAKA Scientific — glassware, pipette tips, filtration and reagents, always in stock and delivered fast across the UAE."
+  hasHero={true}
+>
+
+<IceCatalogue
+  hero={{
+    image: '/ans1.jpg',
+    title: 'Laboratory consumables, always in stock',
+    trust: [
+      'Fast delivery',
+      'Genuine consumables',
+      'Bulk & routine pricing',
+      'All major brands',
+    ],
+  }}
+  headline={{
+    text: 'Everything your lab needs to keep running — glassware, disposables, filtration and reagents.',
+    button: { label: 'Order consumables', href: '/contact' },
+  }}
+  categoryCards={[
+    { name: 'Beakers & Glassware', image: '/products/consumables/beakers.svg', href: '#glassware', contain: true },
+    { name: 'Flasks', image: '/products/consumables/flasks.svg', href: '#glassware', contain: true },
+    { name: 'Pipette Tips', image: '/products/consumables/pipette-tips.svg', href: '#disposables', contain: true },
+    { name: 'Petri Dishes', image: '/products/consumables/petri-dishes.svg', href: '#disposables', contain: true },
+    { name: 'Filter Paper', image: '/products/consumables/filter-paper.svg', href: '#filtration', contain: true },
+    { name: 'Buffer Solutions', image: '/products/consumables/buffer-solutions.svg', href: '#reagents', contain: true },
+  ]}
+  highlight={{
+    image: '/abg2.jpg',
+    title: 'Explore laboratory consumables',
+  }}
+  sections={[
+    {
+      id: 'glassware',
+      title: 'Glassware & plasticware',
+      sub: 'Borosilicate glassware and lab plastics for every routine and analytical application.',
+      cards: [
+        { label: 'Beakers & Measuring Cylinders', text: 'Borosilicate 3.3 glass beakers, cylinders and mixing vessels.' },
+        { label: 'Flasks', text: 'Volumetric, conical, round-bottom and reagent flasks.' },
+        { label: 'Volumetric Glassware', text: 'Class A pipettes, burettes and volumetric flasks with certificates.' },
+        { label: 'Bottles & Containers', text: 'Media bottles, wash bottles, jars and sample containers.' },
+      ],
+    },
+    {
+      id: 'disposables',
+      title: 'Pipette tips & disposables',
+      sub: 'Consistent, RNase-free disposables for confident liquid handling.',
+      cards: [
+        { label: 'Pipette Tips', text: 'Filtered and unfiltered tips for 0.1 µL to 10 mL pipettes.' },
+        { label: 'Petri Dishes', text: 'Sterile polystyrene and glass dishes for culture work.' },
+        { label: 'Tubes & Racks', text: 'Microtubes, centrifuge tubes, cryovials and tube racks.' },
+        { label: 'Gloves & PPE', text: 'Nitrile and latex gloves, aprons and lab safety essentials.' },
+      ],
+    },
+    {
+      id: 'filtration',
+      title: 'Filtration & paperware',
+      sub: 'Filtration media and lab paper for preparation and analysis.',
+      cards: [
+        { label: 'Filter Paper', text: 'Qualitative and quantitative filter papers in all grades.' },
+        { label: 'Membrane Filters', text: 'PES, nylon and cellulose membranes for solvent and aqueous filtration.' },
+        { label: 'Syringe Filters', text: 'Ready-to-use sterile syringe filters in popular pore sizes.' },
+        { label: 'Weighing & Lint-free Paper', text: 'Weighing boats, pans and lint-free wipes for balances.' },
+      ],
+    },
+    {
+      id: 'reagents',
+      title: 'Reagents & standards',
+      sub: 'Solutions and standards for calibration, cleaning and routine chemistry.',
+      cards: [
+        { label: 'Buffer Solutions', text: 'pH 4, 7 and 10 buffers plus certified calibration standards.' },
+        { label: 'Reagent Kits', text: 'Ready-to-use reagent sets for common water and chemistry tests.' },
+        { label: 'Cleaning Solutions', text: 'Laboratory detergents and rinsing solutions for glassware.' },
+        { label: 'Desiccants & Absorbents', text: 'Silica gel, drying agents and spill absorbents.' },
+      ],
+    },
+  ]}
+  cta={{
+    title: 'Stock your laboratory?',
+    text: 'Tell us what you use regularly and we\u2019ll set up a reliable, cost-effective supply.',
+  }}
+/>
+
+</Layout>

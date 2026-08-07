@@ -1,0 +1,146 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IceCatalogue from '../../components/IceCatalogue.astro';
+import productData from '../../data/products.json';
+
+const category = productData.categories.find(c => c.id === 'scientific-equipments');
+if (!category) throw new Error('Category not found');
+
+const subcategories = category.brands.flatMap(brand =>
+  brand.subcategories.map(sc => ({
+    id: sc.id,
+    name: sc.name,
+    brandId: brand.id,
+    brandName: brand.name,
+    products: sc.products.map(p => ({
+      ...p,
+      brandName: brand.name,
+      subcategoryName: sc.name,
+      categoryName: category.name
+    }))
+  }))
+);
+
+const productsIn = (ids) =>
+  subcategories.filter(sc => ids.includes(sc.id)).flatMap(sc => sc.products);
+
+const sections = [
+  {
+    id: 'stirring',
+    title: 'Stirring & mixing',
+    sub: 'Magnetic stirrers, overhead stirrers, hot plates and shakers for everyday lab mixing.',
+    products: productsIn(['magnetic-stirrers', 'overhead-stirrers', 'hot-plates-mixers', 'shakers']),
+  },
+  {
+    id: 'dispersion',
+    title: 'Dispersing & grinding',
+    sub: 'Batch and in-line dispersers, mills and single-use crushing systems for homogenization.',
+    products: productsIn(['dispersers', 'mills', 'single-use-crushing']),
+  },
+  {
+    id: 'temperature',
+    title: 'Temperature control',
+    sub: 'Thermoshakers, dry block heaters, heating baths and precise temperature control systems.',
+    products: productsIn(['thermoshakers', 'dry-block-heaters', 'heating-baths', 'temperature-control', 'tempering-chambers']),
+  },
+  {
+    id: 'analysis',
+    title: 'Viscosity & calorimetry',
+    sub: 'Rheology, viscosity measurement and combustion calorimetry for quality control.',
+    products: productsIn(['viscosity-measurement', 'calorimetry']),
+  },
+  {
+    id: 'water',
+    title: 'Water purification',
+    sub: 'Type I–III pure and ultrapure water systems from ELGA, from benchtop to centralized.',
+    products: productsIn(['water-purification', 'centra-series', 'medica-series', 'biopure-series', 'centralized-systems']),
+  },
+  {
+    id: 'hydrogen',
+    title: 'Hydrogen generation',
+    sub: 'Safe, on-demand hydrogen generators for GC carrier and detector gas.',
+    products: productsIn(['hydrogen-generators']),
+  },
+  {
+    id: 'centrifugation',
+    title: 'Centrifuges',
+    sub: 'From micro to industrial — refrigerated, high-speed, ultra and multi-purpose centrifuges.',
+    products: productsIn(['centrifuges', 'low-speed-centrifuges', 'ultra-centrifuges', 'high-speed-centrifuges', 'multi-purpose-centrifuges', 'large-capacity-centrifuges', 'clinical-centrifuges', 'industrial-centrifuges']),
+  },
+  {
+    id: 'concentration',
+    title: 'Concentration & drying',
+    sub: 'Sample concentrators, centrifugal vacuum concentrators, freeze dryers and gas-purging evaporators.',
+    products: productsIn(['sample-concentrators', 'centrifugal-vacuum-concentrators', 'freeze-dryers', 'gas-purging-evaporators']),
+  },
+  {
+    id: 'incubation',
+    title: 'Incubation & storage',
+    sub: 'CO₂ incubators and ultra-low temperature freezers for biological storage.',
+    products: productsIn(['co2-incubators', 'ultra-low-freezers']),
+  },
+  {
+    id: 'process',
+    title: 'Process systems',
+    sub: 'Distillation, reactors, extraction, rotary evaporation, spray drying and filtration systems.',
+    products: productsIn(['distillation-systems', 'reactor-systems', 'extraction-systems', 'rotary-evaporators', 'spray-dryers', 'drying-systems', 'filtration-systems', 'evaporators']),
+  },
+  {
+    id: 'glovebox',
+    title: 'Glove boxes & inert atmosphere',
+    sub: 'Standard and vacuum glove boxes, gas and solvent purifiers and isolators.',
+    products: productsIn(['glove-boxes', 'gas-purifiers', 'solvent-purifiers', 'isolators']),
+  },
+  {
+    id: 'coating',
+    title: 'Vacuum coating',
+    sub: 'Thin-film vacuum coating systems for research and small-scale production.',
+    products: productsIn(['vacuum-coating']),
+  },
+];
+
+const categoryCards = [
+  { name: 'IKA Stirring & Mixing', image: '/products/ika/rct-basic.jpg', href: '#stirring' },
+  { name: 'IKA Dispersers & Mills', image: '/products/ika/t25-digital.jpg', href: '#dispersion' },
+  { name: 'ELGA Water Purification', image: '/products/elga/purelab-flex.jpeg', href: '#water' },
+  { name: 'Hanil Centrifuges', image: '/products/hanil/centrifuge-refrigerated.jpg', href: '#centrifugation' },
+  { name: 'Hanil Freeze Dryers', image: '/products/hanil/freeze-dryer.svg', href: '#concentration', contain: true },
+  { name: 'TOPTION Reactors & Distillation', image: '/products/toption/molecular-distillation.jpg', href: '#process' },
+  { name: 'ETELUX Glove Boxes', image: '/products/etelux/standard-glovebox.svg', href: '#glovebox', contain: true },
+];
+---
+
+<Layout
+  title="Scientific Equipments — Laboratory Equipment"
+  description="Scientific equipment for every laboratory from TAKA Scientific — IKA stirring and mixing, ELGA water purification, Hanil centrifuges, TOPTION process systems and ETELUX glove boxes. Authorized distributor."
+  hasHero={true}
+>
+
+<IceCatalogue
+  hero={{
+    image: '/abg2.jpg',
+    title: 'Scientific equipment for every laboratory',
+    trust: [
+      'Authorized IKA distributor',
+      'ELGA water purification',
+      'ASTM & ISO compliant',
+      'Support that lasts',
+    ],
+  }}
+  headline={{
+    text: 'Precision lab equipment. Genuine brands. Results you can trust.',
+    button: { label: 'Talk to our team', href: '/contact' },
+  }}
+  categoryCards={categoryCards}
+  highlight={{
+    image: '/ans1.jpg',
+    title: 'Explore the full range of scientific equipment',
+  }}
+  sections={sections}
+  cta={{
+    title: 'Ready to equip your laboratory?',
+    text: 'Tell us about your applications and we\u2019ll recommend the right equipment for you.',
+  }}
+/>
+
+</Layout>

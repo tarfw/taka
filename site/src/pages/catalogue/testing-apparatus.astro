@@ -1,0 +1,122 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import IceCatalogue from '../../components/IceCatalogue.astro';
+import productData from '../../data/products.json';
+
+const category = productData.categories.find(c => c.id === 'testing-apparatus');
+if (!category) throw new Error('Category not found');
+
+const subcategories = category.brands.flatMap(brand =>
+  brand.subcategories.map(sc => ({
+    id: sc.id,
+    name: sc.name,
+    brandId: brand.id,
+    brandName: brand.name,
+    products: sc.products.map(p => ({
+      ...p,
+      brandName: brand.name,
+      subcategoryName: sc.name,
+      categoryName: category.name
+    }))
+  }))
+);
+
+const productsIn = (ids) =>
+  subcategories.filter(sc => ids.includes(sc.id)).flatMap(sc => sc.products);
+
+const sections = [
+  {
+    id: 'spectrophotometry',
+    title: 'Spectrophotometry & colorimetry',
+    sub: 'UV-VIS and visible spectrophotometers, turbidimeters and colorimeters for laboratory and field.',
+    products: productsIn(['spectrophotometers', 'colorimeters', 'turbidimeters']),
+  },
+  {
+    id: 'electrochemistry',
+    title: 'pH & electrochemistry',
+    sub: 'pH meters, benchtop and portable meters, electrochemical probes and electrodes.',
+    products: productsIn(['ph-meters', 'benchtop-meters', 'electrochemical-probes', 'electrochemistry']),
+  },
+  {
+    id: 'oxygen',
+    title: 'Dissolved oxygen & field testing',
+    sub: 'Luminescent dissolved oxygen meters and field chemistries for accurate on-site data.',
+    products: productsIn(['dissolved-oxygen', 'field-chem', 'field-testing']),
+  },
+  {
+    id: 'titration',
+    title: 'Titration & wet chemistry',
+    sub: 'Titrators, digestion units and automated wet chemical analyzers.',
+    products: productsIn(['titrators', 'automated-analyzers']),
+  },
+  {
+    id: 'process',
+    title: 'Process analysis & water intelligence',
+    sub: 'Online colorimetric analyzers, TOC analyzers, controllers and Claros water intelligence.',
+    products: productsIn(['process-analyzers', 'toc-analyzers', 'claros-system', 'controllers']),
+  },
+  {
+    id: 'sampling',
+    title: 'Sampling & test kits',
+    sub: 'Refrigerated samplers, test kits, strips, vial tests, glassware and sample prep tools.',
+    products: productsIn(['samplers', 'test-kits', 'vial-tests', 'lab-glassware', 'sample-prep']),
+  },
+  {
+    id: 'standards',
+    title: 'Standards & instrument management',
+    sub: 'Calibration standards, microbiology and instrument management programs.',
+    products: productsIn(['calibration-standards', 'instrument-management', 'microbiology']),
+  },
+  {
+    id: 'temperature',
+    title: 'Temperature & vacuum ovens',
+    sub: 'Heater/chillers, cooling baths and vacuum ovens for material and environmental testing.',
+    products: productsIn(['temperature-control', 'cooling-systems', 'vacuum-ovens']),
+  },
+];
+
+const categoryCards = [
+  { name: 'HACH Spectrophotometers', image: '/products/hach/dr3900.jpg', href: '#spectrophotometry' },
+  { name: 'HACH pH Meters', image: '/products/hach/hq440d.jpg', href: '#electrochemistry' },
+  { name: 'HACH Turbidimeters', image: '/products/hach/2100q.jpg', href: '#spectrophotometry' },
+  { name: 'HACH Titrators', image: '/products/hach/titrator.svg', href: '#titration', contain: true },
+  { name: 'HACH Process Analyzers', image: '/products/hach/process-analyzers.svg', href: '#process', contain: true },
+  { name: 'HACH TOC Analyzers', image: '/products/hach/toc.svg', href: '#process', contain: true },
+  { name: 'TOPTION Temperature Control', image: '/products/toption/heater-chiller.svg', href: '#temperature', contain: true },
+];
+---
+
+<Layout
+  title="Testing Apparatus — Water Quality & Lab Instruments"
+  description="Testing apparatus from TAKA Scientific — HACH spectrophotometers, pH meters, turbidimeters, titrators, process analyzers and TOPTION temperature control. Authorized HACH distributor."
+  hasHero={true}
+>
+
+<IceCatalogue
+  hero={{
+    image: '/ans3.jpg',
+    title: 'Testing apparatus that proves it',
+    trust: [
+      'Authorized HACH distributor',
+      'EPA, ASTM & ISO methods',
+      'Portable & lab ready',
+      'Calibration support',
+    ],
+  }}
+  headline={{
+    text: 'Reliable measurement. Compliant methods. Data you can trust.',
+    button: { label: 'Talk to our team', href: '/contact' },
+  }}
+  categoryCards={categoryCards}
+  highlight={{
+    image: '/bg4.jpg',
+    title: 'Explore the full range of testing apparatus',
+  }}
+  sections={sections}
+  cta={{
+    title: 'Ready to measure with confidence?',
+    text: 'Tell us about your water quality and testing requirements and we\u2019ll recommend the right instruments.',
+  }}
+/>
+
+</Layout>

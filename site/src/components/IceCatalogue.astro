@@ -1,202 +1,186 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import IceProductCard from '../../components/IceProductCard.astro';
-import productData from '../../data/products.json';
+import IceProductCard from './IceProductCard.astro';
 
-const category = productData.categories.find(c => c.id === 'analytical-equipments');
-if (!category) throw new Error('Category not found');
+interface Product {
+  id: string;
+  name: string;
+  fullName?: string;
+  brandName?: string;
+  subcategoryName?: string;
+  image: string;
+}
 
-const subcategories = category.brands.flatMap(brand =>
-  brand.subcategories.map(sc => ({
-    id: sc.id,
-    name: sc.name,
-    brandId: brand.id,
-    brandName: brand.name,
-    products: sc.products.map(p => ({
-      ...p,
-      brandName: brand.name,
-      subcategoryName: sc.name,
-      categoryName: category.name
-    }))
-  }))
-);
+interface GridCard {
+  label: string;
+  text: string;
+  href?: string;
+}
 
+interface Section {
+  id: string;
+  title: string;
+  sub: string;
+  products?: Product[];
+  cards?: GridCard[];
+}
 
-const productsIn = (ids) =>
-  subcategories.filter(sc => ids.includes(sc.id)).flatMap(sc => sc.products);
+interface Props {
+  hero: {
+    image: string;
+    title: string;
+    buttons?: { label: string; href: string }[];
+    trust: string[];
+  };
+  headline: {
+    text: string;
+    button?: { label: string; href: string };
+  };
+  categoryCards?: { name: string; image: string; href: string; contain?: boolean }[];
+  highlight?: {
+    image: string;
+    title: string;
+    buttons?: { label: string; href: string }[];
+  };
+  sections?: Section[];
+  cta: {
+    title: string;
+    text: string;
+    button?: { label: string; href: string };
+  };
+}
 
-const gcSpecialsIds = ['cryotrap', 'olfactometer', 'ezprep'];
-const gcSystems = productsIn(['gc-systems']);
-const inletsProducts = productsIn(['gc-inlets-accessories']).filter(p => !gcSpecialsIds.includes(p.id));
-const gcSpecialsProducts = productsIn(['gc-inlets-accessories'])
-  .filter(p => gcSpecialsIds.includes(p.id))
-  .map(p => ({ ...p, subcategoryName: 'GC Specials' }));
-const detectorProducts = productsIn(['detectors']);
-const samplePrepProducts = productsIn(['automated-sample-prep']);
-const labSupportProducts = productsIn(['lab-support-equipment']);
-
-const productSections = [
-  {
-    id: 'gc-systems',
-    title: 'Gas chromatography systems',
-    sub: 'Complete gas analysis systems — natural gas, refinery gas, oxygenates and simulated distillation.',
-    products: gcSystems,
-  },
-  {
-    id: 'detectors',
-    title: 'Detectors',
-    sub: 'Atomic emission detection with elemental selectivity and picogram-level sensitivity.',
-    products: detectorProducts,
-  },
-  {
-    id: 'inlets',
-    title: 'Sample introduction & inlets',
-    sub: 'Precision inlets and accessories for maximum sensitivity and reproducibility.',
-    products: inletsProducts,
-  },
-  {
-    id: 'gc-specials',
-    title: 'Gas chromatography specials',
-    sub: 'Special GC modules — cryogenic trapping, olfactory detection and preparative fraction collection.',
-    products: gcSpecialsProducts,
-  },
-  {
-    id: 'automated-sample-prep',
-    title: 'Automated sample preparation',
-    sub: 'Robotic and fully automated sample preparation for reproducible, unattended analysis.',
-    products: samplePrepProducts,
-  },
-  {
-    id: 'lab-support-equipment',
-    title: 'Lab support equipment',
-    sub: 'Gas generators and support equipment that keep your lab running.',
-    products: labSupportProducts,
-  },
-];
-
-const categoryCards = [
-  { name: 'Atomic Emission Detector', image: '/atomic.jpg', href: '#detectors' },
-  { name: 'Sample Introduction Systems', image: '/gassampler.jpg', href: '#inlets' },
-  { name: 'UNIS Inlets Range', image: '/unix.png', href: '#inlets' },
-  { name: 'Gas Chromatography Specials', image: '/jaschromo.png', href: '#gc-specials', contain: true },
-  { name: 'Customized Analyzers', image: '/customanalyzer.png', href: '#gc-systems' },
-  { name: 'Automated Sample Prep', image: '/gerstel.png', href: '#automated-sample-prep' },
-  { name: 'Lab Support Equipment', image: '/labsupport.png', href: '#lab-support-equipment', contain: true },
-];
+const { hero, headline, categoryCards = [], highlight, sections = [], cta } = Astro.props;
 ---
-
-<Layout
-  title="Analytical Instruments — Gas Chromatography Systems"
-  hasHero={true}
-  description="Precision analytical instruments from JASMEA — gas chromatography systems, sample introduction inlets and detectors for natural gas, refinery and environmental analysis. Authorized JASMEA distributor."
->
 
 <div class="ice-page">
 
-  <!-- â•â•â• HERO â€” ModuleHighlight â•â•â• -->
   <section class="ice-hero hero-container">
     <div class="ice-hero-image">
-      <img src="/bg4.jpg" alt="TAKA Scientific analytical instrumentation" class="ice-hero-img" fetchpriority="high" />
+      <img src={hero.image} alt="TAKA Scientific" class="ice-hero-img" fetchpriority="high" />
       <div class="ice-hero-overlay">
-        <h1>Precision analytical instruments for every analysis</h1>
+        <h1>{hero.title}</h1>
         <div class="ice-hero-buttons">
-          <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
-          <a href="/contact" class="ice-btn ice-btn-outlined"><span>Talk to our team</span></a>
+          {(hero.buttons ?? [{ label: 'Explore the range', href: '#range' }, { label: 'Talk to our team', href: '/contact' }]).map(btn => (
+            <a href={btn.href} class="ice-btn ice-btn-outlined"><span>{btn.label}</span></a>
+          ))}
         </div>
       </div>
       <div class="ice-hero-trust">
-        <p>Authorized JASMEA distributor</p>
-        <p>ASTM &amp; ISO compliant methods</p>
-        <p>German engineering since 1997</p>
-        <p>Application support that lasts</p>
+        {hero.trust.map(item => (
+          <p>{item}</p>
+        ))}
       </div>
     </div>
   </section>
 
-  <!-- â•â•â• HEADLINE TEXT â•â•â• -->
-  <section class="ice-headline-text ice-headline-footer">
-    <div class="ice-headline-wrapper">
-      <p class="ice-headline-big">Precision gas chromatography. Robust systems. Results you can trust.</p>
-      <a href="/contact" class="ice-btn"><span>Talk to our team</span></a>
-    </div>
-  </section>
-
-  <!-- â•â•â• CATEGORIES â€” Explore the range â•â•â• -->
-  <section class="ice-cat-section" id="range">
-    <div class="ice-cat-grid">
-      {categoryCards.map(card => (
-        <a href={card.href} class="ice-cat-card">
-          <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
-            <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
-          </span>
-          <span class="ice-cat-name">
-            <span class="ice-cat-name-text">{card.name}</span>
-            <span class="ice-cat-arrow" aria-hidden="true">&rarr;</span>
-          </span>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- â•â•â• HIGHLIGHT â€” ModuleHighlight â•â•â• -->
-  <section class="ice-highlight">
-    <div class="ice-highlight-image">
-      <img src="/ans3.jpg" alt="Analytical instruments laboratory" loading="lazy" />
-    </div>
-    <div class="ice-highlight-overlay">
-      <h2>Explore the full range of analytical instruments</h2>
-      <div class="ice-hero-buttons">
-        <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
-        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+  {headline.text && (
+    <section class="ice-headline-text ice-headline-footer">
+      <div class="ice-headline-wrapper">
+        <p class="ice-headline-big">{headline.text}</p>
+        {headline.button && <a href={headline.button.href} class="ice-btn"><span>{headline.button.label}</span></a>}
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <!-- â•â•â• PRODUCT SECTIONS â•â•â• -->
-  {productSections.map(section => (
-    <section class="ice-slider-section" id={section.id}>
-      <div class="ice-slider">
-        <div class="ice-slider-title">
-          <div class="ice-slider-title-wrapper">
-            <h2>{section.title}</h2>
-            <a href="/contact">Get a quote</a>
-          </div>
-          <div class="ice-slider-controls">
-            <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
-            <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
-          </div>
-        </div>
-        <p class="ice-slider-sub">{section.sub}</p>
-        <div class="ice-slider-items">
-          <div class="ice-slider-track">
-            {section.products.map(p => (
-              <div class="ice-slider-item">
-                <IceProductCard
-                  id={p.id}
-                  name={p.name}
-                  fullName={p.fullName}
-                  brandName={p.brandName}
-                  subcategoryName={p.subcategoryName}
-                  image={p.image}
-                />
-              </div>
-            ))}
-          </div>
+  {categoryCards.length > 0 && (
+    <section class="ice-cat-section" id="range">
+      <div class="ice-cat-grid">
+        {categoryCards.map(card => (
+          <a href={card.href} class="ice-cat-card">
+            <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
+              <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
+            </span>
+            <span class="ice-cat-name">
+              <span class="ice-cat-name-text">{card.name}</span>
+              <span class="ice-cat-arrow" aria-hidden="true">&rarr;</span>
+            </span>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {highlight && (
+    <section class="ice-highlight">
+      <div class="ice-highlight-image">
+        <img src={highlight.image} alt={highlight.title} loading="lazy" />
+      </div>
+      <div class="ice-highlight-overlay">
+        <h2>{highlight.title}</h2>
+        <div class="ice-hero-buttons">
+          {(highlight.buttons ?? [{ label: 'Explore the range', href: '#range' }, { label: 'Get a quote', href: '/contact' }]).map(btn => (
+            <a href={btn.href} class="ice-btn ice-btn-outlined"><span>{btn.label}</span></a>
+          ))}
         </div>
       </div>
     </section>
+  )}
+
+  {sections.map(section => (
+    section.products && section.products.length > 0 ? (
+      <section class="ice-slider-section" id={section.id}>
+        <div class="ice-slider">
+          <div class="ice-slider-title">
+            <div class="ice-slider-title-wrapper">
+              <h2>{section.title}</h2>
+              <a href="/contact">Get a quote</a>
+            </div>
+            <div class="ice-slider-controls">
+              <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+              <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+            </div>
+          </div>
+          <p class="ice-slider-sub">{section.sub}</p>
+          <div class="ice-slider-items">
+            <div class="ice-slider-track">
+              {section.products.map(p => (
+                <div class="ice-slider-item">
+                  <IceProductCard
+                    id={p.id}
+                    name={p.name}
+                    fullName={p.fullName}
+                    brandName={p.brandName}
+                    subcategoryName={p.subcategoryName}
+                    image={p.image}
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    ) : (
+      <section class="ice-grid-section" id={section.id}>
+        <div class="ice-grid-head">
+          <h2>{section.title}</h2>
+        </div>
+        <p class="ice-slider-sub">{section.sub}</p>
+        <div class="ice-grid">
+          {(section.cards ?? []).map(card => (
+            card.href ? (
+              <a href={card.href} class="ice-grid-card">
+                <span class="ice-grid-label">{card.label}</span>
+                <p>{card.text}</p>
+              </a>
+            ) : (
+              <div class="ice-grid-card">
+                <span class="ice-grid-label">{card.label}</span>
+                <p>{card.text}</p>
+              </div>
+            )
+          ))}
+        </div>
+      </section>
+    )
   ))}
 
-  <!-- â•â•â• CONTACT CTA â•â•â• -->
   <section class="ice-cta">
-    <h2>Ready to find your instrument?</h2>
-    <p>Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
-    <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to our team</span></a>
+    <h2>{cta.title}</h2>
+    <p>{cta.text}</p>
+    <a href={(cta.button ?? { label: 'Talk to our team', href: '/contact' }).href} class="ice-btn ice-btn-white"><span>{(cta.button ?? { label: 'Talk to our team', href: '/contact' }).label}</span></a>
   </section>
 
 </div>
-
-</Layout>
 
 <script>
   document.querySelectorAll('.ice-slider').forEach(slider => {
@@ -248,7 +232,7 @@ const categoryCards = [
     .ice-page { --ice-page-gap: 72px; }
   }
 
-  /* â•â•â• BUTTONS â•â•â• */
+  /* BUTTONS */
   .ice-btn {
     display: inline-flex;
     align-items: center;
@@ -316,7 +300,7 @@ const categoryCards = [
     }
   }
 
-  /* â•â•â• HERO â€” ModuleHighlight â•â•â• */
+  /* HERO */
   .ice-hero {
     position: relative;
     display: flex;
@@ -376,7 +360,7 @@ const categoryCards = [
     display: flex;
   }
 
-  /* â•â•â• SLIDER BASE â€” FeatureSlider â•â•â• */
+  /* SLIDER BASE */
   .ice-slider-section {
     padding: 0;
     scroll-margin-top: calc(var(--ice-header-height) + 24px);
@@ -497,7 +481,7 @@ const categoryCards = [
     }
   }
 
-  /* â•â•â• CATEGORIES â€” Explore the range â•â•â• */
+  /* CATEGORIES — Explore the range */
   .ice-cat-section {
     padding: 0 var(--ice-pad);
     scroll-margin-top: calc(var(--ice-header-height) + 24px);
@@ -590,7 +574,7 @@ const categoryCards = [
     }
   }
 
-  /* â•â•â• HIGHLIGHT â€” ModuleHighlight (banner) â•â•â• */
+  /* HIGHLIGHT — banner */
   .ice-headline-text {
     text-align: center;
     flex-direction: column;
@@ -712,7 +696,7 @@ const categoryCards = [
     }
   }
 
-  /* â•â•â• HERO TRUST OVERLAY â•â•â• */
+  /* HERO TRUST OVERLAY */
   .ice-hero-trust {
     position: absolute;
     left: 0;
@@ -758,7 +742,7 @@ const categoryCards = [
     .ice-slider-title-wrapper { gap: 12px; }
   }
 
-  /* â•â•â• SLIDER SUBTITLE â•â•â• */
+  /* SLIDER SUBTITLE */
   .ice-slider-sub {
     font-family: var(--ice-mono);
     letter-spacing: 0.01em;
@@ -770,7 +754,72 @@ const categoryCards = [
     max-width: 62ch;
   }
 
-  /* â•â•â• CONTACT CTA â•â•â• */
+  /* GRID SECTIONS — content cards */
+  .ice-grid-section {
+    padding: 0 var(--ice-pad);
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
+  }
+  .ice-grid-head {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    padding-bottom: 17px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-grid-head h2 {
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+  }
+  .ice-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    display: grid;
+  }
+  @media (min-width: 768px) {
+    .ice-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  @media (min-width: 1024px) {
+    .ice-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  .ice-grid-card {
+    border: 1px solid var(--ice-border);
+    padding: var(--ice-pad);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ice-grid-label {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-grid-card p {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.75;
+  }
+  @media (hover: hover) {
+    a.ice-grid-card:hover {
+      border-color: var(--ice-black);
+    }
+  }
+
+  /* CONTACT CTA */
   .ice-cta {
     background: #fff;
     color: #1a365d;
