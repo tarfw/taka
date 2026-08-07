@@ -464,7 +464,11 @@
   .mobile-btn-dark:hover { background: #142f54; }
 
   /* ═══ Responsive ═══ */
+  @media (max-width: 1280px) {
+    .nav-logo { margin-left: 0; }
+  }
   @media (max-width: 1024px) {
+    .nav-inner { grid-template-columns: 1fr auto; }
     .nav-pill, .nav-right { display: none; }
     .nav-burger { display: flex; }
   }
@@ -529,6 +533,10 @@
   const header = document.getElementById('navbar');
   if (header) {
     const toggleHeader = () => {
+      if (document.body.hasAttribute('data-header-solid')) {
+        header.classList.remove('transparent');
+        return;
+      }
       if (window.scrollY < 40) {
         header.classList.add('transparent');
       } else {

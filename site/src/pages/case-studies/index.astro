@@ -8,15 +8,17 @@ const rest = caseStudies.filter((c) => !c.featured);
 
 <Layout
   title="Case Studies"
+  hasHero={true}
+  headerSolid={true}
   description="Case studies from schools, hospitals, research laboratories and government institutions across the UAE supplied and installed by TAKA Scientific."
 >
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Case studies</span>
-      <h1 class="page-hero-title">Trusted by institutions<br />across the UAE.</h1>
+      <h1 class="page-hero-title">Real projects,<br />real handovers.</h1>
       <p class="page-hero-sub">
-        Schools, hospitals, research laboratories and government facilities rely on TAKA
-        for equipment supply, delivery and installation. Here is how a few of them work with us.
+        The equipment we've supplied and installed for UAE schools, hospitals, research
+        laboratories and government facilities — and the results each project delivered.
       </p>
     </div>
   </section>
@@ -81,15 +83,13 @@ const rest = caseStudies.filter((c) => !c.featured);
     </div>
   </section>
 
-  <section class="quote-band">
-    <div class="container">
-      <p class="quote-band-text">
-        Every project starts with a conversation about your facility, your requirements and your timeline.
-        We handle the rest.
-      </p>
-      <div class="quote-band-actions">
+  <section class="cta-section">
+    <div class="container text-center">
+      <h2 class="section-title">Every project starts with a conversation.</h2>
+      <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Tell us about your facility, your requirements and your timeline. We handle the rest.</p>
+      <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
         <a href="/contact" class="btn btn-dark">Talk to our team</a>
-        <a href="https://wa.me/971557566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
       </div>
     </div>
   </section>
@@ -112,8 +112,17 @@ const rest = caseStudies.filter((c) => !c.featured);
 
 <style>
   .page-hero {
-    padding: 5rem 0 4rem;
-    border-bottom: 1px solid var(--color-border);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    position: relative;
+  }
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 3.5rem;
   }
   .page-hero-title {
     font-family: var(--font-serif);
@@ -345,34 +354,13 @@ const rest = caseStudies.filter((c) => !c.featured);
   }
   .study-card:hover .study-cta { gap: 0.75rem; }
 
-  /* ═══ Quote band ═══ */
-  .quote-band {
-    background: #1a365d;
-    padding: 4.5rem 1.5rem;
-  }
-  .quote-band .container { max-width: 720px; text-align: center; }
-  .quote-band-text {
-    font-family: var(--font-serif);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    line-height: 1.3;
-    letter-spacing: -0.02em;
-    color: #fff;
-    margin-bottom: 2rem;
-  }
-  .quote-band-actions {
-    display: flex;
-    gap: 0.75rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
   @media (max-width: 900px) {
     .featured-card { grid-template-columns: 1fr; }
     .featured-visual { min-height: 240px; }
     .list-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero .container { padding-bottom: 2.5rem; }
     .page-hero-title { font-size: 2rem; }
     .featured-section { padding: 2.5rem 0 1.5rem; }
     .featured-content { padding: 1.75rem 1.5rem; }

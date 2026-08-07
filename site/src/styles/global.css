@@ -97,12 +97,18 @@
   --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
 
   /* Spacing & Layout */
-  --nav-height: 55px;
+  --nav-height: 66px;
   --max-width: 1200px;
   --radius: 8px;
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 12px;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 40px;
+  }
 }
 
 /* ═══ Reset ═══ */
@@ -133,7 +139,7 @@ body > main {
   flex: 1;
 }
 body:not(.has-hero) > main {
-  padding-top: 55px;
+  padding-top: var(--nav-height);
 }
 
 img { max-width: 100%; height: auto; display: block; }
@@ -156,6 +162,9 @@ ul, ol { list-style: none; }
 @media (max-width: 768px) {
   .container { padding: 0 1rem; }
 }
+@media (max-width: 400px) {
+  .container { padding: 0 0.875rem; }
+}
 
 /* ═══ Section ═══ */
 .section {
@@ -164,6 +173,9 @@ ul, ol { list-style: none; }
 
 @media (max-width: 768px) {
   .section { padding: 3.5rem 0; }
+}
+@media (max-width: 400px) {
+  .section { padding: 2.5rem 0; }
 }
 
 /* ═══ Typography ═══ */
@@ -732,7 +744,7 @@ ul, ol { list-style: none; }
 }
 @media (max-width: 768px) {
   .hero-container {
-    min-height: auto;
+    min-height: 100vh;
     align-items: flex-end;
   }
   .hero-content {
@@ -751,6 +763,23 @@ ul, ol { list-style: none; }
   .hero-subtitle { font-size: 0.85rem; }
   .hero-text-block { margin-bottom: 1rem; }
   .hero-logos { margin-top: 0.75rem; }
+}
+@media (max-width: 480px) {
+  .hero-canvas-wrap {
+    top: 4%;
+    width: 190px;
+    height: 190px;
+    opacity: 0.28;
+  }
+  .hero-content {
+    padding: 0 0.9rem 1.75rem;
+  }
+  .hero-title {
+    font-size: 1.65rem;
+  }
+  .hero-subtitle {
+    font-size: 0.82rem;
+  }
 }
 
 /* ═══ SUPPLY GRID ═══ */
@@ -941,6 +970,10 @@ ul, ol { list-style: none; }
 
 /* ═══ CTA ═══ */
 .cta-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 6rem 1.5rem;
   text-align: center;
 }

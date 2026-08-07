@@ -313,6 +313,9 @@ const { product, categoryId, categoryName, brandName, subcategoryName, relatedPr
     grid-template-columns: repeat(3, 1fr);
     gap: 1rem;
   }
+  @media (max-width: 992px) {
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   .related-card {
     display: flex;
     flex-direction: column;
@@ -371,10 +374,26 @@ const { product, categoryId, categoryName, brandName, subcategoryName, relatedPr
     }
     .product-detail-image-wrap {
       position: static;
+      aspect-ratio: 1 / 1;
+    }
+    .product-detail-image {
+      padding: 1.25rem;
     }
     .specs-key {
-      flex: 0 0 110px;
+      flex: 0 0 96px;
+      padding: 0.6rem 0.75rem;
     }
+    .specs-value {
+      padding: 0.6rem 0.75rem;
+    }
+    .product-detail-title {
+      font-size: 1.6rem;
+    }
+    .product-detail-meta {
+      flex-wrap: wrap;
+    }
+  }
+  @media (max-width: 560px) {
     .related-grid {
       grid-template-columns: 1fr;
     }

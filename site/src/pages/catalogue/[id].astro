@@ -33,7 +33,7 @@ export async function getStaticPaths() {
 const { product, categoryId, categoryName, brandName, subcategoryName, relatedProducts } = Astro.props;
 ---
 
-<Layout title={`${product.name} — TAKA Scientific`}>
+<Layout title={`${product.name} — TAKA Scientific`} headerSolid={true}>
   <ProductDetail 
     product={product}
     categoryId={categoryId}

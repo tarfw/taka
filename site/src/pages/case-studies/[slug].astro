@@ -16,6 +16,8 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
 
 <Layout
   title={`${study.organization} case study`}
+  hasHero={true}
+  headerSolid={true}
   description={`${study.organization} — ${study.headline}. ${study.summary} Read the case study on the TAKA Scientific website.`}
 >
   <script type="application/ld+json" set:html={JSON.stringify({
@@ -138,7 +140,7 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
       <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
         <a href="/contact" class="btn btn-dark">Request a quote</a>
-        <a href="https://wa.me/971557566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
       </div>
     </div>
   </section>
@@ -146,8 +148,17 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
 
 <style>
   .page-hero {
-    padding: 5rem 0 4rem;
-    border-bottom: 1px solid var(--color-border);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    position: relative;
+  }
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 3.5rem;
   }
   .page-hero-title {
     font-family: var(--font-serif);
@@ -376,6 +387,9 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     border-radius: 6px;
     overflow: hidden;
   }
+  @media (max-width: 1100px) {
+    .related-grid { grid-template-columns: repeat(2, 1fr); }
+  }
   .related-card {
     display: flex;
     flex-direction: column;
@@ -416,7 +430,7 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     .related-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero .container { padding-bottom: 2.5rem; }
     .page-hero-title { font-size: 2rem; }
     .stats-band { grid-template-columns: 1fr; margin-top: 3rem; }
     .related-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }

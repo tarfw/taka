@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Services">
+<Layout title="Services" hasHero={true} headerSolid={true}>
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Services</span>
@@ -95,7 +95,7 @@ import Layout from '../layouts/Layout.astro';
       <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">Our team is ready to help. Reach out and we'll respond within the working day.</p>
       <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
         <a href="/contact" class="btn btn-dark">Contact us</a>
-        <a href="https://wa.me/971557566123" target="_blank" class="btn btn-outline">WhatsApp</a>
+        <a href="https://wa.me/916384771990" target="_blank" class="btn btn-outline">WhatsApp</a>
       </div>
     </div>
   </section>
@@ -103,8 +103,17 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .page-hero {
-    padding: 5rem 0 4rem;
-    border-bottom: 1px solid var(--color-border);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    position: relative;
+  }
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 3.5rem;
   }
   .page-hero-title {
     font-family: var(--font-serif);
@@ -200,7 +209,7 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.65;
   }
   @media (max-width: 768px) {
-    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero .container { padding-bottom: 2.5rem; }
     .page-hero-title { font-size: 2rem; }
     .services-grid { grid-template-columns: 1fr; }
     .process-grid { grid-template-columns: 1fr; gap: 2rem; }

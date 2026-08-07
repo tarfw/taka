@@ -932,6 +932,16 @@ const categoryCards = [
     top: 50%;
     transform: translateY(-50%);
   }
+  @media (max-width: 480px) {
+    .ice-page { --ice-pad: 16px; }
+    .ice-hero-overlay h1 { font-size: 34px; }
+    .ice-hero-overlay { padding-bottom: 96px; }
+    .ice-hero-trust { gap: 6px 20px; }
+    .ice-hero-trust p + p:before { left: -10px; }
+    .ice-highlight-overlay h2 { font-size: 32px; }
+    .ice-editorial-overlay { padding: 0 20px; }
+    .ice-slider-title-wrapper { gap: 12px; }
+  }
 
   /* â•â•â• SLIDER SUBTITLE â•â•â• */
   .ice-slider-sub {
@@ -1013,6 +1023,8 @@ const categoryCards = [
   .ice-cta {
     background: #fff;
     color: #1a365d;
+    min-height: 100svh;
+    justify-content: center;
     padding: 80px var(--ice-pad);
     margin-top: calc(-1 * var(--ice-page-gap));
     text-align: center;

@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Contact">
+<Layout title="Contact" hasHero={true} headerSolid={true}>
   <section class="page-hero">
     <div class="container">
       <span class="eyebrow">Contact</span>
@@ -29,7 +29,7 @@ import Layout from '../layouts/Layout.astro';
               <p class="dept-card-desc">Product quotes, specifications, brand selection, and pricing.</p>
               <div class="dept-card-contact">
                 <a href="mailto:info@taka.ae">info@taka.ae</a>
-                <a href="https://wa.me/971557566123" target="_blank">WhatsApp +971 55 756 6123</a>
+                <a href="https://wa.me/916384771990" target="_blank">WhatsApp +91 63847 71990</a>
               </div>
             </div>
             <div class="dept-card">
@@ -94,7 +94,7 @@ import Layout from '../layouts/Layout.astro';
       <div class="contact-info-bar">
         <div class="contact-info-item">
           <span class="contact-info-label">WhatsApp</span>
-          <a href="https://wa.me/971557566123" target="_blank" class="contact-info-value">+971 55 756 6123</a>
+          <a href="https://wa.me/916384771990" target="_blank" class="contact-info-value">+971 55 756 6123</a>
         </div>
         <div class="contact-info-divider"></div>
         <div class="contact-info-item">
@@ -118,8 +118,17 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .page-hero {
-    padding: 5rem 0 4rem;
-    border-bottom: 1px solid var(--color-border);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    position: relative;
+  }
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 3.5rem;
   }
   .page-hero-title {
     font-family: var(--font-serif);
@@ -228,7 +237,7 @@ import Layout from '../layouts/Layout.astro';
   }
 
   @media (max-width: 768px) {
-    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero .container { padding-bottom: 2.5rem; }
     .page-hero-title { font-size: 2rem; }
     .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     .form-row { grid-template-columns: 1fr; }

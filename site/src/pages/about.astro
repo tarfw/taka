@@ -2,14 +2,19 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="About">
+<Layout
+  title="About TAKA Scientific | Scientific Equipment Supplier in the UAE"
+  description="TAKA Scientific supplies scientific equipment, laboratory furniture, testing apparatus, and industrial equipment to the oil and gas sector, research institutions, universities, private companies, government entities, schools, and hospitals across the UAE."
+  hasHero={true}
+  headerSolid={true}
+>
   <section class="page-hero">
     <div class="container">
-      <span class="eyebrow">About TAKA</span>
-      <h1 class="page-hero-title">Equipping facilities<br>across the UAE.</h1>
+      <span class="eyebrow">About TAKA Scientific</span>
+      <h1 class="page-hero-title">The trusted equipment partner for labs &amp; facilities in the UAE.</h1>
       <p class="page-hero-sub">
-        We supply schools, hospitals, laboratories and factories with the furniture
-        and equipment they need to operate efficiently.
+        Based in Abu Dhabi, we help organisations across the country select, install,
+        and maintain the scientific and industrial equipment their operations depend on.
       </p>
     </div>
   </section>
@@ -22,17 +27,21 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="about-right">
           <p class="about-text">
-            TAKA Scientific is a retail supplier of scientific equipment, laboratory furniture,
-            testing apparatus, and factory equipment based in Abu Dhabi, UAE.
+            TAKA Scientific is an Abu Dhabi-based supplier of scientific equipment,
+            laboratory furniture, testing apparatus, and factory machinery. We guide
+            organisations from equipment selection through procurement to installation
+            and ongoing after-sales support.
           </p>
           <p class="about-text">
-            We serve schools, hospitals, research institutions, and manufacturing facilities
-            across all seven emirates. Our product range covers everything from classroom
-            desks to specialized laboratory fume hoods.
+            Our clients include the oil and gas sector, research institutions,
+            universities, private companies, government entities, schools, and hospitals
+            across all seven emirates — Abu Dhabi, Dubai, Sharjah, Ajman, Umm Al-Quwain,
+            Ras Al Khaimah, and Fujairah.
           </p>
           <p class="about-text">
-            Our team helps clients select the right equipment for their specific requirements,
-            budget, and compliance standards. We handle delivery, installation, and ongoing support.
+            Every project begins by understanding your specific requirements, budget,
+            and compliance standards. We then source equipment from trusted manufacturers
+            and deliver a solution that performs — and lasts.
           </p>
         </div>
       </div>
@@ -47,17 +56,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="value-card">
           <span class="value-number">01</span>
           <h3 class="value-title">Quality first</h3>
-          <p class="value-desc">We source equipment from trusted manufacturers and ensure every product meets industry standards.</p>
+          <p class="value-desc">We work only with trusted manufacturers and verify that every product meets the relevant industry standards.</p>
         </div>
         <div class="value-card">
           <span class="value-number">02</span>
           <h3 class="value-title">Complete service</h3>
-          <p class="value-desc">From selection to installation — we handle the entire process so you can focus on your work.</p>
+          <p class="value-desc">From first consultation to final installation, we handle every step of the process so you can stay focused on your work.</p>
         </div>
         <div class="value-card">
           <span class="value-number">03</span>
           <h3 class="value-title">Local expertise</h3>
-          <p class="value-desc">Based in Abu Dhabi with deep knowledge of UAE regulations, standards, and institutional needs.</p>
+          <p class="value-desc">Deep knowledge of UAE regulations, standards, and institutional requirements across all seven emirates.</p>
         </div>
       </div>
     </div>
@@ -77,8 +86,17 @@ import Layout from '../layouts/Layout.astro';
 
 <style>
   .page-hero {
-    padding: 5rem 0 4rem;
-    border-bottom: 1px solid var(--color-border);
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    background: #fff;
+    position: relative;
+  }
+  .page-hero .container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding-bottom: 3.5rem;
   }
   .page-hero-title {
     font-family: var(--font-serif);
@@ -139,7 +157,7 @@ import Layout from '../layouts/Layout.astro';
     line-height: 1.65;
   }
   @media (max-width: 768px) {
-    .page-hero { padding: 3.5rem 0 2.5rem; }
+    .page-hero .container { padding-bottom: 2.5rem; }
     .page-hero-title { font-size: 2rem; }
     .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
     .values-grid { grid-template-columns: 1fr; }
