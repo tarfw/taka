@@ -49,7 +49,7 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
       <span>Back to {categoryName || 'All products'}</span>
     </a>
     {metaParts.length > 0 && (
-      <div class="ice-detail-meta t--fade t--delay_200">{metaParts.join(' / ')}</div>
+      <div class="ice-detail-meta t--fade">{metaParts.join(' / ')}</div>
     )}
   </header>
 
@@ -60,13 +60,20 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
       <span class="ice-shot-mark ice-shot-mark--tl" aria-hidden="true"></span>
       <span class="ice-shot-mark ice-shot-mark--br" aria-hidden="true"></span>
     </div>
-    <div class="ice-detail-info">
-      <div class="ice-detail-eyebrow t--fade t--delay_300">{brandName || subcategoryName || categoryName}</div>
-      <h1 class="ice-detail-title t--fadedown t--delay_400">{product.fullName || product.name}</h1>
-      <p class="ice-detail-desc t--fade t--delay_500">{product.description}</p>
-      <div class="ice-detail-actions t--fade t--delay_600">
+    <div class="ice-detail-info t--fade">
+      <div class="ice-detail-eyebrow">
+        {brandName && <span class="ice-detail-brand">{brandName}</span>}
+        {subcategoryName && <span class="ice-detail-crumb">{subcategoryName}</span>}
+      </div>
+      <h1 class="ice-detail-title">{product.fullName || product.name}</h1>
+      <p class="ice-detail-desc">{product.description}</p>
+      <div class="ice-detail-actions">
         <a href="/contact" class="ice-btn"><span>Request a quote</span></a>
-        {brandUrl && <a href={brandUrl} target="_blank" rel="noopener" class="ice-btn ice-btn-outlined-dark"><span>Brand website</span></a>}
+      </div>
+      <div class="ice-detail-facts">
+        <span>Authorized distributor</span>
+        <span>ASTM &amp; ISO compliant</span>
+        <span>Application support that lasts</span>
       </div>
     </div>
   </section>
@@ -74,14 +81,16 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
   <!-- KEY SPECIFICATIONS -->
   {product.specs && product.specs.length > 0 && (
     <section class="ice-detail-specs" data-view>
-      <div class="ice-detail-section-title t--fadedown"><span>Key specifications</span></div>
-      <div class="ice-specs-grid">
-        {product.specs.slice(0, 4).map((spec, i) => (
-          <div class={`ice-spec-cell t--fade t--delay_${(i % 4) * 100 + 200}`}>
-            <span class="ice-spec-key">{spec.key}</span>
-            <span class="ice-spec-value">{spec.value}</span>
-          </div>
-        ))}
+      <div class="ice-block t--fade">
+        <div class="ice-detail-section-title"><span>Key specifications</span></div>
+        <div class="ice-specs-grid">
+          {product.specs.slice(0, 4).map((spec) => (
+            <div class="ice-spec-cell">
+              <span class="ice-spec-key">{spec.key}</span>
+              <span class="ice-spec-value">{spec.value}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )}
@@ -89,14 +98,16 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
   <!-- COMPLETE SPECIFICATIONS -->
   {product.specs && product.specs.length > 4 && (
     <section class="ice-detail-fullspecs" data-view>
-      <div class="ice-detail-section-title t--fadedown"><span>Complete specifications</span></div>
-      <div class="ice-specs-table">
-        {product.specs.map((spec, i) => (
-          <div class={`ice-specs-row t--fade t--delay_${(i % 4) * 100 + 200}`}>
-            <span class="ice-specs-key">{spec.key}</span>
-            <span class="ice-specs-value">{spec.value}</span>
-          </div>
-        ))}
+      <div class="ice-block t--fade">
+        <div class="ice-detail-section-title"><span>Complete specifications</span></div>
+        <div class="ice-specs-table">
+          {product.specs.map((spec) => (
+            <div class="ice-specs-row">
+              <span class="ice-specs-key">{spec.key}</span>
+              <span class="ice-specs-value">{spec.value}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   )}
@@ -104,11 +115,13 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
   <!-- APPLICATIONS -->
   {product.applications && product.applications.length > 0 && (
     <section class="ice-detail-apps" data-view>
-      <div class="ice-detail-section-title t--fadedown"><span>Applications</span></div>
-      <div class="ice-apps-list">
-        {product.applications.map((app, i) => (
-          <span class={`ice-app-tag t--fade t--delay_${(i % 4) * 100 + 200}`}>{app}</span>
-        ))}
+      <div class="ice-block t--fade">
+        <div class="ice-detail-section-title"><span>Applications</span></div>
+        <div class="ice-apps-list">
+          {product.applications.map((app) => (
+            <span class="ice-app-tag">{app}</span>
+          ))}
+        </div>
       </div>
     </section>
   )}
@@ -116,9 +129,9 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
   <!-- ABOUT -->
   {product.fullDescription && (
     <section class="ice-detail-about" data-view>
-      <div class="ice-detail-about-inner">
-        <div class="ice-detail-about-label t--fade">About this product</div>
-        <p class="ice-detail-about-text t--fadedown t--delay_200">{product.fullDescription}</p>
+      <div class="ice-detail-about-inner t--fade">
+        <div class="ice-detail-about-label">About this product</div>
+        <p class="ice-detail-about-text">{product.fullDescription}</p>
       </div>
     </section>
   )}
@@ -126,9 +139,10 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
   <!-- RELATED PRODUCTS -->
   {relatedProducts.length > 0 && (
     <section class="ice-slider-section" data-view>
+      <div class="ice-block t--fade">
       <div class="ice-slider">
         <div class="ice-slider-title">
-          <div class="ice-slider-title-wrapper"><h2 class="t--fadedown">Related products</h2></div>
+          <div class="ice-slider-title-wrapper"><h2>Related products</h2></div>
           <div class="ice-slider-controls">
             <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
             <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
@@ -151,14 +165,17 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
           </div>
         </div>
       </div>
+      </div>
     </section>
   )}
 
   <!-- CONTACT CTA -->
   <section class="ice-cta" data-view>
-    <h2 class="t--fadedown">Ready to specify this model?</h2>
-    <p class="t--fade t--delay_200">Tell us about your application and we&#39;ll confirm availability and pricing.</p>
-    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Talk to our team</span></a>
+    <div class="ice-block t--fade">
+      <h2>Ready to specify this model?</h2>
+      <p>Tell us about your application and we&#39;ll confirm availability and pricing.</p>
+      <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to our team</span></a>
+    </div>
   </section>
 
 </article>
@@ -194,9 +211,10 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
     --ice-black: #262626;
     --ice-white: #ffffff;
     --ice-border: #ececec;
-    --ice-image-bg: #ececec;
+    --ice-image-bg: #ffffff;
     --ice-sans: var(--font-sans);
     --ice-mono: var(--font-mono);
+    --ice-btn-height: 32px;
     --ice-opacity: 0.35;
     --ice-underline-offset: 0.3em;
     --ice-ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -251,13 +269,15 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
     justify-content: center;
     position: relative;
     flex: 0 0 auto;
+    background: var(--ice-white);
   }
   .ice-detail-shot img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
     display: block;
-    mix-blend-mode: multiply;
+    width: auto;
+    height: auto;
+    max-width: min(100%, 420px);
+    max-height: min(100%, 420px);
+    object-fit: contain;
   }
   .ice-shot-mark {
     position: absolute;
@@ -293,7 +313,49 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
     text-transform: uppercase;
     font-size: 12px;
     line-height: 1.4;
-    color: #1a365d;
+    color: var(--ice-black);
+    opacity: 0.85;
+    flex-flow: wrap;
+    align-items: center;
+    gap: 10px;
+    display: flex;
+  }
+  .ice-detail-brand { color: #1a365d; font-weight: 500; }
+  .ice-detail-crumb { position: relative; }
+  .ice-detail-crumb::before {
+    content: "/";
+    position: absolute;
+    left: -9px;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 0.4;
+  }
+  .ice-detail-facts {
+    width: 100%;
+    padding-top: 22px;
+    border-top: 1px solid var(--ice-border);
+    flex-flow: wrap;
+    gap: 8px 26px;
+    display: flex;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 1.4;
+    opacity: 0.85;
+  }
+  .ice-detail-facts span { position: relative; }
+  .ice-detail-facts span + span::before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #1a365d;
+    opacity: 0.5;
+    position: absolute;
+    left: -13px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   .ice-detail-title {
     font-family: var(--ice-sans);
@@ -329,7 +391,7 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
     text-transform: uppercase;
     background: var(--ice-black);
     color: var(--ice-white);
-    height: 42px;
+    height: var(--ice-btn-height);
     padding: 0 36px;
     border: 1px solid var(--ice-black);
     font-size: 12px;
@@ -468,8 +530,8 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
 
   /* CTA */
   .ice-cta {
-    background: #1a365d;
-    color: var(--ice-white);
+    background: #fff;
+    color: #1a365d;
     min-height: 100svh;
     justify-content: center;
     padding: 80px var(--ice-pad);
@@ -483,9 +545,20 @@ const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
   }
   .ice-cta h2 { font-family: var(--ice-sans); letter-spacing: -0.01em; font-size: 24px; line-height: 1.15; font-weight: 600; margin: 0; max-width: 20ch; }
   .ice-cta p { font-family: var(--ice-sans); font-size: 15px; line-height: 1.5; margin: 0; opacity: 0.8; max-width: 44ch; }
-  .ice-cta .ice-btn-white { background: var(--ice-white); color: #1a365d; border-color: var(--ice-white); }
+  .ice-cta .ice-btn-white { background: #1a365d; color: var(--ice-white); border-color: #1a365d; }
   @media (hover: hover) {
-    .ice-cta .ice-btn-white:hover { background: var(--ice-white); color: #1a365d; border-color: #1a365d; }
+    .ice-cta .ice-btn-white:hover { background: #1a365d; color: var(--ice-white); border-color: #1a365d; }
   }
   @media (min-width: 1024px) { .ice-cta { gap: 30px; } .ice-cta h2 { letter-spacing: -0.02em; font-size: 64px; line-height: 1.05; } }
+
+  /* Anti-slop: each section reveals as ONE block with a shorter, confident fade
+     (the global t--fade is 0.9s; per-item staggering has been removed). */
+  html.js [data-view].inview .t--fade.ice-block,
+  html.js [data-view].inview .t--fade.ice-detail-info,
+  html.js [data-view].inview .t--fade.ice-detail-about-inner {
+    animation-duration: 0.55s;
+  }
+  /* CTA content is now wrapped so the block keeps the centered column layout */
+  .ice-cta .ice-block { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  @media (min-width: 1024px) { .ice-cta .ice-block { gap: 30px; } }
 </style>

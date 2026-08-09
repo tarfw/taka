@@ -518,10 +518,12 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
     position: relative;
   }
   .ice-cat-image img {
-    object-fit: cover;
+    object-fit: contain;
     width: 100%;
     height: 100%;
     display: block;
+    padding: 16px;
+    background: var(--ice-white);
     transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
   @media (hover: hover) {

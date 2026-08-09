@@ -4345,7 +4345,7 @@
                     "Environmental monitoring",
                     "Industrial QC"
                   ],
-                  "image": "/products/hach/dr1900.svg"
+                  "image": "/products/hach/dr1900.jpg"
                 }
               ]
             },
@@ -4499,7 +4499,7 @@
                     "Environmental monitoring",
                     "Aquaculture"
                   ],
-                  "image": "/products/hach/do-meters.svg"
+                  "image": "/products/hach/ldo.jpg"
                 }
               ]
             },
@@ -4579,7 +4579,7 @@
                     "Hardness testing",
                     "Chloride analysis"
                   ],
-                  "image": "/products/hach/titrator.svg"
+                  "image": "/products/hach/titrator.jpg"
                 }
               ]
             },
@@ -4659,7 +4659,7 @@
                     "Water quality testing",
                     "Process monitoring"
                   ],
-                  "image": "/products/hach/probes.svg"
+                  "image": "/products/hach/probes.jpg"
                 }
               ]
             },
@@ -4699,7 +4699,7 @@
                     "Drinking water",
                     "Environmental monitoring"
                   ],
-                  "image": "/products/hach/vial-tests.svg"
+                  "image": "/products/hach/vial-tests.jpg"
                 }
               ]
             },
@@ -4739,7 +4739,7 @@
                     "Drinking water field test",
                     "Cooling tower monitoring"
                   ],
-                  "image": "/products/hach/field-testing.svg"
+                  "image": "/products/hach/pocket-pro.jpg"
                 }
               ]
             },
@@ -4779,7 +4779,7 @@
                     "Quality assurance",
                     "Regulatory compliance"
                   ],
-                  "image": "/products/hach/calibration.svg"
+                  "image": "/products/hach/calibration.jpg"
                 }
               ]
             },
@@ -4819,7 +4819,7 @@
                     "Drinking water treatment",
                     "Process control"
                   ],
-                  "image": "/products/hach/process-analyzers.svg"
+                  "image": "/products/hach/dr6000.jpg"
                 }
               ]
             },
@@ -4859,7 +4859,7 @@
                     "Ultrapure water monitoring",
                     "Wastewater compliance"
                   ],
-                  "image": "/products/hach/toc.svg"
+                  "image": "/products/hach/toc.jpg"
                 }
               ]
             },
@@ -4899,7 +4899,7 @@
                     "Wastewater compliance",
                     "Environmental analysis"
                   ],
-                  "image": "/products/hach/automated.svg"
+                  "image": "/products/hach/dr6000.jpg"
                 }
               ]
             },
@@ -4939,7 +4939,7 @@
                     "Process control",
                     "Data management"
                   ],
-                  "image": "/products/hach/controllers.svg"
+                  "image": "/products/hach/controllers.jpg"
                 }
               ]
             },
@@ -4979,7 +4979,7 @@
                     "Stormwater monitoring",
                     "Industrial effluent"
                   ],
-                  "image": "/products/hach/samplers.svg"
+                  "image": "/products/hach/samplers.jpg"
                 }
               ]
             },
@@ -5019,7 +5019,7 @@
                     "Pool maintenance",
                     "Drinking water check"
                   ],
-                  "image": "/products/hach/test-kits.svg"
+                  "image": "/products/hach/pocket-pro.jpg"
                 }
               ]
             },
@@ -5059,7 +5059,7 @@
                     "Wastewater monitoring",
                     "Regulatory compliance"
                   ],
-                  "image": "/products/hach/microbiology.svg"
+                  "image": "/products/hach/microbiology.jpg"
                 }
               ]
             },
@@ -5099,7 +5099,7 @@
                     "Solution mixing",
                     "Reagent storage"
                   ],
-                  "image": "/products/hach/glassware.svg"
+                  "image": "/products/hach/glassware.jpg"
                 }
               ]
             },
@@ -5139,7 +5139,7 @@
                     "Sample filtration",
                     "Solution preparation"
                   ],
-                  "image": "/products/hach/sample-prep.svg"
+                  "image": "/products/hach/sample-prep.jpg"
                 }
               ]
             },
@@ -5179,7 +5179,7 @@
                     "Wastewater compliance",
                     "Drinking water testing"
                   ],
-                  "image": "/products/hach/field-testing.svg"
+                  "image": "/products/hach/pocket-pro.jpg"
                 }
               ]
             },
@@ -5219,7 +5219,7 @@
                     "Environmental compliance",
                     "Predictive maintenance"
                   ],
-                  "image": "/products/hach/claros.svg"
+                  "image": "/products/hach/claros.jpg"
                 }
               ]
             },
@@ -5259,7 +5259,7 @@
                     "Instrument calibration",
                     "Quality assurance"
                   ],
-                  "image": "/products/hach/instrument-mgmt.svg"
+                  "image": "/products/hach/instrument-mgmt.jpg"
                 }
               ]
             },
@@ -5299,7 +5299,7 @@
                     "Process control",
                     "Environmental testing"
                   ],
-                  "image": "/products/hach/electrodes.svg"
+                  "image": "/products/hach/electrodes.jpg"
                 }
               ]
             }
@@ -5352,46 +5352,7 @@
                 }
               ]
             },
-            {
-              "id": "cooling-systems",
-              "name": "Cooling Systems",
-              "products": [
-                {
-                  "id": "toption-ice-bath",
-                  "name": "Ice Bath Chiller",
-                  "fullName": "TOPTION Ice Bath Chiller System",
-                  "brand": "toption",
-                  "category": "testing-apparatus",
-                  "subcategory": "cooling-systems",
-                  "description": "Ice bath system.",
-                  "fullDescription": "The TOPTION Ice Bath Chiller System provides rapid, controlled cooling for samples, reactions, and extractions. Maintaining temperatures from 0°C to -20°C, it replaces traditional ice baths with consistent, automated cooling.",
-                  "specs": [
-                    {
-                      "key": "Temperature range",
-                      "value": "0 to -20°C"
-                    },
-                    {
-                      "key": "Bath volume",
-                      "value": "5-20 L"
-                    },
-                    {
-                      "key": "Cooling",
-                      "value": "Compressor-based"
-                    },
-                    {
-                      "key": "Control",
-                      "value": "Digital PID"
-                    }
-                  ],
-                  "applications": [
-                    "CBD extraction cooling",
-                    "Crystallization",
-                    "Sample cooling"
-                  ],
-                  "image": "/products/toption/ice-bath.jpg"
-                }
-              ]
-            },
+            
             {
               "id": "vacuum-ovens",
               "name": "Vacuum Ovens",

@@ -157,15 +157,22 @@ const categoryCards = kinds.map(k => ({
 
   <!-- ══════════ CATEGORIES — Explore the range ══════════ -->
   <section class="ice-cat-section" id="range" data-view>
+    <div class="ice-cat-head">
+      <span class="ice-cat-overline">Explore the range</span>
+      <h2 class="ice-cat-title">Find your equipment</h2>
+    </div>
     <div class="ice-cat-grid">
       {categoryCards.map((card, i) => (
         <a href={card.href} class={'ice-cat-card t--fade t--delay_' + ((i % 4) * 100 + 100)}>
-          <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
+          <span class={'ice-cat-media' + (card.contain ? ' ice-cat-media-contain' : '')}>
+            <span class="ice-cat-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
           </span>
-          <span class="ice-cat-name">
-            <span class="ice-cat-name-text">{card.name}</span>
-            <span class="ice-cat-arrow" aria-hidden="true">&rarr;</span>
+          <span class="ice-cat-meta">
+            <span class="ice-cat-name">{card.name}</span>
+            <span class="ice-cat-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
           </span>
         </a>
       ))}
@@ -535,16 +542,47 @@ const categoryCards = kinds.map(k => ({
   .ice-cat-section {
     padding: 0 var(--ice-pad);
     scroll-margin-top: calc(var(--ice-header-height) + 24px);
+    border-top: 1px solid var(--ice-black);
+    padding-top: 24px;
+  }
+  .ice-cat-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px 24px;
+    margin-bottom: 28px;
+  }
+  .ice-cat-overline {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    color: rgba(38, 38, 38, 0.55);
+  }
+  .ice-cat-title {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-cat-title {
+      font-size: 24px;
+    }
   }
   .ice-cat-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px 16px;
+    gap: 12px;
     display: grid;
   }
   @media (min-width: 768px) {
     .ice-cat-grid {
       grid-template-columns: repeat(3, 1fr);
-      gap: var(--ice-pad);
+      gap: 16px;
     }
   }
   @media (min-width: 1024px) {
@@ -557,68 +595,98 @@ const categoryCards = kinds.map(k => ({
     flex-direction: column;
     text-decoration: none;
     color: inherit;
+    background: var(--ice-white);
+    border: 1px solid var(--ice-border);
+    min-width: 0;
     display: flex;
+    transition: border-color 0.25s ease;
   }
-  .ice-cat-image {
+  .ice-cat-media {
     aspect-ratio: 4 / 3;
     background: var(--ice-image-bg);
     overflow: hidden;
     display: block;
     position: relative;
   }
-  .ice-cat-image img {
-    object-fit: cover;
+  .ice-cat-media img {
+    object-fit: contain;
     width: 100%;
     height: 100%;
     display: block;
-    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 16px;
+    background: var(--ice-white);
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
   }
-  @media (hover: hover) {
-    .ice-cat-card:hover .ice-cat-image img {
-      transform: scale(1.05);
-    }
+  .ice-cat-num {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    line-height: 1;
+    color: var(--ice-black);
+    background: var(--ice-white);
+    padding: 6px 7px;
+    min-width: 24px;
+    text-align: center;
   }
-  .ice-cat-image-contain {
+  .ice-cat-media-contain {
     background: #fff;
   }
-  .ice-cat-image img.ice-cat-img-contain {
+  .ice-cat-media img.ice-cat-img-contain {
     object-fit: contain;
-    padding: 20px;
+    padding: 24px;
   }
-  .ice-cat-name {
-    align-items: baseline;
+  .ice-cat-meta {
+    align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding-top: 12px;
-    font-family: var(--ice-sans);
-    font-size: 14px;
-    line-height: 1.3;
-    font-weight: 500;
+    padding: 16px 16px 18px;
     display: flex;
   }
-  .ice-cat-name-text {
-    text-underline-offset: var(--ice-underline-offset);
+  .ice-cat-name {
+    font-family: var(--ice-sans);
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    text-underline-offset: 4px;
     text-decoration-color: transparent;
     transition: text-decoration-color 0.25s ease;
   }
   .ice-cat-arrow {
-    font-family: var(--ice-mono);
-    font-size: 12px;
-    line-height: 1.4;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ice-black);
     transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   }
+  .ice-cat-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
   @media (hover: hover) {
-    .ice-cat-card:hover .ice-cat-name-text {
+    .ice-cat-card:hover {
+      border-color: var(--ice-black);
+    }
+    .ice-cat-card:hover .ice-cat-media img {
+      transform: scale(1.045);
+    }
+    .ice-cat-card:hover .ice-cat-name {
       text-decoration: underline;
       text-decoration-color: currentColor;
     }
     .ice-cat-card:hover .ice-cat-arrow {
-      transform: translateX(5px);
+      transform: translateX(4px);
     }
   }
   @media (prefers-reduced-motion: reduce) {
-    .ice-cat-image img,
-    .ice-cat-name-text,
+    .ice-cat-card,
+    .ice-cat-media img,
+    .ice-cat-name,
     .ice-cat-arrow {
       transition: none;
     }
