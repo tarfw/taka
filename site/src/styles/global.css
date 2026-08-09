@@ -459,17 +459,11 @@ ul, ol { list-style: none; }
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  background: #f0f0f0;
-  border-radius: 8px;
   flex-shrink: 0;
   color: #111;
-  border: none;
 }
 .sector-item.active .sector-item-icon {
-  background: #111;
-  color: #fff;
+  color: #111;
 }
 .sector-panel {
   background: #0a2463;
@@ -558,7 +552,9 @@ ul, ol { list-style: none; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%);
+  background:
+    linear-gradient(to bottom, transparent 40%, rgba(0,0,0,0.55) 100%),
+    linear-gradient(to left, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 25%, transparent 60%);
 }
 
 /* Canvas visualization */

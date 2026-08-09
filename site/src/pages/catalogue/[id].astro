@@ -16,11 +16,17 @@ export async function getStaticPaths() {
               categoryId: category.id,
               categoryName: category.name,
               brandName: brand.name,
+              brandUrl: brand.website,
               subcategoryName: subcat.name,
               relatedProducts: brand.subcategories
                 .flatMap(sc => sc.products)
                 .filter(p => p.id !== product.id)
                 .slice(0, 3)
+                .map(p => ({
+                  ...p,
+                  brandName: brand.name,
+                  subcategoryName: subcat.name
+                }))
             }
           });
         }
@@ -30,7 +36,7 @@ export async function getStaticPaths() {
   return paths;
 }
 
-const { product, categoryId, categoryName, brandName, subcategoryName, relatedProducts } = Astro.props;
+const { product, categoryId, categoryName, brandName, brandUrl, subcategoryName, relatedProducts } = Astro.props;
 ---
 
 <Layout title={`${product.name} — TAKA Scientific`} headerSolid={true}>
@@ -39,6 +45,7 @@ const { product, categoryId, categoryName, brandName, subcategoryName, relatedPr
     categoryId={categoryId}
     categoryName={categoryName}
     brandName={brandName}
+    brandUrl={brandUrl}
     subcategoryName={subcategoryName}
     relatedProducts={relatedProducts}
   />

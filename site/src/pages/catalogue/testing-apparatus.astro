@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import IceCatalogue from '../../components/IceCatalogue.astro';
+import CataloguePage from '../../components/CataloguePage.astro';
 import productData from '../../data/products.json';
 
 const category = productData.categories.find(c => c.id === 'testing-apparatus');
@@ -92,7 +92,7 @@ const categoryCards = [
   hasHero={true}
 >
 
-<IceCatalogue
+<CataloguePage
   hero={{
     image: '/ans3.jpg',
     title: 'Testing apparatus that proves it',

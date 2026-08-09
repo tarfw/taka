@@ -7,13 +7,16 @@ interface Props {
   subcategoryName?: string;
   image: string;
   tag?: string;
+  href?: string;
 }
 
-const { id, name, fullName, brandName, subcategoryName, image, tag } = Astro.props;
+const { id, name, fullName, brandName, subcategoryName, image, tag, href } = Astro.props;
+const link = href || `/catalogue/${id}`;
+const external = /^https?:\/\//.test(link);
 ---
 
 <article class="ice-card">
-  <a href={`/catalogue/${id}`}>
+  <a href={link} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
     <div class="ice-card-image">
       <img src={image} alt={fullName || name} loading="lazy" decoding="async" />
       {tag && <span class="ice-card-tag">{tag}</span>}

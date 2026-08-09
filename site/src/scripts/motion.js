@@ -48,7 +48,8 @@ if (!reduceMotion) {
     const update = () => {
       const y = window.scrollY;
       const scale = Math.max(1, 1.15 - 0.15 * (y / window.innerHeight));
-      zoomEl.style.transform = `scale(${scale})`;
+      const flipX = zoomEl.hasAttribute('data-parallax-flip') ? -1 : 1;
+      zoomEl.style.transform = `scaleX(${flipX}) scale(${scale})`;
       raf = 0;
     };
     window.addEventListener(

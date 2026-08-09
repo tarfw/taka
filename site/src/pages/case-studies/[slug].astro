@@ -134,15 +134,10 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     </div>
   </section>
 
-  <section class="cta-section" data-view>
-    <div class="container text-center">
-      <h2 class="section-title t--fadedown">Ready to equip your facility?</h2>
-      <p class="section-subtitle t--fade t--delay_200" style="margin-left: auto; margin-right: auto;">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
-      <div class="t--fade t--delay_400" style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; margin-top: 1.5rem;">
-        <a href="/contact" class="btn btn-dark">Request a quote</a>
-        <a href="javascript:void(0)" target="_blank" class="btn btn-outline">WhatsApp</a>
-      </div>
-    </div>
+  <section class="ice-cta" data-view>
+    <h2 class="t--fadedown">Ready to equip your facility?</h2>
+    <p class="t--fade t--delay_200">Tell us your requirements and we'll provide a tailored quote within the working day.</p>
+    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Request a quote</span></a>
   </section>
 </Layout>
 
@@ -434,5 +429,75 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     .page-hero-title { font-size: 2rem; }
     .stats-band { grid-template-columns: 1fr; margin-top: 3rem; }
     .related-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+  }
+/* ═══ CONTACT CTA — ice-cta design (matches analytical) ═══ */
+  .ice-cta {
+    --ice-pad: 24px;
+    background: #fff;
+    color: #1a365d;
+    min-height: 100svh;
+    justify-content: center;
+    padding: 80px var(--ice-pad);
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+  .ice-cta h2 {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+    max-width: 20ch;
+  }
+  .ice-cta p {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    max-width: 44ch;
+  }
+  .ice-cta .ice-btn,
+  .ice-cta .ice-btn:hover {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    height: 32px;
+    padding: 0 36px;
+    border: 1px solid #1a365d;
+    background: #1a365d;
+    color: #ffffff;
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+  .ice-cta .ice-btn:hover {
+    background: #ffffff;
+    color: #1a365d;
+  }
+  .ice-cta .ice-btn span { pointer-events: none; }
+  @media (min-width: 1024px) {
+    .ice-cta { gap: 30px; }
+    .ice-cta h2 {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+  @media (max-width: 480px) {
+    .ice-cta { --ice-pad: 16px; }
   }
 </style>

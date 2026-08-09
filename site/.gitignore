@@ -22,3 +22,13 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# one-off hanil image scraping scripts
+/download_hanil_images.cjs
+/fetch_hanil*.cjs
+/fetch_hanil.js
+/fetch_hanil.py
+/fetch_hanil_crypto.py
+/find_gas*.cjs
+hanil_images.json
+hanil_mapping.json

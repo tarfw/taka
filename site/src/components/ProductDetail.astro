@@ -1,4 +1,6 @@
 ---
+import ProductCardMini from './ProductCardMini.astro';
+
 interface Spec {
   key: string;
   value: string;
@@ -18,384 +20,472 @@ interface Product {
   gallery?: string[];
 }
 
+interface RelatedProduct extends Product {
+  brandName?: string;
+  subcategoryName?: string;
+}
+
 interface Props {
   product: Product;
   categoryId?: string;
   categoryName?: string;
   brandName?: string;
+  brandUrl?: string;
   subcategoryName?: string;
-  relatedProducts?: Product[];
+  relatedProducts?: RelatedProduct[];
 }
 
-const { product, categoryId, categoryName, brandName, subcategoryName, relatedProducts = [] } = Astro.props;
+const { product, categoryId, categoryName, brandName, brandUrl, subcategoryName, relatedProducts = [] } = Astro.props;
+
+const metaParts = [categoryName, brandName, subcategoryName].filter(Boolean);
 ---
 
-<article class="product-detail">
-  <div class="container">
-    <nav class="product-detail-breadcrumb">
-      <a href={categoryId ? `/catalogue/${categoryId}` : '/'} class="breadcrumb-link">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        Back to {categoryName || 'Home'}
-      </a>
-    </nav>
+<article class="ice-page">
 
-    <div class="product-detail-hero" data-view>
-      <div class="product-detail-image-wrap clip--top_left">
-        <img src={product.image} alt={product.fullName || product.name} class="product-detail-image" />
-      </div>
-      <div class="product-detail-info">
-        <div class="product-detail-meta t--fade t--delay_200">
-          {categoryName && <span class="product-detail-category">{categoryName}</span>}
-          {brandName && <span class="product-detail-brand">{brandName}</span>}
-          {subcategoryName && <span class="product-detail-subcategory">{subcategoryName}</span>}
-        </div>
-        <h1 class="product-detail-title t--fadedown t--delay_300">{product.fullName || product.name}</h1>
-        <p class="product-detail-desc t--fade t--delay_400">{product.description}</p>
-        
-        {product.specs && product.specs.length > 0 && (
-          <div class="product-detail-specs t--fade t--delay_500">
-            <h3 class="product-detail-section-title">Specifications</h3>
-            <div class="specs-table">
-              {product.specs.map(spec => (
-                <div class="specs-row">
-                  <span class="specs-key">{spec.key}</span>
-                  <span class="specs-value">{spec.value}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
+  <!-- HEADER — breadcrumb -->
+  <header class="ice-detail-head" data-view>
+    <a href={categoryId ? `/catalogue/${categoryId}` : '/'} class="ice-detail-back t--fade">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+      <span>Back to {categoryName || 'All products'}</span>
+    </a>
+    {metaParts.length > 0 && (
+      <div class="ice-detail-meta t--fade t--delay_200">{metaParts.join(' / ')}</div>
+    )}
+  </header>
 
-        {product.applications && product.applications.length > 0 && (
-          <div class="product-detail-applications t--fade t--delay_500">
-            <h3 class="product-detail-section-title">Applications</h3>
-            <div class="applications-list">
-              {product.applications.map(app => (
-                <span class="application-tag">{app}</span>
-              ))}
-            </div>
-          </div>
-        )}
+  <!-- HERO — editorial product shot -->
+  <section class="ice-detail-hero" data-view>
+    <div class="ice-detail-shot clip--top_left">
+      <img src={product.image} alt={product.fullName || product.name} decoding="async" />
+      <span class="ice-shot-mark ice-shot-mark--tl" aria-hidden="true"></span>
+      <span class="ice-shot-mark ice-shot-mark--br" aria-hidden="true"></span>
+    </div>
+    <div class="ice-detail-info">
+      <div class="ice-detail-eyebrow t--fade t--delay_300">{brandName || subcategoryName || categoryName}</div>
+      <h1 class="ice-detail-title t--fadedown t--delay_400">{product.fullName || product.name}</h1>
+      <p class="ice-detail-desc t--fade t--delay_500">{product.description}</p>
+      <div class="ice-detail-actions t--fade t--delay_600">
+        <a href="/contact" class="ice-btn"><span>Request a quote</span></a>
+        {brandUrl && <a href={brandUrl} target="_blank" rel="noopener" class="ice-btn ice-btn-outlined-dark"><span>Brand website</span></a>}
       </div>
     </div>
+  </section>
 
-    {product.fullDescription && (
-      <div class="product-detail-full" data-view>
-        <div class="product-detail-full-content">
-          <h2 class="product-detail-full-title t--fadedown">About this product</h2>
-          <p class="product-detail-full-text t--fade t--delay_200">{product.fullDescription}</p>
+  <!-- KEY SPECIFICATIONS -->
+  {product.specs && product.specs.length > 0 && (
+    <section class="ice-detail-specs" data-view>
+      <div class="ice-detail-section-title t--fadedown"><span>Key specifications</span></div>
+      <div class="ice-specs-grid">
+        {product.specs.slice(0, 4).map((spec, i) => (
+          <div class={`ice-spec-cell t--fade t--delay_${(i % 4) * 100 + 200}`}>
+            <span class="ice-spec-key">{spec.key}</span>
+            <span class="ice-spec-value">{spec.value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- COMPLETE SPECIFICATIONS -->
+  {product.specs && product.specs.length > 4 && (
+    <section class="ice-detail-fullspecs" data-view>
+      <div class="ice-detail-section-title t--fadedown"><span>Complete specifications</span></div>
+      <div class="ice-specs-table">
+        {product.specs.map((spec, i) => (
+          <div class={`ice-specs-row t--fade t--delay_${(i % 4) * 100 + 200}`}>
+            <span class="ice-specs-key">{spec.key}</span>
+            <span class="ice-specs-value">{spec.value}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- APPLICATIONS -->
+  {product.applications && product.applications.length > 0 && (
+    <section class="ice-detail-apps" data-view>
+      <div class="ice-detail-section-title t--fadedown"><span>Applications</span></div>
+      <div class="ice-apps-list">
+        {product.applications.map((app, i) => (
+          <span class={`ice-app-tag t--fade t--delay_${(i % 4) * 100 + 200}`}>{app}</span>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ABOUT -->
+  {product.fullDescription && (
+    <section class="ice-detail-about" data-view>
+      <div class="ice-detail-about-inner">
+        <div class="ice-detail-about-label t--fade">About this product</div>
+        <p class="ice-detail-about-text t--fadedown t--delay_200">{product.fullDescription}</p>
+      </div>
+    </section>
+  )}
+
+  <!-- RELATED PRODUCTS -->
+  {relatedProducts.length > 0 && (
+    <section class="ice-slider-section" data-view>
+      <div class="ice-slider">
+        <div class="ice-slider-title">
+          <div class="ice-slider-title-wrapper"><h2 class="t--fadedown">Related products</h2></div>
+          <div class="ice-slider-controls">
+            <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+            <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+          </div>
+        </div>
+        <div class="ice-slider-items">
+          <div class="ice-slider-track">
+            {relatedProducts.map(rp => (
+              <div class="ice-slider-item">
+                <ProductCardMini
+                  id={rp.id}
+                  name={rp.name}
+                  fullName={rp.fullName}
+                  brandName={rp.brandName}
+                  subcategoryName={rp.subcategoryName}
+                  image={rp.image}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-    )}
+    </section>
+  )}
 
-    {relatedProducts.length > 0 && (
-      <div class="product-detail-related" data-view>
-        <h2 class="product-detail-section-title t--fadedown">Related Products</h2>
-        <div class="related-grid">
-          {relatedProducts.map((rp, i) => (
-            <a href={`/catalogue/${rp.id}`} class="related-card t--fade t--delay_{(i % 3) * 100 + 200}">
-              <div class="related-card-image">
-                <img src={rp.image} alt={rp.name} loading="lazy" />
-              </div>
-              <div class="related-card-body">
-                <h4 class="related-card-title">{rp.name}</h4>
-                <p class="related-card-desc">{rp.description}</p>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    )}
-  </div>
+  <!-- CONTACT CTA -->
+  <section class="ice-cta" data-view>
+    <h2 class="t--fadedown">Ready to specify this model?</h2>
+    <p class="t--fade t--delay_200">Tell us about your application and we&#39;ll confirm availability and pricing.</p>
+    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Talk to our team</span></a>
+  </section>
+
 </article>
 
+<script>
+  document.querySelectorAll('.ice-slider').forEach(slider => {
+    const scroller = slider.querySelector('.ice-slider-items');
+    const prev = slider.querySelector('.ice-slider-prev');
+    const next = slider.querySelector('.ice-slider-next');
+    if (!scroller || !prev || !next) return;
+
+    const update = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      prev.disabled = scroller.scrollLeft <= 1;
+      next.disabled = scroller.scrollLeft >= max - 1;
+    };
+    const step = () => {
+      const item = scroller.querySelector('.ice-slider-item');
+      return item ? item.offsetWidth : scroller.clientWidth;
+    };
+
+    prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+    scroller.addEventListener('scroll', update, { passive: true });
+    update();
+    window.addEventListener('resize', update);
+  });
+</script>
+
 <style>
-  .product-detail {
-    padding: 2rem 0 5rem;
+  .ice-page {
+    --ice-pad: 24px;
+    --ice-black: #262626;
+    --ice-white: #ffffff;
+    --ice-border: #ececec;
+    --ice-image-bg: #ececec;
+    --ice-sans: var(--font-sans);
+    --ice-mono: var(--font-mono);
+    --ice-opacity: 0.35;
+    --ice-underline-offset: 0.3em;
+    --ice-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    flex-direction: column;
+    gap: clamp(56px, 9vw, 96px);
+    display: flex;
+    background: var(--ice-white);
+    color: var(--ice-black);
+    font-size: 10px;
+  }
+  @media (max-width: 1024px) { .ice-page { --ice-gap: 56px; } }
+
+  /* HEADER */
+  .ice-detail-head {
+    padding: 28px var(--ice-pad) 0;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    display: flex;
+  }
+  @media (max-width: 620px) { .ice-detail-head { flex-direction: column; align-items: flex-start; } }
+  .ice-detail-back {
+    align-items: center;
+    gap: 10px;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    color: inherit;
+    text-decoration: none;
+  }
+  @media (hover: hover) {
+    .ice-detail-back:hover { text-underline-offset: var(--ice-underline-offset); text-decoration: underline; }
+  }
+  .ice-detail-meta {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: var(--ice-opacity);
   }
 
-  .product-detail-breadcrumb {
-    margin-bottom: 2rem;
+  /* HERO */
+  .ice-detail-hero { display: grid; grid-template-columns: repeat(2, 1fr); min-height: 0; }
+  @media (max-width: 900px) { .ice-detail-hero { grid-template-columns: 1fr; } }
+  .ice-detail-shot {
+    height: 520px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex: 0 0 auto;
   }
-  .breadcrumb-link {
+  .ice-detail-shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    mix-blend-mode: multiply;
+  }
+  .ice-shot-mark {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    opacity: 0.45;
+    pointer-events: none;
+  }
+  .ice-shot-mark--tl {
+    top: 20px;
+    left: 20px;
+    border-top: 1px solid currentColor;
+    border-left: 1px solid currentColor;
+  }
+  .ice-shot-mark--br {
+    bottom: 20px;
+    right: 20px;
+    border-bottom: 1px solid currentColor;
+    border-right: 1px solid currentColor;
+  }
+  @media (max-width: 900px) { .ice-detail-shot { height: 380px; } }
+  .ice-detail-info {
+    padding: clamp(32px, 4vw, 56px) var(--ice-pad);
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 22px;
+    display: flex;
+  }
+  .ice-detail-eyebrow {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    color: #1a365d;
+  }
+  .ice-detail-title {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.02em;
+    font-size: 34px;
+    line-height: 1.02;
+    font-weight: 600;
+    margin: 0;
+    max-width: 18ch;
+  }
+  @media (min-width: 1024px) {
+    .ice-detail-title { letter-spacing: -0.03em; font-size: clamp(48px, 6vw, 84px); line-height: 0.92; }
+  }
+  .ice-detail-desc {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0;
+    opacity: 0.75;
+    max-width: 46ch;
+  }
+  .ice-detail-actions { flex-flow: wrap; gap: 12px; display: flex; }
+
+  /* BUTTONS */
+  .ice-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.4rem;
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-    text-decoration: none;
-    transition: color 0.15s;
-  }
-  .breadcrumb-link:hover {
-    color: var(--color-text);
-  }
-
-  .product-detail-hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    align-items: start;
-    margin-bottom: 4rem;
-  }
-
-  .product-detail-image-wrap {
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
-    aspect-ratio: 4 / 3;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    overflow: hidden;
-    position: sticky;
-    top: calc(var(--nav-height) + 1rem);
-  }
-  .product-detail-image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 2rem;
-  }
-
-  .product-detail-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
-
-  .product-detail-meta {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  .product-detail-category {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
-    background: var(--color-surface);
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--radius-sm);
-  }
-  .product-detail-brand {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--brand);
-    background: rgba(31, 64, 237, 0.08);
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--radius-sm);
-  }
-  .product-detail-subcategory {
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    background: var(--color-surface);
-    padding: 0.3rem 0.7rem;
-    border-radius: var(--radius-sm);
-  }
-
-  .product-detail-title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.8rem, 3.5vw, 2.5rem);
-    font-weight: 400;
-    line-height: 1.15;
-    letter-spacing: -0.03em;
-    color: var(--color-text);
-    margin: 0;
-  }
-
-  .product-detail-desc {
-    font-size: 1rem;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    margin: 0;
-  }
-
-  .product-detail-section-title {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 0.75rem 0;
-    letter-spacing: 0.02em;
-  }
-
-  .product-detail-specs {
-    margin-top: 0.5rem;
-  }
-  .specs-table {
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
-  }
-  .specs-row {
-    display: flex;
-    border-bottom: 1px solid var(--color-border);
-  }
-  .specs-row:last-child {
-    border-bottom: none;
-  }
-  .specs-key {
-    flex: 0 0 140px;
-    padding: 0.7rem 1rem;
-    font-size: 0.82rem;
-    font-weight: 500;
-    color: var(--color-text-muted);
-    background: var(--color-surface);
-  }
-  .specs-value {
-    flex: 1;
-    padding: 0.7rem 1rem;
-    font-size: 0.82rem;
-    font-weight: 600;
-    color: var(--color-text);
-  }
-
-  .product-detail-applications {
-    margin-top: 0.5rem;
-  }
-  .applications-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-  }
-  .application-tag {
-    display: inline-block;
-    padding: 0.35rem 0.75rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    border-radius: 100px;
-  }
-
-  .product-detail-full {
-    padding: 3rem 0;
-    border-top: 1px solid var(--color-border);
-  }
-  .product-detail-full-content {
-    max-width: 720px;
-  }
-  .product-detail-full-title {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 400;
-    color: var(--color-text);
-    margin: 0 0 1rem 0;
-  }
-  .product-detail-full-text {
-    font-size: 0.95rem;
-    color: var(--color-text-secondary);
-    line-height: 1.8;
-    margin: 0;
-  }
-
-  .product-detail-related {
-    padding-top: 3rem;
-    border-top: 1px solid var(--color-border);
-  }
-  .related-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
-  }
-  @media (max-width: 992px) {
-    .related-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  .related-card {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-md);
-    overflow: hidden;
+    background: var(--ice-black);
+    color: var(--ice-white);
+    height: 42px;
+    padding: 0 36px;
+    border: 1px solid var(--ice-black);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
     text-decoration: none;
-    color: inherit;
-    transition: border-color 0.15s, box-shadow 0.15s;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
   }
-  .related-card:hover {
-    border-color: var(--greige-lightest);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  @media (max-width: 1024px) { .ice-btn { padding: 0 28px; } }
+  .ice-btn span { pointer-events: none; }
+  .ice-btn-outlined-dark { background: transparent; color: var(--ice-black); border-color: var(--ice-black); }
+  .ice-btn-white { background: var(--ice-white); color: var(--ice-black); border-color: var(--ice-white); }
+  @media (hover: hover) {
+    .ice-btn:hover { background: rgba(38, 38, 38, 0.9); color: var(--ice-white); }
+    .ice-btn-outlined-dark:hover { background: var(--ice-black); color: var(--ice-white); }
   }
-  .related-card-image {
-    aspect-ratio: 4 / 3;
-    background: var(--color-surface);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border-bottom: 1px solid var(--color-border);
+
+  .ice-detail-section-title {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
   }
-  .related-card-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    padding: 1rem;
+
+  /* KEY SPECS */
+  .ice-detail-specs { padding: 0 var(--ice-pad); flex-direction: column; display: flex; }
+  .ice-specs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--ice-border);
+    border: 1px solid var(--ice-border);
+    margin-top: 20px;
   }
-  .related-card-body {
-    padding: 1rem;
+  @media (max-width: 900px) { .ice-specs-grid { grid-template-columns: repeat(2, 1fr); } }
+  .ice-spec-cell { background: var(--ice-white); padding: 26px var(--ice-pad); flex-direction: column; gap: 8px; display: flex; }
+  .ice-spec-key {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 1.4;
+    color: var(--ice-black);
+    opacity: var(--ice-opacity);
   }
-  .related-card-title {
-    font-size: 0.88rem;
-    font-weight: 600;
-    color: var(--color-text);
-    margin: 0 0 0.3rem 0;
+  .ice-spec-value { font-family: var(--ice-sans); font-size: 16px; line-height: 1.25; font-weight: 500; }
+
+  /* FULL SPECS */
+  .ice-detail-fullspecs, .ice-detail-apps { padding: 0 var(--ice-pad); flex-direction: column; display: flex; }
+  .ice-specs-table { border-top: 1px solid var(--ice-border); margin-top: 20px; display: flex; flex-direction: column; }
+  .ice-specs-row { padding: 18px 2px; border-bottom: 1px solid var(--ice-border); column-gap: 24px; row-gap: 6px; display: flex; align-items: baseline; }
+  .ice-specs-key {
+    flex: 0 0 200px;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 1.4;
+    opacity: var(--ice-opacity);
+  }
+  .ice-specs-value { flex: 1; font-family: var(--ice-sans); font-size: 15px; line-height: 1.5; }
+  @media (max-width: 620px) { .ice-specs-row { flex-direction: column; gap: 4px; } .ice-specs-key { flex: none; } }
+
+  /* APPLICATIONS */
+  .ice-apps-list { margin-top: 24px; flex-flow: wrap; gap: 10px; display: flex; }
+  .ice-app-tag {
+    padding: 9px 16px;
+    border: 1px solid var(--ice-border);
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 11px;
     line-height: 1.4;
   }
-  .related-card-desc {
-    font-size: 0.78rem;
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin: 0;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
 
-  @media (max-width: 768px) {
-    .product-detail-hero {
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-    .product-detail-image-wrap {
-      position: static;
-      aspect-ratio: 1 / 1;
-    }
-    .product-detail-image {
-      padding: 1.25rem;
-    }
-    .specs-key {
-      flex: 0 0 96px;
-      padding: 0.6rem 0.75rem;
-    }
-    .specs-value {
-      padding: 0.6rem 0.75rem;
-    }
-    .product-detail-title {
-      font-size: 1.6rem;
-    }
-    .product-detail-meta {
-      flex-wrap: wrap;
-    }
+  /* ABOUT */
+  .ice-detail-about { display: flex; padding: 0 var(--ice-pad); }
+  .ice-detail-about-inner {
+    width: 100%;
+    padding-bottom: 70px;
+    border-bottom: 1px solid var(--ice-border);
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    column-gap: 24px;
   }
-  @media (max-width: 560px) {
-    .related-grid {
-      grid-template-columns: 1fr;
-    }
+  @media (max-width: 1024px) { .ice-detail-about-inner { grid-template-columns: 1fr; gap: 18px; padding-bottom: 48px; } }
+  .ice-detail-about-label {
+    grid-column: 1 / span 12;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: var(--ice-opacity);
   }
+  @media (max-width: 1024px) { .ice-detail-about-label { grid-column: 1; } }
+  .ice-detail-about-text {
+    grid-column: 4 / span 12;
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 19px;
+    line-height: 1.4;
+    font-weight: 500;
+    margin: 0;
+  }
+  @media (max-width: 1024px) { .ice-detail-about-text { grid-column: 1; font-size: 17px; } }
+
+  /* RELATED SLIDER */
+  .ice-slider-section { scroll-margin-top: calc(52px + 24px); }
+  .ice-slider { flex-direction: column; display: flex; }
+  .ice-slider-title { padding: 0 var(--ice-pad) 17px; width: 100%; color: var(--ice-black); align-items: center; display: flex; }
+  .ice-slider-title h2 { font-family: var(--ice-mono); letter-spacing: 0.01em; text-transform: uppercase; font-size: 12px; line-height: 1.4; font-weight: 400; margin: 0; }
+  .ice-slider-title-wrapper { font-family: var(--ice-mono); letter-spacing: 0.01em; text-transform: uppercase; align-items: center; gap: 16px; width: 100%; font-size: 12px; line-height: 1.4; display: flex; }
+  .ice-slider-controls { font-family: var(--ice-mono); letter-spacing: -0.01em; gap: 14px; margin-left: auto; font-size: 12px; line-height: 1.4; display: flex; }
+  .ice-slider-controls button { font-family: var(--ice-mono); font-size: 12px; line-height: 1.4; letter-spacing: -0.01em; background: none; border: none; padding: 0; color: var(--ice-black); cursor: pointer; text-transform: uppercase; }
+  .ice-slider-controls button:disabled { opacity: var(--ice-opacity); pointer-events: none; }
+  @media (max-width: 1024px) { .ice-slider-controls { display: none; } .ice-slider-title-wrapper { justify-content: space-between; } }
+  .ice-slider-items {
+    width: calc(100% + var(--ice-gap));
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-left: calc(var(--ice-gap) * -1);
+    overflow-x: scroll;
+    scrollbar-width: none;
+    --ice-gap: 1px;
+    --ice-flex: calc(100% / 1.3);
+  }
+  @media (min-width: 1024px) { .ice-slider-items { --ice-flex: calc(100% / 5); } }
+  .ice-slider-items::-webkit-scrollbar { display: none; }
+  .ice-slider-track { display: flex; }
+  .ice-slider-item { flex: 0 0 var(--ice-flex); scroll-snap-align: start; scroll-snap-stop: always; min-width: 0; padding-left: var(--ice-gap); position: relative; }
+
+  /* CTA */
+  .ice-cta {
+    background: #1a365d;
+    color: var(--ice-white);
+    min-height: 100svh;
+    justify-content: center;
+    padding: 80px var(--ice-pad);
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+  .ice-cta h2 { font-family: var(--ice-sans); letter-spacing: -0.01em; font-size: 24px; line-height: 1.15; font-weight: 600; margin: 0; max-width: 20ch; }
+  .ice-cta p { font-family: var(--ice-sans); font-size: 15px; line-height: 1.5; margin: 0; opacity: 0.8; max-width: 44ch; }
+  .ice-cta .ice-btn-white { background: var(--ice-white); color: #1a365d; border-color: var(--ice-white); }
+  @media (hover: hover) {
+    .ice-cta .ice-btn-white:hover { background: var(--ice-white); color: #1a365d; border-color: #1a365d; }
+  }
+  @media (min-width: 1024px) { .ice-cta { gap: 30px; } .ice-cta h2 { letter-spacing: -0.02em; font-size: 64px; line-height: 1.05; } }
 </style>

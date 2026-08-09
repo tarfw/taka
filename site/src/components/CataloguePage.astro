@@ -1,5 +1,5 @@
 ---
-import IceProductCard from './IceProductCard.astro';
+import ProductCardMini from './ProductCardMini.astro';
 
 interface Product {
   id: string;
@@ -22,6 +22,7 @@ interface Section {
   sub: string;
   products?: Product[];
   cards?: GridCard[];
+  quote?: boolean;
 }
 
 interface Props {
@@ -123,7 +124,7 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
           <div class="ice-slider-title">
             <div class="ice-slider-title-wrapper">
               <h2 class="t--fadedown">{section.title}</h2>
-              <a href="/contact" class="t--fade t--delay_200">Get a quote</a>
+              {section.quote && <a href="/contact" class="t--fade t--delay_200">Get a quote</a>}
             </div>
             <div class="ice-slider-controls">
               <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
@@ -135,7 +136,7 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
             <div class="ice-slider-track">
               {section.products.map(p => (
                 <div class="ice-slider-item">
-                  <IceProductCard
+                  <ProductCardMini
                     id={p.id}
                     name={p.name}
                     fullName={p.fullName}

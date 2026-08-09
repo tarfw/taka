@@ -2538,7 +2538,7 @@
                     "Analytical chemistry",
                     "Quality control"
                   ],
-                  "image": "/products/elga/purelab-flex.jpeg"
+                  "image": "/products/elga/purelab-quest.jpeg"
                 },
                 {
                   "id": "elga-purelab-chorus",
@@ -2572,7 +2572,7 @@
                     "Buffer preparation",
                     "Reagent preparation"
                   ],
-                  "image": "/products/elga/purelab-flex.jpeg"
+                  "image": "/products/elga/purelab-chorus.jpeg"
                 }
               ]
             },
@@ -2612,7 +2612,7 @@
                     "LC-MS",
                     "ICP-MS"
                   ],
-                  "image": "/products/elga/centra.svg"
+                  "image": "/products/elga/centra.jpg"
                 }
               ]
             },
@@ -2652,7 +2652,7 @@
                     "Dialysis water",
                     "Sterilization"
                   ],
-                  "image": "/products/elga/medica.svg"
+                  "image": "/products/elga/medica.jpg"
                 }
               ]
             },
@@ -2693,7 +2693,7 @@
                     "Cell culture",
                     "Molecular biology"
                   ],
-                  "image": "/products/elga/biopure.svg"
+                  "image": "/products/elga/biopure.jpg"
                 }
               ]
             },
@@ -2733,7 +2733,7 @@
                     "Research centers",
                     "Hospital labs"
                   ],
-                  "image": "/products/elga/pro.svg"
+                  "image": "/products/elga/pro.jpg"
                 }
               ]
             },
@@ -2773,7 +2773,7 @@
                     "FID fuel gas",
                     "Fuel cells"
                   ],
-                  "image": "/products/elga/hydrogen.svg"
+                  "image": "/products/elga/hydrogen.jpg"
                 }
               ]
             }
@@ -2822,7 +2822,7 @@
                     "Protein separation",
                     "Clinical diagnostics"
                   ],
-                  "image": "/products/hanil/micro.svg"
+                  "image": "/products/hanil/micro.png"
                 },
                 {
                   "id": "hanil-himac-refrigerated",
@@ -2896,7 +2896,7 @@
                     "Urine analysis",
                     "Cell pellet preparation"
                   ],
-                  "image": "/products/hanil/low-speed.svg"
+                  "image": "/products/hanil/low-speed.png"
                 }
               ]
             },
@@ -2936,7 +2936,7 @@
                     "Protein separation",
                     "DNA/RNA isolation"
                   ],
-                  "image": "/products/hanil/ultra.svg"
+                  "image": "/products/hanil/ultra.png"
                 }
               ]
             },
@@ -2976,7 +2976,7 @@
                     "Protein precipitation",
                     "Pharmaceutical QC"
                   ],
-                  "image": "/products/hanil/high-speed.svg"
+                  "image": "/products/hanil/hf-16000.jpg"
                 }
               ]
             },
@@ -3016,7 +3016,7 @@
                     "Research",
                     "Industrial separation"
                   ],
-                  "image": "/products/hanil/multi-purpose.svg"
+                  "image": "/products/hanil/multi-purpose.png"
                 }
               ]
             },
@@ -3056,7 +3056,7 @@
                     "Industrial processing",
                     "Large volume samples"
                   ],
-                  "image": "/products/hanil/large-capacity.svg"
+                  "image": "/products/hanil/large-capacity.jpg"
                 }
               ]
             },
@@ -3096,7 +3096,7 @@
                     "Urine analysis",
                     "Body fluid processing"
                   ],
-                  "image": "/products/hanil/clinical.svg"
+                  "image": "/products/hanil/clinical.jpg"
                 }
               ]
             },
@@ -3136,7 +3136,7 @@
                     "Chemical processing",
                     "Food production"
                   ],
-                  "image": "/products/hanil/industrial.svg"
+                  "image": "/products/hanil/industrial.webp"
                 }
               ]
             },
@@ -3176,7 +3176,7 @@
                     "Protein concentration",
                     "Drug metabolism studies"
                   ],
-                  "image": "/products/hanil/sample-concentrator.svg"
+                  "image": "/products/hanil/sample-concentrator.png"
                 }
               ]
             },
@@ -3216,7 +3216,7 @@
                     "Protein concentration",
                     "Sample preparation"
                   ],
-                  "image": "/products/hanil/vacuum-concentrator.svg"
+                  "image": "/products/hanil/vacuum-concentrator.jpg"
                 }
               ]
             },
@@ -3256,7 +3256,7 @@
                     "Pharmaceutical lyophilization",
                     "Food drying"
                   ],
-                  "image": "/products/hanil/freeze-dryer.svg"
+                  "image": "/products/hanil/freeze-dryer.png"
                 }
               ]
             },
@@ -3296,7 +3296,7 @@
                     "Sample concentration",
                     "Analytical prep"
                   ],
-                  "image": "/products/hanil/gas-purging.svg"
+                  "image": "/products/hanil/gas-purging.jpg"
                 }
               ]
             },
@@ -3336,7 +3336,7 @@
                     "Tissue engineering",
                     "Microbiology"
                   ],
-                  "image": "/products/hanil/co2-incubator.svg"
+                  "image": "/products/hanil/co2-incubator.jpg"
                 }
               ]
             },
@@ -3376,7 +3376,7 @@
                     "Cell bank storage",
                     "Reagent storage"
                   ],
-                  "image": "/products/hanil/ultra-low-freezer.svg"
+                  "image": "/products/hanil/ultra-low-freezer.jpg"
                 }
               ]
             }
@@ -3493,7 +3493,7 @@
                     "Vitamin E concentration",
                     "Essential oil refining"
                   ],
-                  "image": "/products/toption/wiped-film.svg"
+                  "image": "/products/toption/wiped-film.jpg"
                 }
               ]
             },
@@ -3567,7 +3567,7 @@
                     "Catalyst testing",
                     "Polymerization"
                   ],
-                  "image": "/products/toption/stainless-reactor.svg"
+                  "image": "/products/toption/stainless-reactor.jpg"
                 }
               ]
             },
@@ -3641,7 +3641,7 @@
                     "Food processing",
                     "Chemical separation"
                   ],
-                  "image": "/products/toption/centrifuge-ext.svg"
+                  "image": "/products/toption/centrifuge-ext.jpg"
                 },
                 {
                   "id": "toption-oil-extractor",
@@ -3675,7 +3675,7 @@
                     "Herbal extracts",
                     "Flavor compounds"
                   ],
-                  "image": "/products/toption/oil-extractor.svg"
+                  "image": "/products/toption/oil-extractor.png"
                 }
               ]
             },
@@ -3715,7 +3715,7 @@
                     "Concentration",
                     "Extraction"
                   ],
-                  "image": "/products/toption/rotary-evaporator.svg"
+                  "image": "/products/toption/rotary-evaporator.jpg"
                 }
               ]
             },
@@ -3755,7 +3755,7 @@
                     "Pharmaceutical encapsulation",
                     "Nanoparticle synthesis"
                   ],
-                  "image": "/products/toption/spray-dryer.svg"
+                  "image": "/products/toption/spray-dryer.png"
                 }
               ]
             },
@@ -3835,7 +3835,7 @@
                     "Chemical synthesis",
                     "API production"
                   ],
-                  "image": "/products/toption/nutsche-filter.svg"
+                  "image": "/products/toption/nutsche-filter.png"
                 }
               ]
             },
@@ -3875,7 +3875,7 @@
                     "Pharmaceutical concentration",
                     "Chemical processing"
                   ],
-                  "image": "/products/toption/rising-film.svg"
+                  "image": "/products/toption/rising-film.jpg"
                 },
                 {
                   "id": "toption-falling-film",
@@ -3909,7 +3909,7 @@
                     "Juice concentration",
                     "Pharmaceutical processing"
                   ],
-                  "image": "/products/toption/falling-film.svg"
+                  "image": "/products/toption/falling-film.jpg"
                 }
               ]
             }
@@ -3958,7 +3958,7 @@
                     "Materials synthesis",
                     "Pharmaceutical handling"
                   ],
-                  "image": "/products/etelux/standard-glovebox.svg"
+                  "image": "/products/etelux/standard-glovebox.jpg"
                 },
                 {
                   "id": "etelux-vacuum-glovebox",
@@ -3992,7 +3992,7 @@
                     "OLED development",
                     "Advanced materials"
                   ],
-                  "image": "/products/etelux/vacuum-glovebox.svg"
+                  "image": "/products/etelux/vacuum-glovebox.jpg"
                 },
                 {
                   "id": "etelux-cr-glovebox",
@@ -4026,7 +4026,7 @@
                     "Pharmaceutical production",
                     "Battery R&D"
                   ],
-                  "image": "/products/etelux/cleanroom-glovebox.svg"
+                  "image": "/products/etelux/cleanroom-glovebox.jpg"
                 },
                 {
                   "id": "etelux-acrylic-glovebox",
@@ -4060,7 +4060,7 @@
                     "Museum exhibits",
                     "Low-demand R&D"
                   ],
-                  "image": "/products/etelux/acrylic-glovebox.svg"
+                  "image": "/products/etelux/acrylic-glovebox.jpg"
                 }
               ]
             },
@@ -4100,7 +4100,7 @@
                     "Process gas purification",
                     "Semiconductor manufacturing"
                   ],
-                  "image": "/products/etelux/gp20-purifier.svg"
+                  "image": "/products/etelux/gp20-purifier.jpg"
                 }
               ]
             },
@@ -4140,7 +4140,7 @@
                     "Organometallic synthesis",
                     "Polymer research"
                   ],
-                  "image": "/products/etelux/solvent-purifier.svg"
+                  "image": "/products/etelux/solvent-purifier.jpg"
                 }
               ]
             },
@@ -4180,7 +4180,7 @@
                     "Solar cell prototyping",
                     "Optical coatings"
                   ],
-                  "image": "/products/etelux/vacuum-coater.svg"
+                  "image": "/products/etelux/vacuum-coater.jpg"
                 }
               ]
             },
@@ -4220,7 +4220,7 @@
                     "Cytotoxic drug preparation",
                     "Hazardous material containment"
                   ],
-                  "image": "/products/etelux/isolator.svg"
+                  "image": "/products/etelux/isolator.jpg"
                 }
               ]
             }
@@ -5348,7 +5348,7 @@
                     "Distillation heating",
                     "Crystallization cooling"
                   ],
-                  "image": "/products/toption/heater-chiller.svg"
+                  "image": "/products/toption/heater-chiller.jpg"
                 }
               ]
             },
@@ -5388,7 +5388,7 @@
                     "Crystallization",
                     "Sample cooling"
                   ],
-                  "image": "/products/toption/ice-bath.svg"
+                  "image": "/products/toption/ice-bath.jpg"
                 }
               ]
             },
@@ -5428,7 +5428,7 @@
                     "Degassing",
                     "Powder drying"
                   ],
-                  "image": "/products/toption/vacuum-oven.svg"
+                  "image": "/products/toption/vacuum-oven.png"
                 }
               ]
             }

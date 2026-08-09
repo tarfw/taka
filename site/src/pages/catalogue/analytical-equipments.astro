@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import IceProductCard from '../../components/IceProductCard.astro';
+import ProductCardMini from '../../components/ProductCardMini.astro';
 import productData from '../../data/products.json';
 
 const category = productData.categories.find(c => c.id === 'analytical-equipments');
@@ -139,7 +139,7 @@ const categoryCards = [
   <!-- â•â•â• HIGHLIGHT â€” ModuleHighlight â•â•â• -->
   <section class="ice-highlight" data-view>
     <div class="ice-highlight-image clip--top_left">
-      <img src="/ans3.jpg" alt="Analytical instruments laboratory" loading="lazy" />
+      <img src="/gestrel.png" alt="Analytical instruments laboratory" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
       <h2 class="t--fadedown">Explore the full range of analytical instruments</h2>
@@ -157,7 +157,6 @@ const categoryCards = [
         <div class="ice-slider-title">
           <div class="ice-slider-title-wrapper">
             <h2 class="t--fadedown">{section.title}</h2>
-            <a href="/contact" class="t--fade t--delay_200">Get a quote</a>
           </div>
           <div class="ice-slider-controls">
             <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
@@ -169,7 +168,7 @@ const categoryCards = [
           <div class="ice-slider-track">
             {section.products.map(p => (
               <div class="ice-slider-item">
-                <IceProductCard
+                <ProductCardMini
                   id={p.id}
                   name={p.name}
                   fullName={p.fullName}
@@ -665,7 +664,7 @@ const categoryCards = [
     background:
       linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
       linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.18'/%3E%3C/svg%3E");
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='4' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.14'/%3E%3C/svg%3E");
     position: absolute;
     inset: 0;
   }

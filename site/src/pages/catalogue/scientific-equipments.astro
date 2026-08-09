@@ -1,6 +1,6 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import IceCatalogue from '../../components/IceCatalogue.astro';
+import ProductCardMini from '../../components/ProductCardMini.astro';
 import productData from '../../data/products.json';
 
 const category = productData.categories.find(c => c.id === 'scientific-equipments');
@@ -16,7 +16,8 @@ const subcategories = category.brands.flatMap(brand =>
       ...p,
       brandName: brand.name,
       subcategoryName: sc.name,
-      categoryName: category.name
+      categoryName: category.name,
+      brandUrl: brand.website
     }))
   }))
 );
@@ -24,122 +25,826 @@ const subcategories = category.brands.flatMap(brand =>
 const productsIn = (ids) =>
   subcategories.filter(sc => ids.includes(sc.id)).flatMap(sc => sc.products);
 
-const sections = [
+const kinds = [
   {
     id: 'stirring',
     title: 'Stirring & mixing',
-    sub: 'Magnetic stirrers, overhead stirrers, hot plates and shakers for everyday lab mixing.',
-    products: productsIn(['magnetic-stirrers', 'overhead-stirrers', 'hot-plates-mixers', 'shakers']),
+    sub: 'Magnetic and overhead stirrers, hot plates and shakers for every fluid-handling task in the lab.',
+    ids: ['magnetic-stirrers', 'overhead-stirrers', 'shakers', 'hot-plates-mixers'],
   },
   {
-    id: 'dispersion',
-    title: 'Dispersing & grinding',
-    sub: 'Batch and in-line dispersers, mills and single-use crushing systems for homogenization.',
-    products: productsIn(['dispersers', 'mills', 'single-use-crushing']),
+    id: 'tempering',
+    title: 'Heating & tempering',
+    sub: 'Thermoshakers, dry block heaters, heating baths and circulators for precise, repeatable temperature control.',
+    ids: ['thermoshakers', 'dry-block-heaters', 'heating-baths', 'temperature-control', 'tempering-chambers'],
   },
   {
-    id: 'temperature',
-    title: 'Temperature control',
-    sub: 'Thermoshakers, dry block heaters, heating baths and precise temperature control systems.',
-    products: productsIn(['thermoshakers', 'dry-block-heaters', 'heating-baths', 'temperature-control', 'tempering-chambers']),
+    id: 'dispersing',
+    title: 'Crushing, dispersing & grinding',
+    sub: 'Batch and in-line dispersers, analytical mills and single-use crushing systems for homogenisation.',
+    ids: ['dispersers', 'mills', 'single-use-crushing'],
   },
   {
     id: 'analysis',
     title: 'Viscosity & calorimetry',
-    sub: 'Rheology, viscosity measurement and combustion calorimetry for quality control.',
-    products: productsIn(['viscosity-measurement', 'calorimetry']),
-  },
-  {
-    id: 'water',
-    title: 'Water purification',
-    sub: 'Type I–III pure and ultrapure water systems from ELGA, from benchtop to centralized.',
-    products: productsIn(['water-purification', 'centra-series', 'medica-series', 'biopure-series', 'centralized-systems']),
-  },
-  {
-    id: 'hydrogen',
-    title: 'Hydrogen generation',
-    sub: 'Safe, on-demand hydrogen generators for GC carrier and detector gas.',
-    products: productsIn(['hydrogen-generators']),
+    sub: 'Rheology, viscosity measurement and combustion calorimetry for quality control and R&D.',
+    ids: ['viscosity-measurement', 'calorimetry'],
   },
   {
     id: 'centrifugation',
-    title: 'Centrifuges',
-    sub: 'From micro to industrial — refrigerated, high-speed, ultra and multi-purpose centrifuges.',
-    products: productsIn(['centrifuges', 'low-speed-centrifuges', 'ultra-centrifuges', 'high-speed-centrifuges', 'multi-purpose-centrifuges', 'large-capacity-centrifuges', 'clinical-centrifuges', 'industrial-centrifuges']),
+    title: 'Centrifugation',
+    sub: 'From micro to industrial — refrigerated, high-speed, ultra and multi-purpose centrifuges for every sample.',
+    ids: ['centrifuges', 'low-speed-centrifuges', 'ultra-centrifuges', 'high-speed-centrifuges', 'multi-purpose-centrifuges', 'large-capacity-centrifuges', 'clinical-centrifuges', 'industrial-centrifuges'],
   },
   {
-    id: 'concentration',
+    id: 'drying',
     title: 'Concentration & drying',
-    sub: 'Sample concentrators, centrifugal vacuum concentrators, freeze dryers and gas-purging evaporators.',
-    products: productsIn(['sample-concentrators', 'centrifugal-vacuum-concentrators', 'freeze-dryers', 'gas-purging-evaporators']),
+    sub: 'Concentrators, centrifugal vacuum concentrators, freeze dryers and gas-purging evaporation systems.',
+    ids: ['sample-concentrators', 'centrifugal-vacuum-concentrators', 'freeze-dryers', 'gas-purging-evaporators', 'spray-dryers', 'drying-systems'],
   },
   {
     id: 'incubation',
     title: 'Incubation & storage',
-    sub: 'CO₂ incubators and ultra-low temperature freezers for biological storage.',
-    products: productsIn(['co2-incubators', 'ultra-low-freezers']),
+    sub: 'CO\u2082 incubators and ultra-low temperature freezers for culture and long-term biological storage.',
+    ids: ['co2-incubators', 'ultra-low-freezers'],
+  },
+  {
+    id: 'water',
+    title: 'Water purification',
+    sub: 'Type I\u2013III and ultrapure lab water from benchtop purifiers to fully centralised distribution systems.',
+    ids: ['water-purification', 'centra-series', 'medica-series', 'biopure-series', 'centralized-systems'],
+  },
+  {
+    id: 'hydrogen',
+    title: 'Hydrogen generation',
+    sub: 'Safe, on-demand lab hydrogen generators for GC carrier and detector gas supply.',
+    ids: ['hydrogen-generators'],
   },
   {
     id: 'process',
-    title: 'Process systems',
-    sub: 'Distillation, reactors, extraction, rotary evaporation, spray drying and filtration systems.',
-    products: productsIn(['distillation-systems', 'reactor-systems', 'extraction-systems', 'rotary-evaporators', 'spray-dryers', 'drying-systems', 'filtration-systems', 'evaporators']),
+    title: 'Distillation, reaction & extraction',
+    sub: 'Wiped and short path distillation, reactors, supercritical extraction and rotary evaporation systems.',
+    ids: ['distillation-systems', 'reactor-systems', 'extraction-systems', 'rotary-evaporators', 'evaporators'],
   },
   {
-    id: 'glovebox',
+    id: 'separation',
+    title: 'Filtration & separation',
+    sub: 'Nutsche filters and filtration systems for reliable solid\u2013liquid separation at scale.',
+    ids: ['filtration-systems'],
+  },
+  {
+    id: 'atmosphere',
     title: 'Glove boxes & inert atmosphere',
-    sub: 'Standard and vacuum glove boxes, gas and solvent purifiers and isolators.',
-    products: productsIn(['glove-boxes', 'gas-purifiers', 'solvent-purifiers', 'isolators']),
+    sub: 'Standard, cleanroom, acrylic and vacuum glove boxes, gas & solvent purifiers and isolators.',
+    ids: ['glove-boxes', 'gas-purifiers', 'solvent-purifiers', 'isolators'],
   },
   {
     id: 'coating',
     title: 'Vacuum coating',
     sub: 'Thin-film vacuum coating systems for research and small-scale production.',
-    products: productsIn(['vacuum-coating']),
+    ids: ['vacuum-coating'],
   },
-];
+].map((kind, i) => ({
+  ...kind,
+  products: productsIn(kind.ids),
+}));
 
-const categoryCards = [
-  { name: 'IKA Stirring & Mixing', image: '/products/ika/rct-basic.jpg', href: '#stirring' },
-  { name: 'IKA Dispersers & Mills', image: '/products/ika/t25-digital.jpg', href: '#dispersion' },
-  { name: 'ELGA Water Purification', image: '/products/elga/purelab-flex.jpeg', href: '#water' },
-  { name: 'Hanil Centrifuges', image: '/products/hanil/centrifuge-refrigerated.jpg', href: '#centrifugation' },
-  { name: 'Hanil Freeze Dryers', image: '/products/hanil/freeze-dryer.svg', href: '#concentration', contain: true },
-  { name: 'TOPTION Reactors & Distillation', image: '/products/toption/molecular-distillation.jpg', href: '#process' },
-  { name: 'ETELUX Glove Boxes', image: '/products/etelux/standard-glovebox.svg', href: '#glovebox', contain: true },
-];
+const totalModels = kinds.reduce((sum, k) => sum + k.products.length, 0);
+
+const categoryCards = kinds.map(k => ({
+  name: k.title,
+  image: k.products[0]?.image ?? '/products/ika/rct-basic.jpg',
+  href: '#kind-' + k.id,
+  contain: k.products[0]?.image?.endsWith('.svg') ?? false,
+}));
 ---
 
 <Layout
-  title="Scientific Equipments — Laboratory Equipment"
-  description="Scientific equipment for every laboratory from TAKA Scientific — IKA stirring and mixing, ELGA water purification, Hanil centrifuges, TOPTION process systems and ETELUX glove boxes. Authorized distributor."
+  title="Scientific Equipment — Laboratory Equipment"
+  description={`${totalModels} laboratory equipment models from ${category.brands.length} authorised brands — IKA stirring and mixing, Hanil centrifugation, ELGA water purification, TOPTION process systems and ETELUX glove boxes. TAKA Scientific.`}
   hasHero={true}
 >
 
-<IceCatalogue
-  hero={{
-    image: '/abg2.jpg',
-    title: 'Scientific equipment for every laboratory',
-    trust: [
-      'Authorized IKA distributor',
-      'ELGA water purification',
-      'ASTM & ISO compliant',
-      'Support that lasts',
-    ],
-  }}
-  headline={{
-    text: 'Precision lab equipment. Genuine brands. Results you can trust.',
-  }}
-  categoryCards={categoryCards}
-  highlight={{
-    image: '/ans1.jpg',
-    title: 'Explore the full range of scientific equipment',
-  }}
-  sections={sections}
-  cta={{
-    title: 'Ready to equip your laboratory?',
-    text: 'Tell us about your applications and we\u2019ll recommend the right equipment for you.',
-  }}
-/>
+<div class="ice-page">
+
+  <!-- ══════════ HERO — ModuleHighlight ══════════ -->
+  <section class="ice-hero hero-container" data-view>
+    <div class="ice-hero-image">
+      <video class="ice-hero-video" autoplay muted loop playsinline aria-hidden="true">
+        <source src="/hero2.mp4" type="video/mp4" />
+      </video>
+      <div class="ice-hero-overlay">
+        <h1 data-splitting="words">Scientific equipment for every laboratory</h1>
+        <div class="ice-hero-buttons t--fade t--delay_200">
+          <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+        </div>
+      </div>
+      <div class="ice-hero-trust t--fade t--delay_300">
+        <p>Authorized IKA distributor</p>
+        <p>ELGA water purification</p>
+        <p>ASTM &amp; ISO compliant</p>
+        <p>Support that lasts</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ HEADLINE TEXT ══════════ -->
+  <section class="ice-headline-text ice-headline-footer" data-view>
+    <div class="ice-headline-wrapper">
+      <p class="ice-headline-big t--fadedown">Precision lab equipment. Genuine brands. Results you can trust.</p>
+    </div>
+  </section>
+
+  <!-- ══════════ CATEGORIES — Explore the range ══════════ -->
+  <section class="ice-cat-section" id="range" data-view>
+    <div class="ice-cat-grid">
+      {categoryCards.map((card, i) => (
+        <a href={card.href} class={'ice-cat-card t--fade t--delay_' + ((i % 4) * 100 + 100)}>
+          <span class={'ice-cat-image' + (card.contain ? ' ice-cat-image-contain' : '')}>
+            <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
+          </span>
+          <span class="ice-cat-name">
+            <span class="ice-cat-name-text">{card.name}</span>
+            <span class="ice-cat-arrow" aria-hidden="true">&rarr;</span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ══════════ HIGHLIGHT — ModuleHighlight ══════════ -->
+  <section class="ice-highlight" data-view>
+    <div class="ice-highlight-image clip--top_left">
+      <img src="/bg3se.png" alt="Scientific equipment laboratory" loading="lazy" />
+    </div>
+    <div class="ice-highlight-overlay">
+      <h2 class="t--fadedown">Explore the full range of scientific equipment</h2>
+      <div class="ice-hero-buttons t--fade t--delay_300">
+        <a href="#stirring" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ KINDS — equipment map ══════════ -->
+  {kinds.map(kind => (
+    <section class="ice-slider-section" id={'kind-' + kind.id} data-view>
+      <div class="ice-slider">
+        <div class="ice-slider-title">
+          <div class="ice-slider-title-wrapper">
+            <h2 class="t--fadedown">{kind.title}</h2>
+          </div>
+          <div class="ice-slider-controls">
+            <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+            <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+          </div>
+        </div>
+        <p class="ice-slider-sub t--fade t--delay_300">{kind.sub}</p>
+
+        <div class="ice-slider-items">
+          <div class="ice-slider-track">
+            {kind.products.map(p => (
+              <div class="ice-slider-item">
+                <ProductCardMini
+                  id={p.id}
+                  name={p.name}
+                  fullName={p.fullName}
+                  brandName={p.brandName}
+                  subcategoryName={p.subcategoryName}
+                  image={p.image}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- ══════════ CONTACT CTA ══════════ -->
+  <section class="ice-cta" data-view>
+    <h2 class="t--fadedown">Ready to equip your laboratory?</h2>
+    <p class="t--fade t--delay_200">Tell us about your applications and we&#39;ll recommend the right equipment for you.</p>
+    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Talk to our team</span></a>
+  </section>
+
+</div>
 
 </Layout>
+
+<script>
+  document.querySelectorAll('.ice-slider').forEach(slider => {
+    const scroller = slider.querySelector('.ice-slider-items');
+    const prev = slider.querySelector('.ice-slider-prev');
+    const next = slider.querySelector('.ice-slider-next');
+    if (!scroller || !prev || !next) return;
+
+    const update = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      prev.disabled = scroller.scrollLeft <= 1;
+      next.disabled = scroller.scrollLeft >= max - 1;
+    };
+    const step = () => {
+      const item = scroller.querySelector('.ice-slider-item');
+      return item ? item.offsetWidth : scroller.clientWidth;
+    };
+
+    prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+    scroller.addEventListener('scroll', update, { passive: true });
+    update();
+    window.addEventListener('resize', update);
+  });
+</script>
+
+<style>
+  .ice-page {
+    --ice-pad: 24px;
+    --ice-black: #262626;
+    --ice-white: #ffffff;
+    --ice-border: #ececec;
+    --ice-image-bg: #ececec;
+    --ice-sans: var(--font-sans);
+    --ice-mono: var(--font-mono);
+    --ice-opacity: 0.35;
+    --ice-underline-offset: 0.3em;
+    --ice-btn-height: 32px;
+    --ice-page-gap: 120px;
+    --ice-header-height: 52px;
+    background: var(--ice-white);
+    color: var(--ice-black);
+    font-size: 10px;
+    flex-direction: column;
+    gap: var(--ice-page-gap);
+    display: flex;
+  }
+  @media (max-width: 1024px) {
+    .ice-page { --ice-page-gap: 72px; }
+  }
+
+  /* BUTTONS */
+  .ice-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    background: var(--ice-black);
+    color: var(--ice-white);
+    height: var(--ice-btn-height);
+    padding: 0 36px;
+    border: 1px solid var(--ice-black);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+  @media (max-width: 1024px) {
+    .ice-btn { padding: 0 28px; }
+  }
+  .ice-btn span { pointer-events: none; }
+
+  .ice-btn-white {
+    background: var(--ice-white);
+    color: var(--ice-black);
+    border-color: var(--ice-white);
+  }
+
+  .ice-btn-outlined {
+    background: transparent;
+    color: var(--ice-white);
+    border-color: rgba(255, 255, 255, 0.5);
+    padding: 0 12px;
+  }
+
+  .ice-cta .ice-btn-white {
+    background: #1a365d;
+    color: var(--ice-white);
+    border-color: #1a365d;
+  }
+
+  .ice-cta .ice-btn-white:hover {
+    background: var(--ice-white) !important;
+    color: #1a365d !important;
+    border-color: #1a365d !important;
+  }
+
+  @media (hover: hover) {
+    .ice-btn:hover {
+      background: rgba(38, 38, 38, 0.9);
+      color: var(--ice-white);
+      border-color: rgba(38, 38, 38, 0.9);
+    }
+    .ice-btn-white:hover {
+      background: var(--ice-black);
+      color: var(--ice-white);
+      border-color: var(--ice-black);
+    }
+    .ice-btn-outlined:hover {
+      border-color: var(--ice-white);
+      background: transparent;
+    }
+  }
+
+  /* HERO */
+  .ice-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .ice-hero-image {
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .ice-hero-image:after {
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
+    position: absolute;
+    inset: 0;
+  }
+  .ice-hero-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-hero-video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  .ice-hero-overlay {
+    padding-left: var(--ice-pad);
+    color: var(--ice-white);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 150px;
+    display: flex;
+    position: absolute;
+    inset: 0;
+  }
+  .ice-hero-overlay h1 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 25px;
+  }
+  @media (min-width: 1024px) {
+    .ice-hero-overlay h1 {
+      letter-spacing: -0.02em;
+      font-size: 88px;
+      line-height: 0.9;
+      max-width: 55%;
+    }
+    .ice-hero-overlay { padding-bottom: 76px; }
+  }
+  .ice-hero-buttons {
+    flex-flow: wrap;
+    gap: 12px;
+    display: flex;
+  }
+
+  /* SLIDER SECTION */
+  .ice-slider-section {
+    padding: 0;
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
+  }
+  .ice-slider {
+    flex-direction: column;
+    display: flex;
+  }
+  .ice-slider-title {
+    padding: 0 var(--ice-pad) 14px;
+    width: 100%;
+    color: var(--ice-black);
+    align-items: center;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-title { padding: 0 var(--ice-pad) 17px; }
+  }
+  .ice-slider-title h2 {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
+  }
+  .ice-slider-title-wrapper {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .ice-slider-title-wrapper a {
+    opacity: var(--ice-opacity);
+    text-decoration: none;
+    color: inherit;
+  }
+  @media (hover: hover) {
+    .ice-slider-title-wrapper a:hover {
+      opacity: 1;
+      text-underline-offset: var(--ice-underline-offset);
+      text-decoration: underline;
+    }
+  }
+  @media (max-width: 1024px) {
+    .ice-slider-controls { display: none; }
+    .ice-slider-title-wrapper { justify-content: space-between; }
+  }
+  .ice-slider-controls {
+    font-family: var(--ice-mono);
+    letter-spacing: -0.01em;
+    gap: 14px;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .ice-slider-controls button {
+    font-family: var(--ice-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--ice-black);
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  .ice-slider-controls button:disabled {
+    opacity: var(--ice-opacity);
+    pointer-events: none;
+  }
+
+  /* PRODUCT SLIDER — same sizing as the analytical range page */
+  .ice-slider-items {
+    width: calc(100% + var(--ice-gap));
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-left: calc(var(--ice-gap) * -1);
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+  .ice-slider-items::-webkit-scrollbar { display: none; }
+  .ice-slider-track {
+    display: flex;
+  }
+  .ice-slider-item {
+    flex: 0 0 var(--ice-flex);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-width: 0;
+    padding-left: var(--ice-gap);
+    position: relative;
+  }
+
+  /* Product slider */
+  .ice-slider-items {
+    --ice-gap: 1px;
+    --ice-flex: calc(100% / 1.3);
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-items {
+      --ice-flex: calc(100% / 5);
+    }
+  }
+
+  /* CATEGORIES — Explore the range */
+  .ice-cat-section {
+    padding: 0 var(--ice-pad);
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
+  }
+  .ice-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 16px;
+    display: grid;
+  }
+  @media (min-width: 768px) {
+    .ice-cat-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  @media (min-width: 1024px) {
+    .ice-cat-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  .ice-cat-card {
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+  }
+  .ice-cat-image {
+    aspect-ratio: 4 / 3;
+    background: var(--ice-image-bg);
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+  .ice-cat-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .ice-cat-card:hover .ice-cat-image img {
+      transform: scale(1.05);
+    }
+  }
+  .ice-cat-image-contain {
+    background: #fff;
+  }
+  .ice-cat-image img.ice-cat-img-contain {
+    object-fit: contain;
+    padding: 20px;
+  }
+  .ice-cat-name {
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 12px;
+    font-family: var(--ice-sans);
+    font-size: 14px;
+    line-height: 1.3;
+    font-weight: 500;
+    display: flex;
+  }
+  .ice-cat-name-text {
+    text-underline-offset: var(--ice-underline-offset);
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.25s ease;
+  }
+  .ice-cat-arrow {
+    font-family: var(--ice-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @media (hover: hover) {
+    .ice-cat-card:hover .ice-cat-name-text {
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+    }
+    .ice-cat-card:hover .ice-cat-arrow {
+      transform: translateX(5px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ice-cat-image img,
+    .ice-cat-name-text,
+    .ice-cat-arrow {
+      transition: none;
+    }
+  }
+
+  /* HEADLINE TEXT */
+  .ice-headline-text {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    display: flex;
+  }
+  .ice-headline-footer {
+    color: #1a365d;
+  }
+  .ice-headline-footer .ice-btn {
+    background: #1a365d;
+    border-color: #1a365d;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-text {
+      gap: var(--ice-pad);
+      padding: 0 var(--ice-pad);
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+    }
+  }
+  .ice-headline-wrapper {
+    text-align: center;
+    max-width: 750px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-wrapper {
+      grid-column: 5 / span 8;
+      gap: 30px;
+    }
+  }
+  .ice-headline-big {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-big {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
+  /* HIGHLIGHT */
+  .ice-highlight {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ice-highlight-image {
+    aspect-ratio: 2;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  @media (max-width: 1024px) {
+    .ice-highlight-image {
+      height: calc(100svh - var(--ice-header-height));
+      aspect-ratio: auto;
+    }
+  }
+  .ice-highlight-image:after {
+    content: "";
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
+      linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.18'/%3E%3C/svg%3E");
+    position: absolute;
+    inset: 0;
+  }
+  .ice-highlight-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-highlight-overlay {
+    padding-left: var(--ice-pad);
+    color: var(--ice-white);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 56px;
+    display: flex;
+    position: absolute;
+    inset: 0;
+  }
+  .ice-highlight-overlay p {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-highlight-overlay h2 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 25px;
+  }
+  @media (min-width: 1024px) {
+    .ice-highlight-overlay h2 {
+      letter-spacing: -0.01em;
+      font-size: 56px;
+      line-height: 1.05;
+      max-width: 65%;
+    }
+  }
+
+  /* HERO TRUST OVERLAY */
+  .ice-hero-trust {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 14px var(--ice-pad);
+    flex-flow: wrap;
+    gap: 8px 48px;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+    background: linear-gradient(#0000, #0009 100%);
+  }
+  .ice-hero-trust p {
+    margin: 0;
+    opacity: 0.8;
+    color: var(--ice-white);
+    position: relative;
+  }
+  .ice-hero-trust p + p:before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ice-white);
+    opacity: 0.45;
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  @media (max-width: 480px) {
+    .ice-page { --ice-pad: 16px; }
+    .ice-hero-overlay h1 { font-size: 34px; }
+    .ice-hero-overlay { padding-bottom: 96px; }
+    .ice-hero-trust { gap: 6px 20px; }
+    .ice-hero-trust p + p:before { left: -10px; }
+    .ice-highlight-overlay h2 { font-size: 32px; }
+    .ice-slider-title-wrapper { gap: 12px; }
+  }
+
+  /* SLIDER SUBTITLE */
+  .ice-slider-sub {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0 var(--ice-pad) 20px;
+    opacity: 0.65;
+    max-width: 62ch;
+  }
+
+  /* CONTACT CTA */
+  .ice-cta {
+    background: #fff;
+    color: #1a365d;
+    min-height: 100svh;
+    justify-content: center;
+    padding: 80px var(--ice-pad);
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+  .ice-cta h2 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+    max-width: 20ch;
+  }
+  .ice-cta p {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    max-width: 44ch;
+  }
+  @media (min-width: 1024px) {
+    .ice-cta {
+      gap: 30px;
+    }
+    .ice-cta h2 {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+</style>
