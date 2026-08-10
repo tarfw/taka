@@ -130,9 +130,7 @@ const categoryCards = kinds.map(k => ({
   <!-- ══════════ HERO — ModuleHighlight ══════════ -->
   <section class="ice-hero hero-container" data-view>
     <div class="ice-hero-image">
-      <video class="ice-hero-video" autoplay muted loop playsinline aria-hidden="true">
-        <source src="/hero2.mp4" type="video/mp4" />
-      </video>
+      <video class="ice-hero-video" src="/hero2.mp4" autoplay muted loop playsinline preload="auto" fetchpriority="high" aria-hidden="true"></video>
       <div class="ice-hero-overlay">
         <h1 data-splitting="words">Scientific equipment for every laboratory</h1>
         <div class="ice-hero-buttons t--fade t--delay_200">
@@ -240,6 +238,20 @@ const categoryCards = kinds.map(k => ({
 </Layout>
 
 <script>
+  const heroVideo = document.querySelector('.ice-hero-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    heroVideo.playsInline = true;
+    const attemptPlay = () => {
+      const p = heroVideo.play();
+      if (p && typeof p.catch === 'function') p.catch(() => {});
+    };
+    heroVideo.addEventListener('loadeddata', attemptPlay, { once: true });
+    heroVideo.addEventListener('canplay', attemptPlay, { once: true });
+    window.addEventListener('load', attemptPlay, { once: true });
+    attemptPlay();
+  }
+
   document.querySelectorAll('.ice-slider').forEach(slider => {
     const scroller = slider.querySelector('.ice-slider-items');
     const prev = slider.querySelector('.ice-slider-prev');

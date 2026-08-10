@@ -1,88 +1,754 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CataloguePage from '../../components/CataloguePage.astro';
+
+const categoryCards = [
+  { name: 'Workbenches & stations', image: '/products/furniture/lab-bench.jpg', href: '#benches' },
+  { name: 'Fume hoods & ventilation', image: '/products/furniture/fume-hood.jpg', href: '#fume-hoods' },
+  { name: 'Safety & storage cabinets', image: '/products/furniture/safety-cabinet.jpg', href: '#storage' },
+  { name: 'Seating & ergonomics', image: '/products/furniture/lab-chair.jpg', href: '#seating' },
+  { name: 'Sinks & utility fixtures', image: '/products/furniture/utility-station.jpg', href: '#fixtures' },
+];
+
+const gridSections = [
+  {
+    id: 'benches',
+    title: 'Workbenches & stations',
+    sub: 'Modular bench systems and workstations for teaching, research and industrial labs.',
+    cards: [
+      { label: 'Laboratory Workbenches', text: 'Modular bench systems with chemical-resistant tops and epoxy resin surfaces.' },
+      { label: 'Student Desks', text: 'Adjustable-height lab desks with powder-coated steel frames for schools.' },
+      { label: 'ESD Workbenches', text: 'Anti-static surfaces for electronics and semiconductor laboratories.' },
+      { label: 'Demonstration Desks', text: 'Raised teaching benches with service spines for instructor-led labs.' },
+    ],
+  },
+  {
+    id: 'fume-hoods',
+    title: 'Fume hoods & ventilation',
+    sub: 'Ducted and ductless containment that protect people, samples and the environment.',
+    cards: [
+      { label: 'Ducted Fume Hoods', text: 'EN 14175 certified fume hoods with variable air volume control.' },
+      { label: 'Ductless Fume Hoods', text: 'Carbon-filtered containment for non-hazardous solvent work.' },
+      { label: 'Fume Extraction', text: 'Bench-top and ceiling-mounted source extraction systems.' },
+      { label: 'Canopy Hoods', text: 'Overhead capture hoods for heat and vapour release.' },
+    ],
+  },
+  {
+    id: 'storage',
+    title: 'Safety & storage cabinets',
+    sub: 'Safe, compliant storage for chemicals, instruments and laboratory supplies.',
+    cards: [
+      { label: 'Safety Cabinets', text: 'Flammable and corrosive storage, EN 14470 certified.' },
+      { label: 'Chemical Storage', text: 'Vented acid cabinets and bulk chemical storage units.' },
+      { label: 'Sterile Storage Cabinets', text: 'Laminar flow cabinets and clean-room shelving.' },
+      { label: 'Mobile Carts & Trolleys', text: 'Stainless steel and epoxy-coated carts for lab logistics.' },
+    ],
+  },
+  {
+    id: 'seating',
+    title: 'Seating & ergonomics',
+    sub: 'Comfortable, durable seating engineered for long hours at the bench.',
+    cards: [
+      { label: 'Lab Stools & Chairs', text: 'Height-adjustable, chemical-resistant seating for lab work.' },
+      { label: 'Ergonomic Work Chairs', text: 'Lumbar-supported task chairs for microscopy and precision work.' },
+      { label: 'Anti-Static Seating', text: 'Dissipative seating for electronics and ESD-controlled labs.' },
+      { label: 'Stool Accessories', text: 'Foot rings, seat cushions and replacement casters.' },
+    ],
+  },
+  {
+    id: 'fixtures',
+    title: 'Sinks & utility fixtures',
+    sub: 'Service points and wash stations that make benches fully functional.',
+    cards: [
+      { label: 'Sinks & Wash Stations', text: 'Epoxy resin and stainless steel lab sinks with fixtures.' },
+      { label: 'Gas & Utility Fixtures', text: 'Valves, outlets and service panels integrated into benches.' },
+      { label: 'Eyewash & Safety Fittings', text: 'Emergency eyewash and drench stations fitted at benches.' },
+      { label: 'Overhead Service Spines', text: 'Pendant services and supplies above island benches.' },
+    ],
+  },
+];
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: new URL('/', Astro.site ?? 'https://taka.ae').href },
+    { '@type': 'ListItem', position: 2, name: 'Catalogue', item: new URL('/catalogue', Astro.site ?? 'https://taka.ae').href },
+    { '@type': 'ListItem', position: 3, name: 'Laboratory Furniture' },
+  ],
+};
 ---
 
 <Layout
-  title="Laboratory Furnitures — Lab Furniture & Installation"
-  description="Laboratory furniture from TAKA Scientific — workbenches, fume hoods, safety cabinets and seating, designed, supplied and installed across the UAE."
+  title="Laboratory Furniture — Workbenches, Fume Hoods & Cabinets"
+  description="Laboratory furniture from TAKA Scientific — workbenches, fume hoods, safety cabinets, seating and utility fixtures. Designed, supplied and installed across the UAE."
   hasHero={true}
 >
 
-<CataloguePage
-  hero={{
-    image: '/bg4.jpg',
-    title: 'Laboratory furniture, designed and installed',
-    trust: [
-      'Design & layout',
-      'Installation included',
-      'EN & ISO certified',
-      'Made to last',
-    ],
-  }}
-  headline={{
-    text: 'Workspaces engineered for safety, efficiency and long-term durability.',
-    button: { label: 'Plan your lab', href: '/contact' },
-  }}
-  categoryCards={[
-    { name: 'Laboratory Workbenches', image: '/products/furniture/lab-bench.svg', href: '#benches', contain: true },
-    { name: 'Fume Hoods', image: '/products/furniture/fume-hood.svg', href: '#fume-hoods', contain: true },
-    { name: 'Safety & Storage Cabinets', image: '/products/furniture/safety-cabinet.svg', href: '#storage', contain: true },
-  ]}
-  highlight={{
-    image: '/ans2.jpg',
-    title: 'Explore laboratory furniture solutions',
-  }}
-  sections={[
-    {
-      id: 'benches',
-      title: 'Workbenches & stations',
-      sub: 'Modular bench systems and workstations for teaching, research and industrial laboratories.',
-      cards: [
-        { label: 'Laboratory Workbenches', text: 'Modular bench systems with chemical-resistant tops and epoxy resin surfaces.' },
-        { label: 'Student Desks', text: 'Adjustable-height lab desks with powder-coated steel frames for schools.' },
-        { label: 'ESD Workbenches', text: 'Anti-static surfaces for electronics and semiconductor laboratories.' },
-        { label: 'Demonstration Desks', text: 'Raised teaching benches with service spines for instructor-led labs.' },
-      ],
-    },
-    {
-      id: 'fume-hoods',
-      title: 'Fume hoods & ventilation',
-      sub: 'Ducted and ductless containment solutions that protect people and samples.',
-      cards: [
-        { label: 'Ducted Fume Hoods', text: 'EN 14175 certified fume hoods with variable air volume control.' },
-        { label: 'Ductless Fume Hoods', text: 'Carbon-filtered containment for non-hazardous solvent work.' },
-        { label: 'Fume Extraction', text: 'Bench-top and ceiling-mounted source extraction systems.' },
-        { label: 'Canopy Hoods', text: 'Overhead capture hoods for heat and vapor release.' },
-      ],
-    },
-    {
-      id: 'storage',
-      title: 'Storage & cabinets',
-      sub: 'Safe, compliant storage for chemicals, instruments and laboratory supplies.',
-      cards: [
-        { label: 'Safety Cabinets', text: 'Flammable and corrosive storage, EN 14470 certified.' },
-        { label: 'Chemical Storage', text: 'Vented acid cabinets and bulk chemical storage units.' },
-        { label: 'Sterile Storage Cabinets', text: 'Laminar flow cabinets and clean-room shelving.' },
-        { label: 'Mobile Carts & Trolleys', text: 'Stainless steel and epoxy-coated carts for lab logistics.' },
-      ],
-    },
-    {
-      id: 'seating',
-      title: 'Seating & accessories',
-      sub: 'Ergonomic seating and service accessories to complete every workstation.',
-      cards: [
-        { label: 'Lab Stools & Chairs', text: 'Height-adjustable, chemical-resistant seating for lab work.' },
-        { label: 'Sinks & Wash Stations', text: 'Epoxy resin and stainless steel lab sinks with fixtures.' },
-        { label: 'Gas & Utility Fixtures', text: 'Valves, outlets and service panels integrated into benches.' },
-        { label: 'Shelving & Racks', text: 'Heavy-duty storage racks and wall shelving for equipment.' },
-      ],
-    },
-  ]}
-  cta={{
-    title: 'Plan your laboratory layout?',
-    text: 'Tell us about your space and workflow and we\u2019ll design, supply and install your laboratory furniture.',
-  }}
-/>
+<div class="ice-page">
 
+  <!-- ─── HERO ─── -->
+  <section class="ice-hero hero-container" data-view>
+    <div class="ice-hero-image">
+      <img src="/bg4.jpg" alt="TAKA Scientific laboratory furniture" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
+      <div class="ice-hero-overlay">
+        <h1 data-splitting="words">Laboratory furniture, built around safe and productive work</h1>
+        <div class="ice-hero-buttons t--fade t--delay_200">
+          <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+          <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+        </div>
+      </div>
+      <div class="ice-hero-trust t--fade t--delay_300">
+        <p>Built to your layout</p>
+        <p>Installation included</p>
+        <p>EN &amp; ISO certified</p>
+        <p>UAE-wide delivery</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── HEADLINE TEXT ─── -->
+  <section class="ice-headline-text ice-headline-footer" data-view>
+    <div class="ice-headline-wrapper">
+      <p class="ice-headline-big t--fadedown">Designed, supplied and installed — manufactured to your layout and handed over by our own team.</p>
+    </div>
+  </section>
+
+  <!-- ─── CATEGORIES ─── -->
+  <section class="ice-cat-section" id="range" data-view>
+    <div class="ice-cat-head">
+      <span class="ice-cat-overline">Explore the range</span>
+      <h2 class="ice-cat-title">Find your furniture system</h2>
+    </div>
+    <div class="ice-cat-grid">
+      {categoryCards.map((card, i) => (
+        <a href={card.href} class={'ice-cat-card t--fade t--delay_' + ((i % 4) * 100 + 100)}>
+          <span class="ice-cat-media">
+            <span class="ice-cat-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <img src={card.image} alt={card.name} loading="lazy" decoding="async" />
+          </span>
+          <span class="ice-cat-meta">
+            <span class="ice-cat-name">{card.name}</span>
+            <span class="ice-cat-arrow" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </span>
+          </span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ─── HIGHLIGHT ─── -->
+  <section class="ice-highlight" data-view>
+    <div class="ice-highlight-image clip--top_left">
+      <img src="/ans2.jpg" alt="Installed laboratory furniture in a completed lab" loading="lazy" />
+    </div>
+    <div class="ice-highlight-overlay">
+      <h2 class="t--fadedown">From first measurement to final handover</h2>
+      <div class="ice-hero-buttons t--fade t--delay_300">
+        <a href="#benches" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PRODUCT SECTIONS (grid) ─── -->
+  {gridSections.map(section => (
+    <section class="ice-grid-section" id={section.id} data-view>
+      <div class="ice-grid-head">
+        <h2 class="t--fadedown">{section.title}</h2>
+      </div>
+      <p class="ice-slider-sub t--fade t--delay_200">{section.sub}</p>
+      <div class="ice-grid">
+        {section.cards.map((card, i) => (
+          <div class="ice-grid-card t--fade t--delay_{(i % 4) * 100 + 100}">
+            <span class="ice-grid-label">{card.label}</span>
+            <p>{card.text}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))}
+
+  <!-- ─── CONTACT CTA ─── -->
+  <section class="ice-cta" data-view>
+    <h2 class="t--fadedown">Planning a new laboratory layout?</h2>
+    <p class="t--fade t--delay_200">Tell us about your space and workflow and we&#39;ll design, supply and install your laboratory furniture.</p>
+    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Start planning</span></a>
+  </section>
+
+</div>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 </Layout>
+
+<style>
+  .ice-page {
+    --ice-pad: 24px;
+    --ice-black: #262626;
+    --ice-white: #ffffff;
+    --ice-border: #ececec;
+    --ice-image-bg: #ececec;
+    --ice-sans: var(--font-sans);
+    --ice-mono: var(--font-mono);
+    --ice-opacity: 0.35;
+    --ice-underline-offset: 0.3em;
+    --ice-btn-height: 32px;
+    --ice-page-gap: 120px;
+    --ice-header-height: 52px;
+    background: var(--ice-white);
+    color: var(--ice-black);
+    font-size: 10px;
+    flex-direction: column;
+    gap: var(--ice-page-gap);
+    display: flex;
+  }
+  @media (max-width: 1024px) {
+    .ice-page { --ice-page-gap: 72px; }
+  }
+
+  /* ─── BUTTONS ─── */
+  .ice-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    background: var(--ice-black);
+    color: var(--ice-white);
+    height: var(--ice-btn-height);
+    padding: 0 36px;
+    border: 1px solid var(--ice-black);
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+  @media (max-width: 1024px) {
+    .ice-btn { padding: 0 28px; }
+  }
+  .ice-btn span { pointer-events: none; }
+
+  .ice-btn-white {
+    background: var(--ice-white);
+    color: var(--ice-black);
+    border-color: var(--ice-white);
+  }
+
+  .ice-btn-outlined {
+    background: transparent;
+    color: var(--ice-white);
+    border-color: rgba(255, 255, 255, 0.5);
+    padding: 0 12px;
+  }
+
+  .ice-cta .ice-btn-white {
+    background: #1a365d;
+    color: var(--ice-white);
+    border-color: #1a365d;
+  }
+
+  .ice-cta .ice-btn-white:hover {
+    background: var(--ice-white) !important;
+    color: #1a365d !important;
+    border-color: #1a365d !important;
+  }
+
+  @media (hover: hover) {
+    .ice-btn:hover {
+      background: rgba(38, 38, 38, 0.9);
+      color: var(--ice-white);
+      border-color: rgba(38, 38, 38, 0.9);
+    }
+    .ice-btn-white:hover {
+      background: var(--ice-black);
+      color: var(--ice-white);
+      border-color: var(--ice-black);
+    }
+    .ice-btn-outlined:hover {
+      border-color: var(--ice-white);
+      background: transparent;
+    }
+  }
+
+  /* ─── HERO ─── */
+  .ice-hero {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    min-height: 0;
+  }
+  .ice-hero-image {
+    height: 100svh;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  .ice-hero-image:after {
+    content: "";
+    pointer-events: none;
+    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
+    position: absolute;
+    inset: 0;
+  }
+  .ice-hero-img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-hero-overlay {
+    padding-left: var(--ice-pad);
+    color: var(--ice-white);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 150px;
+    display: flex;
+    position: absolute;
+    inset: 0;
+  }
+  .ice-hero-overlay h1 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 25px;
+    max-width: 16ch;
+  }
+  @media (min-width: 1024px) {
+    .ice-hero-overlay h1 {
+      letter-spacing: -0.02em;
+      font-size: 88px;
+      line-height: 0.9;
+      max-width: 55%;
+    }
+    .ice-hero-overlay { padding-bottom: 76px; }
+  }
+  .ice-hero-buttons {
+    flex-flow: wrap;
+    gap: 12px;
+    display: flex;
+  }
+
+  /* ─── HERO TRUST ─── */
+  .ice-hero-trust {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    padding: 14px var(--ice-pad);
+    flex-flow: wrap;
+    gap: 8px 48px;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+    background: linear-gradient(#0000, #0009 100%);
+  }
+  .ice-hero-trust p {
+    margin: 0;
+    opacity: 0.8;
+    color: var(--ice-white);
+    position: relative;
+  }
+  .ice-hero-trust p + p:before {
+    content: "";
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--ice-white);
+    opacity: 0.45;
+    position: absolute;
+    left: -24px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* ─── CATEGORIES ─── */
+  .ice-cat-section {
+    padding: 0 var(--ice-pad);
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
+    border-top: 1px solid var(--ice-black);
+    padding-top: 24px;
+  }
+  .ice-cat-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 10px 24px;
+    margin-bottom: 28px;
+  }
+  .ice-cat-overline {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    color: rgba(38, 38, 38, 0.55);
+  }
+  .ice-cat-title {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 20px;
+    line-height: 1.2;
+    font-weight: 500;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-cat-title {
+      font-size: 24px;
+    }
+  }
+  .ice-cat-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    display: grid;
+  }
+  @media (min-width: 768px) {
+    .ice-cat-grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .ice-cat-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  .ice-cat-card {
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: var(--ice-white);
+    border: 1px solid var(--ice-border);
+    min-width: 0;
+    display: flex;
+    transition: border-color 0.25s ease;
+  }
+  .ice-cat-media {
+    aspect-ratio: 4 / 3;
+    background: var(--ice-image-bg);
+    overflow: hidden;
+    display: block;
+    position: relative;
+  }
+  .ice-cat-media img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ice-cat-num {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    z-index: 1;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    line-height: 1;
+    color: var(--ice-black);
+    background: var(--ice-white);
+    padding: 6px 7px;
+    min-width: 24px;
+    text-align: center;
+  }
+  .ice-cat-meta {
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 16px 16px 18px;
+    display: flex;
+  }
+  .ice-cat-name {
+    font-family: var(--ice-sans);
+    font-size: 13px;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    text-underline-offset: 4px;
+    text-decoration-color: transparent;
+    transition: text-decoration-color 0.25s ease;
+  }
+  .ice-cat-arrow {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--ice-black);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ice-cat-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  @media (hover: hover) {
+    .ice-cat-card:hover {
+      border-color: var(--ice-black);
+    }
+    .ice-cat-card:hover .ice-cat-media img {
+      transform: scale(1.045);
+    }
+    .ice-cat-card:hover .ice-cat-name {
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+    }
+    .ice-cat-card:hover .ice-cat-arrow {
+      transform: translateX(4px);
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .ice-cat-card,
+    .ice-cat-media img,
+    .ice-cat-name,
+    .ice-cat-arrow {
+      transition: none;
+    }
+  }
+
+  /* ─── HEADLINE TEXT ─── */
+  .ice-headline-text {
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    display: flex;
+  }
+  .ice-headline-footer {
+    color: #1a365d;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-text {
+      gap: var(--ice-pad);
+      padding: 0 var(--ice-pad);
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+    }
+  }
+  .ice-headline-wrapper {
+    text-align: center;
+    max-width: 750px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-wrapper {
+      grid-column: 5 / span 8;
+      gap: 30px;
+    }
+  }
+  .ice-headline-big {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+  }
+  @media (min-width: 1024px) {
+    .ice-headline-big {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
+  /* ─── HIGHLIGHT ─── */
+  .ice-highlight {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .ice-highlight-image {
+    aspect-ratio: 2;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+  @media (max-width: 1024px) {
+    .ice-highlight-image {
+      height: calc(100svh - var(--ice-header-height));
+      aspect-ratio: auto;
+    }
+  }
+  .ice-highlight-image:after {
+    content: "";
+    pointer-events: none;
+    background:
+      linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
+      linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
+      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='4' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.14'/%3E%3C/svg%3E");
+    position: absolute;
+    inset: 0;
+  }
+  .ice-highlight-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  .ice-highlight-overlay {
+    padding-left: var(--ice-pad);
+    color: var(--ice-white);
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding-bottom: 56px;
+    display: flex;
+    position: absolute;
+    inset: 0;
+  }
+  .ice-highlight-overlay h2 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 44px;
+    line-height: 1;
+    font-weight: 600;
+    margin: 0 0 25px;
+  }
+  @media (min-width: 1024px) {
+    .ice-highlight-overlay h2 {
+      letter-spacing: -0.01em;
+      font-size: 56px;
+      line-height: 1.05;
+      max-width: 65%;
+    }
+  }
+
+  /* ─── GRID SECTIONS ─── */
+  .ice-grid-section {
+    padding: 0 var(--ice-pad);
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
+  }
+  .ice-grid-head {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    padding-bottom: 17px;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-grid-head h2 {
+    font-size: inherit;
+    font-weight: 400;
+    margin: 0;
+  }
+  .ice-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    display: grid;
+  }
+  @media (min-width: 768px) {
+    .ice-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  @media (min-width: 1024px) {
+    .ice-grid {
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--ice-pad);
+    }
+  }
+  .ice-grid-card {
+    border: 1px solid var(--ice-border);
+    padding: var(--ice-pad);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    display: flex;
+    text-decoration: none;
+    color: inherit;
+  }
+  .ice-grid-label {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  .ice-grid-card p {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.4;
+    margin: 0;
+    opacity: 0.75;
+  }
+
+  /* ─── SLIDER SUBTITLE ─── */
+  .ice-slider-sub {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    padding: 0 var(--ice-pad) 20px;
+    opacity: 0.65;
+    max-width: 62ch;
+  }
+
+  /* ─── CONTACT CTA ─── */
+  .ice-cta {
+    background: #fff;
+    color: #1a365d;
+    min-height: 100svh;
+    justify-content: center;
+    padding: 80px var(--ice-pad);
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+  .ice-cta h2 {
+    font-family: var(--ice-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+    max-width: 20ch;
+  }
+  .ice-cta p {
+    font-family: var(--ice-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    max-width: 44ch;
+  }
+  @media (min-width: 1024px) {
+    .ice-cta {
+      gap: 30px;
+    }
+    .ice-cta h2 {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ice-page { --ice-pad: 16px; }
+    .ice-hero-overlay h1 { font-size: 34px; }
+    .ice-hero-overlay { padding-bottom: 96px; }
+    .ice-hero-trust { gap: 6px 20px; }
+    .ice-hero-trust p + p:before { left: -10px; }
+    .ice-highlight-overlay h2 { font-size: 32px; }
+  }
+</style>
