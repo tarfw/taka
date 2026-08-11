@@ -529,7 +529,7 @@ ul, ol { list-style: none; }
   .sector-left { position: static; }
 }
 
-/* ═══ HERO — Cantor8-inspired with atom canvas ═══ */
+/* ═══ HERO SECTION ═══ */
 .hero-container {
   position: relative;
   width: 100%;
@@ -574,7 +574,7 @@ ul, ol { list-style: none; }
   display: block;
 }
 
-/* Content block — bottom-left like Cantor8 */
+/* Hero content block */
 .hero-content {
   position: relative;
   z-index: 10;
@@ -1354,7 +1354,7 @@ ul, ol { list-style: none; }
   }
 
 /* ════════════════════════════════════════════
-   AUAR-style motion system
+   Motion system
    ════════════════════════════════════════════ */
 
 :root {
@@ -1363,54 +1363,48 @@ ul, ol { list-style: none; }
   --ease-wave: cubic-bezier(0.25, 0.1, 0.25, 1.5);
 }
 
-/* ── Reveal-on-scroll ──
-   Elements with .t--* inside a [data-view] ancestor are hidden until
-   the ancestor gets .inview (added by an IntersectionObserver). */
+/* ── Reveal-on-scroll (Optimized & Responsive) ──
+   Elements render visible by default to eliminate layout pop-in and artificial delays.
+   Subtle opacity/transform transitions occur smoothly without staggered wait times. */
 
 html.js [data-view] .t--fade,
 html.js [data-view] .t--fadedown,
 html.js [data-view] .t--fadeup,
 html.js [data-view] .t--fadeleft,
 html.js [data-view] .t--faderight {
-  opacity: 0;
+  opacity: 0.85;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
 }
-html.js [data-view] .t--fadedown { transform: translateY(40px); }
-html.js [data-view] .t--fadeup { transform: translateY(-40px); }
-html.js [data-view] .t--fadeleft { transform: translateX(-25px); }
-html.js [data-view] .t--faderight { transform: translateX(25px); }
+html.js [data-view] .t--fadedown { transform: translateY(10px); }
+html.js [data-view] .t--fadeup { transform: translateY(-10px); }
+html.js [data-view] .t--fadeleft { transform: translateX(-10px); }
+html.js [data-view] .t--faderight { transform: translateX(10px); }
 
-html.js [data-view].inview .t--fade { animation: tk-fade 0.9s var(--ease-soft) both; }
-html.js [data-view].inview .t--fadedown { animation: tk-fadedown 0.9s var(--ease-soft) both; }
-html.js [data-view].inview .t--fadeup { animation: tk-fadeup 0.9s var(--ease-soft) both; }
-html.js [data-view].inview .t--fadeleft { animation: tk-fadeleft 0.9s var(--ease-soft) both; }
-html.js [data-view].inview .t--faderight { animation: tk-faderight 0.9s var(--ease-soft) both; }
+html.js [data-view].inview .t--fade,
+html.js [data-view].inview .t--fadedown,
+html.js [data-view].inview .t--fadeup,
+html.js [data-view].inview .t--fadeleft,
+html.js [data-view].inview .t--faderight {
+  opacity: 1;
+  transform: none;
+}
 
-@keyframes tk-fade { from { opacity: 0; } to { opacity: 1; } }
-@keyframes tk-fadedown { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes tk-fadeup { from { transform: translateY(-40px); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes tk-fadeleft { from { transform: translateX(-25px); opacity: 0; } to { transform: none; opacity: 1; } }
-@keyframes tk-faderight { from { transform: translateX(25px); opacity: 0; } to { transform: none; opacity: 1; } }
+/* Reduced animation delays to eliminate artificial page lag */
+html.js [data-view].inview .t--delay_100 { transition-delay: 0.03s; }
+html.js [data-view].inview .t--delay_200 { transition-delay: 0.05s; }
+html.js [data-view].inview .t--delay_250 { transition-delay: 0.06s; }
+html.js [data-view].inview .t--delay_300 { transition-delay: 0.08s; }
+html.js [data-view].inview .t--delay_400 { transition-delay: 0.1s; }
+html.js [data-view].inview .t--delay_500 { transition-delay: 0.12s; }
+html.js [data-view].inview .t--delay_600 { transition-delay: 0.14s; }
+html.js [data-view].inview .t--delay_700 { transition-delay: 0.16s; }
+html.js [data-view].inview .t--delay_800 { transition-delay: 0.18s; }
+html.js [data-view].inview .t--delay_1000 { transition-delay: 0.2s; }
 
-/* Delay utilities */
-html.js [data-view].inview .t--delay_100 { animation-delay: 0.1s; }
-html.js [data-view].inview .t--delay_200 { animation-delay: 0.2s; }
-html.js [data-view].inview .t--delay_250 { animation-delay: 0.25s; }
-html.js [data-view].inview .t--delay_300 { animation-delay: 0.3s; }
-html.js [data-view].inview .t--delay_400 { animation-delay: 0.4s; }
-html.js [data-view].inview .t--delay_500 { animation-delay: 0.5s; }
-html.js [data-view].inview .t--delay_600 { animation-delay: 0.6s; }
-html.js [data-view].inview .t--delay_700 { animation-delay: 0.7s; }
-html.js [data-view].inview .t--delay_800 { animation-delay: 0.8s; }
-html.js [data-view].inview .t--delay_1000 { animation-delay: 1s; }
-
-/* ── Word splitting ── */
+/* ── Word splitting (Instant reveal) ── */
 html.js [data-splitting] .word {
-  opacity: 0;
-  transform: translateX(20px);
-}
-html.js [data-view].inview [data-splitting] .word {
-  animation: tk-faderight 0.3s var(--ease-soft) both;
-  animation-delay: calc(0.05s + var(--word-index, 0) * 0.035s);
+  opacity: 1;
+  transform: none;
 }
 
 /* ── Clip-path reveals (images / media) ── */
@@ -1424,7 +1418,7 @@ html.js [data-view].inview .clip--up {
   transition: clip-path 1.4s var(--ease-snappy) 0.15s;
 }
 
-/* ── Rollover buttons (AUAR word-wave) ── */
+/* ── Rollover buttons ── */
 .btn-roll {
   position: relative;
   display: inline-flex;

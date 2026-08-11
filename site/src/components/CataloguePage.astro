@@ -550,23 +550,23 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
     display: flex;
   }
   .ice-cat-name-text {
-    text-underline-offset: var(--ice-underline-offset);
-    text-decoration-color: transparent;
-    transition: text-decoration-color 0.25s ease;
+    color: var(--ice-black);
+    transition: color 0.2s ease;
   }
   .ice-cat-arrow {
     font-family: var(--ice-mono);
     font-size: 12px;
     line-height: 1.4;
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--color-text-muted);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
   }
   @media (hover: hover) {
     .ice-cat-card:hover .ice-cat-name-text {
-      text-decoration: underline;
-      text-decoration-color: currentColor;
+      color: #1a365d;
     }
     .ice-cat-card:hover .ice-cat-arrow {
-      transform: translateX(5px);
+      color: #1a365d;
+      transform: translateX(4px);
     }
   }
   @media (prefers-reduced-motion: reduce) {

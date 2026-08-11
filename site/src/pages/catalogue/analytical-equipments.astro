@@ -88,48 +88,47 @@ const categoryCards = [
 <Layout
   title="Analytical Instruments — Gas Chromatography Systems"
   hasHero={true}
-  description="Precision analytical instruments from JASMEA — gas chromatography systems, sample introduction inlets and detectors for natural gas, refinery and environmental analysis. Authorized JASMEA distributor."
+  description="Precision analytical instruments — gas chromatography systems, sample introduction inlets and detectors for natural gas, refinery and environmental analysis."
 >
 
 <div class="ice-page">
 
-  <!-- â•â•â• HERO â€” ModuleHighlight â•â•â• -->
+  <!-- ═══ HERO ═══ -->
   <section class="ice-hero hero-container" data-view>
     <div class="ice-hero-image">
       <img src="/bg4.jpg" alt="TAKA Scientific analytical instrumentation" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
       <div class="ice-hero-overlay">
-        <h1 data-splitting="words">Precision analytical instruments for every analysis</h1>
-        <div class="ice-hero-buttons t--fade t--delay_200">
-          <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+        <h1>Precision analytical instruments for every analysis</h1>
+        <div class="ice-hero-buttons">
+          <a href="#range" class="ice-btn ice-btn-outlined"><span>Browse Instruments</span></a>
         </div>
       </div>
-      <div class="ice-hero-trust t--fade t--delay_300">
-        <p>Authorized JASMEA distributor</p>
+      <div class="ice-hero-trust">
+        <p>Authorized distributor &amp; service</p>
         <p>ASTM &amp; ISO compliant methods</p>
-        <p>German engineering since 1997</p>
-        <p>Application support that lasts</p>
+        <p>On-site delivery &amp; UAE service</p>
+        <p>Technical support &amp; spare parts</p>
       </div>
     </div>
   </section>
 
-  <!-- â•â•â• HEADLINE TEXT â•â•â• -->
+  <!-- ═══ HEADLINE TEXT ═══ -->
   <section class="ice-headline-text ice-headline-footer" data-view>
     <div class="ice-headline-wrapper">
-      <p class="ice-headline-big t--fadedown">Precision gas chromatography. Robust systems. Results you can trust.</p>
+      <p class="ice-headline-big">Gas chromatography systems, detectors, and automated sample preparation for industrial analysis.</p>
     </div>
   </section>
 
-  <!-- â•â•â• CATEGORIES â€” Explore the range â•â•â• -->
+  <!-- ═══ CATEGORIES ═══ -->
   <section class="ice-cat-section" id="range" data-view>
     <div class="ice-cat-head">
-      <span class="ice-cat-overline">Explore the range</span>
+      <span class="ice-cat-overline">Instrument Categories</span>
       <h2 class="ice-cat-title">Find your instrument</h2>
     </div>
     <div class="ice-cat-grid">
-      {categoryCards.map((card, i) => (
-        <a href={card.href} class={'ice-cat-card t--fade t--delay_' + ((i % 4) * 100 + 100)}>
+      {categoryCards.map((card) => (
+        <a href={card.href} class="ice-cat-card">
           <span class={'ice-cat-media' + (card.contain ? ' ice-cat-media-contain' : '')}>
-            <span class="ice-cat-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <img src={card.image} alt={card.name} loading="lazy" decoding="async" class={card.contain ? 'ice-cat-img-contain' : undefined} />
           </span>
           <span class="ice-cat-meta">
@@ -143,34 +142,34 @@ const categoryCards = [
     </div>
   </section>
 
-  <!-- â•â•â• HIGHLIGHT â€” ModuleHighlight â•â•â• -->
+  <!-- ═══ HIGHLIGHT ═══ -->
   <section class="ice-highlight" data-view>
     <div class="ice-highlight-image clip--top_left">
       <img src="/gestrel.png" alt="Analytical instruments laboratory" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
-      <h2 class="t--fadedown">Explore the full range of analytical instruments</h2>
-      <div class="ice-hero-buttons t--fade t--delay_300">
-        <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
-        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+      <h2>Complete Analytical Instrumentation Range</h2>
+      <div class="ice-hero-buttons">
+        <a href="#gc-systems" class="ice-btn ice-btn-outlined"><span>View All Systems</span></a>
+        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Request Technical Quote</span></a>
       </div>
     </div>
   </section>
 
-  <!-- â•â•â• PRODUCT SECTIONS â•â•â• -->
+  <!-- ═══ PRODUCT SECTIONS ═══ -->
   {productSections.map(section => (
     <section class="ice-slider-section" id={section.id} data-view>
       <div class="ice-slider">
         <div class="ice-slider-title">
           <div class="ice-slider-title-wrapper">
-            <h2 class="t--fadedown">{section.title}</h2>
+            <h2>{section.title}</h2>
           </div>
           <div class="ice-slider-controls">
             <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
             <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
           </div>
         </div>
-        <p class="ice-slider-sub t--fade t--delay_300">{section.sub}</p>
+        <p class="ice-slider-sub">{section.sub}</p>
         <div class="ice-slider-items">
           <div class="ice-slider-track">
             {section.products.map(p => (
@@ -191,11 +190,11 @@ const categoryCards = [
     </section>
   ))}
 
-  <!-- â•â•â• CONTACT CTA â•â•â• -->
+  <!-- ═══ CONTACT CTA ═══ -->
   <section class="ice-cta" data-view>
-    <h2 class="t--fadedown">Ready to find your instrument?</h2>
-    <p class="t--fade t--delay_200">Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
-    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Talk to our team</span></a>
+    <h2>Ready to find your instrument?</h2>
+    <p>Tell us about your analysis and we&#39;ll recommend the right setup for you.</p>
+    <a href="/contact" class="ice-btn ice-btn-white"><span>Talk to our team</span></a>
   </section>
 
 </div>
@@ -505,7 +504,7 @@ const categoryCards = [
   .ice-cat-section {
     padding: 0 var(--ice-pad);
     scroll-margin-top: calc(var(--ice-header-height) + 24px);
-    border-top: 1px solid var(--ice-black);
+    border-top: 1px solid var(--ice-border);
     padding-top: 24px;
   }
   .ice-cat-head {
@@ -556,13 +555,15 @@ const categoryCards = [
   }
   .ice-cat-card {
     flex-direction: column;
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     background: var(--ice-white);
     border: 1px solid var(--ice-border);
+    border-radius: var(--radius-sm);
     min-width: 0;
     display: flex;
-    transition: border-color 0.25s ease;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   }
   .ice-cat-media {
     aspect-ratio: 4 / 3;
@@ -578,22 +579,7 @@ const categoryCards = [
     display: block;
     padding: 16px;
     background: var(--ice-white);
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .ice-cat-num {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 1;
-    font-family: var(--ice-mono);
-    letter-spacing: 0.05em;
-    font-size: 11px;
-    line-height: 1;
-    color: var(--ice-black);
-    background: var(--ice-white);
-    padding: 6px 7px;
-    min-width: 24px;
-    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .ice-cat-media-contain {
     background: #fff;
@@ -608,24 +594,25 @@ const categoryCards = [
     gap: 12px;
     padding: 16px 16px 18px;
     display: flex;
+    background: var(--ice-white);
   }
   .ice-cat-name {
     font-family: var(--ice-sans);
-    font-size: 13px;
+    font-size: 13.5px;
     line-height: 1.3;
     font-weight: 500;
     letter-spacing: 0.005em;
-    text-underline-offset: 4px;
-    text-decoration-color: transparent;
-    transition: text-decoration-color 0.25s ease;
+    color: var(--ice-black);
+    text-decoration: none !important;
+    transition: color 0.2s ease;
   }
   .ice-cat-arrow {
     flex: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--ice-black);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--color-text-muted);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
   }
   .ice-cat-arrow svg {
     width: 16px;
@@ -633,16 +620,20 @@ const categoryCards = [
   }
   @media (hover: hover) {
     .ice-cat-card:hover {
-      border-color: var(--ice-black);
+      border-color: #cbd5e1 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+      text-decoration: none !important;
     }
     .ice-cat-card:hover .ice-cat-media img {
-      transform: scale(1.045);
+      transform: scale(1.03);
     }
     .ice-cat-card:hover .ice-cat-name {
-      text-decoration: underline;
-      text-decoration-color: currentColor;
+      color: #1a365d !important;
+      text-decoration: none !important;
     }
     .ice-cat-card:hover .ice-cat-arrow {
+      color: #1a365d !important;
       transform: translateX(4px);
     }
   }
@@ -660,7 +651,9 @@ const categoryCards = [
     text-align: center;
     flex-direction: column;
     align-items: center;
-    padding: 0;
+    justify-content: center;
+    min-height: 100svh;
+    padding: 0 var(--ice-pad);
     display: flex;
   }
   .ice-headline-footer {
@@ -670,32 +663,19 @@ const categoryCards = [
     background: #1a365d;
     border-color: #1a365d;
   }
-  @media (min-width: 1024px) {
-    .ice-headline-text {
-      gap: var(--ice-pad);
-      padding: 0 var(--ice-pad);
-      display: grid;
-      grid-template-columns: repeat(16, 1fr);
-    }
-  }
   .ice-headline-wrapper {
     text-align: center;
-    max-width: 750px;
+    max-width: 1000px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     display: flex;
-  }
-  @media (min-width: 1024px) {
-    .ice-headline-wrapper {
-      grid-column: 5 / span 8;
-      gap: 30px;
-    }
+    margin: 0 auto;
   }
   .ice-headline-big {
     font-family: var(--ice-sans);
     letter-spacing: -0.01em;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.15;
     font-weight: 600;
     margin: 0;

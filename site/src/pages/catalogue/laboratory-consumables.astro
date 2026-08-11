@@ -71,16 +71,16 @@ const gridSections = [
     <div class="ice-hero-image">
       <img src="/bg3.jpg" alt="TAKA Scientific laboratory consumables" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
       <div class="ice-hero-overlay">
-        <h1 data-splitting="words">Laboratory consumables, always in stock</h1>
-        <div class="ice-hero-buttons t--fade t--delay_200">
-          <a href="#range" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
+        <h1>Laboratory consumables, always in stock</h1>
+        <div class="ice-hero-buttons">
+          <a href="#range" class="ice-btn ice-btn-outlined"><span>Browse Consumables</span></a>
         </div>
       </div>
-      <div class="ice-hero-trust t--fade t--delay_300">
-        <p>Fast delivery</p>
-        <p>Genuine consumables</p>
-        <p>Bulk &amp; routine pricing</p>
-        <p>All major brands</p>
+      <div class="ice-hero-trust">
+        <p>Fast UAE delivery</p>
+        <p>Genuine certified consumables</p>
+        <p>Bulk &amp; routine contract pricing</p>
+        <p>All major brands supported</p>
       </div>
     </div>
   </section>
@@ -88,21 +88,20 @@ const gridSections = [
   <!-- ─── HEADLINE TEXT ─── -->
   <section class="ice-headline-text ice-headline-footer" data-view>
     <div class="ice-headline-wrapper">
-      <p class="ice-headline-big t--fadedown">Everything your lab needs to keep running — glassware, disposables, filtration and reagents.</p>
+      <p class="ice-headline-big">High-purity reagents, volumetric glassware, filtration media, and daily lab supplies for routine analysis.</p>
     </div>
   </section>
 
   <!-- ─── CATEGORIES ─── -->
   <section class="ice-cat-section" id="range" data-view>
     <div class="ice-cat-head">
-      <span class="ice-cat-overline">Explore the range</span>
+      <span class="ice-cat-overline">Consumable Categories</span>
       <h2 class="ice-cat-title">Find your consumables</h2>
     </div>
     <div class="ice-cat-grid">
-      {categoryCards.map((card, i) => (
-        <a href={card.href} class={'ice-cat-card t--fade t--delay_' + ((i % 4) * 100 + 100)}>
+      {categoryCards.map((card) => (
+        <a href={card.href} class="ice-cat-card">
           <span class="ice-cat-media">
-            <span class="ice-cat-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
             <img src={card.image} alt={card.name} loading="lazy" decoding="async" />
           </span>
           <span class="ice-cat-meta">
@@ -122,10 +121,10 @@ const gridSections = [
       <img src="/consumables-highlight.jpg" alt="Laboratory consumables" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
-      <h2 class="t--fadedown">Explore laboratory consumables</h2>
-      <div class="ice-hero-buttons t--fade t--delay_300">
-        <a href="#glassware" class="ice-btn ice-btn-outlined"><span>Explore the range</span></a>
-        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Get a quote</span></a>
+      <h2>Complete Laboratory Consumables Range</h2>
+      <div class="ice-hero-buttons">
+        <a href="#glassware" class="ice-btn ice-btn-outlined"><span>View All Consumables</span></a>
+        <a href="/contact" class="ice-btn ice-btn-outlined"><span>Request Bulk Pricing</span></a>
       </div>
     </div>
   </section>
@@ -134,12 +133,12 @@ const gridSections = [
   {gridSections.map(section => (
     <section class="ice-grid-section" id={section.id} data-view>
       <div class="ice-grid-head">
-        <h2 class="t--fadedown">{section.title}</h2>
+        <h2>{section.title}</h2>
       </div>
-      <p class="ice-slider-sub t--fade t--delay_200">{section.sub}</p>
+      <p class="ice-slider-sub">{section.sub}</p>
       <div class="ice-grid">
-        {section.cards.map((card, i) => (
-          <div class="ice-grid-card t--fade t--delay_{(i % 4) * 100 + 100}">
+        {section.cards.map((card) => (
+          <div class="ice-grid-card">
             <span class="ice-grid-label">{card.label}</span>
             <p>{card.text}</p>
           </div>
@@ -150,9 +149,9 @@ const gridSections = [
 
   <!-- ─── CONTACT CTA ─── -->
   <section class="ice-cta" data-view>
-    <h2 class="t--fadedown">Stock your laboratory?</h2>
-    <p class="t--fade t--delay_200">Tell us what you use regularly and we&#39;ll set up a reliable, cost-effective supply.</p>
-    <a href="/contact" class="ice-btn ice-btn-white t--fade t--delay_400"><span>Get in touch</span></a>
+    <h2>Stock your laboratory?</h2>
+    <p>Tell us what you use regularly and we&#39;ll set up a reliable, cost-effective supply.</p>
+    <a href="/contact" class="ice-btn ice-btn-white"><span>Get in touch</span></a>
   </section>
 
 </div>
@@ -353,7 +352,7 @@ const gridSections = [
   .ice-cat-section {
     padding: 0 var(--ice-pad);
     scroll-margin-top: calc(var(--ice-header-height) + 24px);
-    border-top: 1px solid var(--ice-black);
+    border-top: 1px solid var(--ice-border);
     padding-top: 24px;
   }
   .ice-cat-head {
@@ -404,13 +403,15 @@ const gridSections = [
   }
   .ice-cat-card {
     flex-direction: column;
-    text-decoration: none;
+    text-decoration: none !important;
     color: inherit;
     background: var(--ice-white);
     border: 1px solid var(--ice-border);
+    border-radius: var(--radius-sm);
     min-width: 0;
     display: flex;
-    transition: border-color 0.25s ease;
+    overflow: hidden;
+    transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
   }
   .ice-cat-media {
     aspect-ratio: 4 / 3;
@@ -426,22 +427,7 @@ const gridSections = [
     display: block;
     padding: 16px;
     background: var(--ice-white);
-    transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .ice-cat-num {
-    position: absolute;
-    top: 12px;
-    left: 12px;
-    z-index: 1;
-    font-family: var(--ice-mono);
-    letter-spacing: 0.05em;
-    font-size: 11px;
-    line-height: 1;
-    color: var(--ice-black);
-    background: var(--ice-white);
-    padding: 6px 7px;
-    min-width: 24px;
-    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .ice-cat-meta {
     align-items: center;
@@ -449,24 +435,25 @@ const gridSections = [
     gap: 12px;
     padding: 16px 16px 18px;
     display: flex;
+    background: var(--ice-white);
   }
   .ice-cat-name {
     font-family: var(--ice-sans);
-    font-size: 13px;
+    font-size: 13.5px;
     line-height: 1.3;
     font-weight: 500;
     letter-spacing: 0.005em;
-    text-underline-offset: 4px;
-    text-decoration-color: transparent;
-    transition: text-decoration-color 0.25s ease;
+    color: var(--ice-black);
+    text-decoration: none !important;
+    transition: color 0.2s ease;
   }
   .ice-cat-arrow {
     flex: none;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--ice-black);
-    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    color: var(--color-text-muted);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
   }
   .ice-cat-arrow svg {
     width: 16px;
@@ -474,16 +461,20 @@ const gridSections = [
   }
   @media (hover: hover) {
     .ice-cat-card:hover {
-      border-color: var(--ice-black);
+      border-color: #cbd5e1 !important;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.06);
+      text-decoration: none !important;
     }
     .ice-cat-card:hover .ice-cat-media img {
-      transform: scale(1.045);
+      transform: scale(1.03);
     }
     .ice-cat-card:hover .ice-cat-name {
-      text-decoration: underline;
-      text-decoration-color: currentColor;
+      color: #1a365d !important;
+      text-decoration: none !important;
     }
     .ice-cat-card:hover .ice-cat-arrow {
+      color: #1a365d !important;
       transform: translateX(4px);
     }
   }
@@ -501,38 +492,27 @@ const gridSections = [
     text-align: center;
     flex-direction: column;
     align-items: center;
-    padding: 0;
+    justify-content: center;
+    min-height: 100svh;
+    padding: 0 var(--ice-pad);
     display: flex;
   }
   .ice-headline-footer {
     color: #1a365d;
   }
-  @media (min-width: 1024px) {
-    .ice-headline-text {
-      gap: var(--ice-pad);
-      padding: 0 var(--ice-pad);
-      display: grid;
-      grid-template-columns: repeat(16, 1fr);
-    }
-  }
   .ice-headline-wrapper {
     text-align: center;
-    max-width: 750px;
+    max-width: 1000px;
     flex-direction: column;
     align-items: center;
     gap: 20px;
     display: flex;
-  }
-  @media (min-width: 1024px) {
-    .ice-headline-wrapper {
-      grid-column: 5 / span 8;
-      gap: 30px;
-    }
+    margin: 0 auto;
   }
   .ice-headline-big {
     font-family: var(--ice-sans);
     letter-spacing: -0.01em;
-    font-size: 24px;
+    font-size: 28px;
     line-height: 1.15;
     font-weight: 600;
     margin: 0;
