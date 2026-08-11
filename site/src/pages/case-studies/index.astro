@@ -15,11 +15,14 @@ const rest = caseStudies.filter((c) => !c.featured);
   <section class="page-hero" data-view>
     <div class="container">
       <span class="eyebrow t--fade">Case studies</span>
-      <h1 class="page-hero-title" data-splitting="words">Real projects,<br />real handovers.</h1>
+      <h1 class="page-hero-title" data-splitting="words">Real projects, real handovers.</h1>
       <p class="page-hero-sub t--fade t--delay_200">
         The equipment we've supplied and installed for UAE schools, hospitals, research
         laboratories and government facilities — and the results each project delivered.
       </p>
+      <div class="hero-actions t--fade t--delay_400">
+        <a href="/contact" class="hero-btn">TALK TO OUR TEAM</a>
+      </div>
     </div>
   </section>
 
@@ -107,9 +110,7 @@ const rest = caseStudies.filter((c) => !c.featured);
 
 <style>
   .page-hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: flex-end;
+    padding: calc(var(--nav-height) + 3.5rem) 0 3.5rem 0;
     background: #fff;
     position: relative;
   }
@@ -117,22 +118,68 @@ const rest = caseStudies.filter((c) => !c.featured);
     position: relative;
     z-index: 1;
     width: 100%;
-    padding-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .page-hero .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a365d;
+    margin-bottom: 0.875rem;
+    display: block;
+    text-align: left;
   }
   .page-hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: #1a365d;
     margin-bottom: 1rem;
-    line-height: 1.1;
+    line-height: 1.12;
+    max-width: 850px;
+    text-align: left;
   }
   .page-hero-sub {
-    font-size: 1.05rem;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+    color: #1a365d;
+    opacity: 0.8;
+    line-height: 1.6;
     max-width: 560px;
+    text-align: left;
+    margin-bottom: 1.5rem;
+  }
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    height: 38px;
+    padding: 0 32px;
+    background: #1a365d;
+    color: #ffffff;
+    border: 1px solid #1a365d;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .hero-btn:hover {
+    background: #ffffff;
+    color: #1a365d;
   }
 
   /* ═══ Featured card ═══ */
@@ -355,7 +402,7 @@ const rest = caseStudies.filter((c) => !c.featured);
     .list-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .page-hero .container { padding-bottom: 2.5rem; }
+    .page-hero { padding: calc(var(--nav-height) + 1.5rem) 0 2.5rem 0; }
     .page-hero-title { font-size: 2rem; }
     .featured-section { padding: 2.5rem 0 1.5rem; }
     .featured-content { padding: 1.75rem 1.5rem; }

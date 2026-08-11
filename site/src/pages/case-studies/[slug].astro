@@ -39,10 +39,8 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
       <h1 class="page-hero-title t--fadedown t--delay_200">{study.organization}</h1>
       <p class="page-hero-headline t--fade t--delay_300">{study.headline}</p>
       <p class="page-hero-sub t--fade t--delay_400">{study.summary}</p>
-      <div class="page-hero-meta t--fade t--delay_200">
-        <span class="meta-item">{study.sector}</span>
-        <span class="meta-item">{study.emirate}</span>
-        <span class="meta-item">{study.timeframe}</span>
+      <div class="hero-actions t--fade t--delay_500">
+        <a href="/contact" class="hero-btn">TALK TO OUR TEAM</a>
       </div>
     </div>
   </section>
@@ -143,9 +141,7 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
 
 <style>
   .page-hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: flex-end;
+    padding: calc(var(--nav-height) + 3.5rem) 0 3.5rem 0;
     background: #fff;
     position: relative;
   }
@@ -153,40 +149,76 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     position: relative;
     z-index: 1;
     width: 100%;
-    padding-bottom: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+  .page-hero .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1a365d;
+    margin-bottom: 0.875rem;
+    display: block;
+    text-align: left;
   }
   .page-hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 400;
-    letter-spacing: -0.03em;
-    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: -0.025em;
+    color: #1a365d;
     margin-bottom: 0.75rem;
-    line-height: 1.1;
+    line-height: 1.12;
+    max-width: 850px;
+    text-align: left;
   }
   .page-hero-headline {
+    font-family: var(--font-sans);
     font-size: 1.15rem;
     font-weight: 500;
-    color: var(--color-text);
-    margin-bottom: 1rem;
+    color: #1a365d;
+    margin-bottom: 0.875rem;
+    text-align: left;
   }
   .page-hero-sub {
-    font-size: 1.05rem;
-    color: var(--color-text-secondary);
-    line-height: 1.7;
-    max-width: 620px;
+    font-family: var(--font-sans);
+    font-size: clamp(0.95rem, 1.3vw, 1.08rem);
+    color: #1a365d;
+    opacity: 0.8;
+    line-height: 1.6;
+    max-width: 560px;
+    text-align: left;
     margin-bottom: 1.5rem;
   }
-  .page-hero-meta { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-  .meta-item {
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     font-family: var(--font-mono);
-    font-size: 0.68rem;
+    font-size: 12px;
+    font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--color-text-muted);
-    border: 1px solid var(--color-border);
-    padding: 0.3rem 0.6rem;
-    border-radius: 4px;
+    height: 38px;
+    padding: 0 32px;
+    background: #1a365d;
+    color: #ffffff;
+    border: 1px solid #1a365d;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .hero-btn:hover {
+    background: #ffffff;
+    color: #1a365d;
   }
 
   /* ═══ Hero image ═══ */
@@ -425,7 +457,7 @@ const canonical = `https://taka.ae/case-studies/${study.slug}`;
     .related-grid { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
-    .page-hero .container { padding-bottom: 2.5rem; }
+    .page-hero { padding: calc(var(--nav-height) + 1.5rem) 0 2.5rem 0; }
     .page-hero-title { font-size: 2rem; }
     .stats-band { grid-template-columns: 1fr; margin-top: 3rem; }
     .related-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }

@@ -102,11 +102,6 @@
                 </span>
               </a>
             </div>
-
-            <a href="/catalogue" class="dropdown-footer">
-              <span>Browse Full Catalogue</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-            </a>
           </div>
         </div>
         <a href="/services" class="nav-pill-link">Services</a>
@@ -205,11 +200,6 @@
                   <span class="mobile-desc">End-to-end lab fit-out &amp; execution</span>
                 </span>
               </a>
-
-              <a href="/catalogue" class="mobile-catalogue-btn">
-                <span>Browse Full Catalogue</span>
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-              </a>
             </div>
           </div>
         </li>
@@ -218,7 +208,6 @@
         <li><a href="/case-studies" class="nav-overlay-link">Case Studies</a></li>
       </ul>
       <div class="nav-overlay-bottom">
-        <div class="nav-overlay-bottom-tag">Build together</div>
         <a href="/contact" class="mobile-btn-dark">Talk to Team</a>
       </div>
     </div>
@@ -250,19 +239,19 @@
     width: 40px;
     height: 40px;
     border-radius: 12px;
-    background: rgba(97, 97, 97, 0.6);
+    background: #0f172a;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
     z-index: 99;
     transition:
-      opacity 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      top 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      right 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      width 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      height 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      border-radius 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      visibility 0s 0.75s;
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      right 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      visibility 0s 0.5s;
   }
   .header.menu-open::before {
     top: 0;
@@ -272,15 +261,16 @@
     border-radius: 0;
     opacity: 1;
     visibility: visible;
-    backdrop-filter: blur(41px);
-    -webkit-backdrop-filter: blur(41px);
+    background: #0f172a;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     transition:
-      opacity 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      top 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      right 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      width 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      height 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99),
-      border-radius 0.75s cubic-bezier(0.62, 0.05, 0.01, 0.99);
+      opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      top 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      right 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      width 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      height 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+      border-radius 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   /* ═══ Desktop layout ═══ */
@@ -645,25 +635,32 @@
     cursor: pointer;
     flex-shrink: 0;
     position: relative;
+    z-index: 102;
   }
   .nav-burger:hover { background: rgba(0,0,0,0.05); }
   .header.transparent .nav-burger:hover { background: rgba(255,255,255,0.1); }
   .burger-line {
     display: block;
-    width: 18px;
+    width: 20px;
     height: 2px;
     background: #111;
     border-radius: 1px;
     position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -1px;
+    margin-left: -10px;
     transition: all 0.25s ease;
   }
-  .header.transparent .burger-line { background: #fff; }
+  .header.transparent .burger-line,
+  .nav-burger[data-state="open"] .burger-line,
+  .header.menu-open .burger-line { background: #fff !important; }
   .burger-line:nth-child(1) { transform: translateY(-6px); }
   .burger-line:nth-child(2) { transform: translateY(0); }
   .burger-line:nth-child(3) { transform: translateY(6px); }
-  .nav-burger[data-state="open"] .burger-line:nth-child(1) { transform: rotate(45deg); }
-  .nav-burger[data-state="open"] .burger-line:nth-child(2) { opacity: 0; transform: scaleX(0); }
-  .nav-burger[data-state="open"] .burger-line:nth-child(3) { transform: rotate(-45deg); }
+  .nav-burger[data-state="open"] .burger-line:nth-child(1) { transform: translateY(0) rotate(45deg); }
+  .nav-burger[data-state="open"] .burger-line:nth-child(2) { opacity: 0; transform: translateY(0) scaleX(0); }
+  .nav-burger[data-state="open"] .burger-line:nth-child(3) { transform: translateY(0) rotate(-45deg); }
 
   /* ═══ Fullscreen menu ═══ */
   .nav-overlay {
@@ -672,8 +669,12 @@
     z-index: 100;
     pointer-events: none;
     opacity: 0;
+    background: #0f172a;
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   }
   .nav-overlay.open {
     pointer-events: auto;
@@ -872,19 +873,25 @@
     margin-bottom: 1rem;
   }
   .mobile-btn-dark {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0.875rem 2rem;
-    background: #fff;
-    color: #0f1f38;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.2s;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #ffffff;
+    color: #0f172a;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
   }
-  .mobile-btn-dark:hover { background: rgba(255,255,255,0.85); }
+  .mobile-btn-dark:hover,
+  .mobile-btn-dark:active {
+    background: #f1f5f9;
+  }
 
   /* ═══ Responsive ═══ */
   @media (max-width: 1280px) {
@@ -894,9 +901,20 @@
     .nav-inner { grid-template-columns: 1fr auto; }
     .nav-pill, .nav-cta { display: none; }
     .nav-burger { display: flex; }
+    .header.menu-open .nav-burger {
+      position: fixed;
+      top: 16px;
+      right: 20px;
+      z-index: 9999;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+    }
   }
   @media (max-width: 768px) {
-    .nav-inner { padding: 0 1rem; }
+    .nav-inner { padding: 0.65rem 1rem; }
     .nav-logo-img { height: 26px; }
   }
 </style>
