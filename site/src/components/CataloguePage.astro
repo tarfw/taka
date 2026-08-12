@@ -318,9 +318,12 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
   .ice-hero-image:after {
     content: "";
     pointer-events: none;
-    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
+    background: 
+      linear-gradient(to bottom, rgba(10, 22, 40, 0.7) 0%, rgba(10, 22, 40, 0.45) 40%, rgba(10, 22, 40, 0.8) 75%, rgba(10, 22, 40, 0.96) 100%),
+      radial-gradient(ellipse at 30% 40%, rgba(10, 22, 40, 0.5) 0%, rgba(10, 22, 40, 0.85) 100%);
     position: absolute;
     inset: 0;
+    z-index: 1;
   }
   .ice-hero-img {
     object-fit: cover;
@@ -329,22 +332,26 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
   }
   .ice-hero-overlay {
     padding-left: var(--ice-pad);
+    padding-right: var(--ice-pad);
     color: var(--ice-white);
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    padding-bottom: 150px;
+    padding-bottom: 120px;
     display: flex;
     position: absolute;
     inset: 0;
+    z-index: 2;
   }
   .ice-hero-overlay h1 {
     font-family: var(--ice-sans);
     letter-spacing: -0.01em;
     font-size: 44px;
-    line-height: 1;
+    line-height: 1.05;
     font-weight: 600;
     margin: 0 0 25px;
+    color: #ffffff;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
   }
   @media (min-width: 1024px) {
     .ice-hero-overlay h1 {
@@ -353,7 +360,7 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
       line-height: 0.9;
       max-width: 55%;
     }
-    .ice-hero-overlay { padding-bottom: 76px; }
+    .ice-hero-overlay { padding-bottom: 96px; }
   }
   .ice-hero-buttons {
     flex-flow: wrap;
@@ -704,42 +711,78 @@ const { hero, headline, categoryCards = [], highlight, sections = [], cta } = As
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 1;
-    padding: 14px var(--ice-pad);
-    flex-flow: wrap;
-    gap: 8px 48px;
-    font-family: var(--ice-mono);
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 1.4;
+    z-index: 2;
+    padding: 16px var(--ice-pad);
     display: flex;
-    background: linear-gradient(#0000, #0009 100%);
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 28px;
+    font-family: var(--ice-mono);
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    font-size: 11px;
+    line-height: 1.4;
+    background: linear-gradient(to top, rgba(10, 22, 40, 0.96) 0%, rgba(10, 22, 40, 0.75) 60%, rgba(10, 22, 40, 0) 100%);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
   }
   .ice-hero-trust p {
     margin: 0;
-    opacity: 0.8;
-    color: var(--ice-white);
-    position: relative;
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
   }
-  .ice-hero-trust p + p:before {
-    content: "";
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: var(--ice-white);
-    opacity: 0.45;
-    position: absolute;
-    left: -24px;
-    top: 50%;
-    transform: translateY(-50%);
+  .ice-hero-trust p + p::before {
+    content: "•";
+    margin-right: 28px;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 14px;
+    line-height: 1;
   }
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
+    .ice-hero-overlay {
+      padding-bottom: 110px;
+    }
+  }
+  @media (max-width: 768px) {
+    .ice-hero-overlay {
+      padding-bottom: 110px;
+    }
+    .ice-hero-trust {
+      padding: 12px var(--ice-pad);
+      gap: 6px 16px;
+      font-size: 10.5px;
+    }
+    .ice-hero-trust p + p::before {
+      margin-right: 16px;
+    }
+  }
+  @media (max-width: 520px) {
     .ice-page { --ice-pad: 16px; }
-    .ice-hero-overlay h1 { font-size: 34px; }
-    .ice-hero-overlay { padding-bottom: 96px; }
-    .ice-hero-trust { gap: 6px 20px; }
-    .ice-hero-trust p + p:before { left: -10px; }
+    .ice-hero-overlay h1 {
+      font-size: 32px;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .ice-hero-overlay {
+      padding-bottom: 125px;
+    }
+    .ice-hero-trust {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px 12px;
+      font-size: 9.5px;
+      padding: 10px var(--ice-pad);
+    }
+    .ice-hero-trust p {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.3;
+    }
+    .ice-hero-trust p + p::before {
+      display: none;
+    }
     .ice-highlight-overlay h2 { font-size: 32px; }
     .ice-slider-title-wrapper { gap: 12px; }
   }
