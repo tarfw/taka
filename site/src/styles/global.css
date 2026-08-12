@@ -1006,6 +1006,7 @@ ul, ol { list-style: none; }
   }
   .trust-iso-row {
     grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
   }
 }
 @media (max-width: 700px) {
@@ -1018,7 +1019,8 @@ ul, ol { list-style: none; }
     gap: 1.5rem;
   }
   .trust-iso-row {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
   .trust-badge {
     flex-direction: row;
@@ -1028,14 +1030,14 @@ ul, ol { list-style: none; }
   }
   .trust-badge-featured {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    align-items: flex-start;
+    justify-content: flex-start;
+    text-align: left;
     gap: 1rem;
   }
   .trust-badge-featured .trust-badge-icv {
-    width: 200px;
-    height: 200px;
+    width: 140px;
+    height: 140px;
   }
   .trust-badge-icon {
     width: 40px;
@@ -1046,11 +1048,17 @@ ul, ol { list-style: none; }
     align-items: flex-start;
   }
   .trust-badge-featured .trust-badge-text {
-    align-items: center;
+    align-items: flex-start;
   }
   .trust-features {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+  .trust-feature-title {
+    font-size: 1rem;
+  }
+  .trust-feature-desc {
+    font-size: 0.85rem;
   }
 }
 

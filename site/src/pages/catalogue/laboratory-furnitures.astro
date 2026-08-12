@@ -9,12 +9,12 @@ const categoryCards = [
   { name: 'Sinks & utility fixtures', image: '/products/furniture/utility-station.jpg', href: '#fixtures' },
 ];
 
-const gridSections = [
+const productSections = [
   {
     id: 'benches',
     title: 'Workbenches & stations',
     sub: 'Modular bench systems and workstations for teaching, research and industrial labs.',
-    cards: [
+    products: [
       { label: 'Laboratory Workbenches', text: 'Modular bench systems with chemical-resistant tops and epoxy resin surfaces.' },
       { label: 'Student Desks', text: 'Adjustable-height lab desks with powder-coated steel frames for schools.' },
       { label: 'ESD Workbenches', text: 'Anti-static surfaces for electronics and semiconductor laboratories.' },
@@ -25,7 +25,7 @@ const gridSections = [
     id: 'fume-hoods',
     title: 'Fume hoods & ventilation',
     sub: 'Ducted and ductless containment that protect people, samples and the environment.',
-    cards: [
+    products: [
       { label: 'Ducted Fume Hoods', text: 'EN 14175 certified fume hoods with variable air volume control.' },
       { label: 'Ductless Fume Hoods', text: 'Carbon-filtered containment for non-hazardous solvent work.' },
       { label: 'Fume Extraction', text: 'Bench-top and ceiling-mounted source extraction systems.' },
@@ -36,7 +36,7 @@ const gridSections = [
     id: 'storage',
     title: 'Safety & storage cabinets',
     sub: 'Safe, compliant storage for chemicals, instruments and laboratory supplies.',
-    cards: [
+    products: [
       { label: 'Safety Cabinets', text: 'Flammable and corrosive storage, EN 14470 certified.' },
       { label: 'Chemical Storage', text: 'Vented acid cabinets and bulk chemical storage units.' },
       { label: 'Sterile Storage Cabinets', text: 'Laminar flow cabinets and clean-room shelving.' },
@@ -47,7 +47,7 @@ const gridSections = [
     id: 'seating',
     title: 'Seating & ergonomics',
     sub: 'Comfortable, durable seating engineered for long hours at the bench.',
-    cards: [
+    products: [
       { label: 'Lab Stools & Chairs', text: 'Height-adjustable, chemical-resistant seating for lab work.' },
       { label: 'Ergonomic Work Chairs', text: 'Lumbar-supported task chairs for microscopy and precision work.' },
       { label: 'Anti-Static Seating', text: 'Dissipative seating for electronics and ESD-controlled labs.' },
@@ -58,7 +58,7 @@ const gridSections = [
     id: 'fixtures',
     title: 'Sinks & utility fixtures',
     sub: 'Service points and wash stations that make benches fully functional.',
-    cards: [
+    products: [
       { label: 'Sinks & Wash Stations', text: 'Epoxy resin and stainless steel lab sinks with fixtures.' },
       { label: 'Gas & Utility Fixtures', text: 'Valves, outlets and service panels integrated into benches.' },
       { label: 'Eyewash & Safety Fittings', text: 'Emergency eyewash and drench stations fitted at benches.' },
@@ -89,7 +89,7 @@ const breadcrumbSchema = {
   <!-- ─── HERO ─── -->
   <section class="ice-hero hero-container" data-view>
     <div class="ice-hero-image">
-      <img src="/bg4.jpg" alt="TAKA Scientific laboratory furniture" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
+      <img src="/labfurn4.png" alt="TAKA Scientific laboratory furniture" class="ice-hero-img" fetchpriority="high" data-parallax="zoom" />
       <div class="ice-hero-overlay">
         <h1>Laboratory furniture, built around safe and productive work</h1>
         <div class="ice-hero-buttons">
@@ -139,7 +139,7 @@ const breadcrumbSchema = {
   <!-- ─── HIGHLIGHT ─── -->
   <section class="ice-highlight" data-view>
     <div class="ice-highlight-image clip--top_left">
-      <img src="/ans2.jpg" alt="Installed laboratory furniture in a completed lab" loading="lazy" />
+      <img src="/takalab2.png" alt="Installed laboratory furniture in a completed lab" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
       <h2>Complete Laboratory Furniture Range</h2>
@@ -150,20 +150,32 @@ const breadcrumbSchema = {
     </div>
   </section>
 
-  <!-- ─── PRODUCT SECTIONS (grid) ─── -->
-  {gridSections.map(section => (
-    <section class="ice-grid-section" id={section.id} data-view>
-      <div class="ice-grid-head">
-        <h2>{section.title}</h2>
-      </div>
-      <p class="ice-slider-sub">{section.sub}</p>
-      <div class="ice-grid">
-        {section.cards.map((card) => (
-          <div class="ice-grid-card">
-            <span class="ice-grid-label">{card.label}</span>
-            <p>{card.text}</p>
+  <!-- ─── PRODUCT SECTIONS ─── -->
+  {productSections.map(section => (
+    <section class="ice-slider-section" id={section.id} data-view>
+      <div class="ice-slider">
+        <div class="ice-slider-title">
+          <div class="ice-slider-title-wrapper">
+            <h2>{section.title}</h2>
           </div>
-        ))}
+          <div class="ice-slider-controls">
+            <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+            <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+          </div>
+        </div>
+        <p class="ice-slider-sub">{section.sub}</p>
+        <div class="ice-slider-items">
+          <div class="ice-slider-track">
+            {section.products.map(card => (
+              <div class="ice-slider-item">
+                <div class="ice-slider-card">
+                  <span class="ice-slider-card-label">{card.label}</span>
+                  <p>{card.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   ))}
@@ -179,6 +191,31 @@ const breadcrumbSchema = {
 
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
 </Layout>
+
+<script>
+  document.querySelectorAll('.ice-slider').forEach(slider => {
+    const scroller = slider.querySelector('.ice-slider-items');
+    const prev = slider.querySelector('.ice-slider-prev');
+    const next = slider.querySelector('.ice-slider-next');
+    if (!scroller || !prev || !next) return;
+
+    const update = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      prev.disabled = scroller.scrollLeft <= 1;
+      next.disabled = scroller.scrollLeft >= max - 1;
+    };
+    const step = () => {
+      const item = scroller.querySelector('.ice-slider-item');
+      return item ? item.offsetWidth : scroller.clientWidth;
+    };
+
+    prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+    scroller.addEventListener('scroll', update, { passive: true });
+    update();
+    window.addEventListener('resize', update);
+  });
+</script>
 
 <style>
   .ice-page {
@@ -286,13 +323,6 @@ const breadcrumbSchema = {
     position: relative;
     overflow: hidden;
     width: 100%;
-  }
-  .ice-hero-image:after {
-    content: "";
-    pointer-events: none;
-    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
-    position: absolute;
-    inset: 0;
   }
   .ice-hero-img {
     object-fit: cover;
@@ -568,12 +598,11 @@ const breadcrumbSchema = {
   .ice-highlight-image:after {
     content: "";
     pointer-events: none;
-    background:
-      linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
-      linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='4' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.14'/%3E%3C/svg%3E");
     position: absolute;
     inset: 0;
+    background:
+      radial-gradient(130% 130% at 10% 100%, rgba(9, 16, 30, 0.6) 0%, rgba(9, 16, 30, 0.32) 26%, rgba(9, 16, 30, 0.05) 48%, rgba(9, 16, 30, 0) 62%),
+      linear-gradient(0deg, rgba(9, 16, 30, 0.4) 0%, rgba(9, 16, 30, 0) 40%);
   }
   .ice-highlight-image img {
     object-fit: cover;
@@ -608,59 +637,125 @@ const breadcrumbSchema = {
     }
   }
 
-  /* ─── GRID SECTIONS ─── */
-  .ice-grid-section {
-    padding: 0 var(--ice-pad);
+  /* ─── SLIDER BASE ─── */
+  .ice-slider-section {
+    padding: 0;
     scroll-margin-top: calc(var(--ice-header-height) + 24px);
   }
-  .ice-grid-head {
+  .ice-slider {
+    flex-direction: column;
+    display: flex;
+  }
+  .ice-slider-title {
+    padding: 0 var(--ice-pad) 14px;
+    width: 100%;
+    color: var(--ice-black);
+    align-items: center;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-title { padding: 0 var(--ice-pad) 17px; }
+  }
+  .ice-slider-title h2 {
     font-family: var(--ice-mono);
     letter-spacing: 0.01em;
     text-transform: uppercase;
-    padding-bottom: 17px;
     font-size: 12px;
     line-height: 1.4;
-  }
-  .ice-grid-head h2 {
-    font-size: inherit;
     font-weight: 400;
     margin: 0;
   }
-  .ice-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    display: grid;
+  .ice-slider-controls {
+    font-family: var(--ice-mono);
+    letter-spacing: -0.01em;
+    gap: 14px;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
   }
-  @media (min-width: 768px) {
-    .ice-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--ice-pad);
-    }
+  .ice-slider-controls button {
+    font-family: var(--ice-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--ice-black);
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  .ice-slider-controls button:disabled {
+    opacity: var(--ice-opacity);
+    pointer-events: none;
+  }
+  @media (max-width: 1024px) {
+    .ice-slider-controls { display: none; }
+  }
+  .ice-slider-title-wrapper {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+
+  .ice-slider-items {
+    width: calc(100% + var(--ice-gap));
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-left: calc(var(--ice-gap) * -1);
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+  .ice-slider-items::-webkit-scrollbar { display: none; }
+  .ice-slider-track {
+    display: flex;
+  }
+  .ice-slider-item {
+    flex: 0 0 var(--ice-flex);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-width: 0;
+    padding-left: var(--ice-gap);
+    position: relative;
+  }
+  .ice-slider-items {
+    --ice-gap: 1px;
+    --ice-flex: calc(100% / 1.3);
   }
   @media (min-width: 1024px) {
-    .ice-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--ice-pad);
+    .ice-slider-items {
+      --ice-flex: calc(100% / 5);
     }
   }
-  .ice-grid-card {
+
+  .ice-slider-card {
     border: 1px solid var(--ice-border);
     padding: var(--ice-pad);
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
+    height: 100%;
+    box-sizing: border-box;
     display: flex;
     text-decoration: none;
     color: inherit;
   }
-  .ice-grid-label {
+  .ice-slider-card-label {
     font-family: var(--ice-mono);
     letter-spacing: 0.01em;
     text-transform: uppercase;
     font-size: 12px;
     line-height: 1.4;
   }
-  .ice-grid-card p {
+  .ice-slider-card p {
     font-family: var(--ice-sans);
     font-size: 15px;
     line-height: 1.4;

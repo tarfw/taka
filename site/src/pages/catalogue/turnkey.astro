@@ -1,89 +1,1422 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import CataloguePage from '../../components/CataloguePage.astro';
 ---
 
 <Layout
-  title="Turnkey Projects — Complete Laboratory Solutions"
-  description="Turnkey laboratory projects from TAKA Scientific — design, supply, installation, testing and commissioning of complete laboratories across the UAE."
+  title="Turnkey Laboratory Engineering Projects UAE — TAKA Scientific"
+  description="Single-source EPC turnkey laboratory engineering solutions in UAE. Complete lab design, HVAC architecture, analytical instruments, LIMS software, FAT/SAT validation, and lifetime maintenance."
   hasHero={true}
 >
 
-<CataloguePage
-  hero={{
-    image: '/bg1.webp',
-    title: 'Turnkey laboratory projects, delivered end-to-end',
-    trust: [
-      'Design to handover',
-      'Project management',
-      'On-time delivery',
-      'Ongoing support',
-    ],
-  }}
-  headline={{
-    text: 'One partner for your entire lab — from concept and design to commissioning and beyond.',
-    button: { label: 'Start your project', href: '/contact' },
-  }}
-  categoryCards={[
-    { name: 'School Laboratories', image: '/case-studies/adec-school-lab.jpg', href: '#design' },
-    { name: 'Hospital Facilities', image: '/case-studies/seha-clinic.jpg', href: '#supply' },
-    { name: 'Research Laboratories', image: '/case-studies/khalifa-research-lab.jpg', href: '#commissioning' },
-    { name: 'Clinic Fit-Outs', image: '/case-studies/skmc-opd.jpg', href: '#support' },
-  ]}
-  highlight={{
-    image: '/ans3.jpg',
-    title: 'Explore turnkey project delivery',
-  }}
-  sections={[
-    {
-      id: 'design',
-      title: 'Design & planning',
-      sub: 'We start with your workflows and turn them into an efficient, compliant laboratory plan.',
-      cards: [
-        { label: 'Laboratory Layout & Design', text: 'Space planning, bench layout and zoning for clean and dirty workflows.' },
-        { label: 'Utility Planning', text: 'Gas, water, power and ventilation requirements engineered in from day one.' },
-        { label: 'Equipment Selection', text: 'The right instruments and furniture specified against your applications.' },
-        { label: 'Budgeting & Procurement', text: 'Transparent cost planning and single-source procurement for the whole lab.' },
-      ],
+<!-- ═══ ACCURATE STYLES (MATCHING GLOBAL SITE DESIGN SYSTEM FONTS) ═══ -->
+<style is:global>
+  /* Global SVG Protection for Dynamically Injected Elements */
+  .panel-deliv-item svg,
+  .panel-deliv-list svg {
+    width: 14px !important;
+    height: 14px !important;
+    min-width: 14px !important;
+    min-height: 14px !important;
+    max-width: 14px !important;
+    max-height: 14px !important;
+    stroke: #1e3a8a !important;
+    flex-shrink: 0 !important;
+    margin-top: 2px !important;
+  }
+</style>
+
+<style>
+  .turnkey-page {
+    background-color: #ffffff;
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+
+  /* ═══ HERO SECTION ═══ */
+  .daylight-hero {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    min-height: 100svh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-image: url('/bg1.webp');
+    background-size: cover;
+    background-position: center;
+    color: #ffffff;
+    padding-top: calc(var(--nav-height, 90px) + 2rem);
+    padding-bottom: 4rem;
+    overflow: hidden;
+  }
+
+  /* Dark Overlay */
+  .daylight-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      rgba(15, 17, 23, 0.65) 0%,
+      rgba(15, 17, 23, 0.45) 50%,
+      rgba(15, 17, 23, 0.8) 100%
+    );
+    z-index: 1;
+  }
+
+  /* Fine Crosshair Grid Lines */
+  .daylight-grid-crosshairs {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .grid-line-v {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .grid-line-h {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.16);
+  }
+
+  .line-v-1 { left: 6%; }
+  .line-v-2 { left: 66%; }
+  .line-v-3 { right: 6%; }
+
+  .line-h-1 { top: 22%; }
+  .line-h-2 { top: 76%; }
+
+  /* Main Hero Content Layout */
+  .daylight-hero-body {
+    position: relative;
+    z-index: 5;
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr 360px;
+    gap: 3rem;
+    align-items: end;
+    flex: 1;
+  }
+
+  @media (max-width: 1024px) {
+    .daylight-hero-body { grid-template-columns: 1fr; }
+  }
+
+  /* Left Main Column Typography */
+  .hero-tag-mono {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 1.5rem;
+    display: block;
+  }
+
+  .hero-display-title {
+    font-family: var(--font-sans);
+    font-size: clamp(3rem, 6.5vw, 5.5rem);
+    font-weight: 600;
+    line-height: 1.02;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    max-width: 820px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-display-sub {
+    font-family: var(--font-sans);
+    font-size: clamp(1.1rem, 1.8vw, 1.35rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.5;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    font-weight: 400;
+  }
+
+  /* Right Column HUD Stats */
+  .hero-hud-col {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-hud-col { display: none; }
+  }
+
+  .hud-top-stat { text-align: right; }
+
+  .hud-stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .hud-stat-val {
+    font-family: var(--font-sans);
+    font-size: 1.85rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-top: 0.15rem;
+  }
+
+  /* Vibrant Accent Square Tile */
+  .vibrant-accent-tile {
+    width: 250px;
+    height: 250px;
+    margin-left: auto;
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    border-radius: 4px;
+    box-shadow: 0 25px 50px rgba(30, 58, 138, 0.35);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .vibrant-accent-tile:hover { transform: scale(1.03); }
+
+  .tile-texture-overlay {
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      rgba(255, 255, 255, 0.12),
+      rgba(255, 255, 255, 0.12) 12px,
+      transparent 12px,
+      transparent 24px
+    );
+  }
+
+  .tile-label {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .tile-sub {
+    position: relative;
+    z-index: 2;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  /* Lower Right Grid HUD Metrics */
+  .hud-bottom-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  .hud-metric-box { font-family: var(--font-mono); }
+
+  .hud-metric-tag {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.75);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .hud-metric-val {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-top: 0.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .meter-bar-track {
+    width: 90px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 10px;
+    margin-top: 0.35rem;
+    overflow: hidden;
+  }
+
+  .meter-bar-fill {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+  }
+
+  /* ═══ LIFECYCLE SECTION (PURE WHITE BG & CRISP CARDS) ═══ */
+  .daylight-lifecycle-section {
+    background: #ffffff;
+    padding: 3rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .section-header-center {
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto 2rem auto;
+  }
+
+  .daylight-step-tag {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #1e3a8a;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .daylight-section-title {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0 0 0.75rem;
+    max-width: 20ch;
+  }
+
+  .daylight-section-sub {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    max-width: 44ch;
+  }
+
+  @media (min-width: 1024px) {
+    .daylight-section-title {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
+  /* Master Grid Layout: Left Vertical Stage Tabs + Right Content Card */
+  .daylight-lifecycle-layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+
+  @media (max-width: 1024px) {
+    .daylight-lifecycle-layout {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  /* Left Side Vertical Navigation Bar */
+  .vertical-stage-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  @media (max-width: 1024px) {
+    .vertical-stage-nav {
+      flex-direction: row;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      scrollbar-width: none;
+      gap: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .vertical-stage-nav::-webkit-scrollbar { display: none; }
+  }
+
+  .v-stage-tab {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 12px;
+    background: #ffffff;
+    border: 1px solid #ececec;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.2s ease;
+  }
+
+  @media (max-width: 1024px) {
+    .v-stage-tab {
+      flex-shrink: 0;
+      padding: 8px 14px;
+    }
+    .v-stage-sub, .v-stage-arrow { display: none; }
+  }
+
+  .v-stage-tab:hover {
+    border-color: #cbd5e1;
+  }
+
+  .v-stage-tab.active {
+    border-color: #1a365d;
+  }
+
+  .v-stage-num {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #6b7280;
+    letter-spacing: 0.01em;
+  }
+
+  .v-stage-tab.active .v-stage-num {
+    color: #1a365d;
+  }
+
+  .v-stage-info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 1px;
+  }
+
+  .v-stage-name {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    font-weight: 500;
+    color: #262626;
+    line-height: 1.25;
+  }
+
+  .v-stage-sub {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: #9ca3af;
+    letter-spacing: 0.01em;
+  }
+
+  .v-stage-arrow {
+    stroke: #9ca3af;
+    transition: transform 0.2s ease, stroke 0.2s ease;
+    display: none;
+  }
+
+  .v-stage-tab:hover .v-stage-arrow,
+  .v-stage-tab.active .v-stage-arrow {
+    stroke: #1a365d;
+  }
+
+  /* Right Side Active Showcase Card */
+  .daylight-showcase-card {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  @media (max-width: 960px) {
+    .daylight-showcase-card {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+      gap: 1.5rem;
+    }
+  }
+
+  .showcase-content-col { display: flex; flex-direction: column; gap: 0; }
+
+  .showcase-title {
+    font-family: var(--font-sans);
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: #111827;
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 0.25rem;
+  }
+
+  .showcase-sub-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #1e3a8a;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .showcase-desc {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  .deliv-list-header {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #9ca3af;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+  }
+
+  .panel-deliv-list { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.25rem; }
+
+  .panel-deliv-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    font-family: var(--font-sans);
+    font-size: 0.85rem;
+    color: #111827;
+    line-height: 1.35;
+  }
+
+  /* Right Side Illustration Container */
+  .showcase-illus-col {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 280px;
+  }
+
+  .showcase-illus-col svg { width: 100%; height: auto; max-height: 260px; }
+
+  /* Rectangular Solid Navy Buttons */
+  .tk-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    background: #1a365d;
+    color: #ffffff;
+    height: 32px;
+    padding: 0 36px;
+    border: 1px solid #1a365d;
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+
+  .tk-btn-primary:hover {
+    background: #ffffff !important;
+    color: #1a365d !important;
+    border-color: #1a365d !important;
+  }
+
+  .tk-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 0.95rem 2.25rem;
+    background: #ffffff;
+    color: #1e3a8a;
+    border: 1px solid #1e3a8a;
+    border-radius: 2px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
+
+  .tk-btn-secondary:hover {
+    background: #f8fafc;
+    border-color: #172554;
+    color: #172554;
+  }
+
+  /* Turnkey Scope Builder */
+  .quote-section {
+    background: #ffffff;
+    padding: 3rem 0;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .quote-card-container {
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 2rem;
+  }
+
+  @media (max-width: 990px) {
+    .quote-card-container { grid-template-columns: 1fr; padding: 1.5rem; }
+  }
+
+  .qb-group-title {
+    font-family: var(--font-sans);
+    font-size: 12.5px;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: 0.005em;
+    color: #262626;
+    margin-bottom: 0.65rem;
+  }
+
+  .qb-industry-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .qb-industry-grid { grid-template-columns: 1fr; }
+  }
+
+  .qb-ind-btn {
+    padding: 0.5rem 0.7rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #111827;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .qb-ind-btn:hover { border-color: #1e3a8a; }
+  .qb-ind-btn.active {
+    background: #1e3a8a;
+    border-color: #1e3a8a;
+    color: #ffffff;
+  }
+
+  .qb-range-wrapper { margin-bottom: 1.25rem; }
+  .qb-range-header { display: flex; justify-content: space-between; margin-bottom: 0.35rem; font-family: var(--font-sans); font-size: 0.85rem; }
+  .qb-range-val { font-family: var(--font-mono); font-weight: 700; color: #1e3a8a; }
+  .qb-range-slider { width: 100%; accent-color: #1e3a8a; cursor: pointer; }
+
+  .qb-stages-checklist {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .qb-stages-checklist { grid-template-columns: 1fr; }
+  }
+
+  .qb-check-lbl {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.7rem;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 2px;
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    cursor: pointer;
+  }
+
+  .qb-check-lbl input[type="checkbox"] { accent-color: #1e3a8a; width: 14px; height: 14px; }
+
+  .qb-summary-panel {
+    background: #ffffff;
+    border: 1px solid rgba(30, 58, 138, 0.2);
+    border-radius: 4px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .qb-summary-title {
+    font-family: var(--font-sans);
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 0.85rem;
+    border-bottom: 1px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .qb-summary-row { display: flex; justify-content: space-between; margin-bottom: 0.6rem; font-family: var(--font-sans); font-size: 0.85rem; }
+  .qb-summary-lbl { color: #6b7280; }
+  .qb-summary-val { font-family: var(--font-mono); font-weight: 600; color: #1e3a8a; }
+
+  .qb-deliv-box {
+    background: #ffffff;
+    border: 1px dashed #d1d5db;
+    border-radius: 2px;
+    padding: 0.75rem;
+    margin: 0.85rem 0;
+  }
+
+  .qb-deliv-title {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #1e3a8a;
+    margin-bottom: 0.35rem;
+  }
+
+  .qb-deliv-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+  .qb-mini-tag {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+    background: rgba(30, 58, 138, 0.08);
+    border-radius: 2px;
+    color: #1e3a8a;
+    font-weight: 500;
+  }
+
+  /* ══════════ FINAL CTA ABOVE FOOTER ══════════ */
+  .planner-cta-section {
+    background: #fff;
+    color: #1a365d;
+    min-height: 100svh;
+    justify-content: center;
+    padding: 80px 1.5rem;
+    text-align: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    display: flex;
+    position: relative;
+    z-index: 1;
+  }
+
+  .planner-cta-title {
+    font-family: var(--font-sans);
+    letter-spacing: -0.01em;
+    font-size: 24px;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+    max-width: 20ch;
+  }
+
+  .planner-cta-sub {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    margin: 0;
+    opacity: 0.8;
+    max-width: 44ch;
+  }
+
+  @media (min-width: 1024px) {
+    .planner-cta-section {
+      gap: 30px;
+    }
+    .planner-cta-title {
+      letter-spacing: -0.02em;
+      font-size: 64px;
+      line-height: 1.05;
+    }
+  }
+
+  .btn-navy-square {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    background: #1a365d;
+    color: #ffffff;
+    height: 32px;
+    padding: 0 36px;
+    border: 1px solid #1a365d;
+    font-size: 12px;
+    line-height: 1.4;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.1s ease-out, color 0.1s ease-out, border-color 0.1s ease-out;
+  }
+
+  .btn-navy-square:hover {
+    background: var(--ice-white) !important;
+    color: #1a365d !important;
+    border-color: #1a365d !important;
+  }
+
+  /* ═══ TABLET & MOBILE REFINEMENTS (extra polish on top of existing media queries) ═══ */
+
+  /* Slim intermediate widths: keep hero title comfortable */
+  @media (max-width: 820px) {
+    .daylight-hero {
+      padding-top: calc(var(--nav-height, 66px) + 1.5rem);
+    }
+    .daylight-hero-body {
+      padding: 1.5rem 1.25rem;
+    }
+    .hero-display-title {
+      font-size: clamp(2.4rem, 8vw, 3.4rem);
+    }
+  }
+
+  /* Phones & small tablets */
+  @media (max-width: 640px) {
+    .daylight-hero {
+      padding-top: calc(var(--nav-height, 56px) + 1rem);
+      padding-bottom: 2.5rem;
+    }
+    .daylight-hero-body {
+      padding: 1.25rem 1rem;
+      gap: 1.75rem;
+    }
+    .hero-tag-mono {
+      font-size: 0.7rem;
+      margin-bottom: 1.1rem;
+    }
+    .hero-display-title {
+      font-size: clamp(2rem, 9.5vw, 2.9rem);
+      margin-bottom: 1.1rem;
+    }
+    .hero-display-sub {
+      font-size: 0.98rem;
+      margin-bottom: 1.75rem;
+    }
+
+    .daylight-lifecycle-section {
+      padding: 2.5rem 0;
+    }
+    .section-header-center {
+      margin: 0 auto 1.5rem auto;
+    }
+    .daylight-showcase-card {
+      padding: 1.25rem;
+      gap: 1.25rem;
+    }
+    .showcase-title {
+      font-size: clamp(1.5rem, 6.5vw, 2rem);
+    }
+    .showcase-illus-col {
+      min-height: 200px;
+      padding: 1rem;
+    }
+    .tk-btn-primary {
+      width: 100%;
+      padding: 0 16px;
+    }
+
+    .quote-section {
+      padding: 2.5rem 0;
+    }
+    .quote-card-container {
+      padding: 1.25rem;
+    }
+    .qb-summary-panel {
+      padding: 1.25rem;
+    }
+
+    .planner-cta-section {
+      padding: 56px 1rem;
+      gap: 18px;
+    }
+  }
+
+  /* Very small phones */
+  @media (max-width: 400px) {
+    .daylight-hero-body {
+      padding: 1rem 0.875rem;
+    }
+    .hero-display-title {
+      font-size: clamp(1.85rem, 10vw, 2.4rem);
+    }
+    .hero-display-sub {
+      font-size: 0.93rem;
+    }
+    .qb-industry-grid {
+      gap: 0.4rem;
+    }
+    .qb-ind-btn {
+      padding: 0.45rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    .qb-check-lbl {
+      padding: 0.4rem 0.5rem;
+      font-size: 0.75rem;
+    }
+    .qb-stages-checklist {
+      gap: 0.4rem;
+    }
+  }
+</style>
+
+<div class="turnkey-page">
+
+  <!-- ═══ HERO SECTION ═══ -->
+  <section class="daylight-hero">
+    <div class="daylight-hero-overlay"></div>
+
+    <!-- Fine Crosshair Grid Lines -->
+    <div class="daylight-grid-crosshairs">
+      <div class="grid-line-v line-v-1"></div>
+      <div class="grid-line-v line-v-2"></div>
+      <div class="grid-line-v line-v-3"></div>
+      <div class="grid-line-h line-h-1"></div>
+      <div class="grid-line-h line-h-2"></div>
+    </div>
+
+    <!-- Main Hero Body -->
+    <div class="daylight-hero-body">
+      <!-- Left Column Typography & Glass Search Pill Bar -->
+      <div>
+        <span class="hero-tag-mono">SINGLE EPC CONTRACT</span>
+        <h1 class="hero-display-title">
+          Build your lab for less
+        </h1>
+        <p class="hero-display-sub">
+          Single-source turnkey lab engineering. $0 cost overruns. Delivered certified and on schedule.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#quote-builder" class="hero-cta">
+            <span class="hero-cta-text">Configure your lab</span>
+            <span class="hero-cta-arrow">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column HUD Stats Embedded Directly on Grid Crosshairs -->
+      <div class="hero-hud-col">
+        <div class="hud-top-stat">
+          <div class="hud-stat-label">GLOBAL FOOTPRINT</div>
+          <div class="hud-stat-val">50M+ Sq. Ft.</div>
+        </div>
+
+        <!-- Vibrant Accent Orange/Blue Square Tile -->
+        <div class="vibrant-accent-tile">
+          <div class="tile-texture-overlay"></div>
+          <div class="tile-label">1 EPC Partner</div>
+          <div class="tile-sub">SINGLE POINT RESPONSIBILITY</div>
+        </div>
+
+        <!-- Bottom Grid Metrics -->
+        <div class="hud-bottom-grid">
+          <div class="hud-metric-box">
+            <div class="hud-metric-tag">COMPLIANCE</div>
+            <div class="hud-metric-val">100% CGLP & cGMP</div>
+          </div>
+
+          <div class="hud-metric-box" style="text-align: right;">
+            <div class="hud-metric-tag">FAT / SAT</div>
+            <div class="hud-metric-val">100% Verified</div>
+            <div class="meter-bar-track">
+              <div class="meter-bar-fill"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ LIFECYCLE SHOWCASE ═══ -->
+  <section id="interactive-flow" class="daylight-lifecycle-section">
+    <div class="container">
+      <div class="daylight-lifecycle-layout">
+        <!-- Left Side Vertical Navigation List -->
+        <nav class="vertical-stage-nav" id="stageTabsNav" aria-label="Project lifecycle stages">
+          <button class="v-stage-tab active" data-tab="1">
+            <span class="v-stage-num">01</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">Lab Design</span>
+              <span class="v-stage-sub">BIM & Workflow</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="2">
+            <span class="v-stage-num">02</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">Architecture</span>
+              <span class="v-stage-sub">HVAC & Cleanroom</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="3">
+            <span class="v-stage-num">03</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">Instruments</span>
+              <span class="v-stage-sub">Analytical BOQ</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="4">
+            <span class="v-stage-num">04</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">LIMS Software</span>
+              <span class="v-stage-sub">Digital Infrastructure</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="5">
+            <span class="v-stage-num">05</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">Factory FAT</span>
+              <span class="v-stage-sub">Pre-shipment Test</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="6">
+            <span class="v-stage-num">06</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">Installation SAT</span>
+              <span class="v-stage-sub">Commissioning</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="7">
+            <span class="v-stage-num">07</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">Service & PMC</span>
+              <span class="v-stage-sub">Lifetime Support</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+          <button class="v-stage-tab" data-tab="8">
+            <span class="v-stage-num">08</span>
+            <span class="v-stage-info">
+              <span class="v-stage-name">User Training</span>
+              <span class="v-stage-sub">SOP Certification</span>
+            </span>
+            <svg class="v-stage-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </nav>
+
+        <!-- Right Side Active Showcase Card -->
+        <article class="daylight-showcase-card" id="daylightShowcaseCard">
+          <!-- Left Content Column -->
+          <div class="showcase-content-col">
+            <h3 class="showcase-title" id="showcaseTitle">Lab Design Development</h3>
+            <span class="showcase-sub-tag" id="showcaseSubTag">3D BIM WORKFLOW ZONING</span>
+            
+            <p class="showcase-desc" id="showcaseDesc">
+              We design spatial layouts around analytical workflows to eliminate cross-contamination, streamline sample travel, and enforce SEFA clearance safety.
+            </p>
+
+            <div class="deliv-list-header">Key Engineering Deliverables</div>
+            <div class="panel-deliv-list" id="showcaseDelivList">
+              <div class="panel-deliv-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5" style="width:14px; height:14px; min-width:14px; min-height:14px; flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Architectural 3D BIM layout & workflow zoning</span>
+              </div>
+              <div class="panel-deliv-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5" style="width:14px; height:14px; min-width:14px; min-height:14px; flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>EHS risk assessment & SEFA 8 compliance check</span>
+              </div>
+              <div class="panel-deliv-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5" style="width:14px; height:14px; min-width:14px; min-height:14px; flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+                <span>Utility load schedule (Gas, Power, Water, Exhaust)</span>
+              </div>
+            </div>
+
+            <div>
+              <a href="#quote-builder" class="tk-btn-primary">
+                Include Stage in Quote
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- Right Vector Blueprint Illustration Column -->
+          <div class="showcase-illus-col" id="showcaseIllusCol">
+            <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M250 40 L450 140 L250 240 L50 140 Z" stroke="#555555" stroke-width="1.5" stroke-dasharray="6 6"/>
+              <path d="M50 140 L50 220 L250 320 L250 240 Z" stroke="#222222" stroke-width="2" fill="none"/>
+              <path d="M250 240 L450 140 L450 220 L250 320 Z" stroke="#222222" stroke-width="2" fill="none"/>
+              <path d="M260 70 L410 145 L370 165 L220 90 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="1.5"/>
+              <path d="M240 100 L390 175 L350 195 L200 120 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="1.5"/>
+              <path d="M120 180 L200 140 L280 180 L200 220 Z" stroke="#111111" stroke-width="2" fill="#ffffff"/>
+              <path d="M120 180 L120 220 M280 180 L280 220 M200 220 L200 260" stroke="#111111" stroke-width="2"/>
+            </svg>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TURNKEY SCOPE BUILDER ═══ -->
+  <section id="quote-builder" class="quote-section">
+    <div class="container">
+      <div class="section-header-center">
+        <h2 class="daylight-section-title">Estimate Your Lab Scope</h2>
+      </div>
+
+      <div class="quote-card-container">
+        <div>
+          <div class="qb-group-title">1. Select Laboratory Industry</div>
+          <div class="qb-industry-grid" id="qbIndustryGrid">
+            <button class="qb-ind-btn active" data-ind="Petrochemical & Oil/Gas">Petrochemical & Gas</button>
+            <button class="qb-ind-btn" data-ind="Pharmaceutical & Biotech">Pharma & Biotech</button>
+            <button class="qb-ind-btn" data-ind="Healthcare & Hospital">Clinical & Hospital</button>
+            <button class="qb-ind-btn" data-ind="University & Research">Academic & Research</button>
+            <button class="qb-ind-btn" data-ind="Food & Environmental">Food & Environment</button>
+            <button class="qb-ind-btn" data-ind="Industrial QC & Mining">Industrial QC</button>
+          </div>
+
+          <div class="qb-range-wrapper">
+            <div class="qb-range-header">
+              <span>2. Estimated Laboratory Area</span>
+              <span class="qb-range-val" id="qbAreaVal">250 sq. meters</span>
+            </div>
+            <input type="range" class="qb-range-slider" id="qbAreaSlider" min="50" max="2500" step="50" value="250" />
+          </div>
+
+          <div class="qb-group-title">3. Included Engineering Stages</div>
+          <div class="qb-stages-checklist" id="qbChecklist">
+            <label class="qb-check-lbl"><input type="checkbox" data-s="1" checked /> 01. Lab Design & BIM</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="2" checked /> 02. Architectural Fit-out</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="3" checked /> 03. Analyzers & Instruments</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="4" checked /> 04. LIMS Software System</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="5" checked /> 05. Factory Testing (FAT)</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="6" checked /> 06. Installation & SAT</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="7" /> 07. Preventive Maintenance</label>
+            <label class="qb-check-lbl"><input type="checkbox" data-s="8" /> 08. User SOP & Training</label>
+          </div>
+        </div>
+
+        <div class="qb-summary-panel">
+          <div>
+            <h3 class="qb-summary-title">Turnkey Scope Summary</h3>
+            <div class="qb-summary-row">
+              <span class="qb-summary-lbl">Selected Industry</span>
+              <span class="qb-summary-val" id="sumIndustry">Petrochemical & Gas</span>
+            </div>
+            <div class="qb-summary-row">
+              <span class="qb-summary-lbl">Facility Area</span>
+              <span class="qb-summary-val" id="sumArea">250 m²</span>
+            </div>
+
+
+            <div class="qb-deliv-box">
+              <div class="qb-deliv-title">Included Engineering Package</div>
+              <div class="qb-deliv-tags" id="sumTags">
+                <span class="qb-mini-tag">BIM 3D Design</span>
+                <span class="qb-mini-tag">HVAC Ducting</span>
+                <span class="qb-mini-tag">Instrument BOQ</span>
+                <span class="qb-mini-tag">LIMS Server</span>
+                <span class="qb-mini-tag">FAT Certificate</span>
+                <span class="qb-mini-tag">SAT Handover</span>
+              </div>
+            </div>
+          </div>
+
+          <a href="/contact" id="qbSubmitBtn" class="tk-btn-primary" style="width: 100%; justify-content: center;">
+            Request Turnkey Proposal
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FINAL CTA ABOVE FOOTER ══════════ -->
+  <section class="planner-cta-section">
+    <h2 class="planner-cta-title">Planning a new laboratory layout?</h2>
+    <p class="planner-cta-sub">
+      Tell us about your space and workflow and we'll design, supply and install your laboratory furniture.
+    </p>
+    <a href="/contact" class="btn-navy-square">
+      START PLANNING
+    </a>
+  </section>
+</div>
+
+<!-- ═══ INTERACTIVE CLIENT SCRIPTS ═══ -->
+<script is:inline>
+  const STAGE_ILLUSTRATIONS = {
+    1: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M250 40 L450 140 L250 240 L50 140 Z" stroke="#555555" stroke-width="1.5" stroke-dasharray="6 6"/>
+        <path d="M50 140 L50 220 L250 320 L250 240 Z" stroke="#222222" stroke-width="2" fill="none"/>
+        <path d="M250 240 L450 140 L450 220 L250 320 Z" stroke="#222222" stroke-width="2" fill="none"/>
+        <path d="M260 70 L410 145 L370 165 L220 90 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M240 100 L390 175 L350 195 L200 120 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M120 180 L200 140 L280 180 L200 220 Z" stroke="#111111" stroke-width="2" fill="#ffffff"/>
+        <path d="M120 180 L120 220 M280 180 L280 220 M200 220 L200 260" stroke="#111111" stroke-width="2"/>
+      </svg>
+    `,
+    2: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M100 200 L250 280 L400 200 L400 100 L250 20 L100 100 Z" stroke="#222222" stroke-width="2" fill="none"/>
+        <path d="M250 20 L250 280 M100 100 L250 180 L400 100" stroke="#222222" stroke-width="1.5"/>
+        <path d="M180 90 L330 165 L330 185 L180 110 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="1.5"/>
+        <path d="M130 150 L250 210 L370 150" stroke="#1e3a8a" stroke-width="3" stroke-dasharray="6 4"/>
+      </svg>
+    `,
+    3: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M120 190 L250 120 L380 190 L250 260 Z" stroke="#222222" stroke-width="2" fill="#ffffff"/>
+        <path d="M270 90 L360 45 L360 140 L270 185 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="2"/>
+        <path d="M180 135 L270 90 L360 135 L270 180 Z" fill="#1e3a8a" fill-opacity="0.3" stroke="#1e3a8a" stroke-width="1.5"/>
+      </svg>
+    `,
+    4: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M140 100 L210 65 L280 100 L210 135 Z" stroke="#222222" stroke-width="2" fill="#ffffff"/>
+        <path d="M140 100 L140 210 L210 245 L210 135 Z" stroke="#222222" stroke-width="2" fill="#f0ece8"/>
+        <path d="M210 135 L280 100 L280 210 L210 245 Z" stroke="#222222" stroke-width="2" fill="#e0ded9"/>
+        <path d="M155 125 L195 145 L195 160 L155 140 Z" fill="#1e3a8a"/>
+        <path d="M155 165 L195 185 L195 200 L155 180 Z" fill="#1e3a8a"/>
+        <path d="M280 150 C340 120 350 200 420 170" stroke="#1e3a8a" stroke-width="3.5" stroke-dasharray="8 5"/>
+      </svg>
+    `,
+    5: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M180 220 L300 150 L420 220 L300 290 Z" stroke="#222222" stroke-width="2" fill="#ffffff"/>
+        <path d="M230 110 L300 75 L370 110 L300 145 Z" stroke="#1e3a8a" stroke-width="2" fill="#1e3a8a" fill-opacity="0.2"/>
+        <path d="M300 180 L300 70" stroke="#1e3a8a" stroke-width="3.5" stroke-dasharray="6 4"/>
+      </svg>
+    `,
+    6: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M140 180 L260 120 L380 180 L260 240 Z" stroke="#222222" stroke-width="2" fill="#ffffff"/>
+        <path d="M260 40 L260 160" stroke="#1e3a8a" stroke-width="3.5"/>
+        <path d="M220 160 L290 125 L290 140 L220 175 Z" fill="#1e3a8a"/>
+      </svg>
+    `,
+    7: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="260" cy="180" rx="170" ry="85" stroke="#1e3a8a" stroke-width="2" stroke-dasharray="8 6" fill="none"/>
+        <path d="M180 180 L260 140 L340 180 L260 220 Z" stroke="#222222" stroke-width="2" fill="#ffffff"/>
+        <path d="M260 80 L300 105 L300 145 L260 170 L220 145 L220 105 Z" fill="#1e3a8a" fill-opacity="0.9" stroke="#ffffff" stroke-width="2"/>
+      </svg>
+    `,
+    8: `
+      <svg viewBox="0 0 500 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M160 190 L260 140 L360 190 L260 240 Z" stroke="#222222" stroke-width="2" fill="#ffffff"/>
+        <path d="M210 70 L310 20 L310 110 L210 160 Z" fill="#1e3a8a" stroke="#ffffff" stroke-width="2"/>
+        <path d="M225 90 L295 55" stroke="#ffffff" stroke-width="2.5"/>
+      </svg>
+    `
+  };
+
+  const STAGE_DATA = {
+    1: {
+      stepNum: "STEP 01 / 08",
+      title: "Lab Design Development",
+      subTag: "3D BIM WORKFLOW ZONING",
+      desc: "We design spatial layouts around analytical workflows to eliminate cross-contamination, streamline sample travel, and enforce SEFA clearance safety.",
+      deliverables: [
+        "Architectural 3D BIM layout & workflow zoning",
+        "EHS risk assessment & SEFA 8 compliance check",
+        "Utility load schedule (Gas, Power, Water, Exhaust)"
+      ]
     },
-    {
-      id: 'supply',
-      title: 'Supply & installation',
-      sub: 'Everything delivered, installed and set up by our own team.',
-      cards: [
-        { label: 'Equipment Supply', text: 'Genuine instruments and furniture from our authorized brands.' },
-        { label: 'Furniture Installation', text: 'Workbenches, fume hoods and storage installed and aligned.' },
-        { label: 'Delivery & Logistics', text: 'Careful crating, transport and placement of sensitive equipment.' },
-        { label: 'Unpacking & Setup', text: 'Unpacking, assembly and initial configuration on site.' },
-      ],
+    2: {
+      stepNum: "STEP 02 / 08",
+      title: "Lab Building Architecture",
+      subTag: "HVAC & UTILITY FIT-OUT",
+      desc: "Civil fit-out, cleanroom wall paneling, pressure cascade balancing, and high-purity gas manifold piping.",
+      deliverables: [
+        "HVAC air change & pressure zoning calculations",
+        "High-purity gas manifold & piping schematics",
+        "Anti-static chemical-resistant cleanroom fit-out"
+      ]
     },
-    {
-      id: 'commissioning',
-      title: 'Testing & commissioning',
-      sub: 'We prove it works before we hand it over.',
-      cards: [
-        { label: 'Functional Testing', text: 'Every instrument and system tested against specification.' },
-        { label: 'Calibration', text: 'Calibration certificates and traceable documentation provided.' },
-        { label: 'Documentation', text: 'Complete O&M manuals, compliance files and as-built drawings.' },
-        { label: 'Handover & Training', text: 'On-site training so your team is confident from day one.' },
-      ],
+    3: {
+      stepNum: "STEP 03 / 08",
+      title: "Analyzers & Instruments",
+      subTag: "ANALYTICAL EQUIPMENT SUPPLY",
+      desc: "Single-source procurement of chromatography, spectrophotometers, biological safety cabinets, and fume hoods.",
+      deliverables: [
+        "Complete Instrument Bill of Materials (BOM)",
+        "Analytical test method & instrument pairing",
+        "Genuine factory authorization & spec sheets"
+      ]
     },
-    {
-      id: 'support',
-      title: 'Ongoing support',
-      sub: 'Long after handover, we stay with you.',
-      cards: [
-        { label: 'Preventive Maintenance', text: 'Scheduled maintenance programs that keep your lab running.' },
-        { label: 'Spare Parts', text: 'Genuine consumables and parts, stocked and ready.' },
-        { label: 'Warranty Service', text: 'Fast-turnaround repairs and full warranty management.' },
-        { label: 'Extensions & Upgrades', text: 'Grow your lab with furniture, instruments and new capabilities.' },
-      ],
+    4: {
+      stepNum: "STEP 04 / 08",
+      title: "LIMS Software Development",
+      subTag: "DIGITAL INFRASTRUCTURE",
+      desc: "Automated sample tracking, bi-directional instrument interfacing, and ISO 17025 data integrity compliance.",
+      deliverables: [
+        "LIMS server, HMI & network infrastructure setup",
+        "Bi-directional instrument data interfacing",
+        "21 CFR Part 11 electronic signature audit trail"
+      ]
     },
-  ]}
-  cta={{
-    title: 'Ready to build your laboratory?',
-    text: 'Tell us about your facility and requirements and we\u2019ll take your project from concept to handover.',
-  }}
-/>
+    5: {
+      stepNum: "STEP 05 / 08",
+      title: "Factory Acceptance (FAT)",
+      subTag: "PRE-SHIPMENT VALIDATION",
+      desc: "Pre-shipment verification of fume hood containment, gas manifold pressure tightness, and software racks.",
+      deliverables: [
+        "Inspection Test Plan (ITP) & checklist sign-off",
+        "ASHRAE 110 containment factory testing",
+        "Customer FAT sign-off certificates before dispatch"
+      ]
+    },
+    6: {
+      stepNum: "STEP 06 / 08",
+      title: "Installation & SAT",
+      subTag: "ON-SITE COMMISSIONING",
+      desc: "On-site mechanical leveling, utility hookup, gas pressure leak testing, and IQ/OQ/PQ instrument validation.",
+      deliverables: [
+        "Site Acceptance Testing (SAT) execution",
+        "Installation & Operational Qualification (IQ/OQ/PQ)",
+        "Traceable site calibration certificates"
+      ]
+    },
+    7: {
+      stepNum: "STEP 07 / 08",
+      title: "Service & Maintenance",
+      subTag: "LIFETIME FACILITY SUPPORT",
+      desc: "Preventive Maintenance Contracts (PMC), local UAE spare parts stocking, annual sensor calibration, and 24/7 technical support.",
+      deliverables: [
+        "Scheduled preventive maintenance & filter replacement",
+        "Local UAE spare parts inventory guarantee",
+        "Annual recertification of fume hoods & biosafety cabinets"
+      ]
+    },
+    8: {
+      stepNum: "STEP 08 / 08",
+      title: "Training & Certification",
+      subTag: "OPERATOR SOP & ACCREDITATION",
+      desc: "On-site hands-on operational training for lab technicians, safety SOP documentation, and user certification.",
+      deliverables: [
+        "Hands-on instrument & software user training",
+        "Laboratory safety SOP documentation & manuals",
+        "Certified operator training completion certificates"
+      ]
+    }
+  };
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // 1. Stage Vertical Selection
+    const tabBtns = document.querySelectorAll('.v-stage-tab');
+    const showcaseTitle = document.getElementById('showcaseTitle');
+    const showcaseSubTag = document.getElementById('showcaseSubTag');
+    const showcaseDesc = document.getElementById('showcaseDesc');
+    const showcaseDelivList = document.getElementById('showcaseDelivList');
+    const showcaseIllusCol = document.getElementById('showcaseIllusCol');
+
+    function selectStage(stageId) {
+      tabBtns.forEach(b => {
+        b.classList.remove('active');
+        if (b.getAttribute('data-tab') == stageId) {
+          b.classList.add('active');
+        }
+      });
+
+      const data = STAGE_DATA[stageId];
+      if (data) {
+        showcaseTitle.textContent = data.title;
+        showcaseSubTag.textContent = data.subTag;
+        showcaseDesc.textContent = data.desc;
+        showcaseIllusCol.innerHTML = STAGE_ILLUSTRATIONS[stageId];
+
+        showcaseDelivList.innerHTML = data.deliverables.map(d => `
+          <div class="panel-deliv-item" style="display:flex; align-items:flex-start; gap:0.5rem; font-size:0.85rem; color:#111827; line-height:1.35;">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1e3a8a" stroke-width="2.5" style="width:14px; height:14px; min-width:14px; min-height:14px; flex-shrink:0; margin-top:2px;"><polyline points="20 6 9 17 4 12"/></svg>
+            <span>${d}</span>
+          </div>
+        `).join('');
+      }
+    }
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        selectStage(btn.getAttribute('data-tab'));
+      });
+    });
+
+    // 2. Scope Estimator Widget
+    let currentIndustry = "Petrochemical & Gas";
+    let currentArea = 250;
+
+    const indBtns = document.querySelectorAll('.qb-ind-btn');
+    const areaSlider = document.getElementById('qbAreaSlider');
+    const areaVal = document.getElementById('qbAreaVal');
+    const checkboxes = document.querySelectorAll('#qbChecklist input[type="checkbox"]');
+
+    const sumIndustry = document.getElementById('sumIndustry');
+    const sumArea = document.getElementById('sumArea');
+    const sumTags = document.getElementById('sumTags');
+
+    function updateQuoteSummary() {
+      const checkedBoxes = Array.from(checkboxes).filter(cb => cb.checked);
+
+      sumIndustry.textContent = currentIndustry;
+      sumArea.textContent = `${currentArea} m²`;
+
+      const tagsMap = {
+        1: "BIM 3D Design", 2: "HVAC Ducting", 3: "Instrument BOQ", 4: "LIMS Server",
+        5: "FAT Certificate", 6: "SAT Handover", 7: "PMC Service", 8: "SOP Training"
+      };
+
+      const activeTags = checkedBoxes.map(cb => tagsMap[cb.getAttribute('data-s')]);
+      sumTags.innerHTML = activeTags.map(t => `<span class="qb-mini-tag">${t}</span>`).join('');
+    }
+
+    indBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        indBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentIndustry = btn.getAttribute('data-ind');
+        updateQuoteSummary();
+      });
+    });
+
+    if (areaSlider) {
+      areaSlider.addEventListener('input', (e) => {
+        currentArea = e.target.value;
+        areaVal.textContent = `${currentArea} sq. meters`;
+        updateQuoteSummary();
+      });
+    }
+
+    checkboxes.forEach(cb => cb.addEventListener('change', updateQuoteSummary));
+  });
+</script>
 
 </Layout>

@@ -118,7 +118,7 @@ const gridSections = [
   <!-- ─── HIGHLIGHT ─── -->
   <section class="ice-highlight" data-view>
     <div class="ice-highlight-image clip--top_left">
-      <img src="/consumables-highlight.jpg" alt="Laboratory consumables" loading="lazy" />
+      <img src="/labcons2.webp" alt="Laboratory consumables" loading="lazy" />
     </div>
     <div class="ice-highlight-overlay">
       <h2>Complete Laboratory Consumables Range</h2>
@@ -268,10 +268,7 @@ const gridSections = [
   .ice-hero-image:after {
     content: "";
     pointer-events: none;
-    background:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E"),
-      linear-gradient(180deg, #00000040 0%, #0000001a 45%, #0000008c 78%, #000000cc 100%),
-      linear-gradient(90deg, #00000099 0%, #00000059 35%, #00000000 70%);
+    background: linear-gradient(#0003 0% 70%, #0003 70%, #0000004d 80%, #0006 100%);
     position: absolute;
     inset: 0;
   }
@@ -550,12 +547,9 @@ const gridSections = [
   .ice-highlight-image:after {
     content: "";
     pointer-events: none;
-    background:
-      linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
-      linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='4' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.14'/%3E%3C/svg%3E");
     position: absolute;
     inset: 0;
+    background: radial-gradient(100% 85% at 15% 82%, rgba(4, 9, 20, 0.92) 0%, rgba(4, 9, 20, 0.65) 30%, rgba(4, 9, 20, 0.28) 48%, rgba(4, 9, 20, 0) 62%);
   }
   .ice-highlight-image img {
     object-fit: cover;

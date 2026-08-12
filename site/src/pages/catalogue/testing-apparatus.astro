@@ -704,12 +704,11 @@ const categoryCards = [
   .ice-highlight-image:after {
     content: "";
     pointer-events: none;
-    background:
-      linear-gradient(180deg, #00000099 0%, #0000004d 40%, #00000059 60%, #000000e6 100%),
-      linear-gradient(90deg, #1a365d99 0%, #1a365d33 45%, #00000000 70%),
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='5' numOctaves='4' stitchTiles='stitch' seed='12'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.14'/%3E%3C/svg%3E");
     position: absolute;
     inset: 0;
+    background:
+      radial-gradient(130% 130% at 10% 100%, rgba(9, 16, 30, 0.6) 0%, rgba(9, 16, 30, 0.32) 26%, rgba(9, 16, 30, 0.05) 48%, rgba(9, 16, 30, 0) 62%),
+      linear-gradient(0deg, rgba(9, 16, 30, 0.4) 0%, rgba(9, 16, 30, 0) 40%);
   }
   .ice-highlight-image img {
     object-fit: cover;
