@@ -8,24 +8,40 @@ interface Props {
   image: string;
   tag?: string;
   href?: string;
+  noLink?: boolean;
 }
 
-const { id, name, fullName, brandName, subcategoryName, image, tag, href } = Astro.props;
+const { id, name, fullName, brandName, subcategoryName, image, tag, href, noLink } = Astro.props;
 const link = href || `/catalogue/${id}`;
 const external = /^https?:\/\//.test(link);
 ---
 
 <article class="ice-card">
-  <a href={link} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
-    <div class="ice-card-image">
-      <img src={image} alt={fullName || name} loading="lazy" decoding="async" />
-      {tag && <span class="ice-card-tag">{tag}</span>}
-    </div>
-    <div class="ice-card-info">
-      <p class="ice-card-name"><span class="ice-card-name-part">{name}</span></p>
-      <p class="ice-card-sub">{subcategoryName || brandName}</p>
-    </div>
-  </a>
+  {
+    noLink ? (
+      <div class="ice-card-inner">
+        <div class="ice-card-image">
+          <img src={image} alt={fullName || name} loading="lazy" decoding="async" />
+          {tag && <span class="ice-card-tag">{tag}</span>}
+        </div>
+        <div class="ice-card-info">
+          <p class="ice-card-name"><span class="ice-card-name-part">{name}</span></p>
+          <p class="ice-card-sub">{subcategoryName || brandName}</p>
+        </div>
+      </div>
+    ) : (
+      <a href={link} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+        <div class="ice-card-image">
+          <img src={image} alt={fullName || name} loading="lazy" decoding="async" />
+          {tag && <span class="ice-card-tag">{tag}</span>}
+        </div>
+        <div class="ice-card-info">
+          <p class="ice-card-name"><span class="ice-card-name-part">{name}</span></p>
+          <p class="ice-card-sub">{subcategoryName || brandName}</p>
+        </div>
+      </a>
+    )
+  }
 </article>
 
 <style>
@@ -42,6 +58,13 @@ const external = /^https?:\/\//.test(link);
     display: flex;
     text-decoration: none;
     color: inherit;
+  }
+  .ice-card-inner {
+    flex-direction: column;
+    height: 100%;
+    display: flex;
+    color: inherit;
+    cursor: default;
   }
   .ice-card-image {
     aspect-ratio: 1 / 1;

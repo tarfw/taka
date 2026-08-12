@@ -1,66 +1,84 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ProductCardMini from '../../components/ProductCardMini.astro';
 
-const categoryCards = [
-  { name: 'Beakers & Glassware', image: '/products/consumables/beakers.jpg', href: '#glassware' },
-  { name: 'Flasks', image: '/products/consumables/flasks.jpg', href: '#glassware' },
-  { name: 'Pipette Tips', image: '/products/consumables/pipette-tips.jpg', href: '#disposables' },
-  { name: 'Petri Dishes', image: '/products/consumables/petri-dishes.jpg', href: '#disposables' },
-  { name: 'Filter Paper', image: '/products/consumables/filter-paper.jpg', href: '#filtration' },
-  { name: 'Buffer Solutions', image: '/products/consumables/buffer-solutions.jpg', href: '#reagents' },
+const labTubes = [
+  { id: 'safe-lock-tubes', name: 'Safe-Lock Tubes', subcategoryName: 'Lab Tubes', image: '/products/consumables/lab-tubes/safe-lock-tubes.jpg', href: '/contact' },
+  { id: 'conical-tubes-15-50ml', name: 'Conical Tubes 15 mL and 50 mL', subcategoryName: 'Lab Tubes', image: '/products/consumables/lab-tubes/conical-tubes-15-50ml.jpg', href: '/contact' },
+  { id: 'pcr-tubes-strips', name: 'PCR Tubes, PCR Tube Strips & Cap Strips', subcategoryName: 'Lab Tubes', image: '/products/consumables/lab-tubes/pcr-tubes-strips.jpg', href: '/contact' },
+  { id: 'storage-boxes', name: 'Storage Boxes', subcategoryName: 'Lab Tubes', image: '/products/consumables/lab-tubes/storage-boxes.jpg', href: '/contact' },
+  { id: 'tube-racks-cuvette-rack', name: 'Tube Racks and Cuvette Rack', subcategoryName: 'Lab Tubes', image: '/products/consumables/lab-tubes/tube-racks-cuvette-rack.jpg', href: '/contact' },
 ];
 
-const gridSections = [
+const pipetteTips = [
+  { id: 'dualfilter-tips', name: 'Dualfilter T.I.P.S.', subcategoryName: 'Pipette Tips', image: '/products/consumables/pipette-tips/dualfilter-tips.jpg', href: '/contact' },
+  { id: 'dualfilter-tips-384', name: 'Dualfilter T.I.P.S. 384', subcategoryName: 'Pipette Tips', image: '/products/consumables/pipette-tips/dualfilter-tips-384.jpg', href: '/contact' },
+  { id: 'dualfilter-tips-sealmax', name: 'Dualfilter T.I.P.S. SealMax', subcategoryName: 'Pipette Tips', image: '/products/consumables/pipette-tips/dualfilter-tips-sealmax.jpg', href: '/contact' },
+  { id: 'eptips-384', name: 'T.I.P.S. 384', subcategoryName: 'Pipette Tips', image: '/products/consumables/pipette-tips/eptips-384.jpg', href: '/contact' },
+];
+
+const plates = [
+  { id: 'deepwell-plates', name: 'Deepwell Plates', subcategoryName: 'Plates', image: '/products/consumables/plates/deepwell-plates.jpg', href: '/contact' },
+  { id: 'microplates-assay-reader', name: 'Microplates and Assay/Reader Plates', subcategoryName: 'Plates', image: '/products/consumables/plates/microplates-assay-reader.jpg', href: '/contact' },
+  { id: 'twintec-real-time-pcr-plates', name: 'twin.tec real-time PCR Plates', subcategoryName: 'Plates', image: '/products/consumables/plates/twintec-real-time-pcr-plates.jpg', href: '/contact' },
+  { id: 'safecode-plates', name: 'SafeCode Plates (barcoded)', subcategoryName: 'Plates', image: '/products/consumables/plates/safecode-plates.jpg', href: '/contact' },
+];
+
+const sealingOptions = [
+  { id: 'pcr-films-foils', name: 'PCR Films & Foils', subcategoryName: 'Sealing Options', image: '/products/consumables/sealing-options/pcr-films-foils.jpg', href: '/contact' },
+];
+
+const highSpeedUltra = [
+  { id: 'tubes', name: 'Tubes', subcategoryName: 'High-Speed & Ultracentrifuge', image: '/products/consumables/high-speed-ultracentrifuge/tubes.jpg', href: '/contact' },
+  { id: 'thick-walled-tubes', name: 'Thick-Walled Tubes', subcategoryName: 'High-Speed & Ultracentrifuge', image: '/products/consumables/high-speed-ultracentrifuge/thick-walled-tubes.jpg', href: '/contact' },
+  { id: 'seal-tubes', name: 'Seal Tubes', subcategoryName: 'High-Speed & Ultracentrifuge', image: '/products/consumables/high-speed-ultracentrifuge/seal-tubes.jpg', href: '/contact' },
+];
+
+const productSections = [
   {
-    id: 'glassware',
-    title: 'Glassware & plasticware',
-    sub: 'Borosilicate glassware and lab plastics for every routine and analytical application.',
-    cards: [
-      { label: 'Beakers & Measuring Cylinders', text: 'Borosilicate 3.3 glass beakers, cylinders and mixing vessels.' },
-      { label: 'Flasks', text: 'Volumetric, conical, round-bottom and reagent flasks.' },
-      { label: 'Volumetric Glassware', text: 'Class A pipettes, burettes and volumetric flasks with certificates.' },
-      { label: 'Bottles & Containers', text: 'Media bottles, wash bottles, jars and sample containers.' },
-    ],
+    id: 'lab-tubes',
+    title: 'Lab Tubes',
+    sub: 'Microtubes, conical tubes, PCR tubes and storage solutions — from 0.1 mL to 50 mL for every lab application.',
+    products: labTubes,
   },
   {
-    id: 'disposables',
-    title: 'Pipette tips & disposables',
-    sub: 'Consistent, RNase-free disposables for confident liquid handling.',
-    cards: [
-      { label: 'Pipette Tips', text: 'Filtered and unfiltered tips for 0.1 µL to 10 mL pipettes.' },
-      { label: 'Petri Dishes', text: 'Sterile polystyrene and glass dishes for culture work.' },
-      { label: 'Tubes & Racks', text: 'Microtubes, centrifuge tubes, cryovials and tube racks.' },
-      { label: 'Gloves & PPE', text: 'Nitrile and latex gloves, aprons and lab safety essentials.' },
-    ],
+    id: 'pipette-tips',
+    title: 'Pipette Tips',
+    sub: 'Precision pipette tips for accurate, reproducible liquid handling across your workflows.',
+    products: pipetteTips,
   },
   {
-    id: 'filtration',
-    title: 'Filtration & paperware',
-    sub: 'Filtration media and lab paper for preparation and analysis.',
-    cards: [
-      { label: 'Filter Paper', text: 'Qualitative and quantitative filter papers in all grades.' },
-      { label: 'Membrane Filters', text: 'PES, nylon and cellulose membranes for solvent and aqueous filtration.' },
-      { label: 'Syringe Filters', text: 'Ready-to-use sterile syringe filters in popular pore sizes.' },
-      { label: 'Weighing & Lint-free Paper', text: 'Weighing boats, pans and lint-free wipes for balances.' },
-    ],
+    id: 'plates',
+    title: 'Plates',
+    sub: 'Deepwell plates for high-throughput sample processing and storage.',
+    products: plates,
   },
   {
-    id: 'reagents',
-    title: 'Reagents & standards',
-    sub: 'Solutions and standards for calibration, cleaning and routine chemistry.',
-    cards: [
-      { label: 'Buffer Solutions', text: 'pH 4, 7 and 10 buffers plus certified calibration standards.' },
-      { label: 'Reagent Kits', text: 'Ready-to-use reagent sets for common water and chemistry tests.' },
-      { label: 'Cleaning Solutions', text: 'Laboratory detergents and rinsing solutions for glassware.' },
-      { label: 'Desiccants & Absorbents', text: 'Silica gel, drying agents and spill absorbents.' },
-    ],
+    id: 'sealing-options',
+    title: 'Sealing Options',
+    sub: 'Heatsealing films and plate sealing options for tight, reliable closure of PCR plates.',
+    products: sealingOptions,
   },
+  {
+    id: 'high-speed-ultracentrifuge-consumables',
+    title: 'High-Speed and Ultracentrifuge Consumables',
+    sub: 'Tubes and bottles engineered for reliable centrifugation at high forces.',
+    products: highSpeedUltra,
+  },
+];
+
+const categoryCards = [
+  { name: 'Lab Tubes', image: '/products/consumables/lab-tubes.jpg', href: '#lab-tubes' },
+  { name: 'Pipette Tips', image: '/products/consumables/pipette-tips.jpg', href: '#pipette-tips' },
+  { name: 'Plates', image: '/products/consumables/plates.jpg', href: '#plates' },
+  { name: 'Sealing options', image: '/products/consumables/sealing-options.jpg', href: '#sealing-options' },
+  { name: 'High-Speed & Ultracentrifuge Consumables', image: '/products/consumables/high-speed-ultracentrifuge.jpg', href: '#high-speed-ultracentrifuge-consumables' },
 ];
 ---
 
 <Layout
-  title="Laboratory Consumables — Glassware, Filtration & Reagents"
-  description="Laboratory consumables from TAKA Scientific — glassware, pipette tips, filtration and reagents, always in stock and delivered fast across the UAE."
+  title="Laboratory Consumables — Tubes, Tips & Plates"
+  description="Laboratory consumables from TAKA Scientific — lab tubes, pipette tips, plates and sealing solutions, always in stock and delivered fast across the UAE."
   hasHero={true}
 >
 
@@ -88,7 +106,7 @@ const gridSections = [
   <!-- ─── HEADLINE TEXT ─── -->
   <section class="ice-headline-text ice-headline-footer" data-view>
     <div class="ice-headline-wrapper">
-      <p class="ice-headline-big">High-purity reagents, volumetric glassware, filtration media, and daily lab supplies for routine analysis.</p>
+      <p class="ice-headline-big">View our selection of consumables and see how we can help you restock your lab with confidence.</p>
     </div>
   </section>
 
@@ -123,26 +141,42 @@ const gridSections = [
     <div class="ice-highlight-overlay">
       <h2>Complete Laboratory Consumables Range</h2>
       <div class="ice-hero-buttons">
-        <a href="#glassware" class="ice-btn ice-btn-outlined"><span>View All Consumables</span></a>
+        <a href="#lab-tubes" class="ice-btn ice-btn-outlined"><span>View All Consumables</span></a>
         <a href="/contact" class="ice-btn ice-btn-outlined"><span>Request Bulk Pricing</span></a>
       </div>
     </div>
   </section>
 
-  <!-- ─── PRODUCT SECTIONS (grid) ─── -->
-  {gridSections.map(section => (
-    <section class="ice-grid-section" id={section.id} data-view>
-      <div class="ice-grid-head">
-        <h2>{section.title}</h2>
-      </div>
-      <p class="ice-slider-sub">{section.sub}</p>
-      <div class="ice-grid">
-        {section.cards.map((card) => (
-          <div class="ice-grid-card">
-            <span class="ice-grid-label">{card.label}</span>
-            <p>{card.text}</p>
+  <!-- ─── PRODUCT SECTIONS ─── -->
+  {productSections.map(section => (
+    <section class="ice-slider-section" id={section.id} data-view>
+      <div class="ice-slider">
+        <div class="ice-slider-title">
+          <div class="ice-slider-title-wrapper">
+            <h2>{section.title}</h2>
           </div>
-        ))}
+          <div class="ice-slider-controls">
+            <button class="ice-slider-prev" aria-label="Previous" disabled>Prev</button>
+            <button class="ice-slider-next" aria-label="Next" disabled>Next</button>
+          </div>
+        </div>
+        <p class="ice-slider-sub">{section.sub}</p>
+        <div class="ice-slider-items">
+          <div class="ice-slider-track">
+            {section.products.map(p => (
+              <div class="ice-slider-item">
+                <ProductCardMini
+                  id={p.id}
+                  name={p.name}
+                  subcategoryName={p.subcategoryName}
+                  image={p.image}
+                  tag={p.tag}
+                  noLink={true}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   ))}
@@ -157,6 +191,31 @@ const gridSections = [
 </div>
 
 </Layout>
+
+<script>
+  document.querySelectorAll('.ice-slider').forEach(slider => {
+    const scroller = slider.querySelector('.ice-slider-items');
+    const prev = slider.querySelector('.ice-slider-prev');
+    const next = slider.querySelector('.ice-slider-next');
+    if (!scroller || !prev || !next) return;
+
+    const update = () => {
+      const max = scroller.scrollWidth - scroller.clientWidth;
+      prev.disabled = scroller.scrollLeft <= 1;
+      next.disabled = scroller.scrollLeft >= max - 1;
+    };
+    const step = () => {
+      const item = scroller.querySelector('.ice-slider-item');
+      return item ? item.offsetWidth : scroller.clientWidth;
+    };
+
+    prev.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next.addEventListener('click', () => scroller.scrollBy({ left: step(), behavior: 'smooth' }));
+    scroller.addEventListener('scroll', update, { passive: true });
+    update();
+    window.addEventListener('resize', update);
+  });
+</script>
 
 <style>
   .ice-page {
@@ -346,6 +405,127 @@ const gridSections = [
     left: -24px;
     top: 50%;
     transform: translateY(-50%);
+  }
+
+  /* ─── SLIDER ─── */
+  .ice-slider-section {
+    padding: 0;
+    scroll-margin-top: calc(var(--ice-header-height) + 24px);
+  }
+  .ice-slider {
+    flex-direction: column;
+    display: flex;
+  }
+  .ice-slider-title {
+    padding: 0 var(--ice-pad) 14px;
+    width: 100%;
+    color: var(--ice-black);
+    align-items: center;
+    display: flex;
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-title { padding: 0 var(--ice-pad) 17px; }
+  }
+  .ice-slider-title h2 {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 1.4;
+    font-weight: 400;
+    margin: 0;
+  }
+  .ice-slider-controls {
+    font-family: var(--ice-mono);
+    letter-spacing: -0.01em;
+    gap: 14px;
+    margin-left: auto;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .ice-slider-controls button {
+    font-family: var(--ice-mono);
+    font-size: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--ice-black);
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  .ice-slider-controls button:disabled {
+    opacity: var(--ice-opacity);
+    pointer-events: none;
+  }
+  @media (max-width: 1024px) {
+    .ice-slider-title { padding-bottom: 14px; }
+    .ice-slider-controls { display: none; }
+    .ice-slider-title-wrapper { justify-content: space-between; }
+  }
+  .ice-slider-title-wrapper {
+    font-family: var(--ice-mono);
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+    font-size: 12px;
+    line-height: 1.4;
+    display: flex;
+  }
+  .ice-slider-title-wrapper a {
+    opacity: var(--ice-opacity);
+    text-decoration: none;
+    color: inherit;
+  }
+  @media (hover: hover) {
+    .ice-slider-title-wrapper a:hover {
+      opacity: 1;
+      text-underline-offset: var(--ice-underline-offset);
+      text-decoration: underline;
+    }
+  }
+  @media (max-width: 1024px) {
+    .ice-slider-title-wrapper a {
+      text-underline-offset: var(--ice-underline-offset);
+      text-decoration: underline;
+    }
+  }
+
+  .ice-slider-items {
+    width: calc(100% + var(--ice-gap));
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior-x: contain;
+    margin-left: calc(var(--ice-gap) * -1);
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+  .ice-slider-items::-webkit-scrollbar { display: none; }
+  .ice-slider-track {
+    display: flex;
+  }
+  .ice-slider-item {
+    flex: 0 0 var(--ice-flex);
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    min-width: 0;
+    padding-left: var(--ice-gap);
+    position: relative;
+  }
+
+  /* Product slider */
+  .ice-slider-items {
+    --ice-gap: 1px;
+    --ice-flex: calc(100% / 1.3);
+  }
+  @media (min-width: 1024px) {
+    .ice-slider-items {
+      --ice-flex: calc(100% / 5);
+    }
   }
 
   /* ─── CATEGORIES ─── */
@@ -584,66 +764,6 @@ const gridSections = [
     }
   }
 
-  /* ─── GRID SECTIONS ─── */
-  .ice-grid-section {
-    padding: 0 var(--ice-pad);
-    scroll-margin-top: calc(var(--ice-header-height) + 24px);
-  }
-  .ice-grid-head {
-    font-family: var(--ice-mono);
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    padding-bottom: 17px;
-    font-size: 12px;
-    line-height: 1.4;
-  }
-  .ice-grid-head h2 {
-    font-size: inherit;
-    font-weight: 400;
-    margin: 0;
-  }
-  .ice-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    display: grid;
-  }
-  @media (min-width: 768px) {
-    .ice-grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: var(--ice-pad);
-    }
-  }
-  @media (min-width: 1024px) {
-    .ice-grid {
-      grid-template-columns: repeat(4, 1fr);
-      gap: var(--ice-pad);
-    }
-  }
-  .ice-grid-card {
-    border: 1px solid var(--ice-border);
-    padding: var(--ice-pad);
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    display: flex;
-    text-decoration: none;
-    color: inherit;
-  }
-  .ice-grid-label {
-    font-family: var(--ice-mono);
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    font-size: 12px;
-    line-height: 1.4;
-  }
-  .ice-grid-card p {
-    font-family: var(--ice-sans);
-    font-size: 15px;
-    line-height: 1.4;
-    margin: 0;
-    opacity: 0.75;
-  }
-
   /* ─── SLIDER SUBTITLE ─── */
   .ice-slider-sub {
     font-family: var(--ice-mono);
@@ -706,5 +826,6 @@ const gridSections = [
     .ice-hero-trust { gap: 6px 20px; }
     .ice-hero-trust p + p:before { left: -10px; }
     .ice-highlight-overlay h2 { font-size: 32px; }
+    .ice-slider-title-wrapper { gap: 12px; }
   }
 </style>
