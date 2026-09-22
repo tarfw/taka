@@ -2269,25 +2269,69 @@
       }
     }
 
+    function showToast(message, type) {
+      const container = document.getElementById('toast-container');
+      if (!container) return;
+      const colors = {
+        success: 'bg-[#0E8668] text-white',
+        error: 'bg-[#9B1C1C] text-white',
+        info: 'bg-[#1A1F36] text-white'
+      };
+      const toast = document.createElement('div');
+      toast.className = `${colors[type] || colors.info} px-4 py-3 rounded-lg shadow-lg text-sm font-medium pointer-events-auto transition-opacity duration-300`;
+      toast.style.opacity = '0';
+      toast.textContent = message;
+      container.appendChild(toast);
+      requestAnimationFrame(() => { toast.style.opacity = '1'; });
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        setTimeout(() => toast.remove(), 300);
+      }, 4000);
+    }
+
+    async function postAction(url, getMessage, onDone) {
+      try {
+        const res = await fetch(url, { method: 'POST' });
+        if (res.status === 403) {
+          showToast('Session expired — reloading…', 'error');
+          setTimeout(() => window.location.reload(), 1500);
+          return null;
+        }
+        const data = await res.json().catch(() => ({}));
+        if (res.ok) {
+          if (onDone) await onDone();
+          showToast(getMessage(data), 'success');
+          return data;
+        }
+        showToast(data.error || `Action failed (${res.status})`, 'error');
+        return null;
+      } catch (err) {
+        showToast('Network error — please try again', 'error');
+        return null;
+      }
+    }
+
     async function convertQuoteToInvoice(quoteId) {
       if (!confirm('Convert this quotation to an official Sales Tax Invoice?')) return;
-      const res = await fetch(`/api/quotes/${quoteId}/convert`, { method: 'POST' });
-      if (res.ok) {
-        await loadInitialData();
-        navigateView('invoices');
-      } else {
-        alert('Failed to convert quote');
-      }
+      await postAction(
+        `/api/quotes/${quoteId}/convert`,
+        (d) => `Tax Invoice ${d.invoice_number || ''} created`,
+        async () => {
+          await loadInitialData();
+          navigateView('invoices');
+        }
+      );
     }
 
     async function convertPoToBill(poId) {
       if (!confirm('Convert this received PO to a Vendor Bill (Account 2000 AP)?')) return;
-      const res = await fetch(`/api/pos/${poId}/bill`, { method: 'POST' });
-      if (res.ok) {
-        await loadInitialData();
-      } else {
-        alert('Failed to convert purchase order');
-      }
+      await postAction(
+        `/api/pos/${poId}/bill`,
+        () => 'Vendor bill created',
+        async () => {
+          await loadInitialData();
+        }
+      );
     }
 
     function previewDocument(type, id) {
@@ -2398,6 +2442,7 @@
     }
   </script>
 
+<div id="toast-container" class="fixed bottom-6 right-6 z-[100] space-y-2 pointer-events-none"></div>
 </body>
 </html>
 
