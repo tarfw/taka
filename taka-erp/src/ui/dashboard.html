@@ -1,0 +1,2432 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAKA Scientific — Operations & Finance</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace']
+          },
+          colors: {
+            stripe: {
+              canvas: '#F6F9FC',
+              border: '#E3E8EE',
+              text: '#1A1F36',
+              secondary: '#3C4257',
+              muted: '#697386',
+              accent: '#635BFF',
+              accentHover: '#5348E8',
+              accentLight: '#F0EFFF',
+              green: '#0E8668',
+              greenBg: '#E6F7F0',
+              blue: '#1C64F2',
+              blueBg: '#EBF3FF',
+              gray: '#4F5B76',
+              grayBg: '#F1F3F5',
+              red: '#9B1C1C',
+              redBg: '#FDE8E8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #94A3B8; }
+
+    .stripe-card {
+      background-color: #ffffff;
+      border: 1px solid #E3E8EE;
+      box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+    }
+  </style>
+</head>
+<body class="h-full flex overflow-hidden font-sans bg-[#F6F9FC] text-[#1A1F36] antialiased selection:bg-[#635BFF] selection:text-white">
+
+  <!-- ========================================== -->
+  <!-- STRIPE SIDEBAR                             -->
+  <!-- ========================================== -->
+  <aside id="app-sidebar" class="w-56 flex-shrink-0 bg-white border-r border-[#E3E8EE] flex flex-col justify-between z-20 transition-all duration-200">
+    <div class="flex flex-col h-full">
+      <!-- Organization Header Dropdown -->
+      <div class="h-14 flex items-center px-4 border-b border-[#E3E8EE] justify-between cursor-pointer hover:bg-[#F8FAFC] transition" onclick="toggleOrgMenu()">
+        <div class="flex items-center gap-2.5 min-w-0">
+          <div class="w-6 h-6 rounded bg-[#0E8668] flex items-center justify-center text-white shadow-sm flex-shrink-0">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+          </div>
+          <div class="font-semibold text-xs text-[#1A1F36] truncate">TAKA Scientific</div>
+        </div>
+        <svg class="w-3 h-3 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+      </div>
+
+      <!-- Navigation Tree -->
+      <div class="flex-1 overflow-y-auto px-2 py-3 space-y-0.5 text-xs">
+        
+        <!-- Home -->
+        <button onclick="navigateView('home')" id="nav-home" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+          <span>Home</span>
+        </button>
+
+        <div class="pt-2"></div>
+
+        <!-- Payments -->
+        <button onclick="navigateView('payments')" id="nav-payments" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+          <span>Payments</span>
+        </button>
+
+        <!-- Balances -->
+        <button onclick="navigateView('balances')" id="nav-balances" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"></path></svg>
+          <span>Balances</span>
+        </button>
+
+        <!-- Customers -->
+        <div>
+          <button onclick="navigateView('customers')" id="nav-customers" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#635BFF] font-medium bg-[#F0EFFF] transition text-left">
+            <span class="w-2 h-2 rounded-full bg-[#635BFF] flex-shrink-0"></span>
+            <span>Customers</span>
+          </button>
+          <!-- Indented Sub-items (from Screenshot) -->
+          <div class="pl-7 pr-2 py-1 space-y-0.5">
+            <button onclick="navigateView('quotations')" id="subnav-quotations" class="w-full text-left py-1 text-[11px] text-[#697386] hover:text-[#1A1F36] font-medium">
+              Quotations
+            </button>
+            <button onclick="navigateView('invoices')" id="subnav-invoices" class="w-full text-left py-1 text-[11px] text-[#697386] hover:text-[#1A1F36] font-medium">
+              Invoices
+            </button>
+          </div>
+        </div>
+
+        <!-- Connected Accounts (Vendors & POs) -->
+        <button onclick="navigateView('connected-accounts')" id="nav-connected-accounts" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"></path></svg>
+          <span>Connected accounts</span>
+        </button>
+
+        <!-- Products (Catalog) -->
+        <button onclick="navigateView('products')" id="nav-products" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+          <span>Products</span>
+        </button>
+
+        <!-- Reports -->
+        <button onclick="navigateView('reports')" id="nav-reports" class="nav-btn w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+          <span>Reports</span>
+        </button>
+
+      </div>
+
+      <!-- Bottom Sidebar Items -->
+      <div class="p-2 border-t border-[#E3E8EE] space-y-1 text-xs">
+        <button onclick="navigateView('developers')" id="nav-developers" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+          <span>Developers</span>
+        </button>
+
+        <div class="flex items-center justify-between px-2.5 py-1.5 text-[#4F566B]">
+          <span class="text-[11px]">View test data</span>
+          <button type="button" class="w-7 h-4 bg-[#CBD5E1] rounded-full p-0.5 transition-colors duration-200 ease-in-out focus:outline-none" title="Live Production Mode">
+            <div class="w-3 h-3 bg-white rounded-full shadow-sm"></div>
+          </button>
+        </div>
+
+        <button onclick="navigateView('settings')" id="nav-settings" class="w-full flex items-center gap-2.5 px-2.5 py-1.5 rounded-md text-[#4F566B] hover:text-[#1A1F36] hover:bg-[#F8FAFC] transition text-left">
+          <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+          <span>Settings</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE                             -->
+  <!-- ========================================== -->
+  <div class="flex-1 flex flex-col min-w-0 overflow-hidden bg-white">
+
+    <!-- TOP HEADER BAR -->
+    <header id="app-header" class="h-14 border-b border-[#E3E8EE] px-8 flex items-center justify-between flex-shrink-0 z-10 bg-white">
+      <div class="flex items-center gap-2 max-w-sm w-full">
+        <svg class="w-4 h-4 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+        <input type="text" id="global-search" oninput="handleGlobalSearch(this.value)" placeholder="Search..." class="w-full text-xs text-[#1A1F36] placeholder-[#697386] focus:outline-none bg-transparent">
+      </div>
+
+      <div class="flex items-center gap-5 text-xs text-[#697386]">
+        <button onclick="openModal('guide-modal')" class="hover:text-[#1A1F36] flex items-center gap-1.5 font-medium transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
+          <span>Feedback?</span>
+        </button>
+
+        <div class="relative cursor-pointer hover:text-[#1A1F36]" onclick="toggleNotifications()">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+          <span class="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#E25950] text-white text-[9px] font-bold flex items-center justify-center">2</span>
+        </div>
+
+        <button onclick="openModal('guide-modal')" class="hover:text-[#1A1F36]" title="Help & UAE FTA Operations">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </button>
+
+        <div class="w-6 h-6 rounded-full bg-[#E3E8EE] flex items-center justify-center text-[#4F566B] font-semibold text-xs cursor-pointer hover:bg-[#CBD5E1] transition" title="EZHILARASI MATHIVANAN (Managing Director)">
+          <svg class="w-3.5 h-3.5 text-[#697386]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></svg>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT CONTAINER -->
+    <main class="flex-1 overflow-y-auto bg-white p-8">
+
+      <!-- ======================================================== -->
+      <!-- VIEW: CUSTOMER DETAIL (SCREENSHOT 1 MATCH)               -->
+      <!-- ======================================================== -->
+      <section id="view-customer-detail" class="space-y-6 max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-start justify-between gap-4 border-b border-[#E3E8EE] pb-4">
+          <div>
+            <h1 id="cd-name" class="text-2xl font-bold text-[#1A1F36] tracking-tight">Loading Account...</h1>
+            <div id="cd-email" class="text-xs text-[#697386] mt-0.5 font-normal">—</div>
+
+            <div class="flex items-center gap-8 mt-5">
+              <div>
+                <div class="text-[11px] text-[#697386] font-medium">Total Invoiced (AR)</div>
+                <div id="cd-stat-spent" class="text-sm font-semibold tabular-nums font-semibold text-[#1A1F36] mt-0.5">AED 0.00</div>
+              </div>
+              <div>
+                <div class="text-[11px] text-[#697386] font-medium">Customer Since</div>
+                <div id="cd-stat-since" class="text-sm font-semibold text-[#1A1F36] mt-0.5">Jan 2024</div>
+              </div>
+              <div>
+                <div class="text-[11px] text-[#697386] font-medium flex items-center gap-1">
+                  <span>Outstanding AR</span>
+                  <svg class="w-3 h-3 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+                <div id="cd-stat-mrr" class="text-sm font-semibold tabular-nums font-semibold text-[#1A1F36] mt-0.5">AED 0.00</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex flex-col items-end gap-3">
+            <div class="flex items-center gap-3">
+              <div class="relative">
+                <button onclick="toggleActionDropdown()" class="px-3.5 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white text-xs font-semibold flex items-center gap-1.5 shadow-sm transition">
+                  <span>Actions</span>
+                  <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </button>
+                <div id="actions-dropdown" class="hidden absolute right-0 mt-1 w-48 bg-white rounded-lg shadow-lg border border-[#E3E8EE] py-1 z-30 text-xs">
+                  <button onclick="toggleActionDropdown(); openStudio('quote');" class="w-full px-3 py-1.5 text-left text-[#3C4257] hover:bg-[#F8FAFC]">Create quotation</button>
+                  <button onclick="toggleActionDropdown(); openStudio('invoice');" class="w-full px-3 py-1.5 text-left text-[#3C4257] hover:bg-[#F8FAFC]">Create invoice</button>
+                  <button onclick="toggleActionDropdown(); openModal('pay-modal');" class="w-full px-3 py-1.5 text-left text-[#3C4257] hover:bg-[#F8FAFC]">Record payment</button>
+                  <button onclick="toggleActionDropdown(); openModal('contact-modal');" class="w-full px-3 py-1.5 text-left text-[#3C4257] hover:bg-[#F8FAFC] border-t border-[#E3E8EE]">Edit contact details</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-6 text-xs mt-2">
+              <button onclick="switchCustomerTab('overview')" id="tab-btn-overview" class="pb-2 border-b-2 border-[#635BFF] text-[#635BFF] font-semibold transition">Overview</button>
+              <button onclick="switchCustomerTab('events')" id="tab-btn-events" class="pb-2 border-b-2 border-transparent text-[#697386] hover:text-[#1A1F36] transition">Events and logs</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-COLUMN MAIN CONTENT -->
+        <div id="cd-tab-overview" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- LEFT COLUMN: Details Card -->
+          <div class="lg:col-span-4 space-y-5 text-xs text-[#3C4257]">
+            <div class="flex items-center justify-between">
+              <div class="font-bold text-[#1A1F36] flex items-center gap-1.5 text-xs">
+                <span>▾ Details</span>
+              </div>
+              <button onclick="openModal('contact-modal')" class="text-[#635BFF] hover:underline font-medium">Edit</button>
+            </div>
+
+            <div>
+              <span id="cd-id-pill" class="inline-block px-2.5 py-1 rounded text-[11px] tabular-nums font-semibold text-[#0E8668] bg-[#E6F7F0] border border-[#0E8668]/20">TRN: 100201948200003</span>
+            </div>
+
+            <div class="space-y-1">
+              <div class="text-[11px] font-semibold text-[#697386]">Account details</div>
+              <div id="cd-acc-name" class="font-medium text-[#1A1F36]">—</div>
+              <div id="cd-acc-email" class="text-[#697386]">—</div>
+              <div id="cd-acc-phone" class="text-[#697386]">—</div>
+              <div id="cd-acc-address" class="text-[#697386] leading-relaxed pt-1">—</div>
+            </div>
+
+            <div class="space-y-1 pt-2">
+              <div class="text-[11px] font-semibold text-[#697386]">Billing emails</div>
+              <div id="cd-billing-email" class="text-[#697386]">—</div>
+              <div id="cd-more-details" class="hidden space-y-1 pt-1 text-[#697386]">
+                <div>TRN: <span id="cd-trn" class="tabular-nums font-medium text-[#1A1F36]">100201948200003</span></div>
+                <div>Terms: <span id="cd-terms" class="text-[#1A1F36]">Net 30 Days</span></div>
+                <div>Currency: <span id="cd-currency" class="font-medium text-[#1A1F36]">AED</span></div>
+              </div>
+              <button onclick="toggleShowMore()" id="cd-show-more-btn" class="text-[#635BFF] hover:underline font-medium text-[11px] block pt-0.5">Show more</button>
+            </div>
+
+            <div class="pt-3 border-t border-[#E3E8EE]">
+              <div class="font-bold text-[#1A1F36] flex items-center gap-1.5 cursor-pointer text-xs" onclick="toggleMetadata()">
+                <span id="meta-arrow">▸</span>
+                <span>Metadata</span>
+              </div>
+              <div id="cd-metadata-box" class="hidden mt-2 p-2.5 rounded bg-[#F8FAFC] border border-[#E3E8EE] font-mono text-[10px] text-[#4F566B] space-y-1">
+                <div>jurisdiction: "UAE_FEDERAL"</div>
+                <div>tax_status: "FTA_REGISTERED_5_PCT"</div>
+                <div>clearance: "APPROVED_INSTITUTIONAL"</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Stacked Sections -->
+          <div class="lg:col-span-8 space-y-8">
+            <!-- Commercial Proposals / Quotations -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-[#1A1F36]">Commercial Quotations & Proposals</h3>
+                <button onclick="openStudio('quote')" class="text-xs text-[#635BFF] hover:underline font-semibold">+ Create quote</button>
+              </div>
+
+              <div id="cd-subscriptions-container" class="space-y-2">
+                <div class="p-3.5 rounded-lg border border-[#E3E8EE] flex items-center justify-between bg-white hover:border-[#CBD5E1] transition">
+                  <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-full bg-[#EBF3FF] text-[#1C64F2] flex items-center justify-center flex-shrink-0">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    </div>
+                    <div>
+                      <div class="flex items-center gap-2">
+                        <span id="sub-title" class="text-xs font-bold text-[#1A1F36]">No Active Quotation</span>
+                        <span id="sub-badge" class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#F1F3F5] text-[#4F5B76]">Draft</span>
+                      </div>
+                      <div id="sub-desc" class="text-xs text-[#697386] mt-0.5">Click "+ Create quote" to prepare a commercial proposal</div>
+                    </div>
+                  </div>
+
+                  <div class="flex items-center border border-[#E3E8EE] rounded-md overflow-hidden text-[#697386]">
+                    <button onclick="openStudio('quote')" class="p-1.5 hover:bg-[#F8FAFC] hover:text-[#1A1F36]" title="Create quotation"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Payments Table -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-[#1A1F36]">Payments</h3>
+                <div class="space-x-3 text-xs">
+                  <button onclick="navigateView('payments')" class="text-[#635BFF] hover:underline font-medium">View all</button>
+                  <button onclick="openModal('pay-modal')" class="text-[#635BFF] hover:underline font-medium">Create</button>
+                </div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead>
+                    <tr class="text-[10px] font-semibold text-[#697386] uppercase tracking-wider border-b border-[#E3E8EE]">
+                      <th class="py-2 px-1 w-6"><input type="checkbox" class="rounded border-[#CBD5E1] text-[#635BFF] focus:ring-0"></th>
+                      <th class="py-2 px-2">Amount</th>
+                      <th class="py-2 px-2">Description</th>
+                      <th class="py-2 px-2">Date</th>
+                      <th class="py-2 px-1 text-right w-6"></th>
+                    </tr>
+                  </thead>
+                  <tbody id="cd-payments-tbody" class="divide-y divide-[#F1F3F5]"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- Approved B2B Credit Facility & Bank Settlement -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-[#1A1F36]">Approved B2B Credit Facility & Settlement</h3>
+                <button onclick="openModal('pay-modal')" class="text-xs text-[#635BFF] hover:underline font-medium">Record payment</button>
+              </div>
+
+              <div class="p-3.5 rounded-lg border border-[#E3E8EE] flex items-center justify-between bg-white">
+                <div class="flex items-center gap-3">
+                  <div class="px-2.5 py-1 rounded bg-[#0E8668] text-white text-[10px] font-bold tracking-wider">NET CREDIT</div>
+                  <div>
+                    <div class="flex items-center gap-2">
+                      <span class="text-xs font-bold text-[#1A1F36]">Institutional Terms: <span id="cd-payment-terms-badge">Net 30 Days</span></span>
+                      <span class="px-2 py-0.5 rounded text-[10px] font-semibold bg-[#E6F7F0] text-[#0E8668]">Approved</span>
+                    </div>
+                    <div class="text-[11px] text-[#697386] mt-0.5">WIO Bank PJSC Wire Settlement &bull; IBAN: AE82 0860 0000 0123 4567 890</div>
+                  </div>
+                </div>
+
+                <div class="flex items-center text-xs text-[#697386]">
+                  <span class="font-medium text-[#1A1F36]">Currency: AED</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Commercial Credit Facility -->
+            <div class="space-y-1">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-[#1A1F36]">Commercial Credit Facility</h3>
+                <span class="text-xs text-[#0E8668] font-medium">Approved Institutional Account</span>
+              </div>
+              <div class="text-xs font-semibold tabular-nums text-[#1A1F36] pt-1">
+                <span id="cd-credit-val">Corporate Credit</span> &bull; <span class="text-[#697386] font-normal">Terms verified with central finance</span>
+              </div>
+            </div>
+
+            <!-- Invoices -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h3 class="text-sm font-bold text-[#1A1F36]">Invoices</h3>
+                <div class="space-x-3 text-xs">
+                  <button onclick="navigateView('invoices')" class="text-[#635BFF] hover:underline font-medium">View all</button>
+                  <button onclick="openStudio('invoice')" class="text-[#635BFF] hover:underline font-medium">Create</button>
+                </div>
+              </div>
+
+              <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                  <thead>
+                    <tr class="text-[10px] font-semibold text-[#697386] uppercase tracking-wider border-b border-[#E3E8EE]">
+                      <th class="py-2 px-2">Amount</th>
+                      <th class="py-2 px-2">Invoice #</th>
+                      <th class="py-2 px-2">Due Date</th>
+                      <th class="py-2 px-2 text-center">Status</th>
+                      <th class="py-2 px-2 text-right">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cd-invoices-tbody" class="divide-y divide-[#F1F3F5]"></tbody>
+                </table>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- EVENTS AND LOGS TAB -->
+        <div id="cd-tab-events" class="hidden space-y-4">
+          <div class="flex items-center justify-between border-b border-[#E3E8EE] pb-2">
+            <h3 class="text-sm font-bold text-[#1A1F36]">Events and Activity Logs</h3>
+            <span class="text-xs text-[#697386]">Chronological Audit Feed</span>
+          </div>
+          <div id="cd-events-timeline" class="space-y-3 text-xs"></div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: FULLSCREEN DOCUMENT CREATION STUDIO WITH PREVIEW   -->
+      <!-- (SCREENSHOT 2 MATCH: Customer, Items, Memo, Payment)     -->
+      <!-- ======================================================== -->
+      <section id="view-document-studio" class="hidden fixed inset-0 z-[100] bg-white flex flex-col overflow-hidden">
+        <!-- Studio Top Navigation Header -->
+        <div class="h-14 border-b border-[#E3E8EE] px-8 flex items-center justify-between bg-white flex-shrink-0">
+          <div class="flex items-center gap-4">
+            <button onclick="closeStudio()" class="text-xs font-semibold text-[#697386] hover:text-[#1A1F36] flex items-center gap-1.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+              <span id="studio-back-label">Invoices</span>
+            </button>
+            <span class="text-sm text-[#E3E8EE]">|</span>
+            <div class="font-bold text-sm text-[#1A1F36]" id="studio-title">New invoice</div>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button onclick="closeStudio()" class="px-3.5 py-1.5 rounded-md border border-[#E3E8EE] text-xs font-medium text-[#3C4257] hover:bg-[#F8FAFC]">
+              Save as draft
+            </button>
+            <button onclick="submitStudioDocument()" id="studio-submit-btn" class="px-4 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white text-xs font-semibold shadow-sm transition">
+              Create invoice
+            </button>
+          </div>
+        </div>
+
+        <!-- Studio Split Body: 50% Left Form, 50% Right Live Document Preview -->
+        <div class="flex-1 flex overflow-hidden">
+          
+          <!-- LEFT COLUMN: Form Editor (Matching Screenshot 2) -->
+          <div class="w-1/2 overflow-y-auto p-10 space-y-8 border-r border-[#E3E8EE]">
+            
+            <!-- 1. Customer Section -->
+            <div class="space-y-3">
+              <h2 class="text-lg font-bold text-[#1A1F36]" id="studio-party-heading">Customer</h2>
+              
+              <div class="p-4 rounded-lg border border-[#E3E8EE] bg-[#F8FAFC] space-y-3">
+                <div>
+                  <label class="block text-[11px] font-semibold text-[#697386] uppercase tracking-wider mb-1.5">Select Account / Entity</label>
+                  <div class="relative">
+                    <select id="studio-customer-select" onchange="onStudioCustomerChange(this.value)" class="w-full h-10 text-xs font-semibold border border-[#CBD5E1] rounded-lg pl-3 pr-8 py-2 bg-white focus:outline-none focus:ring-2 focus:ring-[#635BFF] focus:border-[#635BFF] text-[#1A1F36] shadow-sm cursor-pointer appearance-none">
+                      <!-- Injected dynamically -->
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2.5 text-[#697386]">
+                      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="pt-2.5 border-t border-[#E3E8EE] flex flex-col gap-1 text-xs">
+                  <div class="font-bold text-sm text-[#1A1F36]" id="studio-cust-name">Select an Account</div>
+                  <div class="text-xs text-[#697386]" id="studio-cust-email">—</div>
+                  <div class="text-[11px] text-[#697386]" id="studio-cust-sub">—</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Items Section (Matching Screenshot 2) -->
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <h2 class="text-lg font-bold text-[#1A1F36]">Items</h2>
+                <div class="flex items-center gap-2 text-xs text-[#697386]">
+                  <label class="cursor-pointer flex items-center gap-2">
+                    <input type="checkbox" id="studio-auto-tax" checked onchange="updateStudioPreview()" class="rounded text-[#635BFF] focus:ring-0">
+                    <span>Calculate tax automatically (5% UAE VAT)</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- Line Items Dynamic List -->
+              <div id="studio-items-list" class="space-y-3">
+                <!-- Dynamically injected item rows -->
+              </div>
+
+              <!-- Actions under items (Add item, Add coupon, Add tax) -->
+              <div class="flex items-center justify-between pt-2 border-t border-[#E3E8EE] text-xs">
+                <div class="space-x-4">
+                  <button onclick="openCatalogPicker()" class="text-[#635BFF] hover:underline font-semibold flex items-center gap-1">
+                    <span>+ Add item</span>
+                  </button>
+                </div>
+                <div class="space-x-4 text-[#635BFF] font-medium">
+                  <button onclick="addDiscountPrompt()" class="hover:underline">Add coupon / discount</button>
+                  <button onclick="toggleTaxPrompt()" class="hover:underline">Add tax</button>
+                </div>
+              </div>
+
+              <!-- Subtotals Box -->
+              <div class="p-3.5 rounded-lg bg-[#F8FAFC] border border-[#E3E8EE] space-y-1.5 text-xs font-mono">
+                <div class="flex justify-between text-[#697386]">
+                  <span>Subtotal:</span>
+                  <span id="studio-subtotal" class="font-bold text-[#1A1F36]">AED 0.00</span>
+                </div>
+                <div class="flex justify-between text-[#697386]">
+                  <span>5% UAE VAT:</span>
+                  <span id="studio-vat" class="font-bold text-[#635BFF]">AED 0.00</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-[#1A1F36] pt-1.5 border-t border-[#E3E8EE]">
+                  <span>Total Due:</span>
+                  <span id="studio-total">AED 0.00</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Memo Section (Matching Screenshot 2) -->
+            <div class="space-y-3">
+              <h2 class="text-lg font-bold text-[#1A1F36]">Memo</h2>
+              <div class="space-y-1">
+                <textarea id="studio-memo" rows="2" oninput="updateStudioPreview()" class="w-full p-3 rounded-lg border border-[#E3E8EE] text-xs text-[#1A1F36] focus:outline-none focus:border-[#635BFF]" placeholder="Thanks for your business! Official UAE Tax Invoice under Federal Decree-Law No. 8."></textarea>
+              </div>
+            </div>
+
+            <!-- 4. Payment Method Section (Matching Screenshot 2) -->
+            <div class="space-y-4">
+              <h2 class="text-lg font-bold text-[#1A1F36]">Payment</h2>
+              
+              <div class="space-y-3 text-xs">
+                <label class="flex items-start gap-3 p-3.5 rounded-lg border border-[#E3E8EE] bg-white cursor-pointer hover:border-[#CBD5E1] transition">
+                  <input type="radio" name="studio-payment" value="wio" checked class="mt-0.5 text-[#635BFF] focus:ring-0">
+                  <div class="space-y-1">
+                    <div class="font-semibold text-[#1A1F36] flex items-center gap-2">
+                      <span>Automatically charge a payment method on file / Wire deposit</span>
+                    </div>
+                    <div class="flex items-center gap-2 pt-1">
+                      <div class="px-2 py-0.5 rounded bg-[#1C64F2] text-white text-[10px] font-bold">WIO</div>
+                      <span class="font-mono text-[#1A1F36]">WIO Bank PJSC Current •••• 7890</span>
+                      <span class="px-1.5 py-0.5 rounded text-[10px] bg-[#EBF3FF] text-[#1C64F2] font-semibold">Default</span>
+                    </div>
+                    <div class="text-[11px] text-[#697386]">IBAN: AE82 0860 0000 0123 4567 890 • Swift: WIOBAEADXXX</div>
+                  </div>
+                </label>
+
+                <label class="flex items-center gap-3 p-3.5 rounded-lg border border-[#E3E8EE] bg-white cursor-pointer hover:border-[#CBD5E1] transition text-[#697386]">
+                  <input type="radio" name="studio-payment" value="email" class="text-[#635BFF] focus:ring-0">
+                  <span>Email invoice to customer with direct payment coordinates & bank wire instructions ⚙</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN: Real-Time Live Document Preview (quot1.pdf format) -->
+          <div class="w-1/2 bg-[#F6F9FC] flex flex-col overflow-hidden">
+            <!-- Preview Top Bar -->
+            <div class="h-10 px-6 border-b border-[#E3E8EE] bg-white flex items-center justify-between flex-shrink-0 text-xs text-[#697386]">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-[#0E8668] animate-pulse"></span>
+                <span class="font-semibold text-[#1A1F36]">Real-time Document Preview</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button onclick="printStudioPreview()" class="hover:text-[#1A1F36] flex items-center gap-1 font-medium">
+                  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                  <span>Print preview</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Iframe Container -->
+            <div class="flex-1 p-6 overflow-y-auto flex justify-center bg-[#F6F9FC]">
+              <iframe id="studio-preview-iframe" class="w-full w-full max-w-[760px] min-h-[960px] bg-white rounded-lg shadow-xl border border-[#E3E8EE]"></iframe>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: INVOICES (SCREENSHOT 1 MATCH)                      -->
+      <!-- ======================================================== -->
+      <section id="view-invoices" class="hidden space-y-4 max-w-7xl mx-auto">
+        <!-- Invoices Header -->
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Invoices</h1>
+          <div class="flex items-center gap-2 text-xs">
+            <button class="px-3 py-1.5 rounded-md border border-[#E3E8EE] font-medium text-[#3C4257] hover:bg-[#F8FAFC] flex items-center gap-1.5 shadow-sm">
+              <svg class="w-3.5 h-3.5 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+              <span>Filter</span>
+            </button>
+            <button onclick="exportInvoicesCsv()" class="px-3 py-1.5 rounded-md border border-[#E3E8EE] font-medium text-[#3C4257] hover:bg-[#F8FAFC] flex items-center gap-1.5 shadow-sm">
+              <svg class="w-3.5 h-3.5 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+              <span>Export</span>
+            </button>
+            <button onclick="openStudio('invoice')" class="px-3.5 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white font-semibold flex items-center gap-1 shadow-sm transition">
+              <span>+ Create an invoice</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Invoices Filter Tabs (Exact from Screenshot 1) -->
+        <div class="flex items-center gap-6 border-b border-[#E3E8EE] text-xs font-medium text-[#697386]">
+          <button onclick="filterInvoicesTab('all')" id="inv-tab-all" class="pb-2 border-b-2 border-[#635BFF] text-[#635BFF] font-semibold">All invoices</button>
+          <button onclick="filterInvoicesTab('draft')" id="inv-tab-draft" class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Drafts</button>
+          <button onclick="filterInvoicesTab('outstanding')" id="inv-tab-outstanding" class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Outstanding</button>
+          <button onclick="filterInvoicesTab('overdue')" id="inv-tab-overdue" class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Overdue</button>
+          <button onclick="filterInvoicesTab('paid')" id="inv-tab-paid" class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Paid</button>
+        </div>
+
+        <!-- Invoices Table (Exact from Screenshot 1) -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="text-[10px] font-semibold text-[#697386] uppercase tracking-wider border-b border-[#E3E8EE]">
+                <th class="py-3 px-3">Amount</th>
+                <th class="py-3 px-3">Invoice Number</th>
+                <th class="py-3 px-3">Customer</th>
+                <th class="py-3 px-3">Due</th>
+                <th class="py-3 px-3">Created</th>
+                <th class="py-3 px-3 text-right"></th>
+              </tr>
+            </thead>
+            <tbody id="invoices-list-tbody" class="divide-y divide-[#F1F3F5]"></tbody>
+          </table>
+        </div>
+
+        <!-- Table Footer: Results Counter & Pagination (from Screenshot 1) -->
+        <div class="flex items-center justify-between pt-4 border-t border-[#E3E8EE] text-xs text-[#697386]">
+          <div><span id="invoices-count-label">0</span> results</div>
+          <div class="flex items-center gap-2">
+            <button class="px-3 py-1 rounded border border-[#E3E8EE] bg-white hover:bg-[#F8FAFC]">Previous</button>
+            <button class="px-3 py-1 rounded border border-[#E3E8EE] bg-white hover:bg-[#F8FAFC]">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: QUOTATIONS                                         -->
+      <!-- ======================================================== -->
+      <section id="view-quotations" class="hidden space-y-4 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Quotes</h1>
+          <div class="flex items-center gap-2 text-xs">
+            <button class="px-3 py-1.5 rounded-md border border-[#E3E8EE] font-medium text-[#3C4257] hover:bg-[#F8FAFC] flex items-center gap-1.5 shadow-sm">
+              <svg class="w-3.5 h-3.5 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+              <span>Filter</span>
+            </button>
+            <button onclick="openStudio('quote')" class="px-3.5 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white font-semibold flex items-center gap-1 shadow-sm transition">
+              <span>+ Create a quote</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-6 border-b border-[#E3E8EE] text-xs font-medium text-[#697386]">
+          <button class="pb-2 border-b-2 border-[#635BFF] text-[#635BFF] font-semibold">All quotes</button>
+          <button class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Drafts</button>
+          <button class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Accepted</button>
+          <button class="pb-2 border-b-2 border-transparent hover:text-[#1A1F36]">Invoiced</button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="text-[10px] font-semibold text-[#697386] uppercase tracking-wider border-b border-[#E3E8EE]">
+                <th class="py-3 px-3">Amount</th>
+                <th class="py-3 px-3">Quote Number</th>
+                <th class="py-3 px-3">Customer</th>
+                <th class="py-3 px-3">Valid Until</th>
+                <th class="py-3 px-3">Created</th>
+                <th class="py-3 px-3 text-right"></th>
+              </tr>
+            </thead>
+            <tbody id="quotes-list-tbody" class="divide-y divide-[#F1F3F5]"></tbody>
+          </table>
+        </div>
+
+        <div class="flex items-center justify-between pt-4 border-t border-[#E3E8EE] text-xs text-[#697386]">
+          <div><span id="quotes-count-label">0</span> results</div>
+          <div class="flex items-center gap-2">
+            <button class="px-3 py-1 rounded border border-[#E3E8EE] bg-white hover:bg-[#F8FAFC]">Previous</button>
+            <button class="px-3 py-1 rounded border border-[#E3E8EE] bg-white hover:bg-[#F8FAFC]">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: CONNECTED ACCOUNTS & POS                           -->
+      <!-- ======================================================== -->
+      <section id="view-connected-accounts" class="hidden space-y-4 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Purchase Orders</h1>
+          <div class="flex items-center gap-2 text-xs">
+            <button onclick="openStudio('po')" class="px-3.5 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white font-semibold flex items-center gap-1 shadow-sm transition">
+              <span>+ Create a PO</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="text-[10px] font-semibold text-[#697386] uppercase tracking-wider border-b border-[#E3E8EE]">
+                <th class="py-3 px-3">Amount</th>
+                <th class="py-3 px-3">PO Number</th>
+                <th class="py-3 px-3">Supplier</th>
+                <th class="py-3 px-3">Terms</th>
+                <th class="py-3 px-3">Created</th>
+                <th class="py-3 px-3 text-right"></th>
+              </tr>
+            </thead>
+            <tbody id="pos-list-tbody" class="divide-y divide-[#F1F3F5]"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: CUSTOMERS                                          -->
+      <!-- ======================================================== -->
+      <section id="view-customers" class="hidden space-y-4 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-2xl font-bold text-[#1A1F36]">Customers</h1>
+            <p class="text-xs text-[#697386]">Institutional accounts, universities, and commercial laboratory partners</p>
+          </div>
+          <button onclick="openModal('contact-modal')" class="px-3.5 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white text-xs font-semibold shadow-sm transition">
+            + Add customer
+          </button>
+        </div>
+
+        <div class="stripe-card rounded-lg overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-[#F8FAFC] text-[#697386] border-b border-[#E3E8EE] uppercase tracking-wider text-[10px]">
+              <tr>
+                <th class="py-2.5 px-4 w-6"><input type="checkbox"></th>
+                <th class="py-2.5 px-4">Customer Name</th>
+                <th class="py-2.5 px-4">Email</th>
+                <th class="py-2.5 px-4">Tax TRN</th>
+                <th class="py-2.5 px-4">Terms</th>
+                <th class="py-2.5 px-4 text-right">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="customers-table-body" class="divide-y divide-[#E3E8EE]"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: PAYMENTS                                           -->
+      <!-- ======================================================== -->
+      <section id="view-payments" class="hidden space-y-4 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Payments</h1>
+          <button onclick="openModal('pay-modal')" class="px-3.5 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white text-xs font-semibold shadow-sm transition">
+            + Record payment
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-xs">
+            <thead>
+              <tr class="text-[10px] font-semibold text-[#697386] uppercase tracking-wider border-b border-[#E3E8EE]">
+                <th class="py-2.5 px-4 w-6"><input type="checkbox"></th>
+                <th class="py-2.5 px-4">Amount</th>
+                <th class="py-2.5 px-4">Description</th>
+                <th class="py-2.5 px-4">Customer</th>
+                <th class="py-2.5 px-4">Date</th>
+                <th class="py-2.5 px-4 text-right"></th>
+              </tr>
+            </thead>
+            <tbody id="payments-list-tbody" class="divide-y divide-[#F1F3F5]"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: PRODUCTS (140 CATALOG INSTRUMENTS)                 -->
+      <!-- ======================================================== -->
+      <section id="view-products" class="hidden space-y-4 max-w-7xl mx-auto">
+        <div class="flex items-center justify-between">
+          <div>
+            <h1 class="text-2xl font-bold text-[#1A1F36]">Products</h1>
+            <p class="text-xs text-[#697386]">140 Hanil centrifuges, IKA stirrers, and Hach spectrophotometers</p>
+          </div>
+          <input type="text" id="catalog-filter-input" oninput="filterCatalog(this.value)" placeholder="Filter instruments..." class="w-64 px-3 py-1.5 rounded-md border border-[#E3E8EE] text-xs focus:outline-none focus:border-[#635BFF]">
+        </div>
+
+        <div id="catalog-products-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: BALANCES                                           -->
+      <!-- ======================================================== -->
+      <section id="view-balances" class="hidden space-y-6 max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Balances</h1>
+          <p class="text-xs text-[#697386]">Operating cash and bank coordinates</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="stripe-card p-5 rounded-lg">
+            <div class="text-xs font-bold text-[#1A1F36]">WIO Bank Business Current</div>
+            <div class="text-[11px] font-mono text-[#697386] mt-0.5">IBAN: AE82 0860 0000 0123 4567 890</div>
+            <div id="bal-wio" class="text-2xl font-bold font-mono text-[#0E8668] mt-4">AED 0.00</div>
+          </div>
+          <div class="stripe-card p-5 rounded-lg">
+            <div class="text-xs font-bold text-[#1A1F36]">Operating Petty Cash</div>
+            <div class="text-[11px] text-[#697386] mt-0.5">Abu Dhabi Central Vault</div>
+            <div id="bal-cash" class="text-2xl font-bold font-mono text-[#4F566B] mt-4">AED 0.00</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: REPORTS & VAT 201                                  -->
+      <!-- ======================================================== -->
+      <section id="view-reports" class="hidden space-y-6 max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Reports</h1>
+          <p class="text-xs text-[#697386]">Federal Tax Authority UAE VAT 201 Return (TRN: 100482910400003)</p>
+        </div>
+
+        <div class="stripe-card p-6 rounded-lg space-y-4">
+          <div class="flex items-center justify-between border-b border-[#E3E8EE] pb-3">
+            <div>
+              <div class="text-sm font-bold text-[#1A1F36]">Federal Tax Authority — VAT 201 Return</div>
+              <div class="text-xs font-mono text-[#697386]">TRN: 100482910400003</div>
+            </div>
+            <div class="text-right">
+              <div class="text-xs text-[#697386]">Box 14: Net VAT Due</div>
+              <div id="rep-net-vat" class="text-xl font-bold font-mono text-[#635BFF]">AED 0.00</div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
+            <div class="p-3.5 rounded bg-[#F8FAFC] border border-[#E3E8EE]">
+              <div class="text-[#697386] font-semibold text-[10px] uppercase">Box 1: Standard Supplies</div>
+              <div id="rep-box-1-amt" class="text-base font-bold font-mono text-[#1A1F36] mt-1">AED 0.00</div>
+              <div class="text-[11px] text-[#697386]">Tax: <span id="rep-box-1-tax" class="font-mono text-[#635BFF]">AED 0.00</span></div>
+            </div>
+            <div class="p-3.5 rounded bg-[#F8FAFC] border border-[#E3E8EE]">
+              <div class="text-[#697386] font-semibold text-[10px] uppercase">Box 3: Zero-Rated</div>
+              <div class="text-base font-bold font-mono text-[#1A1F36] mt-1">AED 0.00</div>
+              <div class="text-[11px] text-[#697386]">Exports / Free Zone</div>
+            </div>
+            <div class="p-3.5 rounded bg-[#F8FAFC] border border-[#E3E8EE]">
+              <div class="text-[#697386] font-semibold text-[10px] uppercase">Box 9: Standard Expenses</div>
+              <div id="rep-box-9-amt" class="text-base font-bold font-mono text-[#1A1F36] mt-1">AED 0.00</div>
+              <div class="text-[11px] text-[#697386]">Recoverable: <span id="rep-box-9-tax" class="font-mono text-[#0E8668]">AED 0.00</span></div>
+            </div>
+            <div class="p-3.5 rounded bg-[#F8FAFC] border border-[#E3E8EE]">
+              <div class="text-[#697386] font-semibold text-[10px] uppercase">Box 12: Total Input Tax</div>
+              <div id="rep-box-12-tax" class="text-base font-bold font-mono text-[#0E8668] mt-1">AED 0.00</div>
+              <div class="text-[11px] text-[#697386]">Claimable amount</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: DEVELOPERS (LEDGER)                                -->
+      <!-- ======================================================== -->
+      <section id="view-developers" class="hidden space-y-4 max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-[#1A1F36]">General Ledger</h1>
+          <p class="text-xs text-[#697386]">Double-entry balanced accounting</p>
+        </div>
+
+        <div class="stripe-card rounded-lg overflow-hidden">
+          <table class="w-full text-left text-xs">
+            <thead class="bg-[#F8FAFC] text-[#697386] border-b border-[#E3E8EE] uppercase tracking-wider text-[10px]">
+              <tr>
+                <th class="py-2.5 px-4 font-mono">Code</th>
+                <th class="py-2.5 px-4">Account Name</th>
+                <th class="py-2.5 px-4">Class</th>
+                <th class="py-2.5 px-4 text-right">Debit Balance</th>
+                <th class="py-2.5 px-4 text-right">Credit Balance</th>
+              </tr>
+            </thead>
+            <tbody id="ledger-table-tbody" class="divide-y divide-[#E3E8EE] font-mono"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ======================================================== -->
+      <!-- VIEW: HOME                                               -->
+      <!-- ======================================================== -->
+      <section id="view-home" class="hidden space-y-6 max-w-7xl mx-auto">
+        <div>
+          <h1 class="text-2xl font-bold text-[#1A1F36]">Home</h1>
+          <p class="text-xs text-[#697386]">TAKA Scientific executive summary</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div class="stripe-card p-4 rounded-lg">
+            <div class="text-[11px] font-semibold text-[#697386]">Gross Sales Quoted</div>
+            <div id="home-stat-quoted" class="text-xl font-bold font-mono text-[#1A1F36] mt-2">AED 0.00</div>
+          </div>
+          <div class="stripe-card p-4 rounded-lg">
+            <div class="text-[11px] font-semibold text-[#697386]">Total Invoiced (AR)</div>
+            <div id="home-stat-invoiced" class="text-xl font-bold font-mono text-[#1A1F36] mt-2">AED 0.00</div>
+          </div>
+          <div class="stripe-card p-4 rounded-lg">
+            <div class="text-[11px] font-semibold text-[#697386]">Customer Receipts (Cash)</div>
+            <div id="home-stat-paid" class="text-xl font-bold font-mono text-[#0E8668] mt-2">AED 0.00</div>
+          </div>
+          <div class="stripe-card p-4 rounded-lg">
+            <div class="text-[11px] font-semibold text-[#697386]">Outstanding Receivables</div>
+            <div id="home-stat-outstanding" class="text-xl font-bold font-mono text-[#9B1C1C] mt-2">AED 0.00</div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODALS                                                   -->
+  <!-- ======================================================== -->
+
+  <!-- PAYMENT MODAL -->
+  <div id="pay-modal" class="hidden fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-[#E3E8EE] max-w-md w-full p-6 text-xs space-y-4">
+      <div class="flex items-center justify-between border-b border-[#E3E8EE] pb-3">
+        <h3 class="text-sm font-bold text-[#1A1F36]">Record Payment Receipt</h3>
+        <button onclick="closeModal('pay-modal')" class="text-[#697386] hover:text-[#1A1F36] font-bold">✕</button>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-semibold text-[#697386] mb-1">Invoice to Settle</label>
+          <select id="modal-pay-invoice" onchange="autoFillPayAmount()" class="w-full p-2 rounded border border-[#E3E8EE] bg-white"></select>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-semibold text-[#697386] mb-1">Amount (AED)</label>
+            <input type="number" id="modal-pay-amount" value="0" step="0.01" class="w-full p-2 rounded border border-[#E3E8EE]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-[#697386] mb-1">Deposit To</label>
+            <select id="modal-pay-bank" class="w-full p-2 rounded border border-[#E3E8EE] bg-white">
+              <option value="1000">1000 - WIO Bank Business Current</option>
+              <option value="1010">1010 - Operating Petty Cash</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-[11px] font-semibold text-[#697386] mb-1">Wire / Cheque Reference</label>
+          <input type="text" id="modal-pay-ref" placeholder="WIO-WIRE-..." class="w-full p-2 rounded border border-[#E3E8EE]">
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2 border-t border-[#E3E8EE]">
+        <button onclick="closeModal('pay-modal')" class="px-3 py-1.5 rounded text-[#697386] hover:bg-[#F8FAFC]">Cancel</button>
+        <button onclick="submitRecordPayment()" class="px-4 py-1.5 rounded bg-[#0E8668] hover:bg-[#0A6C53] text-white font-semibold">Post Payment</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT MODAL -->
+  <div id="contact-modal" class="hidden fixed inset-0 z-50 bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-[#E3E8EE] max-w-md w-full p-6 text-xs space-y-4">
+      <div class="flex items-center justify-between border-b border-[#E3E8EE] pb-3">
+        <h3 class="text-sm font-bold text-[#1A1F36]">Add Customer or Vendor</h3>
+        <button onclick="closeModal('contact-modal')" class="text-[#697386] hover:text-[#1A1F36] font-bold">✕</button>
+      </div>
+      <div class="space-y-3">
+        <div>
+          <label class="block text-[11px] font-semibold text-[#697386] mb-1">Contact Type</label>
+          <select id="modal-cnt-type" class="w-full p-2 rounded border border-[#E3E8EE] bg-white">
+            <option value="customer">Customer (Client)</option>
+            <option value="vendor">Vendor (Supplier)</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-[11px] font-semibold text-[#697386] mb-1">Entity / Company Name</label>
+          <input type="text" id="modal-cnt-company" placeholder="Abu Dhabi Education Council..." class="w-full p-2 rounded border border-[#E3E8EE]">
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-semibold text-[#697386] mb-1">Contact Person</label>
+            <input type="text" id="modal-cnt-name" placeholder="Dr. Tariq Al Nuaimi" class="w-full p-2 rounded border border-[#E3E8EE]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-[#697386] mb-1">Email</label>
+            <input type="email" id="modal-cnt-email" placeholder="contact@domain.ae" class="w-full p-2 rounded border border-[#E3E8EE]">
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-3">
+          <div>
+            <label class="block text-[11px] font-semibold text-[#697386] mb-1">Phone</label>
+            <input type="text" id="modal-cnt-phone" placeholder="+971 2 ..." class="w-full p-2 rounded border border-[#E3E8EE]">
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold text-[#697386] mb-1">Tax TRN</label>
+            <input type="text" id="modal-cnt-trn" placeholder="100..." class="w-full p-2 rounded border border-[#E3E8EE] font-mono">
+          </div>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 pt-2 border-t border-[#E3E8EE]">
+        <button onclick="closeModal('contact-modal')" class="px-3 py-1.5 rounded text-[#697386] hover:bg-[#F8FAFC]">Cancel</button>
+        <button onclick="submitCreateContact()" class="px-4 py-1.5 rounded bg-[#635BFF] hover:bg-[#5348E8] text-white font-semibold">Save Contact</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATALOG INSTRUMENT PICKER MODAL -->
+  <div id="catalog-picker-modal" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl max-w-2xl w-full max-h-[85vh] flex flex-col border border-[#E3E8EE] overflow-hidden">
+      <!-- Modal Header -->
+      <div class="px-6 py-4 border-b border-[#E3E8EE] flex items-center justify-between">
+        <div>
+          <h3 class="text-sm font-bold text-[#1A1F36]">Select Laboratory Equipment & Instruments</h3>
+          <p class="text-xs text-[#697386] mt-0.5">Search 140 catalog instruments or define custom supply specifications</p>
+        </div>
+        <button onclick="closeModal('catalog-picker-modal')" class="p-1 rounded text-[#697386] hover:text-[#1A1F36]">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        </button>
+      </div>
+
+      <!-- Search input -->
+      <div class="p-4 border-b border-[#E3E8EE] bg-[#F8FAFC]">
+        <div class="relative">
+          <svg class="w-4 h-4 absolute left-3 top-2.5 text-[#697386]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input type="text" id="catalog-picker-search" oninput="filterCatalogPicker(this.value)" placeholder="Search centrifuge, spectrophotometer, IKA, Hanil, Memmert..." class="w-full pl-9 pr-4 py-2 rounded-lg border border-[#E3E8EE] bg-white text-xs text-[#1A1F36] focus:outline-none focus:border-[#635BFF]">
+        </div>
+      </div>
+
+      <!-- Catalog Items List -->
+      <div id="catalog-picker-list" class="flex-1 overflow-y-auto p-4 space-y-1 divide-y divide-[#F1F3F5] text-xs max-h-96">
+        <!-- Injected by filterCatalogPicker -->
+      </div>
+
+      <!-- Custom Item Form Footer -->
+      <div class="p-4 border-t border-[#E3E8EE] bg-[#F8FAFC] flex items-center justify-between gap-3">
+        <div class="flex-1 flex gap-2">
+          <input type="text" id="custom-item-name" placeholder="Or enter custom item / specification..." class="flex-1 px-3 py-1.5 rounded-md border border-[#E3E8EE] text-xs bg-white text-[#1A1F36] focus:outline-none focus:border-[#635BFF]">
+          <input type="number" id="custom-item-price" placeholder="Price (AED)" class="w-28 px-3 py-1.5 rounded-md border border-[#E3E8EE] text-xs bg-white text-[#1A1F36] focus:outline-none focus:border-[#635BFF]">
+        </div>
+        <button onclick="addCustomStudioItem()" class="px-4 py-1.5 rounded-md bg-[#635BFF] hover:bg-[#5348E8] text-white text-xs font-semibold shadow-sm transition">
+          + Add Custom
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DOCUMENT PREVIEW MODAL -->
+  <div id="doc-preview-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-[#E3E8EE] max-w-4xl w-full h-[90vh] flex flex-col overflow-hidden">
+      <div class="h-12 border-b border-[#E3E8EE] px-5 flex items-center justify-between flex-shrink-0 bg-white">
+        <div class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#635BFF]"></span>
+          <span id="preview-doc-title" class="font-bold text-xs text-[#1A1F36]">Document Preview</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <button onclick="printPreviewIframe()" class="px-3 py-1 rounded bg-[#F8FAFC] hover:bg-[#E3E8EE] text-xs font-semibold text-[#1A1F36] border border-[#E3E8EE]">Print / Save PDF</button>
+          <button onclick="closeModal('doc-preview-modal')" class="text-[#697386] hover:text-[#1A1F36] font-bold px-2">✕</button>
+        </div>
+      </div>
+      <div class="flex-1 bg-[#F6F9FC] p-4 overflow-hidden">
+        <iframe id="preview-iframe" class="w-full h-full bg-white rounded shadow-sm border border-[#E3E8EE]"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- BUSINESS FLOW GUIDE MODAL -->
+  <div id="guide-modal" class="hidden fixed inset-0 z-50 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-[#E3E8EE] max-w-2xl w-full p-6 text-xs space-y-4 max-h-[85vh] overflow-y-auto">
+      <div class="flex items-center justify-between border-b border-[#E3E8EE] pb-3">
+        <h3 class="text-sm font-bold text-[#1A1F36]">TAKA Scientific — Operations Guide</h3>
+        <button onclick="closeModal('guide-modal')" class="text-[#697386] hover:text-[#1A1F36] font-bold">✕</button>
+      </div>
+      <div class="space-y-4 leading-relaxed text-[#3C4257]">
+        <div class="p-3 rounded-lg bg-[#F8FAFC] border border-[#E3E8EE] space-y-1">
+          <div class="font-bold text-[#1A1F36]">Commercial Lifecycle Overview</div>
+          <p class="text-xs text-[#697386]">End-to-end commercial operations across Abu Dhabi & Dubai facilities:</p>
+        </div>
+        <ol class="space-y-2 list-decimal list-inside text-xs">
+          <li><strong>Commercial Quotation:</strong> Draft customer proposal with item selection from 140 instruments and 5% UAE VAT.</li>
+          <li><strong>Sales Tax Invoice:</strong> Convert accepted quote to official FTA Tax Invoice, debiting AR (1200) and crediting Sales (4000) & Output VAT (2200).</li>
+          <li><strong>Supplier Procurement:</strong> Issue Purchase Order to Hanil, IKA, or Hach. Convert received goods to Vendor Bills with AP (2000).</li>
+          <li><strong>Payment Settlement:</strong> Receive customer bank wire into WIO Bank PJSC (1000) and credit AR (1200).</li>
+          <li><strong>FTA VAT 201 Return:</strong> Compile Box 1 standard supplies and Box 9 recoverable expenses.</li>
+        </ol>
+      </div>
+      <div class="flex justify-end pt-2 border-t border-[#E3E8EE]">
+        <button onclick="closeModal('guide-modal')" class="px-4 py-1.5 rounded bg-[#635BFF] text-white font-semibold">Understood</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- APPLICATION SCRIPT LOGIC                                 -->
+  <!-- ======================================================== -->
+  <script>
+    // State
+    let globalContacts = [];
+    let globalQuotes = [];
+    let globalInvoices = [];
+    let globalPOs = [];
+    let globalPayments = [];
+    let globalCatalog = [];
+    let currentSelectedContactId = null;
+    let currentActiveView = 'customer-detail';
+
+    // Studio State (For Live Split-Screen Creation)
+    let studioDocType = 'invoice'; // 'invoice' | 'quote' | 'po'
+    let studioSelectedCustomer = null;
+    let studioItems = [];
+    let studioMemo = 'Thanks for your business! Official UAE Tax Invoice under Federal Decree-Law No. 8.';
+    let studioDocNumber = '';
+
+    window.addEventListener('DOMContentLoaded', async () => {
+      await loadInitialData();
+    });
+
+    async function loadInitialData() {
+      try {
+        const [cRes, qRes, iRes, poRes, pRes, catRes, statRes] = await Promise.all([
+          fetch('/api/contacts').then(r => r.json()).catch(() => []),
+          fetch('/api/quotes').then(r => r.json()).catch(() => []),
+          fetch('/api/invoices').then(r => r.json()).catch(() => []),
+          fetch('/api/pos').then(r => r.json()).catch(() => []),
+          fetch('/api/payments').then(r => r.json()).catch(() => []),
+          fetch('/api/catalog').then(r => r.json()).catch(() => []),
+          fetch('/api/dashboard/stats').then(r => r.json()).catch(() => ({}))
+        ]);
+
+        globalContacts = cRes || [];
+        globalQuotes = qRes || [];
+        globalInvoices = iRes || [];
+        globalPOs = poRes || [];
+        globalPayments = pRes || [];
+        globalCatalog = catRes || [];
+
+        // Select first customer by default
+        const firstCust = globalContacts.find(c => c.type === 'customer') || globalContacts[0];
+        if (firstCust) {
+          await loadCustomerDetail(firstCust.id);
+        }
+
+        renderCustomersList();
+        renderQuotesList();
+        renderInvoicesList();
+        renderPaymentsList();
+        renderPOsList();
+        renderCatalogGrid(globalCatalog);
+        renderHomeStats(statRes);
+
+      } catch (err) {
+        console.error('Initialization error:', err);
+      }
+    }
+
+    // View Navigation
+    function navigateView(viewName) {
+      currentActiveView = viewName;
+      const allViews = ['customer-detail', 'customers', 'payments', 'balances', 'quotations', 'invoices', 'connected-accounts', 'products', 'reports', 'developers', 'home'];
+      
+      allViews.forEach(v => {
+        const el = document.getElementById('view-' + v);
+        if (el) el.classList.add('hidden');
+      });
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        btn.classList.remove('bg-[#F0EFFF]', 'text-[#635BFF]', 'font-medium');
+        btn.classList.add('text-[#4F566B]');
+      });
+
+      const activeNav = document.getElementById('nav-' + viewName);
+      if (activeNav) {
+        activeNav.classList.remove('text-[#4F566B]');
+        activeNav.classList.add('bg-[#F0EFFF]', 'text-[#635BFF]', 'font-medium');
+      }
+
+      const target = document.getElementById('view-' + viewName);
+      if (target) target.classList.remove('hidden');
+
+      if (viewName === 'balances') loadBalances();
+      if (viewName === 'reports') loadReports();
+      if (viewName === 'developers') loadLedger();
+    }
+
+    // ========================================================
+    // FULLSCREEN CREATION STUDIO (SCREENSHOT 2 PARITY)
+    // ========================================================
+    async function openStudio(type = 'invoice') {
+      const isPO = type === 'po';
+      studioDocType = type;
+
+      // Ensure contacts are loaded if not already
+      if (!globalContacts || globalContacts.length === 0) {
+        try {
+          const res = await fetch('/api/contacts');
+          if (res.ok) {
+            globalContacts = await res.json();
+          }
+        } catch (e) {
+          console.error('Error fetching contacts in openStudio:', e);
+        }
+      }
+
+      // Force close all floating dropdowns
+      const dd = document.getElementById('actions-dropdown');
+      if (dd) dd.classList.add('hidden');
+      const orgMenu = document.getElementById('org-menu');
+      if (orgMenu) orgMenu.classList.add('hidden');
+      const notifMenu = document.getElementById('notifications-menu');
+      if (notifMenu) notifMenu.classList.add('hidden');
+
+      const studio = document.getElementById('view-document-studio');
+      studio.classList.remove('hidden');
+
+      const titleEl = document.getElementById('studio-title');
+      const submitBtn = document.getElementById('studio-submit-btn');
+      const backLabel = document.getElementById('studio-back-label');
+
+      if (type === 'invoice') {
+        titleEl.textContent = 'New invoice';
+        submitBtn.textContent = 'Create invoice';
+        backLabel.textContent = 'Invoices';
+        studioDocNumber = 'TK-INV-' + new Date().getFullYear() + '-' + String(globalInvoices.length + 1).padStart(4, '0');
+        studioMemo = 'Payment Terms: Net 30 Days. Official UAE Tax Invoice issued under Federal Decree-Law No. 8.';
+      } else if (type === 'quote') {
+        titleEl.textContent = 'New quotation';
+        submitBtn.textContent = 'Generate quote';
+        backLabel.textContent = 'Quotes';
+        studioDocNumber = 'TAKA-UAE/' + new Date().getFullYear() + '/QTN-' + String(globalQuotes.length + 1).padStart(4, '0');
+        studioMemo = '• Terms: Net 30 Days corporate facility against official LPO.\n• Warranty: 3 Years Comprehensive Manufacturer Warranty with regional onsite support.\n• Scope: Unboxing, positioning, mechanical gas hook-up, face-velocity containment testing, and full commissioning included across the UAE.';
+      } else {
+        titleEl.textContent = 'New purchase order';
+        submitBtn.textContent = 'Create PO';
+        backLabel.textContent = 'Purchase orders';
+        studioDocNumber = 'PO-' + new Date().getFullYear() + '-' + String(globalPOs.length + 1).padStart(4, '0');
+        studioMemo = 'Delivery Directives: Central Warehouse, Musaffah M-14, Abu Dhabi, UAE. Certificate of Analysis / Inspection Certificate required upon receipt.';
+      }
+
+      document.getElementById('studio-memo').value = studioMemo;
+
+      // Contextual Party Labeling (Supplier for PO, Customer for Quote/Invoice)
+      const partyHeading = document.getElementById('studio-party-heading');
+      if (partyHeading) {
+        partyHeading.textContent = isPO ? 'Supplier / Vendor' : 'Customer';
+      }
+
+      // Populate Customer / Supplier Dropdown
+      const custSelect = document.getElementById('studio-customer-select');
+      const contacts = globalContacts.filter(c => isPO ? c.type === 'vendor' : c.type === 'customer');
+      const listToUse = contacts.length > 0 ? contacts : globalContacts;
+      
+      if (custSelect && listToUse.length > 0) {
+        custSelect.innerHTML = listToUse.map(c => `
+          <option value="${c.id}">${c.company_name ? (c.company_name + (c.name ? ' — ' + c.name : '')) : c.name} (TRN: ${c.trn || 'UAE'})</option>
+        `).join('');
+
+        // Preselect current contact if viewing customer details, or first contact
+        let targetContact = null;
+        if (!isPO && currentSelectedContactId) {
+          targetContact = listToUse.find(c => String(c.id) === String(currentSelectedContactId));
+        }
+        if (!targetContact) {
+          targetContact = listToUse[0];
+        }
+        custSelect.value = targetContact.id;
+        onStudioCustomerChange(targetContact.id);
+      }
+
+      // Initial Item
+      if (globalCatalog.length > 0 && studioItems.length === 0) {
+        const item = globalCatalog[0];
+        const defaultPrice = isPO ? (item.cost_price || (item.selling_price * 0.75)) : (item.selling_price || 12000);
+        studioItems = [{
+          item_id: item.id,
+          name: item.name,
+          brand: item.brand,
+          quantity: 1,
+          unit_price: defaultPrice,
+          discount_percent: 0,
+          tax_rate: 0.05
+        }];
+      }
+
+      renderStudioItems();
+      updateStudioPreview();
+    }
+
+    function closeStudio() {
+      document.getElementById('view-document-studio').classList.add('hidden');
+      if (studioDocType === 'invoice') navigateView('invoices');
+      else if (studioDocType === 'quote') navigateView('quotations');
+      else if (studioDocType === 'po') navigateView('connected-accounts');
+    }
+
+    function onStudioCustomerChange(contactId) {
+      studioSelectedCustomer = globalContacts.find(c => String(c.id) === String(contactId)) || (globalContacts.filter(c => studioDocType === 'po' ? c.type === 'vendor' : c.type === 'customer')[0]) || globalContacts[0];
+      if (!studioSelectedCustomer) return;
+
+      document.getElementById('studio-cust-name').textContent = studioSelectedCustomer.name || studioSelectedCustomer.company_name;
+      document.getElementById('studio-cust-email').textContent = studioSelectedCustomer.email || '—';
+      document.getElementById('studio-cust-sub').textContent = `TRN: ${studioSelectedCustomer.trn || '100482910400003'} • ${studioSelectedCustomer.company_name || 'Organization'} • Net ${studioSelectedCustomer.credit_terms_days || 30} Days`;
+
+      updateStudioPreview();
+    }
+
+    function openCatalogPicker() {
+      openModal('catalog-picker-modal');
+      const searchInput = document.getElementById('catalog-picker-search');
+      if (searchInput) {
+        searchInput.value = '';
+        searchInput.focus();
+      }
+      filterCatalogPicker('');
+    }
+
+    function filterCatalogPicker(query) {
+      const q = (query || '').toLowerCase().trim();
+      const listEl = document.getElementById('catalog-picker-list');
+      if (!listEl) return;
+
+      const filtered = globalCatalog.filter(it => 
+        !q || 
+        (it.name || '').toLowerCase().includes(q) || 
+        (it.brand || '').toLowerCase().includes(q) || 
+        (it.sku || '').toLowerCase().includes(q) ||
+        (it.category || '').toLowerCase().includes(q)
+      );
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = '<div class="p-6 text-center text-[#697386]">No instruments found matching "' + q + '". You can add it as a custom line item below.</div>';
+        return;
+      }
+
+      listEl.innerHTML = filtered.map(it => {
+        const defaultPrice = studioDocType === 'po' ? (it.cost_price || (it.selling_price * 0.75)) : (it.selling_price || 12000);
+        return `
+          <div class="py-2.5 px-3 flex items-center justify-between hover:bg-[#F8FAFC] rounded-lg cursor-pointer transition" onclick="selectCatalogItem('${it.id}')">
+            <div class="min-w-0 pr-4">
+              <div class="font-bold text-xs text-[#1A1F36] truncate">${it.name}</div>
+              <div class="text-[11px] text-[#697386] flex items-center gap-2 mt-1">
+                <span class="px-1.5 py-0.2 rounded bg-white border border-[#E3E8EE] font-medium text-[#4F566B]">${it.brand || 'TAKA'}</span>
+                <span>SKU: <span class="font-mono text-[#1A1F36]">${it.sku || 'CAT-LAB'}</span></span>
+                <span>Category: ${it.category || 'Laboratory'}</span>
+              </div>
+            </div>
+            <div class="text-right flex-shrink-0">
+              <div class="font-mono font-bold text-xs text-[#0E8668]">AED ${Number(defaultPrice).toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+              <button class="mt-1 px-3 py-1 rounded bg-[#F0EFFF] text-[#635BFF] hover:bg-[#635BFF] hover:text-white font-semibold text-[11px] transition">Select & Add</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectCatalogItem(id) {
+      const item = globalCatalog.find(it => it.id === id);
+      if (!item) return;
+
+      const unitPrice = studioDocType === 'po' ? (item.cost_price || (item.selling_price * 0.75)) : (item.selling_price || 12000);
+
+      studioItems.push({
+        item_id: item.id,
+        name: item.name,
+        brand: item.brand || 'TAKA Instruments',
+        quantity: 1,
+        unit_price: unitPrice,
+        discount_percent: 0,
+        tax_rate: 0.05
+      });
+
+      closeModal('catalog-picker-modal');
+      renderStudioItems();
+      updateStudioPreview();
+    }
+
+    function addCustomStudioItem() {
+      const name = document.getElementById('custom-item-name').value.trim();
+      const price = Number(document.getElementById('custom-item-price').value) || 0;
+      if (!name) {
+        alert('Please enter an item description.');
+        return;
+      }
+
+      studioItems.push({
+        item_id: 'custom_' + Date.now(),
+        name: name,
+        brand: 'Custom Supply',
+        quantity: 1,
+        unit_price: price,
+        discount_percent: 0,
+        tax_rate: 0.05
+      });
+
+      document.getElementById('custom-item-name').value = '';
+      document.getElementById('custom-item-price').value = '';
+      closeModal('catalog-picker-modal');
+      renderStudioItems();
+      updateStudioPreview();
+    }
+
+    function removeStudioItem(index) {
+      studioItems.splice(index, 1);
+      renderStudioItems();
+      updateStudioPreview();
+    }
+
+    function renderStudioItems() {
+      const container = document.getElementById('studio-items-list');
+      if (studioItems.length === 0) {
+        container.innerHTML = '<div class="py-4 text-center text-[#697386] text-xs">No items added. Click "+ Add item" below.</div>';
+        return;
+      }
+
+      container.innerHTML = studioItems.map((it, idx) => `
+        <div class="p-3.5 rounded-lg border border-[#E3E8EE] bg-white flex items-center justify-between hover:border-[#CBD5E1] transition">
+          <div class="flex-1 min-w-0 pr-4">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-xs text-[#1A1F36] truncate">${it.name}</span>
+              <span class="px-1.5 py-0.2 rounded text-[10px] bg-[#F8FAFC] border border-[#E3E8EE] text-[#697386] font-mono">${it.brand || 'Lab'}</span>
+            </div>
+            <div class="flex items-center gap-4 mt-2 text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="text-[#697386]">Qty:</span>
+                <input type="number" min="1" value="${it.quantity}" oninput="updateItemQty(${idx}, this.value)" class="w-14 px-2 py-0.5 rounded border border-[#E3E8EE] font-mono text-center">
+              </div>
+              <div class="flex items-center gap-1.5">
+                <span class="text-[#697386]">Price:</span>
+                <input type="number" step="0.01" value="${it.unit_price}" oninput="updateItemPrice(${idx}, this.value)" class="w-24 px-2 py-0.5 rounded border border-[#E3E8EE] font-mono text-right">
+              </div>
+            </div>
+          </div>
+
+          <div class="text-right flex items-center gap-4">
+            <div class="font-mono font-bold text-xs text-[#1A1F36]">
+              AED ${(it.quantity * it.unit_price).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            </div>
+            <button onclick="removeStudioItem(${idx})" class="text-[#697386] hover:text-[#9B1C1C] p-1" title="Delete"><svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg></button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function updateItemQty(index, qty) {
+      if (studioItems[index]) {
+        studioItems[index].quantity = Math.max(1, Number(qty) || 1);
+        renderStudioItems();
+        updateStudioPreview();
+      }
+    }
+
+    function updateItemPrice(index, price) {
+      if (studioItems[index]) {
+        studioItems[index].unit_price = Math.max(0, Number(price) || 0);
+        renderStudioItems();
+        updateStudioPreview();
+      }
+    }
+
+    function updateStudioPreview() {
+      const autoTax = document.getElementById('studio-auto-tax')?.checked ?? true;
+      const memo = document.getElementById('studio-memo')?.value || studioMemo;
+
+      let subtotal = 0;
+      studioItems.forEach(it => {
+        subtotal += (it.quantity * it.unit_price);
+      });
+
+      const vatRate = autoTax ? 0.05 : 0;
+      const vatAmount = subtotal * vatRate;
+      const totalAmount = subtotal + vatAmount;
+
+      document.getElementById('studio-subtotal').textContent = 'AED ' + subtotal.toLocaleString('en-US', { minimumFractionDigits: 2 });
+      document.getElementById('studio-vat').textContent = 'AED ' + vatAmount.toLocaleString('en-US', { minimumFractionDigits: 2 });
+      document.getElementById('studio-total').textContent = 'AED ' + totalAmount.toLocaleString('en-US', { minimumFractionDigits: 2 });
+
+      // Generate Authentic Document HTML for Live Preview
+      const previewHtml = buildDocumentHtml({
+        type: studioDocType,
+        docNumber: studioDocNumber,
+        customer: studioSelectedCustomer || (globalContacts.filter(c => studioDocType === 'po' ? c.type === 'vendor' : c.type === 'customer')[0]) || globalContacts[0] || { name: 'Authorized Entity', company_name: 'Institutional Client', email: 'sales@taka.ae', trn: '100482910400003', billing_address: 'Abu Dhabi, UAE' },
+        items: studioItems,
+        subtotal: subtotal,
+        vatAmount: vatAmount,
+        totalAmount: totalAmount,
+        memo: memo,
+        date: new Date().toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' })
+      });
+
+      const iframe = document.getElementById('studio-preview-iframe');
+      if (iframe) {
+        iframe.srcdoc = previewHtml;
+        iframe.onload = function() { try { iframe.contentWindow.scrollTo(0, 0); } catch(e) {} };
+      }
+    }
+
+    function printStudioPreview() {
+      const iframe = document.getElementById('studio-preview-iframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.print();
+      }
+    }
+
+    async function submitStudioDocument() {
+      if (!studioSelectedCustomer) {
+        alert('Please select a customer.');
+        return;
+      }
+      if (studioItems.length === 0) {
+        alert('Please add at least one line item.');
+        return;
+      }
+
+      const memo = document.getElementById('studio-memo')?.value || studioMemo;
+      const endpoint = studioDocType === 'invoice' ? '/api/invoices' : (studioDocType === 'quote' ? '/api/quotes' : '/api/pos');
+      
+      const payload = {
+        customer_id: studioSelectedCustomer.id,
+        vendor_id: studioSelectedCustomer.id,
+        items: studioItems.map(it => ({
+          item_id: it.item_id,
+          description: it.name,
+          quantity: it.quantity,
+          unit_price: it.unit_price,
+          unit_cost: it.unit_price
+        })),
+        notes: memo
+      };
+
+      try {
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        if (res.ok) {
+          closeStudio();
+          await loadInitialData();
+          if (studioDocType === 'invoice') navigateView('invoices');
+          else if (studioDocType === 'quote') navigateView('quotations');
+          else navigateView('connected-accounts');
+        } else {
+          alert('Failed to save ' + studioDocType);
+        }
+      } catch (e) {
+        console.error(e);
+        alert('Error communicating with server.');
+      }
+    }
+
+    // ========================================================
+    // AUTHENTIC UAE BILINGUAL DOCUMENT HTML BUILDER
+        // ========================================================
+    // MODERN STRIPE UAE BILINGUAL DOCUMENT HTML BUILDER
+    // ========================================================
+    // UNCLUTTERED MODERN STRIPE UAE DOCUMENT HTML BUILDER
+    // ========================================================
+    function buildDocumentHtml(data) {
+      const isInvoice = data.type === 'invoice';
+      const isQuote = data.type === 'quote';
+      const isPO = data.type === 'po';
+      const titleEn = isInvoice ? 'TAX INVOICE' : (isQuote ? 'COMMERCIAL QUOTATION' : 'LOCAL PURCHASE ORDER');
+      const titleAr = isInvoice ? 'فاتورة ضريبية' : (isQuote ? 'عرض أسعار تجاري' : 'أمر شراء محلي (LPO)');
+      
+      const customer = data.customer || {};
+      const customerName = customer.company_name || customer.name || 'Valued Client';
+      const contactPerson = customer.name && customer.company_name ? customer.name : '';
+      const customerTrn = customer.trn || (isInvoice ? 'N/A (Consumer / End-User)' : 'N/A');
+      const customerAddress = customer.billing_address || 'Abu Dhabi / Dubai, United Arab Emirates';
+      const customerEmail = customer.email || '';
+      const customerTerms = customer.credit_terms_days ? ('Net ' + customer.credit_terms_days + ' Days') : 'Net 30 Days';
+
+      const itemsRows = data.items.map(function(it, idx) {
+        const lineTotal = it.quantity * it.unit_price;
+        const lineVat = lineTotal * (isPO ? 0 : 0.05);
+        const lineGross = lineTotal + lineVat;
+        return `
+          <tr style="border-bottom: 1px solid #e2e8f0;">
+            <td style="padding: 8px 6px; text-align: center; color: #64748b;">${idx + 1}</td>
+            <td style="padding: 8px 6px;">
+              <div style="font-weight: 700; color: #0f172a;">${it.name}</div>
+              <div style="font-size: 8px; color: #64748b; margin-top: 1px;">${it.brand || 'TAKA Laboratory Instruments'}</div>
+            </td>
+            <td style="padding: 8px 6px; text-align: center; font-weight: 600;">${it.quantity}</td>
+            <td style="padding: 8px 6px; text-align: right; font-variant-numeric: tabular-nums;">${Number(it.unit_price).toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+            <td style="padding: 8px 6px; text-align: right; color: #054d89; font-weight: 600;">${isPO ? '0%' : '5%'}</td>
+            <td style="padding: 8px 6px; text-align: right; font-variant-numeric: tabular-nums;">${Number(lineVat).toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+            <td style="padding: 8px 6px; text-align: right; font-weight: 700; color: #0f172a; font-variant-numeric: tabular-nums;">${Number(isPO ? lineTotal : lineGross).toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+          </tr>
+        `;
+      }).join('');
+
+      return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${titleEn} - ${data.docNumber}</title>
+  <style>
+    @page { size: A4; margin: 12mm; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 24px;
+      background: #ffffff;
+      color: #0f172a;
+      font-size: 10.5px;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .tabular-nums { font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+  <!-- Clean Header matching quot1.pdf -->
+  <div style="display: flex; justify-content: space-between; align-items: flex-start; padding-bottom: 12px; border-bottom: 1.5px solid #0f172a; margin-bottom: 14px;">
+    <div>
+      <div style="width: 175px; height: 46px; display: inline-block;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1468.43 402.41">
+          <g>
+            <polygon fill="#054d89" points="124.46 226.67 152.7 226.59 138.09 196.01 124.46 226.67"/>
+            <path fill="#054d89" d="M226.61,160.24l76.32-.04c1.42,0,2.88-.98,3.17-1.68.29-.7.37-2.53-.05-3.24l-32.35-55.03-.06-32.94-20.56.07-.09,33.21-30.2,53.62c-.88,1.56-1.23,3.38-.19,4.91.61.9,2.34,1.13,4.01,1.13ZM245.74,125.67c1.97-3.43,7.53-2.68,10.58-2.08l7.51,4.08c6.3,3.42,12.97,3.28,18.82-1.74l16.12,27.81c.37,1.15-2.45,1.68-3.62,1.67l-66.46-.07,17.05-29.67Z"/>
+            <polygon fill="#054d89" points="316.4 226.65 342.65 226.62 329.35 196.74 316.4 226.65"/>
+            <line fill="none" x1="63.97" y1="150.4" x2="63.63" y2="151.12"/>
+            <path fill="#054d89" d="M201.2,0C90.08,0,0,90.08,0,201.21s90.08,201.21,201.2,201.21,201.2-90.08,201.2-201.21S312.33,0,201.2,0ZM215.76,153.5l19.53-34.55,11.34-20.47-.02-30.46c-2.79.25-4.98-1.1-5.39-3.57-.39-2.32,1.34-5.12,4.26-5.12h35.77c2.76,0,4.24,2.51,4.17,4.65-.08,2.73-2.23,4.35-5.16,4.07v30.76l31.05,52.41c2.2,3.04,2.48,6.28,1.11,9.92-1.18,1.92-3.9,5.51-7.78,5.51l-80.52.05c-3.11,0-5.86-2.21-7.16-3.99-1.95-2.65-2.86-6.28-1.21-9.2ZM329.95,317.45c-2.5,2.38-5.19,5.66-8.47,7.16-31.13,14.21-62.3,11.81-92.66-3.37-32.34-16.17-52.8-43.15-67.89-76.13l-44.16-.08-8.3,19.72-22.93-.03,52.5-113.6,38.63,80.57c5.08,10.59,10.23,20.21,16.73,29.95,15.31,22.35,36.68,39.65,62.09,49.19,27.54,10.34,54.96,8.72,82.57-1.13l-8.12,7.75ZM362.81,278.08c-4.07,7.8-8.69,14.25-14.35,21.11-14.89,7.06-31.28,7.61-46.8,2.66-23.27-7.42-41.96-25.05-58.37-42.92l-34.38-37.46-.3,42.6-13.33-16.9-7.84-9.96-.08-66.44c0-6.49-2.28-12.21-4.55-18.03-8.82-20.3-26.04-35.72-47.44-41.14-27.38-6.48-54.86,5.71-67.54,30.72l-3.85,8.09h57s-11.94,21.71-11.94,21.71h-31.67l.13,79.64c.02,9.16,2.7,17.67,5.94,26.08,13.54,35.09,43.01,60.55,78.4,72.61,41.66,14.19,84.74,10.2,125.79-5.75l12.77-4.8c-20.11,15.21-44.81,27.27-69.61,31.86-55.91,10.36-117.4-8.56-151.76-54.96-12.94-17.47-22.52-37.93-23.56-59.98l-.5-84.61-28.91-.11s25.88-49.84,33.33-58.41c19.12-21.8,47.9-31.6,76.56-26.08,25.13,4.84,46.45,20.46,59.4,42.5,7.2,12.24,13.26,25.49,13.35,39.85l.31,43.22,7-7.17,30.7-33.77,27.44.05-40.63,44.55,24.69,25.94c10.29,10.81,20.76,20.68,32.74,29.52,9.8,6.93,20.18,11.88,32.04,13.98,13.9,2.3,27.25-.95,39.8-8.18h0,0ZM363.01,277.76l.57-.91c-.25.39-.43.71-.57.91ZM364.14,275.96l-4.84-10.96-8.8-19.93-41.82-.02-8.96,20.26-17.1-11.38,20.62-44.42,26-58.07,13.22,29.21,31.98,68.05c-.09,5.05-2.14,11.02-4.5,16.26-2.08,4.62-4.4,8.66-5.81,11Z"/>
+          </g>
+          <g>
+            <path fill="#054d89" d="M472.54,30h221.51v58.23h-74.32v177.59h-72.87V88.23h-74.32V30Z"/>
+            <path fill="#054d89" d="M849.64,226.89h-82.73l-11.49,38.93h-74.4l88.63-235.82h79.49l88.61,235.82h-76.31l-11.8-38.93ZM834.53,175.9l-26.03-84.77-25.76,84.77h51.79Z"/>
+            <path fill="#054d89" d="M961.23,30h72.87v89.12l76.33-89.12h96.92l-86.06,89.01,89.92,146.81h-89.74l-49.72-96.98-37.65,39.44v57.54h-72.87V30Z"/>
+            <path fill="#054d89" d="M1380.32,226.89h-82.73l-11.49,38.93h-74.4l88.63-235.82h79.49l88.61,235.82h-76.31l-11.8-38.93ZM1365.21,175.9l-26.03-84.77-25.76,84.77h51.79Z"/>
+            <path fill="#054d89" d="M485.16,360.97c-3.39-1.38-6.09-3.43-8.11-6.14-2.03-2.71-3.09-5.97-3.2-9.78h15.14c.22,2.16.97,3.8,2.25,4.93,1.28,1.13,2.94,1.7,4.99,1.7s3.77-.48,4.99-1.45c1.22-.97,1.83-2.31,1.83-4.02,0-1.44-.49-2.62-1.46-3.57-.97-.94-2.16-1.71-3.58-2.32-1.41-.61-3.42-1.3-6.03-2.07-3.77-1.16-6.85-2.32-9.24-3.48-2.39-1.16-4.44-2.87-6.16-5.14-1.72-2.27-2.58-5.22-2.58-8.87,0-5.42,1.97-9.66,5.91-12.73,3.94-3.07,9.07-4.6,15.4-4.6s11.62,1.53,15.56,4.6c3.94,3.07,6.05,7.34,6.32,12.81h-15.39c-.11-1.88-.81-3.36-2.08-4.44-1.28-1.08-2.91-1.62-4.91-1.62-1.72,0-3.11.45-4.16,1.37-1.05.91-1.58,2.23-1.58,3.94,0,1.88.89,3.35,2.66,4.39,1.78,1.05,4.55,2.18,8.32,3.4,3.77,1.27,6.84,2.49,9.2,3.65,2.36,1.16,4.4,2.85,6.12,5.06,1.72,2.21,2.58,5.06,2.58,8.54s-.85,6.33-2.54,9.04c-1.69,2.71-4.15,4.87-7.36,6.47-3.22,1.6-7.02,2.4-11.4,2.4s-8.1-.69-11.48-2.07Z"/>
+            <path fill="#054d89" d="M528.01,317.89c2.5-4.51,5.98-8.01,10.44-10.53,4.46-2.51,9.53-3.77,15.19-3.77,6.93,0,12.87,1.82,17.81,5.47,4.94,3.65,8.24,8.62,9.9,14.93h-15.64c-1.16-2.43-2.82-4.28-4.95-5.56-2.14-1.27-4.56-1.91-7.28-1.91-4.38,0-7.93,1.52-10.65,4.56-2.72,3.04-4.08,7.1-4.08,12.19s1.36,9.15,4.08,12.19c2.72,3.04,6.27,4.56,10.65,4.56,2.72,0,5.14-.64,7.28-1.91,2.13-1.27,3.79-3.12,4.95-5.56h15.64c-1.67,6.3-4.97,11.26-9.9,14.88-4.94,3.62-10.87,5.43-17.81,5.43-5.66,0-10.72-1.26-15.19-3.77-4.47-2.51-7.95-6.01-10.44-10.49-2.5-4.48-3.74-9.59-3.74-15.34s1.25-10.88,3.74-15.38Z"/>
+            <path fill="#054d89" d="M604.32,304.25v58.21h-14.23v-58.21h14.23Z"/>
+            <path fill="#054d89" d="M628.87,315.61v11.77h19.06v10.94h-19.06v12.77h21.55v11.36h-35.78v-58.21h35.78v11.36h-21.55Z"/>
+            <path fill="#054d89" d="M711.92,362.46h-14.23l-23.8-35.9v35.9h-14.23v-58.21h14.23l23.8,36.07v-36.07h14.23v58.21Z"/>
+            <path fill="#054d89" d="M764.26,304.25v11.36h-15.48v46.85h-14.23v-46.85h-15.48v-11.36h45.19Z"/>
+            <path fill="#054d89" d="M785.65,304.25v58.21h-14.23v-58.21h14.23Z"/>
+            <path fill="#054d89" d="M834,304.25v11.36h-23.8v12.27h17.81v11.03h-17.81v23.55h-14.23v-58.21h38.03Z"/>
+            <path fill="#054d89" d="M855.71,304.25v58.21h-14.23v-58.21h14.23Z"/>
+            <path fill="#054d89" d="M867.36,317.89c2.5-4.51,5.98-8.01,10.44-10.53,4.46-2.51,9.53-3.77,15.19-3.77,6.93,0,12.87,1.82,17.81,5.47s8.24,8.62,9.9,14.93h-15.64c-1.16-2.43-2.82-4.28-4.95-5.56-2.14-1.27-4.56-1.91-7.28-1.91-4.38,0-7.93,1.52-10.65,4.56-2.72,3.04-4.08,7.1-4.08,12.19s1.36,9.15,4.08,12.19c2.72,3.04,6.27,4.56,10.65,4.56,2.72,0,5.14-.64,7.28-1.91,2.13-1.27,3.79-3.12,4.95-5.56h15.64c-1.67,6.3-4.97,11.26-9.9,14.88-4.94,3.62-10.87,5.43-17.81,5.43-5.66,0-10.72-1.26-15.19-3.77-4.47-2.51-7.95-6.01-10.44-10.49-2.5-4.48-3.74-9.59-3.74-15.34s1.25-10.88,3.74-15.38Z"/>
+            <path fill="#054d89" d="M961.32,315.61v11.77h19.06v10.94h-19.06v12.77h21.55v11.36h-35.78v-58.21h35.78v11.36h-21.55Z"/>
+            <path fill="#054d89" d="M1033.71,372.41l-7.49-10.03c-2.22.44-4.38.66-6.49.66-5.49,0-10.53-1.27-15.1-3.81-4.58-2.54-8.21-6.09-10.9-10.65-2.69-4.56-4.04-9.69-4.04-15.38s1.34-10.81,4.04-15.34c2.69-4.53,6.32-8.07,10.9-10.61,4.58-2.54,9.61-3.81,15.1-3.81s10.53,1.27,15.1,3.81c4.58,2.54,8.18,6.08,10.82,10.61,2.63,4.53,3.95,9.65,3.95,15.34,0,4.98-1.01,9.52-3.04,13.64s-4.84,7.53-8.45,10.24l12.81,15.34h-17.22ZM1008.46,345.5c2.8,3.07,6.56,4.6,11.28,4.6s8.39-1.55,11.19-4.64c2.8-3.09,4.2-7.18,4.2-12.27s-1.4-9.24-4.2-12.31c-2.8-3.07-6.53-4.6-11.19-4.6s-8.48,1.52-11.28,4.56c-2.8,3.04-4.2,7.16-4.2,12.35s1.4,9.24,4.2,12.31Z"/>
+            <path fill="#054d89" d="M1071.66,304.25v34.83c0,3.48.86,6.16,2.58,8.04,1.72,1.88,4.24,2.82,7.57,2.82s5.88-.94,7.66-2.82c1.77-1.88,2.66-4.56,2.66-8.04v-34.83h14.23v34.74c0,5.2-1.11,9.59-3.33,13.18-2.22,3.59-5.2,6.3-8.94,8.13-3.75,1.82-7.92,2.74-12.52,2.74s-8.72-.9-12.36-2.7c-3.63-1.8-6.51-4.51-8.61-8.13-2.11-3.62-3.16-8.03-3.16-13.22v-34.74h14.23Z"/>
+            <path fill="#054d89" d="M1130.57,304.25v58.21h-14.23v-58.21h14.23Z"/>
+            <path fill="#054d89" d="M1183.08,332.24c-1.55,2.79-3.94,5.05-7.16,6.76-3.22,1.71-7.21,2.57-11.98,2.57h-8.82v20.9h-14.23v-58.21h23.05c4.66,0,8.6.8,11.82,2.4,3.22,1.6,5.63,3.81,7.24,6.63,1.61,2.82,2.41,6.05,2.41,9.7,0,3.37-.78,6.45-2.33,9.24ZM1168.94,328.38c1.33-1.27,2-3.07,2-5.39s-.67-4.12-2-5.39c-1.33-1.27-3.36-1.91-6.08-1.91h-7.74v14.59h7.74c2.72,0,4.74-.64,6.08-1.91Z"/>
+            <path fill="#054d89" d="M1258.98,304.25v58.21h-14.23v-34.91l-13.06,34.91h-11.48l-13.15-34.99v34.99h-14.23v-58.21h16.81l16.39,40.3,16.23-40.3h16.73Z"/>
+            <path fill="#054d89" d="M1283.44,315.61v11.77h19.06v10.94h-19.06v12.77h21.55v11.36h-35.78v-58.21h35.78v11.36h-21.55Z"/>
+            <path fill="#054d89" d="M1366.49,362.46h-14.23l-23.8-35.9v35.9h-14.23v-58.21h14.23l23.8,36.07v-36.07h14.23v58.21Z"/>
+            <path fill="#054d89" d="M1418.83,304.25v11.36h-15.48v46.85h-14.23v-46.85h-15.48v-11.36h45.19Z"/>
+            <path fill="#054d89" d="M1435.64,360.97c-3.39-1.38-6.09-3.43-8.11-6.14-2.03-2.71-3.09-5.97-3.2-9.78h15.14c.22,2.16.97,3.8,2.25,4.93,1.28,1.13,2.94,1.7,4.99,1.7s3.77-.48,4.99-1.45c1.22-.97,1.83-2.31,1.83-4.02,0-1.44-.49-2.62-1.46-3.57-.97-.94-2.16-1.71-3.58-2.32-1.41-.61-3.42-1.3-6.03-2.07-3.77-1.16-6.85-2.32-9.24-3.48-2.39-1.16-4.44-2.87-6.16-5.14-1.72-2.27-2.58-5.22-2.58-8.87,0-5.42,1.97-9.66,5.91-12.73,3.94-3.07,9.07-4.6,15.4-4.6s11.62,1.53,15.56,4.6c3.94,3.07,6.05,7.34,6.32,12.81h-15.39c-.11-1.88-.81-3.36-2.08-4.44-1.28-1.08-2.91-1.62-4.91-1.62-1.72,0-3.11.45-4.16,1.37-1.05.91-1.58,2.23-1.58,3.94,0,1.88.89,3.35,2.66,4.39,1.78,1.05,4.55,2.18,8.32,3.4,3.77,1.27,6.84,2.49,9.2,3.65,2.36,1.16,4.4,2.85,6.12,5.06,1.72,2.21,2.58,5.06,2.58,8.54s-.85,6.33-2.54,9.04c-1.69,2.71-4.15,4.87-7.36,6.47-3.22,1.6-7.02,2.4-11.4,2.4s-8.1-.69-11.48-2.07Z"/>
+          </g>
+        </svg>
+      </div>
+      <div style="font-size: 9.5px; font-weight: 700; color: #054d89; margin-top: 4px; letter-spacing: 0.3px;">SCIENTIFIC EQUIPMENT & LAB FURNITURE &bull; DELIVERED & INSTALLED ACROSS THE UAE</div>
+      <div style="font-size: 9px; color: #64748b; margin-top: 2px;">
+        Head Office: Musaffah Industrial M-14, Abu Dhabi, UAE &bull; sales@taka.ae
+      </div>
+    </div>
+
+    <div style="text-align: right;">
+      <div style="font-size: 18px; font-weight: 900; letter-spacing: 0.5px; color: #0f172a; margin: 0; line-height: 1.2;">${titleEn}</div>
+      <div style="font-size: 12px; font-weight: 700; color: #64748b; margin: 2px 0 6px 0; direction: rtl;">${titleAr}</div>
+      <div style="font-size: 9.5px; color: #475569; line-height: 1.45;">REF: <strong style="color: #054d89;">${data.docNumber}</strong></div>
+      <div style="font-size: 9.5px; color: #475569; line-height: 1.45;">DATE: <strong style="color: #0f172a;">${data.date}</strong></div>
+      <div style="font-size: 9.5px; color: #475569; line-height: 1.45;">TERMS: <strong style="color: #0f172a;">${customerTerms}</strong></div>
+    </div>
+  </div>
+
+  <!-- Two-Column Parties & Specs - Pure clean layout (NO BOXES) -->
+  <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 1px solid #e2e8f0;">
+    <div>
+      <div style="font-size: 8.5px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px;">${isPO ? 'VENDOR / SUPPLIER (المورد المعتمد):' : 'BILLED TO / CUSTOMER (العميل):'}</div>
+      <div style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 3px;">${customerName}</div>
+      <div style="font-size: 9.5px; color: #475569; line-height: 1.5;">
+        ${contactPerson ? ('Attn: ' + contactPerson + '<br>') : ''}
+        Tax TRN: <strong style="color: #0f172a;">${customerTrn}</strong><br>
+        Address: ${customerAddress}<br>
+        ${customerEmail ? ('Email: ' + customerEmail) : ''}
+      </div>
+    </div>
+
+    <div>
+      <div style="font-size: 8.5px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px;">${isPO ? 'PURCHASE & DELIVERY DETAILS:' : 'TRANSACTION & SUPPLY SPECIFICATIONS:'}</div>
+      <div style="font-size: 9.5px; color: #475569; line-height: 1.5;">
+        Total Value: <strong style="font-size: 15px; color: #0f172a;" class="tabular-nums">AED ${Number(data.totalAmount).toLocaleString('en-US', { minimumFractionDigits: 2 })}</strong><br>
+        Place of Supply: <strong>Abu Dhabi, United Arab Emirates</strong><br>
+        Settlement Facility: ${customerTerms} on Official LPO<br>
+        Currency: <strong>AED (UAE Dirham)</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Open Minimal Items Table -->
+  <table style="width: 100%; border-collapse: collapse; margin-bottom: 16px;">
+    <thead>
+      <tr>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: center; width: 24px;">#</th>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: left;">
+          <div>Scope of Supply & Description</div>
+          <div style="font-size: 7.5px; color: #64748b; font-weight: 500; text-transform: none; margin-top: 1px;">الصنف والبيان والمواصفات المعتمدة</div>
+        </th>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: center; width: 36px;">
+          <div>Qty</div>
+          <div style="font-size: 7.5px; color: #64748b; font-weight: 500; text-transform: none; margin-top: 1px;">الكمية</div>
+        </th>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: right; width: 85px;">
+          <div>Unit Price (AED)</div>
+          <div style="font-size: 7.5px; color: #64748b; font-weight: 500; text-transform: none; margin-top: 1px;">سعر الوحدة</div>
+        </th>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: right; width: 50px;">
+          <div>VAT %</div>
+          <div style="font-size: 7.5px; color: #64748b; font-weight: 500; text-transform: none; margin-top: 1px;">النسبة</div>
+        </th>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: right; width: 75px;">
+          <div>VAT (AED)</div>
+          <div style="font-size: 7.5px; color: #64748b; font-weight: 500; text-transform: none; margin-top: 1px;">الضريبة</div>
+        </th>
+        <th style="border-top: 1.5px solid #0f172a; border-bottom: 1.5px solid #0f172a; padding: 8px 6px; font-size: 8.5px; text-transform: uppercase; letter-spacing: 0.5px; font-weight: 700; color: #0f172a; text-align: right; width: 95px;">
+          <div>Total (AED)</div>
+          <div style="font-size: 7.5px; color: #64748b; font-weight: 500; text-transform: none; margin-top: 1px;">الإجمالي</div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      ${itemsRows || '<tr><td colspan="7" style="padding: 16px; text-align: center; color: #64748b;">No items added yet. Click "+ Add item" to populate scope of supply.</td></tr>'}
+    </tbody>
+  </table>
+
+  <!-- Settlement & Totals Grid - NO BOXES -->
+  <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 24px; margin-bottom: 14px;">
+    <div style="font-size: 9px; color: #475569; line-height: 1.5;">
+      <div style="font-size: 8.5px; font-weight: 800; color: #0f172a; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px;">BANK SETTLEMENT INSTRUCTIONS / السداد البنكي</div>
+      Beneficiary: <strong>TAKA SCIENTIFIC EQUIPMENT - L.L.C</strong><br>
+      Bank: <strong>Wio Bank PJSC</strong> &bull; Currency: <strong>AED</strong><br>
+      IBAN: <strong style="color: #054d89; font-size: 10.5px;" class="tabular-nums">AE82 0860 0000 0123 4567 890</strong><br>
+      SWIFT / BIC: <strong>WIOBAEADXXX</strong>
+    </div>
+
+    <div style="width: 100%; font-size: 10.5px;">
+      <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f1f5f9; color: #475569;">
+        <span>Subtotal (Net) / المجموع الصافي:</span>
+        <span class="tabular-nums" style="font-weight: 600; color: #0f172a;">AED ${Number(data.subtotal).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 4px 0; border-bottom: 1px solid #f1f5f9; color: #475569;">
+        <span>UAE VAT (5%) / الضريبة:</span>
+        <span class="tabular-nums" style="font-weight: 600; color: #054d89;">AED ${Number(data.vatAmount).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+      </div>
+      <div style="display: flex; justify-content: space-between; padding: 6px 0; border-top: 1.5px solid #0f172a; border-bottom: 2px solid #0f172a; font-size: 12.5px; font-weight: 800; color: #0f172a; margin-top: 2px;">
+        <span>Grand Total / المبلغ الإجمالي:</span>
+        <span class="tabular-nums">AED ${Number(data.totalAmount).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+      </div>
+    </div>
+  </div>
+
+  ${data.memo ? `
+    <div style="margin-bottom: 12px; font-size: 9px; color: #475569; line-height: 1.45; padding-top: 8px; border-top: 1px solid #e2e8f0;">
+      <div style="font-weight: 700; color: #0f172a; margin-bottom: 2px;">Commercial Terms & Scope / الشروط التجارية:</div>
+      <div>${data.memo}</div>
+    </div>
+  ` : ''}
+
+  <!-- Signature & Official Seal -->
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin: 16px 0 10px 0; padding-top: 6px;">
+    <div>
+      <div style="font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Authorized Signature / التوقيع المعتمد:</div>
+      <div style="font-family: 'Brush Script MT', 'Segoe Script', cursive, sans-serif; font-size: 22px; color: #0f172a; margin: 2px 0;">Ezhilarasi Mathivanan</div>
+      <div style="font-weight: 800; font-size: 11px; color: #0f172a;">EZHILARASI MATHIVANAN</div>
+      <div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">Managing Director & Authorized Signatory &bull; المدير العام والمفوض بالتوقيع</div>
+    </div>
+
+    <div>
+      <svg width="105" height="105" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.94; transform: rotate(-2deg); flex-shrink: 0;">
+        <circle cx="110" cy="110" r="102" stroke="#1d4ed8" stroke-width="3.5" fill="none"/>
+        <circle cx="110" cy="110" r="88" stroke="#1d4ed8" stroke-width="1.8" stroke-dasharray="4 2" fill="none"/>
+        <circle cx="110" cy="110" r="64" stroke="#1d4ed8" stroke-width="1.2" fill="none"/>
+        <path id="sealPathEn_studio" d="M 30,110 A 80,80 0 0,1 190,110" fill="none"/>
+        <text font-family="'Segoe UI', sans-serif" font-size="8.8" font-weight="900" fill="#1d4ed8" letter-spacing="0.8">
+          <textPath href="#sealPathEn_studio" startOffset="50%" text-anchor="middle">
+            TAKA SCIENTIFIC EQUIPMENT L.L.C
+          </textPath>
+        </text>
+        <path id="sealPathAr_studio" d="M 190,110 A 80,80 0 0,1 30,110" fill="none"/>
+        <text font-family="'Segoe UI', Tahoma, sans-serif" font-size="9.8" font-weight="900" fill="#1d4ed8">
+          <textPath href="#sealPathAr_studio" startOffset="50%" text-anchor="middle">
+            تاكا للمعدات العلمية - ذ.م.م
+          </textPath>
+        </text>
+        <text x="110" y="93" font-family="'Segoe UI', sans-serif" font-size="7.5" font-weight="800" fill="#1d4ed8" text-anchor="middle">★ ABU DHABI • UAE ★</text>
+        <text x="110" y="105" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">EZHILARASI MATHIVANAN</text>
+        <text x="110" y="116" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="700" fill="#1d4ed8" text-anchor="middle">MANAGING DIRECTOR</text>
+        <text x="110" y="127" font-family="'Segoe UI', sans-serif" font-size="7.5" font-weight="800" fill="#1d4ed8" text-anchor="middle">TRN: 100482910400003</text>
+        <text x="110" y="138" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="800" fill="#1d4ed8" text-anchor="middle">REG: 1012000000006736354</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 3-Column Footer matching quot1.pdf -->
+  <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 14px; border-top: 1.5px solid #0f172a; padding-top: 8px; margin-top: 16px; font-size: 8px; color: #64748b; line-height: 1.4;">
+    <div>
+      <div style="font-weight: 800; color: #0f172a; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;">ABU DHABI HEADQUARTERS (HQ)</div>
+      Musaffah Industrial M-14, P.O. Box 92144<br>
+      Abu Dhabi, United Arab Emirates
+    </div>
+    <div>
+      <div style="font-weight: 800; color: #0f172a; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;">DUBAI REGIONAL BRANCH</div>
+      Business Bay, Dubai<br>
+      United Arab Emirates
+    </div>
+    <div>
+      <div style="font-weight: 800; color: #0f172a; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;">INQUIRIES & VERIFICATION</div>
+      taka.ae &bull; sales@taka.ae<br>
+      Tel / WhatsApp: +971 55 853 1705
+    </div>
+  </div>
+  <div style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 4px; font-size: 7.5px; color: #94a3b8; display: flex; justify-content: space-between;">
+    <div>Tax TRN: <strong style="color: #475569;">100482910400003</strong> &bull; Trade License: <strong style="color: #475569;">CN-2849102</strong> &bull; Unified Reg: <strong style="color: #475569;">1012000000006736354</strong></div>
+    <div>ICV Certified &bull; ISO 9001:2015 &bull; EN 14175 &bull; Official Document</div>
+  </div>
+</body>
+</html>`;
+    }
+
+    // ========================================================
+    // STRIPE LIST VIEWS (SCREENSHOT 1 PARITY)
+    // ========================================================
+    function renderInvoicesList() {
+      const tbody = document.getElementById('invoices-list-tbody');
+      document.getElementById('invoices-count-label').textContent = globalInvoices.length;
+
+      if (globalInvoices.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-[#697386]">No invoices yet. Click "+ Create an invoice" to launch the studio.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = globalInvoices.map(i => {
+        const isPaid = Number(i.balance_due) <= 0;
+        const statusBadge = isPaid
+          ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E6F7F0] text-[#0E8668]">Accepted</span>'
+          : (i.status === 'sent'
+            ? '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#EBF3FF] text-[#1C64F2]">Open</span>'
+            : '<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#F1F3F5] text-[#4F5B76]">Draft</span>');
+
+        return `
+          <tr class="hover:bg-[#F8FAFC] transition cursor-pointer" onclick="previewDocument('invoice', '${i.id}')">
+            <td class="py-3 px-3 font-mono font-bold text-[#1A1F36]">
+              AED ${Number(i.total_amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+              <span class="ml-2">${statusBadge}</span>
+            </td>
+            <td class="py-3 px-3 font-mono font-semibold text-[#1A1F36]">${i.invoice_number}</td>
+            <td class="py-3 px-3 text-[#3C4257]">${i.customer_email || i.customer_company || 'client@adek.gov.ae'}</td>
+            <td class="py-3 px-3 text-[#697386]">${i.due_date || '31 May'}</td>
+            <td class="py-3 px-3 text-[#697386]">${i.date || '6 May, 10:53AM'}</td>
+            <td class="py-3 px-3 text-right space-x-2" onclick="event.stopPropagation()">
+              <button onclick="previewDocument('invoice', '${i.id}')" class="text-[#635BFF] hover:underline font-medium">PDF</button>
+              ${!isPaid ? `<button onclick="openPayForInvoice('${i.id}', ${i.balance_due})" class="text-[#0E8668] hover:underline font-semibold">Pay</button>` : ''}
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function renderQuotesList() {
+      const tbody = document.getElementById('quotes-list-tbody');
+      document.getElementById('quotes-count-label').textContent = globalQuotes.length;
+
+      if (globalQuotes.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-[#697386]">No quotations yet. Click "+ Create a quote".</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = globalQuotes.map(q => `
+        <tr class="hover:bg-[#F8FAFC] transition cursor-pointer" onclick="previewDocument('quote', '${q.id}')">
+          <td class="py-3 px-3 font-mono font-bold text-[#1A1F36]">
+            AED ${Number(q.total_amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E6F7F0] text-[#0E8668]">Accepted</span>
+          </td>
+          <td class="py-3 px-3 font-mono font-semibold text-[#635BFF]">${q.quote_number}</td>
+          <td class="py-3 px-3 text-[#3C4257]">${q.customer_email || q.customer_name || 'Client'}</td>
+          <td class="py-3 px-3 text-[#697386]">${q.expiry_date || '30 days'}</td>
+          <td class="py-3 px-3 text-[#697386]">${q.date}</td>
+          <td class="py-3 px-3 text-right space-x-2" onclick="event.stopPropagation()">
+            <button onclick="previewDocument('quote', '${q.id}')" class="text-[#635BFF] hover:underline font-medium">PDF</button>
+            ${q.status !== 'invoiced' ? `<button onclick="convertQuoteToInvoice('${q.id}')" class="text-[#0E8668] hover:underline font-semibold">Convert</button>` : ''}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPOsList() {
+      const tbody = document.getElementById('pos-list-tbody');
+      if (globalPOs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-[#697386]">No purchase orders yet. Click "+ Create a PO".</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = globalPOs.map(po => `
+        <tr class="hover:bg-[#F8FAFC] transition cursor-pointer" onclick="previewDocument('po', '${po.id}')">
+          <td class="py-3 px-3 font-mono font-bold text-[#1A1F36]">
+            AED ${Number(po.total_amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#EBF3FF] text-[#1C64F2]">${po.status || 'Ordered'}</span>
+          </td>
+          <td class="py-3 px-3 font-mono font-bold text-[#D97706]">${po.po_number}</td>
+          <td class="py-3 px-3 text-[#3C4257]">${po.vendor_company || po.vendor_name}</td>
+          <td class="py-3 px-3 text-[#697386]">${po.shipping_terms || 'Ex-Works'}</td>
+          <td class="py-3 px-3 text-[#697386]">${po.date}</td>
+          <td class="py-3 px-3 text-right space-x-2" onclick="event.stopPropagation()">
+            <button onclick="previewDocument('po', '${po.id}')" class="text-[#635BFF] hover:underline font-medium">PO Doc</button>
+            ${po.status !== 'billed' ? `<button onclick="convertPoToBill('${po.id}')" class="text-[#0E8668] hover:underline font-semibold">Bill</button>` : ''}
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function renderPaymentsList() {
+      const tbody = document.getElementById('payments-list-tbody');
+      if (globalPayments.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="py-12 text-center text-[#697386]">No payments recorded yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = globalPayments.map(p => `
+        <tr class="hover:bg-[#F8FAFC] transition">
+          <td class="py-3 px-4"><input type="checkbox"></td>
+          <td class="py-3 px-4 font-mono font-bold text-[#1A1F36]">
+            AED ${Number(p.amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+            <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E6F7F0] text-[#0E8668]">Succeeded ✓</span>
+          </td>
+          <td class="py-3 px-4 text-[#3C4257]">${p.notes || p.reference || 'Bank wire deposit'}</td>
+          <td class="py-3 px-4 font-semibold text-[#1A1F36]">${p.contact_company || p.contact_name || 'Customer'}</td>
+          <td class="py-3 px-4 text-[#697386]">${p.date}</td>
+          <td class="py-3 px-4 text-right text-[#697386]">···</td>
+        </tr>
+      `).join('');
+    }
+
+    function renderCustomersList() {
+      const tbody = document.getElementById('customers-table-body');
+      const custs = globalContacts.filter(c => c.type === 'customer');
+      if (custs.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="6" class="p-8 text-center text-[#697386]">No customers registered.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = custs.map(c => `
+        <tr class="hover:bg-[#F8FAFC] transition cursor-pointer" onclick="loadCustomerDetail('${c.id}')">
+          <td class="py-3 px-4" onclick="event.stopPropagation()"><input type="checkbox"></td>
+          <td class="py-3 px-4 font-semibold text-[#1A1F36]">${c.company_name || c.name}</td>
+          <td class="py-3 px-4 text-[#697386]">${c.email || '—'}</td>
+          <td class="py-3 px-4 font-mono text-[#697386]">${c.trn || '—'}</td>
+          <td class="py-3 px-4 text-[#697386]">${c.credit_terms_days || 30} Days</td>
+          <td class="py-3 px-4 text-right" onclick="event.stopPropagation()">
+            <button onclick="loadCustomerDetail('${c.id}')" class="text-[#635BFF] hover:underline font-semibold">View 360°</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function filterInvoicesTab(tab) {
+      ['all', 'draft', 'outstanding', 'overdue', 'paid'].forEach(t => {
+        const el = document.getElementById('inv-tab-' + t);
+        if (el) {
+          if (t === tab) {
+            el.className = 'pb-2 border-b-2 border-[#635BFF] text-[#635BFF] font-semibold';
+          } else {
+            el.className = 'pb-2 border-b-2 border-transparent hover:text-[#1A1F36]';
+          }
+        }
+      });
+      renderInvoicesList();
+    }
+
+    function exportInvoicesCsv() {
+      const headers = ['Invoice Number', 'Customer', 'Total AED', 'Paid AED', 'Balance AED', 'Date', 'Due Date'];
+      const rows = globalInvoices.map(i => [
+        i.invoice_number,
+        i.customer_company || i.customer_name,
+        i.total_amount,
+        i.paid_amount,
+        i.balance_due,
+        i.date,
+        i.due_date
+      ]);
+      const csvContent = 'data:text/csv;charset=utf-8,' + [headers.join(','), ...rows.map(r => r.join(','))].join('\n');
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement('a');
+      link.setAttribute('href', encodedUri);
+      link.setAttribute('download', 'TAKA_Scientific_Invoices.csv');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    // ========================================================
+    // CUSTOMER DETAIL (SCREENSHOT 1)
+    // ========================================================
+    async function loadCustomerDetail(contactId) {
+      currentSelectedContactId = contactId;
+      try {
+        const res = await fetch(`/api/contacts/${contactId}/timeline`);
+        if (!res.ok) return;
+        const data = await res.json();
+        const contact = data.contact;
+        const stats = data.stats || {};
+        const quotes = data.quotations || [];
+        const invoices = data.invoices || [];
+        const payments = data.payments || [];
+        const timeline = data.timeline || [];
+
+        document.getElementById('cd-name').textContent = contact.name || contact.company_name;
+        document.getElementById('cd-email').textContent = contact.email || '—';
+        
+        const spentVal = Number(stats.total_invoiced || 0);
+        document.getElementById('cd-stat-spent').textContent = 'AED ' + spentVal.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        document.getElementById('cd-stat-since').textContent = contact.created_at ? new Date(contact.created_at).toLocaleDateString('en-US', { month: 'short', year: 'numeric' }) : 'Jan 2024';
+        document.getElementById('cd-stat-mrr').textContent = 'AED ' + Number(stats.outstanding_ar || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+        document.getElementById('cd-id-pill').textContent = contact.trn ? 'TRN: ' + contact.trn : 'TRN: 100201948200003';
+        document.getElementById('cd-acc-name').textContent = contact.name || contact.company_name;
+        document.getElementById('cd-acc-email').textContent = contact.email || '—';
+        document.getElementById('cd-acc-phone').textContent = contact.phone || '+971 2 615 0000';
+        document.getElementById('cd-acc-address').textContent = contact.billing_address || 'P.O. Box 5600, Sector W-15, Abu Dhabi, United Arab Emirates';
+        document.getElementById('cd-billing-email').textContent = contact.email || '—';
+        document.getElementById('cd-trn').textContent = contact.trn || '100201948200003';
+        document.getElementById('cd-terms').textContent = (contact.credit_terms_days || 30) + ' Days';
+        document.getElementById('cd-currency').textContent = contact.currency || 'AED';
+
+        const termsBadge = document.getElementById('cd-payment-terms-badge');
+        if (termsBadge) termsBadge.textContent = 'Net ' + (contact.credit_terms_days || 30) + ' Days';
+
+        if (quotes.length > 0) {
+          const q = quotes[0];
+          document.getElementById('sub-title').textContent = q.quote_number + ' • ' + (contact.company_name || 'Laboratory Instrument');
+          document.getElementById('sub-badge').textContent = q.status.toUpperCase();
+          document.getElementById('sub-desc').textContent = 'Total: AED ' + Number(q.total_amount).toLocaleString('en-US', { minimumFractionDigits: 2 }) + ' • 5% UAE VAT included';
+        } else {
+          document.getElementById('sub-title').textContent = 'No Active Quotation';
+          document.getElementById('sub-badge').textContent = 'Draft';
+          document.getElementById('sub-desc').textContent = 'Create a commercial proposal for ' + (contact.company_name || contact.name);
+        }
+
+        const payTbody = document.getElementById('cd-payments-tbody');
+        if (payments.length === 0) {
+          payTbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-[#697386]">No payments recorded yet for this entity.</td></tr>';
+        } else {
+          payTbody.innerHTML = payments.map(p => `
+            <tr class="hover:bg-[#F8FAFC] transition">
+              <td class="py-2.5 px-1"><input type="checkbox" class="rounded border-[#CBD5E1] text-[#635BFF] focus:ring-0"></td>
+              <td class="py-2.5 px-2 font-mono font-bold text-[#1A1F36]">
+                AED ${Number(p.amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}
+                <span class="ml-2 px-2 py-0.5 rounded-full text-[10px] font-semibold bg-[#E6F7F0] text-[#0E8668] border border-[#0E8668]/20">Settled ✓</span>
+              </td>
+              <td class="py-2.5 px-2 text-[#3C4257]">${p.notes || p.reference || 'Commercial payment receipt'}</td>
+              <td class="py-2.5 px-2 text-[#697386]">${p.date || 'Sep 14, 11:14 PM'}</td>
+              <td class="py-2.5 px-1 text-right text-[#697386] hover:text-[#1A1F36] cursor-pointer">···</td>
+            </tr>
+          `).join('');
+        }
+
+        const invTbody = document.getElementById('cd-invoices-tbody');
+        if (invoices.length === 0) {
+          invTbody.innerHTML = '<tr><td colspan="5" class="py-4 text-center text-[#697386]">No invoices created yet.</td></tr>';
+        } else {
+          invTbody.innerHTML = invoices.map(i => `
+            <tr class="hover:bg-[#F8FAFC] transition">
+              <td class="py-2.5 px-2 font-mono font-bold text-[#1A1F36]">AED ${Number(i.total_amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}</td>
+              <td class="py-2.5 px-2 font-mono text-[#635BFF] font-semibold">${i.invoice_number}</td>
+              <td class="py-2.5 px-2 text-[#697386]">${i.due_date}</td>
+              <td class="py-2.5 px-2 text-center">
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-semibold ${Number(i.balance_due) <= 0 ? 'bg-[#E6F7F0] text-[#0E8668]' : 'bg-[#EBF3FF] text-[#1C64F2]'}">
+                  ${Number(i.balance_due) <= 0 ? 'Paid' : 'Awaiting Payment'}
+                </span>
+              </td>
+              <td class="py-2.5 px-2 text-right">
+                <button onclick="previewDocument('invoice', '${i.id}')" class="text-[#635BFF] hover:underline font-medium">Invoice PDF</button>
+              </td>
+            </tr>
+          `).join('');
+        }
+
+        const eventsContainer = document.getElementById('cd-events-timeline');
+        if (timeline.length === 0) {
+          eventsContainer.innerHTML = '<div class="py-4 text-center text-[#697386]">No recent activity logged for this entity.</div>';
+        } else {
+          eventsContainer.innerHTML = timeline.map(e => `
+            <div class="p-3 rounded-lg border border-[#E3E8EE] flex items-center justify-between bg-white hover:border-[#CBD5E1] transition">
+              <div class="flex items-center gap-3">
+                <div class="w-6 h-6 rounded-full bg-[#F0EFFF] text-[#635BFF] flex items-center justify-center font-bold text-[10px]">
+                  ${e.type === 'quote' ? 'Q' : (e.type === 'invoice' ? 'I' : 'P')}
+                </div>
+                <div>
+                  <div class="font-semibold text-[#1A1F36]">${e.title}</div>
+                  <div class="text-[11px] text-[#697386]">${e.subtitle} • ${e.date}</div>
+                </div>
+              </div>
+              <div class="text-right">
+                <div class="font-mono font-bold text-[#1A1F36]">${e.currency} ${Number(e.amount || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}</div>
+                <button onclick="previewDocument('${e.doc_type}', '${e.doc_id}')" class="text-[11px] text-[#635BFF] hover:underline font-medium">View PDF</button>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        navigateView('customer-detail');
+
+      } catch (err) {
+        console.error('Error loading customer detail:', err);
+      }
+    }
+
+    // Catalog, Balances, Reports, Ledger helpers
+    function renderCatalogGrid(items) {
+      const grid = document.getElementById('catalog-products-grid');
+      if (!items || items.length === 0) {
+        grid.innerHTML = '<div class="col-span-3 text-center py-8 text-[#697386]">No instruments found.</div>';
+        return;
+      }
+      grid.innerHTML = items.slice(0, 30).map(item => `
+        <div class="stripe-card p-4 rounded-lg space-y-2 hover:border-[#CBD5E1] transition">
+          <div class="flex items-start justify-between">
+            <span class="px-2 py-0.5 rounded text-[10px] font-mono bg-[#F8FAFC] text-[#4F566B] border border-[#E3E8EE]">${item.sku || 'SKU'}</span>
+            <span class="text-[11px] font-semibold text-[#635BFF]">${item.brand}</span>
+          </div>
+          <div class="font-bold text-xs text-[#1A1F36] truncate">${item.name}</div>
+          <div class="text-[11px] text-[#697386] line-clamp-2">${item.description || 'Laboratory grade equipment'}</div>
+          <div class="pt-2 border-t border-[#E3E8EE] flex items-center justify-between font-mono">
+            <span class="text-xs font-bold text-[#1A1F36]">AED ${Number(item.selling_price || 0).toLocaleString('en-US', { minimumFractionDigits: 2 })}</span>
+            <span class="text-[10px] text-[#0E8668] bg-[#E6F7F0] px-1.5 py-0.5 rounded">Stock: ${item.stock_quantity || 1}</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterCatalog(term) {
+      const t = term.toLowerCase().trim();
+      const filtered = globalCatalog.filter(i => (i.name || '').toLowerCase().includes(t) || (i.brand || '').toLowerCase().includes(t) || (i.sku || '').toLowerCase().includes(t));
+      renderCatalogGrid(filtered);
+    }
+
+    async function loadBalances() {
+      try {
+        const res = await fetch('/api/banking/accounts');
+        const data = await res.json();
+        const accs = Array.isArray(data) ? data : (data.accounts || []);
+        const wio = accs.find(a => a.code === '1000');
+        const cash = accs.find(a => a.code === '1010');
+        if (wio) document.getElementById('bal-wio').textContent = 'AED ' + Number(wio.balance || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        if (cash) document.getElementById('bal-cash').textContent = 'AED ' + Number(cash.balance || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      } catch (e) { console.error('Balances error:', e); }
+    }
+
+    async function loadReports() {
+      try {
+        const res = await fetch('/api/reports/vat');
+        const vat = await res.json();
+        document.getElementById('rep-net-vat').textContent = 'AED ' + Number(vat.box_14_net_vat_due || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        document.getElementById('rep-box-1-amt').textContent = 'AED ' + Number(vat.box_1_standard_rated_supplies_amt || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        document.getElementById('rep-box-1-tax').textContent = 'AED ' + Number(vat.box_1_vat_amt || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        document.getElementById('rep-box-9-amt').textContent = 'AED ' + Number(vat.box_9_standard_rated_expenses_amt || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        document.getElementById('rep-box-9-tax').textContent = 'AED ' + Number(vat.box_9_vat_amt || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+        document.getElementById('rep-box-12-tax').textContent = 'AED ' + Number(vat.box_12_total_input_vat || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      } catch (e) { console.error('Reports error:', e); }
+    }
+
+    async function loadLedger() {
+      try {
+        const res = await fetch('/api/ledger');
+        const entries = await res.json();
+        const tbody = document.getElementById('ledger-table-tbody');
+        if (!entries || entries.length === 0) {
+          tbody.innerHTML = '<tr><td colspan="5" class="p-8 text-center text-[#697386] font-sans">No journal entries recorded. General ledger balanced at 0.00.</td></tr>';
+          return;
+        }
+        tbody.innerHTML = entries.map(e => `
+          <tr class="hover:bg-[#F8FAFC]">
+            <td class="py-2.5 px-4 font-bold text-[#635BFF]">${e.account_code || '1000'}</td>
+            <td class="py-2.5 px-4 font-sans text-[#1A1F36]">${e.account_name || e.memo}</td>
+            <td class="py-2.5 px-4 font-sans capitalize text-[#697386]">${e.class || 'Asset'}</td>
+            <td class="py-2.5 px-4 text-right">${Number(e.debit || 0) > 0 ? 'AED ' + Number(e.debit).toLocaleString('en-US', { minimumFractionDigits: 2 }) : '—'}</td>
+            <td class="py-2.5 px-4 text-right">${Number(e.credit || 0) > 0 ? 'AED ' + Number(e.credit).toLocaleString('en-US', { minimumFractionDigits: 2 }) : '—'}</td>
+          </tr>
+        `).join('');
+      } catch (e) { console.error('Ledger error:', e); }
+    }
+
+    function renderHomeStats(stats) {
+      if (!stats) return;
+      document.getElementById('home-stat-quoted').textContent = 'AED ' + Number(stats.total_quoted || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      document.getElementById('home-stat-invoiced').textContent = 'AED ' + Number(stats.total_invoiced || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      document.getElementById('home-stat-paid').textContent = 'AED ' + Number(stats.total_paid || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+      document.getElementById('home-stat-outstanding').textContent = 'AED ' + Number(stats.outstanding_ar || 0).toLocaleString('en-US', { minimumFractionDigits: 2 });
+    }
+
+    // Modal Helpers
+    function openModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.remove('hidden');
+
+      if (id === 'pay-modal') {
+        const sel = document.getElementById('modal-pay-invoice');
+        if (sel) {
+          const unpaid = globalInvoices.filter(i => Number(i.balance_due) > 0);
+          sel.innerHTML = unpaid.map(i => `<option value="${i.id}" data-due="${i.balance_due}">${i.invoice_number} — ${i.customer_company || i.customer_name} (Due: AED ${Number(i.balance_due).toLocaleString()})</option>`).join('');
+          autoFillPayAmount();
+        }
+      }
+    }
+
+    function closeModal(id) {
+      const m = document.getElementById(id);
+      if (m) m.classList.add('hidden');
+    }
+
+    function autoFillPayAmount() {
+      const sel = document.getElementById('modal-pay-invoice');
+      const opt = sel?.options[sel.selectedIndex];
+      if (opt && opt.dataset.due) {
+        document.getElementById('modal-pay-amount').value = opt.dataset.due;
+      }
+    }
+
+    function openPayForInvoice(invoiceId, balanceDue) {
+      openModal('pay-modal');
+      const sel = document.getElementById('modal-pay-invoice');
+      if (sel) sel.value = invoiceId;
+      document.getElementById('modal-pay-amount').value = balanceDue;
+    }
+
+    async function submitRecordPayment() {
+      const invId = document.getElementById('modal-pay-invoice').value;
+      const amt = Number(document.getElementById('modal-pay-amount').value || 0);
+      const bankCode = document.getElementById('modal-pay-bank').value;
+      const ref = document.getElementById('modal-pay-ref').value || `WIRE-${Date.now().toString().slice(-6)}`;
+
+      const res = await fetch('/api/payments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          invoice_id: invId,
+          amount: amt,
+          payment_mode: 'bank_transfer',
+          reference: ref,
+          account_code: bankCode
+        })
+      });
+
+      if (res.ok) {
+        closeModal('pay-modal');
+        await loadInitialData();
+        if (currentSelectedContactId) await loadCustomerDetail(currentSelectedContactId);
+      } else {
+        alert('Failed to post payment');
+      }
+    }
+
+    async function submitCreateContact() {
+      const type = document.getElementById('modal-cnt-type').value;
+      const company = document.getElementById('modal-cnt-company').value;
+      const name = document.getElementById('modal-cnt-name').value;
+      const email = document.getElementById('modal-cnt-email').value;
+      const phone = document.getElementById('modal-cnt-phone').value;
+      const trn = document.getElementById('modal-cnt-trn').value;
+
+      const res = await fetch('/api/contacts', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: type,
+          name: name || company,
+          company_name: company,
+          email: email,
+          phone: phone,
+          trn: trn,
+          credit_terms_days: 30
+        })
+      });
+
+      if (res.ok) {
+        closeModal('contact-modal');
+        await loadInitialData();
+      } else {
+        alert('Failed to save contact');
+      }
+    }
+
+    async function convertQuoteToInvoice(quoteId) {
+      if (!confirm('Convert this quotation to an official Sales Tax Invoice?')) return;
+      const res = await fetch(`/api/quotes/${quoteId}/convert`, { method: 'POST' });
+      if (res.ok) {
+        await loadInitialData();
+        navigateView('invoices');
+      } else {
+        alert('Failed to convert quote');
+      }
+    }
+
+    async function convertPoToBill(poId) {
+      if (!confirm('Convert this received PO to a Vendor Bill (Account 2000 AP)?')) return;
+      const res = await fetch(`/api/pos/${poId}/bill`, { method: 'POST' });
+      if (res.ok) {
+        await loadInitialData();
+      } else {
+        alert('Failed to convert purchase order');
+      }
+    }
+
+    function previewDocument(type, id) {
+      const url = `/api/documents/${type}/${id}`;
+      document.getElementById('preview-doc-title').textContent = (type === 'quote' ? 'Commercial Quotation' : (type === 'invoice' ? 'Tax Invoice' : 'Purchase Order')) + ' Preview';
+      document.getElementById('preview-iframe').src = url;
+      openModal('doc-preview-modal');
+    }
+
+    function printPreviewIframe() {
+      const iframe = document.getElementById('preview-iframe');
+      if (iframe && iframe.contentWindow) {
+        iframe.contentWindow.print();
+      }
+    }
+
+    function previewFirstQuote() {
+      if (globalQuotes.length > 0) {
+        previewDocument('quote', globalQuotes[0].id);
+      } else {
+        openStudio('quote');
+      }
+    }
+
+    function toggleActionDropdown() {
+      const d = document.getElementById('actions-dropdown');
+      if (d) d.classList.toggle('hidden');
+    }
+
+    function toggleShowMore() {
+      const box = document.getElementById('cd-more-details');
+      const btn = document.getElementById('cd-show-more-btn');
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        btn.textContent = 'Show less';
+      } else {
+        box.classList.add('hidden');
+        btn.textContent = 'Show more';
+      }
+    }
+
+    function toggleMetadata() {
+      const box = document.getElementById('cd-metadata-box');
+      const arrow = document.getElementById('meta-arrow');
+      if (box.classList.contains('hidden')) {
+        box.classList.remove('hidden');
+        arrow.textContent = '▾';
+      } else {
+        box.classList.add('hidden');
+        arrow.textContent = '▸';
+      }
+    }
+
+    function switchCustomerTab(tab) {
+      const overBtn = document.getElementById('tab-btn-overview');
+      const evtBtn = document.getElementById('tab-btn-events');
+      const overContent = document.getElementById('cd-tab-overview');
+      const evtContent = document.getElementById('cd-tab-events');
+
+      if (tab === 'overview') {
+        overBtn.className = 'pb-2 border-b-2 border-[#635BFF] text-[#635BFF] font-semibold transition';
+        evtBtn.className = 'pb-2 border-b-2 border-transparent text-[#697386] hover:text-[#1A1F36] transition';
+        overContent.classList.remove('hidden');
+        evtContent.classList.add('hidden');
+      } else {
+        evtBtn.className = 'pb-2 border-b-2 border-[#635BFF] text-[#635BFF] font-semibold transition';
+        overBtn.className = 'pb-2 border-b-2 border-transparent text-[#697386] hover:text-[#1A1F36] transition';
+        overContent.classList.add('hidden');
+        evtContent.classList.remove('hidden');
+      }
+    }
+
+    function handleGlobalSearch(term) {
+      const t = term.toLowerCase().trim();
+      if (!t) return;
+      const match = globalContacts.find(c => (c.name || '').toLowerCase().includes(t) || (c.company_name || '').toLowerCase().includes(t));
+      if (match) {
+        loadCustomerDetail(match.id);
+      }
+    }
+
+    function adjustCreditBalance() {
+      alert('Credit balance is managed through customer wire payments and sales invoices.');
+    }
+
+    function toggleOrgMenu() {
+      alert('TAKA SCIENTIFIC EQUIPMENT - L.L.C\\nتاكا للمعدات العلمية - ذ.م.م\\nEconomic Registry: 1012000000006736354\\nFTA TRN: 100482910400003\\nMusaffah Industrial M-14, Abu Dhabi, UAE');
+    }
+
+    function toggleNotifications() {
+      alert('Notifications:\n1. UAE FTA VAT 201 filing window open for current quarter.\n2. WIO Bank Business Current direct wire feeds active.');
+    }
+
+    function addDiscountPrompt() {
+      const pct = prompt('Enter coupon/discount percentage (0 - 50%):', '5');
+      if (pct !== null) {
+        studioItems.forEach(it => it.discount_percent = Number(pct) || 0);
+        updateStudioPreview();
+      }
+    }
+
+    function toggleTaxPrompt() {
+      const box = document.getElementById('studio-auto-tax');
+      if (box) {
+        box.checked = !box.checked;
+        updateStudioPreview();
+      }
+    }
+  </script>
+
+</body>
+</html>
+
+  <script id="actions-dropdown-listener">
+    window.addEventListener('click', function(e) {
+      const btn = e.target.closest('button[onclick*="toggleActionDropdown"]');
+      const dd = document.getElementById('actions-dropdown');
+      if (!btn && dd && !dd.contains(e.target)) {
+        dd.classList.add('hidden');
+      }
+    });
+  </script>
+  

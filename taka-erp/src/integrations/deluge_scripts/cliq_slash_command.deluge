@@ -1,0 +1,26 @@
+// =========================================================================
+// ZOHO CLIQ SLASH COMMAND HANDLER (Deluge Script)
+// Paste this into: Zoho Cliq > Integrations > Commands > [Edit Command] > Execution Handler
+// Works for: /quote, /invoice, /po, /pay, /status, /report
+// =========================================================================
+
+// TAKA Scientific Live Cloudflare Worker ERP Endpoint
+erpEndpoint = "https://taka-erp.wetartaka.workers.dev/api/cliq/webhook";
+
+payload = Map();
+payload.put("command", command);
+payload.put("arguments", arguments);
+payload.put("user", user);
+
+headers = Map();
+headers.put("Content-Type", "application/json");
+
+response = invokeurl
+[
+	url: erpEndpoint
+	type: POST
+	parameters: payload.toString()
+	headers: headers
+];
+
+return response;

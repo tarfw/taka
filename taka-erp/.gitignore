@@ -1,0 +1,16 @@
+# Secrets and local config
+.env
+.dev.vars
+*.dev.vars
+
+# Local business data
+taka.db
+taka.db-journal
+taka.db-wal
+taka.db-shm
+*.db
+
+# Dependencies and build state
+node_modules/
+dist/
+.wrangler/

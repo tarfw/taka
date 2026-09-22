@@ -1,0 +1,26 @@
+// =========================================================================
+// ZOHO CLIQ BOT MESSAGE HANDLER (Deluge Script)
+// Paste this into: Zoho Cliq > Bot Settings > Message Handler
+// =========================================================================
+
+// TAKA Scientific Live Cloudflare Worker ERP Endpoint
+erpEndpoint = "https://taka-erp.wetartaka.workers.dev/api/cliq/webhook";
+
+payload = Map();
+payload.put("text", message);
+payload.put("user", user);
+payload.put("chat", chat);
+
+headers = Map();
+headers.put("Content-Type", "application/json");
+
+response = invokeurl
+[
+	url: erpEndpoint
+	type: POST
+	parameters: payload.toString()
+	headers: headers
+];
+
+// Return the card or text response directly to Cliq
+return response;

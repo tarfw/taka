@@ -1,0 +1,15 @@
+name = "taka-erp"
+main = "src/worker.ts"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+TURSO_DATABASE_URL = "libsql://taka-erp-wetartaka.aws-eu-west-1.turso.io"
+ZEPTOMAIL_API_URL = "https://api.zeptomail.com/v1.1/email"
+
+# Secrets must NOT be committed here. Set them with:
+#   npx wrangler secret put TURSO_AUTH_TOKEN
+#   npx wrangler secret put ZEPTOMAIL_SEND_MAIL_TOKEN
+#   npx wrangler secret put ERP_API_KEY            (optional; enables scripted write access)
+#   npx wrangler secret put ZOHO_CLIW_VERIFICATION_TOKEN   (optional; enables webhook origin checks)
+# Local dev overrides live in the gitignored .dev.vars file.

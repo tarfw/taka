@@ -1,0 +1,26 @@
+{
+  "name": "taka-erp",
+  "version": "1.0.0",
+  "description": "Agentic ERP & Bookkeeping Engine for TAKA Scientific (Zoho Books replacement via Zoho Cliq & ZeptoMail)",
+  "main": "src/server.ts",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --port 8787 --ip 127.0.0.1",
+    "build": "node scripts/build-dashboard.js",
+    "deploy": "npm run build && wrangler deploy",
+    "init-db": "tsx src/db/init.ts",
+    "test": "tsx src/test-suite.ts",
+    "cli": "tsx src/cli.ts"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}
