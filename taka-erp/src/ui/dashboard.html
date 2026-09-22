@@ -1364,7 +1364,7 @@
       const name = document.getElementById('custom-item-name').value.trim();
       const price = Number(document.getElementById('custom-item-price').value) || 0;
       if (!name) {
-        alert('Please enter an item description.');
+        showToast('Please enter an item description.', 'error');
         return;
       }
 
@@ -1489,11 +1489,11 @@
 
     async function submitStudioDocument() {
       if (!studioSelectedCustomer) {
-        alert('Please select a customer.');
+        showToast('Please select a customer.', 'error');
         return;
       }
       if (studioItems.length === 0) {
-        alert('Please add at least one line item.');
+        showToast('Please add at least one line item.', 'error');
         return;
       }
 
@@ -1527,11 +1527,11 @@
           else if (studioDocType === 'quote') navigateView('quotations');
           else navigateView('connected-accounts');
         } else {
-          alert('Failed to save ' + studioDocType);
+          showToast('Failed to save ' + studioDocType, 'error');
         }
       } catch (e) {
         console.error(e);
-        alert('Error communicating with server.');
+        showToast('Error communicating with server.', 'error');
       }
     }
 
@@ -2235,7 +2235,7 @@
         await loadInitialData();
         if (currentSelectedContactId) await loadCustomerDetail(currentSelectedContactId);
       } else {
-        alert('Failed to post payment');
+        showToast('Failed to post payment', 'error');
       }
     }
 
@@ -2265,7 +2265,7 @@
         closeModal('contact-modal');
         await loadInitialData();
       } else {
-        alert('Failed to save contact');
+        showToast('Failed to save contact', 'error');
       }
     }
 
@@ -2278,7 +2278,7 @@
         info: 'bg-[#1A1F36] text-white'
       };
       const toast = document.createElement('div');
-      toast.className = `${colors[type] || colors.info} px-4 py-3 rounded-lg shadow-lg text-sm font-medium pointer-events-auto transition-opacity duration-300`;
+      toast.className = `${colors[type] || colors.info} px-4 py-3 rounded-lg shadow-lg text-sm font-medium pointer-events-auto transition-opacity duration-300 whitespace-pre-line max-w-sm`;
       toast.style.opacity = '0';
       toast.textContent = message;
       container.appendChild(toast);
@@ -2286,7 +2286,32 @@
       setTimeout(() => {
         toast.style.opacity = '0';
         setTimeout(() => toast.remove(), 300);
-      }, 4000);
+      }, message.includes('\n') ? 8000 : 4000);
+    }
+
+    let appConfirmResolver = null;
+
+    function resolveConfirm(answer) {
+      const modal = document.getElementById('app-confirm-modal');
+      if (modal) modal.classList.add('hidden');
+      if (appConfirmResolver) {
+        const r = appConfirmResolver;
+        appConfirmResolver = null;
+        r(answer);
+      }
+    }
+
+    function confirmAction(options) {
+      const { title, message, confirmLabel, danger } = options || {};
+      document.getElementById('app-confirm-title').textContent = title || 'Confirm Action';
+      document.getElementById('app-confirm-message').textContent = message || '';
+      const btn = document.getElementById('app-confirm-button');
+      btn.textContent = confirmLabel || 'Confirm';
+      btn.className = danger
+        ? 'px-4 py-1.5 rounded bg-[#9B1C1C] hover:bg-[#7F1717] text-white font-semibold'
+        : 'px-4 py-1.5 rounded bg-[#0E8668] hover:bg-[#0A6C53] text-white font-semibold';
+      document.getElementById('app-confirm-modal').classList.remove('hidden');
+      return new Promise((resolve) => { appConfirmResolver = resolve; });
     }
 
     async function postAction(url, getMessage, onDone) {
@@ -2312,7 +2337,11 @@
     }
 
     async function convertQuoteToInvoice(quoteId) {
-      if (!confirm('Convert this quotation to an official Sales Tax Invoice?')) return;
+      if (!(await confirmAction({
+        title: 'Convert to Sales Tax Invoice',
+        message: 'Convert this accepted quotation to an official FTA Sales Tax Invoice? This will debit Accounts Receivable (1200) and credit Sales (4000) + Output VAT (2200).',
+        confirmLabel: 'Convert to Invoice'
+      }))) return;
       await postAction(
         `/api/quotes/${quoteId}/convert`,
         (d) => `Tax Invoice ${d.invoice_number || ''} created`,
@@ -2324,7 +2353,11 @@
     }
 
     async function convertPoToBill(poId) {
-      if (!confirm('Convert this received PO to a Vendor Bill (Account 2000 AP)?')) return;
+      if (!(await confirmAction({
+        title: 'Convert to Vendor Bill',
+        message: 'Convert this received Purchase Order to a Vendor Bill? This will credit Accounts Payable (2000) and record the expense.',
+        confirmLabel: 'Create Vendor Bill'
+      }))) return;
       await postAction(
         `/api/pos/${poId}/bill`,
         () => 'Vendor bill created',
@@ -2414,15 +2447,15 @@
     }
 
     function adjustCreditBalance() {
-      alert('Credit balance is managed through customer wire payments and sales invoices.');
+      showToast('Credit balance is managed through customer wire payments and sales invoices.', 'info');
     }
 
     function toggleOrgMenu() {
-      alert('TAKA SCIENTIFIC EQUIPMENT - L.L.C\\nتاكا للمعدات العلمية - ذ.م.م\\nEconomic Registry: 1012000000006736354\\nFTA TRN: 100482910400003\\nMusaffah Industrial M-14, Abu Dhabi, UAE');
+      showToast('TAKA SCIENTIFIC EQUIPMENT - L.L.C\\nتاكا للمعدات العلمية - ذ.م.م\\nEconomic Registry: 1012000000006736354\\nFTA TRN: 100482910400003\\nMusaffah Industrial M-14, Abu Dhabi, UAE', 'info');
     }
 
     function toggleNotifications() {
-      alert('Notifications:\n1. UAE FTA VAT 201 filing window open for current quarter.\n2. WIO Bank Business Current direct wire feeds active.');
+      showToast('Notifications:\n1. UAE FTA VAT 201 filing window open for current quarter.\n2. WIO Bank Business Current direct wire feeds active.', 'info');
     }
 
     function addDiscountPrompt() {
@@ -2442,7 +2475,21 @@
     }
   </script>
 
-<div id="toast-container" class="fixed bottom-6 right-6 z-[100] space-y-2 pointer-events-none"></div>
+<div id="app-confirm-modal" class="hidden fixed inset-0 z-[90] bg-black/30 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white rounded-xl shadow-2xl border border-[#E3E8EE] max-w-md w-full p-6 text-xs space-y-4">
+      <div class="flex items-center justify-between border-b border-[#E3E8EE] pb-3">
+        <h3 id="app-confirm-title" class="text-sm font-bold text-[#1A1F36]">Confirm Action</h3>
+        <button onclick="resolveConfirm(false)" class="text-[#697386] hover:text-[#1A1F36] font-bold">✕</button>
+      </div>
+      <p id="app-confirm-message" class="text-[11px] leading-5 text-[#4F566B]"></p>
+      <div class="flex justify-end gap-2 pt-2 border-t border-[#E3E8EE]">
+        <button onclick="resolveConfirm(false)" class="px-3 py-1.5 rounded text-[#697386] hover:bg-[#F8FAFC]">Cancel</button>
+        <button id="app-confirm-button" class="px-4 py-1.5 rounded bg-[#0E8668] hover:bg-[#0A6C53] text-white font-semibold">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast-container" class="fixed bottom-6 right-6 z-[100] space-y-2 pointer-events-none"></div>
 </body>
 </html>
 
