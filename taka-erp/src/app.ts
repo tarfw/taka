@@ -69,7 +69,7 @@ app.use('*', async (c, next) => {
 
 const dashboardHandler = (c: any) => {
   const takasid = `${Math.random().toString(36).slice(2)}${Date.now().toString(36)}`;
-  c.header('Cache-Control', 'no-cache');
+  c.header('Cache-Control', 'no-store, max-age=0, must-revalidate');
   c.header('Set-Cookie', `takasid=${takasid}; Path=/; HttpOnly; SameSite=Lax`);
   return c.html(renderDashboardHtml());
 };
