@@ -13,12 +13,12 @@
     "cli": "tsx src/cli.ts"
   },
   "dependencies": {
+    "@hono/node-server": "^2.1.1",
     "@libsql/client": "^0.14.0",
     "dotenv": "^16.4.7",
-    "express": "^4.21.2"
+    "hono": "^4.13.8"
   },
   "devDependencies": {
-    "@types/express": "^5.0.0",
     "@types/node": "^22.13.4",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3"
