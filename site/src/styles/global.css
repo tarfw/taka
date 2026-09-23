@@ -92,7 +92,7 @@
   --color-surface: var(--cream);
 
   /* Typography */
-  --font-serif: 'Arizona', Georgia, serif;
+  --font-serif: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'Geist Mono', 'JetBrains Mono', monospace;
 

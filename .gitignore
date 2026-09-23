@@ -1,2 +1,4 @@
 .freebuff/
 cookies.txt
+*.tmp
+_tmp*

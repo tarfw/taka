@@ -196,7 +196,7 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   .hero-display-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(2.4rem, 5vw, 4.2rem);
     font-weight: 400;
     line-height: 1.08;
@@ -293,7 +293,7 @@ import Layout from '../../layouts/Layout.astro';
   .tile-label {
     position: relative;
     z-index: 2;
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 1.5rem;
     color: #ffffff;
     font-weight: 400;
@@ -359,6 +359,39 @@ import Layout from '../../layouts/Layout.astro';
     border-bottom: 1px solid #e5e7eb;
   }
 
+  .adaptable-systems-section .section-header-center {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .adaptable-systems-section .turnkey-section-title {
+    font-family: var(--font-sans) !important;
+    letter-spacing: -0.01em;
+    font-size: 24px !important;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+    color: #1a365d;
+  }
+
+  .adaptable-systems-section .turnkey-section-sub {
+    font-family: var(--font-sans) !important;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0.5rem auto 0;
+    opacity: 0.7;
+    color: #1a365d;
+    max-width: 50ch;
+  }
+
+  @media (min-width: 1024px) {
+    .adaptable-systems-section .turnkey-section-title {
+      letter-spacing: -0.02em;
+      font-size: 42px !important;
+      line-height: 1.1;
+    }
+  }
+
   .adaptable-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -366,7 +399,11 @@ import Layout from '../../layouts/Layout.astro';
     margin-top: 2.5rem;
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1024px) {
+    .adaptable-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
     .adaptable-grid { grid-template-columns: 1fr; }
   }
 
@@ -420,7 +457,7 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   .adaptable-card-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: 1.4rem;
     color: #111827;
     margin-bottom: 0.6rem;
@@ -483,7 +520,7 @@ import Layout from '../../layouts/Layout.astro';
   }
 
   .daylight-section-title {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     letter-spacing: -0.01em;
     font-size: clamp(2rem, 4vw, 3.2rem);
     line-height: 1.12;
@@ -750,16 +787,19 @@ import Layout from '../../layouts/Layout.astro';
     width: 100%;
   }
   .ice-highlight-image {
-    aspect-ratio: 2.4;
     position: relative;
     overflow: hidden;
     width: 100%;
-    min-height: 380px;
+    height: 500px;
   }
   @media (max-width: 1024px) {
     .ice-highlight-image {
-      min-height: 320px;
-      aspect-ratio: auto;
+      height: 450px;
+    }
+  }
+  @media (max-width: 640px) {
+    .ice-highlight-image {
+      height: 400px;
     }
   }
   .ice-highlight-image:after {
@@ -771,29 +811,30 @@ import Layout from '../../layouts/Layout.astro';
       radial-gradient(130% 130% at 10% 100%, rgba(9, 16, 30, 0.75) 0%, rgba(9, 16, 30, 0.45) 35%, rgba(9, 16, 30, 0.1) 60%, rgba(9, 16, 30, 0) 75%),
       linear-gradient(0deg, rgba(9, 16, 30, 0.5) 0%, rgba(9, 16, 30, 0) 40%);
   }
-  .ice-highlight-image img {
-    object-fit: cover;
+  .ice-highlight-img {
     width: 100%;
     height: 100%;
-    display: block;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
   }
   .ice-highlight-overlay {
     position: absolute;
     inset: 0;
     z-index: 5;
-    padding: 3.5rem 4rem;
+    padding: 2rem 1.5rem;
     color: #ffffff;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-start;
-    gap: 1.25rem;
+    gap: 1rem;
     background: linear-gradient(180deg, rgba(15, 23, 42, 0.25) 0%, rgba(15, 23, 42, 0.85) 100%);
   }
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     .ice-highlight-overlay {
-      padding: 2rem 1.5rem;
-      gap: 0.85rem;
+      padding: 3.5rem 4rem;
+      gap: 1.25rem;
     }
   }
   .ice-highlight-tag {
@@ -806,7 +847,7 @@ import Layout from '../../layouts/Layout.astro';
     -webkit-font-smoothing: antialiased;
   }
   .ice-highlight-overlay h2 {
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-size: clamp(2rem, 4vw, 3.4rem);
     font-weight: 400;
     line-height: 1.08;
@@ -858,6 +899,39 @@ import Layout from '../../layouts/Layout.astro';
     background: #ffffff;
     padding: 3rem 0;
     border-bottom: 1px solid #e5e7eb;
+  }
+
+  .quote-section .section-header-center {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .quote-section .turnkey-section-title {
+    font-family: var(--font-sans) !important;
+    letter-spacing: -0.01em;
+    font-size: 24px !important;
+    line-height: 1.15;
+    font-weight: 600;
+    margin: 0;
+    color: #1a365d;
+  }
+
+  .quote-section .turnkey-section-sub {
+    font-family: var(--font-sans) !important;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0.5rem auto 0;
+    opacity: 0.7;
+    color: #1a365d;
+    max-width: 50ch;
+  }
+
+  @media (min-width: 1024px) {
+    .quote-section .turnkey-section-title {
+      letter-spacing: -0.02em;
+      font-size: 42px !important;
+      line-height: 1.1;
+    }
   }
 
   .quote-card-container {
@@ -1370,8 +1444,8 @@ import Layout from '../../layouts/Layout.astro';
   <section class="adaptable-systems-section" id="adaptable-systems">
     <div class="container">
       <div class="section-header-center">
-        <h2 class="daylight-section-title" style="font-family: var(--font-sans); color: #1a365d;">Modular Laboratory Furniture &amp; Bench Systems</h2>
-        <p class="daylight-section-sub" style="font-family: var(--font-sans); color: #1a365d; opacity: 0.8;">
+        <h2 class="turnkey-section-title">Modular Laboratory Furniture &amp; Bench Systems</h2>
+        <p class="turnkey-section-sub">
           High-performance modular steel casework, heavy-duty benches, and overhead service architecture tailored for UAE research environments.
         </p>
       </div>
@@ -1383,23 +1457,19 @@ import Layout from '../../layouts/Layout.astro';
             <div class="adaptable-card-img-wrap">
               <img src="/products/furniture/heavy-duty-bench.jpg" alt="Heavy-Duty Laboratory Bench Systems" class="adaptable-card-img" />
             </div>
-            <div class="adaptable-badge">HEAVY-DUTY ARCHITECTURE</div>
+            <div class="adaptable-badge">HEAVY-DUTY</div>
             <h3 class="adaptable-card-title">Heavy-Duty Bench Systems</h3>
             <p class="adaptable-card-desc">
-              High-load structural benching designed for analytical equipment with height-adjustable work surfaces and overhead utility shelves.
+              Structural benching for analytical equipment with height-adjustable work surfaces.
             </p>
             <ul class="adaptable-spec-list">
               <li class="adaptable-spec-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Heavy-load structural bench frame rating
+                Heavy-load frame with overhead utility shelves
               </li>
               <li class="adaptable-spec-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 Mobile and height-adjustable configurations
-              </li>
-              <li class="adaptable-spec-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Integrated overhead utility raceways
               </li>
             </ul>
           </div>
@@ -1414,23 +1484,19 @@ import Layout from '../../layouts/Layout.astro';
             <div class="adaptable-card-img-wrap">
               <img src="/products/furniture/modular-workstation.png" alt="Modular Laboratory Workstations" class="adaptable-card-img" />
             </div>
-            <div class="adaptable-badge">VERSATILE MODULAR SYSTEM</div>
+            <div class="adaptable-badge">MODULAR</div>
             <h3 class="adaptable-card-title">Modular Workstations</h3>
             <p class="adaptable-card-desc">
-              Versatile lab benches engineered for multi-user research with integrated power, gas, data, and overhead LED lighting.
+              Versatile benches for multi-user research with integrated power, gas, and data.
             </p>
             <ul class="adaptable-spec-list">
               <li class="adaptable-spec-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Single-sided and island double-sided layouts
+                Single-sided and island layouts
               </li>
               <li class="adaptable-spec-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 Integrated electrical &amp; gas service points
-              </li>
-              <li class="adaptable-spec-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Under-bench mobile storage cabinets
               </li>
             </ul>
           </div>
@@ -1445,19 +1511,15 @@ import Layout from '../../layouts/Layout.astro';
             <div class="adaptable-card-img-wrap">
               <img src="/products/furniture/rapid-supply.jpg" alt="Rapid Supply &amp; Installation" class="adaptable-card-img" />
             </div>
-            <div class="adaptable-badge">FAST-TRACK DEPLOYMENT</div>
+            <div class="adaptable-badge">FAST-TRACK</div>
             <h3 class="adaptable-card-title">Rapid Supply &amp; Installation</h3>
             <p class="adaptable-card-desc">
-              Fast-track delivery program for modular steel casework, lab furniture, and safety hoods with certified installation across the UAE.
+              Fast-track delivery and certified installation across the UAE.
             </p>
             <ul class="adaptable-spec-list">
               <li class="adaptable-spec-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
                 Standardized modular casework inventory
-              </li>
-              <li class="adaptable-spec-item">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Fast-track 3D BIM drafting &amp; floor plans
               </li>
               <li class="adaptable-spec-item">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
@@ -1473,10 +1535,10 @@ import Layout from '../../layouts/Layout.astro';
     </div>
   </section>
 
-  <!-- ═══ TURNKEY LABORATORY FIT-OUT & CONTRACTING BANNER ═══ -->
+   <!-- ═══ TURNKEY LABORATORY FIT-OUT & CONTRACTING BANNER ═══ -->
   <section class="ice-highlight" data-view>
     <div class="ice-highlight-image">
-      <img src="/turnkeybg2.jpg" alt="Turnkey Laboratory Engineering Infrastructure" loading="lazy" />
+      <div class="ice-highlight-img" style="background-image: url('/turnkeybg2.jpg');"></div>
     </div>
     <div class="ice-highlight-overlay">
       <span class="ice-highlight-tag">END-TO-END EPC CONTRACTING</span>
@@ -1492,8 +1554,8 @@ import Layout from '../../layouts/Layout.astro';
   <section id="quote-builder" class="quote-section">
     <div class="container">
       <div class="section-header-center">
-        <h2 class="daylight-section-title" style="font-family: var(--font-sans); color: #1a365d;">Estimate Your Lab Scope</h2>
-        <p class="daylight-section-sub" style="font-family: var(--font-sans); color: #1a365d; opacity: 0.8;">
+        <h2 class="turnkey-section-title" style="color: #1a365d;">Estimate Your Lab Scope</h2>
+        <p class="turnkey-section-sub" style="color: #1a365d;">
           Calculate project BOQ, facility area, and engineering services for turnkey UAE laboratory deployment.
         </p>
       </div>

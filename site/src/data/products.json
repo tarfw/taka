@@ -4279,40 +4279,7 @@
                   ],
                   "image": "/products/hach/dr3900.jpg"
                 },
-                {
-                  "id": "hach-dr6000",
-                  "name": "DR6000",
-                  "fullName": "HACH DR6000 UV-Vis Spectrophotometer",
-                  "brand": "hach",
-                  "category": "testing-apparatus",
-                  "subcategory": "spectrophotometers",
-                  "description": "UV-Vis water quality analyzer.",
-                  "fullDescription": "The HACH DR6000 UV-Vis spectrophotometer is designed for advanced water quality analysis with full UV-Vis scanning capability (190-1100 nm). It features 3D scanning for advanced method development and comes with over 340 pre-programmed methods. Ideal for laboratories requiring high-precision UV-Vis measurements.",
-                  "specs": [
-                    {
-                      "key": "Wavelength range",
-                      "value": "190-1100 nm"
-                    },
-                    {
-                      "key": "Methods",
-                      "value": "340+ pre-programmed"
-                    },
-                    {
-                      "key": "Scan speed",
-                      "value": "Up to 3600 nm/min"
-                    },
-                    {
-                      "key": "Data storage",
-                      "value": "5000 results"
-                    }
-                  ],
-                  "applications": [
-                    "UV-Vis water analysis",
-                    "Method development",
-                    "Research laboratories"
-                  ],
-                  "image": "/products/hach/dr6000.jpg"
-                },
+
                 {
                   "id": "hach-dr1900",
                   "name": "DR1900",
@@ -4867,40 +4834,7 @@
               "id": "automated-analyzers",
               "name": "Automated Wet Chemical Analyzers",
               "products": [
-                {
-                  "id": "hach-astream",
-                  "name": "Astream Analyzer",
-                  "fullName": "HACH Astream Automated Analyzer",
-                  "brand": "hach",
-                  "category": "testing-apparatus",
-                  "subcategory": "automated-analyzers",
-                  "description": "Automated wet chemistry analyzer.",
-                  "fullDescription": "The HACH Astream Automated Analyzer performs simultaneous measurement of multiple water quality parameters including ammonia, nitrate, phosphate, and silica. With continuous flow analysis, it handles high-throughput laboratory testing.",
-                  "specs": [
-                    {
-                      "key": "Parameters",
-                      "value": "Ammonia, Nitrate, Phosphate, Silica"
-                    },
-                    {
-                      "key": "Throughput",
-                      "value": "20-120 samples/hr"
-                    },
-                    {
-                      "key": "Detection",
-                      "value": "Colorimetric"
-                    },
-                    {
-                      "key": "Auto-sampler",
-                      "value": "Included"
-                    }
-                  ],
-                  "applications": [
-                    "Nutrient monitoring",
-                    "Wastewater compliance",
-                    "Environmental analysis"
-                  ],
-                  "image": "/products/hach/dr6000.jpg"
-                }
+
               ]
             },
             {

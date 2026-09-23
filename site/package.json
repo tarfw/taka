@@ -10,7 +10,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "deploy": "astro build && npx wrangler pages deploy dist --branch=main"
+    "deploy": "astro build && npx wrangler pages deploy dist --project-name=taka-scientific --branch=main"
   },
   "dependencies": {
     "astro": "^7.1.3"

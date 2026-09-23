@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TAKA Scientific - Document Signer & Stamp</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="brand">
+      <div class="brand-icon">T</div>
+      <div>
+        <div class="brand-title">
+          TAKA Scientific Equipment L.L.C
+          <span style="font-size: 11px; font-weight: normal; color: var(--text-muted);" id="batch-stats-badge">0 Documents</span>
+        </div>
+        <div class="brand-subtitle">Official Document Sign & Stamp Utility</div>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn-secondary" id="btn-load-samples">Load Sample</button>
+      <button class="btn btn-secondary" id="btn-sign-current">Download Current PDF</button>
+      <button class="btn btn-primary" id="btn-batch-download-top">Sign All (ZIP)</button>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+      <!-- Navigation Tabs -->
+      <div class="sidebar-tabs">
+        <button class="tab-btn active" id="tab-btn-queue">Queue (<span id="tab-count">0</span>)</button>
+        <button class="tab-btn" id="tab-btn-presets">Batch Rules</button>
+        <button class="tab-btn" id="tab-btn-edit">Adjust Item</button>
+      </div>
+
+      <!-- Tab Content 1: Multi-Document Queue -->
+      <div id="tab-content-queue">
+        
+        <!-- Multi-File Upload Area -->
+        <div class="sidebar-section">
+          <div class="sidebar-title">
+            <span>Upload PDF Files</span>
+          </div>
+
+          <div class="dropzone" id="dropzone">
+            <input type="file" id="file-input" accept="application/pdf" multiple style="display: none;">
+            <div class="dropzone-text">Click or drag PDF files here</div>
+            <div class="dropzone-hint">Upload single or multiple PDFs</div>
+          </div>
+        </div>
+
+        <!-- Files List in Queue -->
+        <div class="sidebar-section" style="flex: 1; border-bottom: none;">
+          <div class="queue-header">
+            <span class="queue-count" id="queue-header-count">Queue (0 Files)</span>
+            <div style="display: flex; gap: 4px;">
+              <button class="btn-tool" id="btn-add-more" title="Add more PDFs">+</button>
+              <button class="btn-tool" id="btn-clear-queue" title="Clear all files">Clear</button>
+            </div>
+          </div>
+
+          <div class="queue-list" id="queue-list"></div>
+        </div>
+
+        <!-- Stamp Palette Quick Add -->
+        <div class="sidebar-section" style="border-top: 1px solid var(--border);">
+          <div class="sidebar-title">Add to Current Document</div>
+          <div class="stamp-items">
+            
+            <div class="stamp-card" data-type="combined">
+              <div class="stamp-preview-box">
+                <img src="assets/stamp_and_signature.png" id="img-preview-combined" alt="Stamp and Signature">
+              </div>
+              <div class="stamp-info">
+                <div class="stamp-title">Stamp + Signature</div>
+                <div class="stamp-desc">Official Stamp with M. Esha Sign</div>
+                <button class="btn-add-item">+ Add</button>
+              </div>
+            </div>
+
+            <div class="stamp-card" data-type="stamp">
+              <div class="stamp-preview-box">
+                <img src="assets/stamp.png" id="img-preview-stamp" alt="Stamp Only">
+              </div>
+              <div class="stamp-info">
+                <div class="stamp-title">Company Stamp</div>
+                <div class="stamp-desc">TAKA Scientific Equipment LLC</div>
+                <button class="btn-add-item">+ Add</button>
+              </div>
+            </div>
+
+            <div class="stamp-card" data-type="signature">
+              <div class="stamp-preview-box">
+                <img src="assets/signature.png" id="img-preview-sig" alt="Signature Only">
+              </div>
+              <div class="stamp-info">
+                <div class="stamp-title">Signature Only</div>
+                <div class="stamp-desc">M. Esha Authorized Sign</div>
+                <button class="btn-add-item">+ Add</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tab Content 2: Batch Placement Rules -->
+      <div id="tab-content-presets" style="display: none;">
+        <div class="sidebar-section">
+          <div class="sidebar-title">Batch Placement Rules</div>
+          <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
+            Configure default stamp placement to apply across all queued files.
+          </p>
+
+          <div class="form-group">
+            <label class="form-label">1. Element Type</label>
+            <div class="radio-group" id="batch-type-group">
+              <div class="radio-btn selected" data-value="combined">Stamp + Sig</div>
+              <div class="radio-btn" data-value="stamp">Stamp Only</div>
+              <div class="radio-btn" data-value="signature">Signature Only</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">2. Target Pages</label>
+            <div class="radio-group" id="batch-page-target">
+              <div class="radio-btn selected" data-value="last">Last Page</div>
+              <div class="radio-btn" data-value="all">All Pages</div>
+              <div class="radio-btn" data-value="first">First Page</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">3. Position</label>
+            <div class="radio-group" id="batch-pos-group">
+              <div class="radio-btn selected" data-value="bottom-right">Bottom Right</div>
+              <div class="radio-btn" data-value="bottom-left">Bottom Left</div>
+              <div class="radio-btn" data-value="center">Center</div>
+            </div>
+          </div>
+
+          <div class="control-group" style="margin-top: 8px;">
+            <div class="control-label">
+              <span>Scale</span>
+              <span class="control-val" id="val-batch-scale">100%</span>
+            </div>
+            <input type="range" id="slider-batch-scale" min="40" max="180" value="100">
+          </div>
+
+          <button class="btn btn-primary" id="btn-apply-batch-rules" style="width: 100%; margin-top: 14px;">
+            Apply Rules to All Files
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab Content 3: Fine-Tuning Inspector -->
+      <div id="tab-content-edit" style="display: none;">
+        <div class="sidebar-section" id="section-item-controls">
+          <div class="sidebar-title">Adjust Selected Element</div>
+          
+          <div class="controls-grid" id="inspector-grid">
+            <div class="control-group">
+              <div class="control-label">Snap Placement</div>
+              <div class="preset-buttons">
+                <button class="btn-preset" id="preset-br">Bottom Right</button>
+                <button class="btn-preset" id="preset-bl">Bottom Left</button>
+                <button class="btn-preset" id="preset-center">Center</button>
+                <button class="btn-preset" id="preset-apply-all-pages">All Pages</button>
+              </div>
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Scale</span>
+                <span class="control-val" id="val-scale">100%</span>
+              </div>
+              <input type="range" id="slider-scale" min="30" max="200" value="100">
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Rotation</span>
+                <span class="control-val" id="val-rotation">0°</span>
+              </div>
+              <input type="range" id="slider-rotation" min="-45" max="45" value="0">
+            </div>
+
+            <div class="control-group">
+              <div class="control-label">
+                <span>Opacity</span>
+                <span class="control-val" id="val-opacity">100%</span>
+              </div>
+              <input type="range" id="slider-opacity" min="50" max="100" value="100">
+            </div>
+
+            <div class="action-row">
+              <button class="btn btn-secondary" id="btn-duplicate" style="flex:1;">Duplicate</button>
+              <button class="btn btn-danger" id="btn-delete" style="flex:1;">Remove</button>
+            </div>
+          </div>
+
+          <div id="inspector-empty" style="text-align: center; color: var(--text-muted); padding: 24px 8px; font-size: 11px; display: none;">
+            Click on any placed stamp or signature on the document preview to adjust its position and properties.
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Action: Sign All & Download ZIP -->
+      <div class="sidebar-section" style="margin-top: auto; border-bottom: none; background: #ffffff; border-top: 1px solid var(--border);">
+        <button class="btn-zip" id="btn-batch-zip">
+          Sign All & Download ZIP (<span id="btn-zip-count">0</span>)
+        </button>
+      </div>
+
+    </aside>
+
+    <!-- Main PDF Viewport -->
+    <main class="main-view">
+
+      <!-- View Toolbar -->
+      <div class="toolbar" id="toolbar">
+        <div class="doc-name-banner" id="banner-filename">No document selected</div>
+
+        <div class="page-controls">
+          <button class="btn-tool" id="btn-prev-page" title="Previous Page">Prev</button>
+          <span class="page-number-display" id="page-display">Page 0 / 0</span>
+          <button class="btn-tool" id="btn-next-page" title="Next Page">Next</button>
+        </div>
+
+        <div class="zoom-controls">
+          <button class="btn-tool" id="btn-zoom-out" title="Zoom Out">-</button>
+          <span style="font-size: 11px; font-weight:500; min-width: 35px; text-align: center;" id="val-zoom">100%</span>
+          <button class="btn-tool" id="btn-zoom-in" title="Zoom In">+</button>
+          <button class="btn-tool" id="btn-fit-width" title="Fit Width">Fit</button>
+        </div>
+      </div>
+
+      <!-- Viewport Area -->
+      <div class="viewport-container" id="viewport-container">
+        
+        <!-- Empty State -->
+        <div class="empty-state" id="empty-state">
+          <div class="empty-title">No PDF Document Selected</div>
+          <div class="empty-desc">
+            Upload PDF files using the left panel or click below to load the sample document.
+          </div>
+          <div style="display: flex; gap: 8px; margin-top: 8px;">
+            <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
+              Upload PDFs
+            </button>
+            <button class="btn btn-secondary" id="btn-load-sample-hero">
+              Load Sample Invoice
+            </button>
+          </div>
+        </div>
+
+        <!-- Rendered PDF Page + Overlay Canvas Layer -->
+        <div class="page-wrapper" id="page-wrapper" style="display: none;">
+          <canvas id="pdf-canvas"></canvas>
+          <div class="overlay-layer" id="overlay-layer"></div>
+        </div>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- Progress Overlay -->
+  <div class="progress-overlay" id="progress-overlay">
+    <div class="progress-card">
+      <div class="progress-title" id="progress-title">Signing Documents</div>
+      <div class="progress-status" id="progress-status">Processing...</div>
+      <div class="progress-bar-container">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+      <div style="font-size: 11px; color: var(--text-muted);" id="progress-percent">0%</div>
+    </div>
+  </div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast"></div>
+
+  <!-- Vendor Scripts -->
+  <script src="vendor/pdf.min.js"></script>
+  <script src="vendor/pdf-lib.min.js"></script>
+  <script src="vendor/jszip.min.js"></script>
+  <script src="assets_data.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>

@@ -3,6 +3,12 @@ main = "src/worker.ts"
 compatibility_date = "2024-09-23"
 compatibility_flags = ["nodejs_compat"]
 
+account_id = "fbbcf339e13ebe7692a37caa0b36175a"
+
+routes = [
+  { pattern = "admin.taka.ae", custom_domain = true }
+]
+
 [vars]
 TURSO_DATABASE_URL = "libsql://taka-erp-wetartaka.aws-eu-west-1.turso.io"
 ZEPTOMAIL_API_URL = "https://api.zeptomail.com/v1.1/email"

@@ -11,6 +11,8 @@ export async function resetDatabaseToProduction() {
     'payments',
     'invoice_items',
     'invoices',
+    'delivery_note_items',
+    'delivery_notes',
     'vendor_bills',
     'purchase_order_items',
     'purchase_orders',
@@ -23,12 +25,16 @@ export async function resetDatabaseToProduction() {
 
   for (const table of transactionTables) {
     console.log(`[Reset] Clearing table: ${table}...`);
-    await db.execute(`DELETE FROM ${table}`);
+    try {
+      await db.execute(`DELETE FROM ${table}`);
+    } catch (e) {
+      // Table might not exist yet if unmigrated
+    }
   }
 
-  // Also clean any dynamically generated test contacts while keeping verified master contacts
-  console.log('[Reset] Normalizing contacts to verified UAE master entities...');
-  await db.execute(`DELETE FROM contacts WHERE id NOT IN ('vnd_ika', 'vnd_hanil', 'vnd_hach', 'vnd_toption', 'vnd_elga', 'cust_adek', 'cust_adnoc', 'cust_ku')`);
+  // Keep ONLY genuine international manufacturer partners (suppliers) and remove all test customers
+  console.log('[Reset] Normalizing contacts to verified global manufacturer partners only...');
+  await db.execute(`DELETE FROM contacts WHERE type = 'customer' OR id NOT IN ('vnd_ika', 'vnd_hanil', 'vnd_hach', 'vnd_toption', 'vnd_elga')`);
 
   // Verify counts
   console.log('\n[Verification] Current Post-Reset Counts:');
@@ -36,6 +42,7 @@ export async function resetDatabaseToProduction() {
     'quotations', 'quotation_items',
     'sales_orders', 'sales_order_items',
     'purchase_orders', 'purchase_order_items',
+    'delivery_notes', 'delivery_note_items',
     'invoices', 'invoice_items',
     'vendor_bills', 'payments',
     'journal_entries', 'journal_lines',

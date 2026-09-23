@@ -5,11 +5,12 @@ import { processNaturalLanguageRequest } from './ai/gemini.js';
 import { getQuote, listQuotes, createQuote, updateQuoteStatus } from './modules/quotes.js';
 import { getInvoice, listInvoices, createInvoice, createInvoiceFromQuote, updateInvoiceStatus } from './modules/invoicing.js';
 import { getPurchaseOrder, listPurchaseOrders, createPurchaseOrder, createVendorBill } from './modules/purchasing.js';
-import { recordCustomerPayment, listPayments } from './modules/payments.js';
+import { recordCustomerPayment, listPayments, applyDepositToInvoice, getCustomerDepositBalance } from './modules/payments.js';
+import { createDeliveryNote, listDeliveryNotes, getDeliveryNote, markDelivered, markInvoiced } from './modules/delivery.js';
 import { listContacts, createContact, findContactByNameOrEmail, getContactTimeline } from './modules/contacts.js';
 import { listCatalogItems } from './modules/catalog.js';
 import { getGeneralLedgerEntries, getBankAccountsSummary } from './modules/ledger.js';
-import { renderQuotationHtml, renderInvoiceHtml, renderPurchaseOrderHtml } from './documents/generator.js';
+import { renderQuotationHtml, renderInvoiceHtml, renderPurchaseOrderHtml, renderDeliveryNoteHtml } from './documents/generator.js';
 import { getArAgingReport, getApAgingReport, getProfitAndLossReport, getUaeVatReturnReport } from './modules/reports.js';
 import { renderDashboardHtml } from './ui/dashboard.js';
 
@@ -212,6 +213,59 @@ app.post('/api/pos/:id/bill', async (c) => {
 });
 
 // ---------------------------------------------------------------------------
+// Delivery Notes (goods handover between quotation and tax invoice)
+// ---------------------------------------------------------------------------
+
+app.get('/api/delivery-notes', async (c) => c.json(await listDeliveryNotes(50)));
+
+app.post('/api/delivery-notes', async (c) => {
+  const body: any = await c.req.json();
+  const customer_id = body.customer_id || await resolveCustomerId(body, 'customer');
+  return c.json(await createDeliveryNote({ ...body, customer_id }));
+});
+
+// Create a delivery note from a quotation (copies its line items)
+app.post('/api/quotes/:id/deliver', async (c) => {
+  const quote: any = await getQuote(c.req.param('id'));
+  if (!quote) return c.json({ error: 'Quote not found' }, 404);
+  if (quote.status === 'cancelled') return c.json({ error: 'Quote is cancelled' }, 400);
+  const body: any = await c.req.json().catch(() => ({}));
+  const dn = await createDeliveryNote({
+    customer_id: quote.customer_id,
+    source_type: 'quote',
+    source_id: quote.id,
+    customer_po_ref: body.customer_po_ref || undefined,
+    delivery_date: body.delivery_date || undefined,
+    received_by: body.received_by || undefined,
+    vehicle: body.vehicle || undefined,
+    notes: body.notes || undefined
+  });
+  return c.json(dn);
+});
+
+app.post('/api/delivery-notes/:id/deliver', async (c) => {
+  const body: any = await c.req.json().catch(() => ({}));
+  return c.json(await markDelivered(c.req.param('id'), body));
+});
+
+app.post('/api/delivery-notes/:id/invoice', async (c) => {
+  const dn: any = await getDeliveryNote(c.req.param('id'));
+  if (!dn) return c.json({ error: 'Delivery note not found' }, 404);
+  await markInvoiced(dn.id);
+  return c.json({ success: true, dn_number: dn.dn_number, status: 'invoiced' });
+});
+
+// ---------------------------------------------------------------------------
+// Deposits (advances)
+// ---------------------------------------------------------------------------
+
+app.post('/api/deposits/apply', async (c) =>
+  c.json(await applyDepositToInvoice(await c.req.json())));
+
+app.get('/api/deposits/balance/:contactId', async (c) =>
+  c.json({ contact_id: c.req.param('contactId'), deposit_balance: await getCustomerDepositBalance(c.req.param('contactId')) }));
+
+// ---------------------------------------------------------------------------
 // Payments
 // ---------------------------------------------------------------------------
 
@@ -256,6 +310,12 @@ app.get('/api/reports/vat', async (c) => c.json(await getUaeVatReturnReport()));
 // ---------------------------------------------------------------------------
 // Document previews
 // ---------------------------------------------------------------------------
+
+app.get('/api/documents/delivery/:id', async (c) => {
+  const dn = await getDeliveryNote(c.req.param('id'));
+  if (!dn) return c.text('Delivery note not found', 404);
+  return c.html(renderDeliveryNoteHtml(dn));
+});
 
 app.get('/api/documents/quote/:id', async (c) => {
   const quote = await getQuote(c.req.param('id'));

@@ -15,16 +15,16 @@ export const COMPANY_INFO = {
   trn: '100482910400003',
   trade_license: 'CN-2849102',
   commercial_reg: '1012000000006736354',
-  hq: 'Musaffah Industrial M-14, P.O. Box 92144, Abu Dhabi, UAE',
-  hq_ar: 'مصفح الصناعية M-14، ص.ب 92144، أبوظبي، الإمارات العربية المتحدة',
-  branch: 'Business Bay, Dubai, UAE',
+  address: 'Al Dana, Sector East 11, Building: Al Khazna Insurance Company, P.O. Box 73343, Abu Dhabi, United Arab Emirates',
+  hq: 'Al Dana, Sector East 11, Building: Al Khazna Insurance Company, P.O. Box 73343, Abu Dhabi, UAE',
+  hq_ar: 'الدانة، حوض شرق 11، مبنى شركة الخزنة للتأمين، ص.ب 73343، أبوظبي، الإمارات العربية المتحدة',
   phone: '+971 55 853 1705',
   email: 'sales@taka.ae',
   website: 'taka.ae',
   certifications: 'ICV Certified • ISO 9001:2015 • EN 14175',
   bank: {
     bank_name: 'Wio Bank PJSC',
-    account_name: 'TAKA Scientific Equipment L.L.C',
+    account_name: 'TAKA SCIENTIFIC EQUIPMENT - L.L.C',
     iban: 'AE820860000001234567890',
     bic: 'WIOBAEADXXX',
     currency: 'AED'
@@ -70,43 +70,18 @@ export function renderTakaLogoSvg(width: number = 175, height: number = 46): str
 }
 
 export function renderOfficialSealSvg(idSuffix: string = 'inv'): string {
-  return `
-    <svg width="105" height="105" viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg" style="opacity: 0.94; transform: rotate(-2deg); flex-shrink: 0;">
-      <circle cx="110" cy="110" r="102" stroke="#1d4ed8" stroke-width="3.5" fill="none"/>
-      <circle cx="110" cy="110" r="88" stroke="#1d4ed8" stroke-width="1.8" stroke-dasharray="4 2" fill="none"/>
-      <circle cx="110" cy="110" r="64" stroke="#1d4ed8" stroke-width="1.2" fill="none"/>
-      <path id="sealPathEn_${idSuffix}" d="M 30,110 A 80,80 0 0,1 190,110" fill="none"/>
-      <text font-family="'Segoe UI', sans-serif" font-size="8.8" font-weight="900" fill="#1d4ed8" letter-spacing="0.8">
-        <textPath href="#sealPathEn_${idSuffix}" startOffset="50%" text-anchor="middle">
-          TAKA SCIENTIFIC EQUIPMENT L.L.C
-        </textPath>
-      </text>
-      <path id="sealPathAr_${idSuffix}" d="M 190,110 A 80,80 0 0,1 30,110" fill="none"/>
-      <text font-family="'Segoe UI', Tahoma, sans-serif" font-size="9.8" font-weight="900" fill="#1d4ed8">
-        <textPath href="#sealPathAr_${idSuffix}" startOffset="50%" text-anchor="middle">
-          تاكا للمعدات العلمية - ذ.م.م
-        </textPath>
-      </text>
-      <text x="110" y="93" font-family="'Segoe UI', sans-serif" font-size="7.5" font-weight="800" fill="#1d4ed8" text-anchor="middle">★ ABU DHABI • UAE ★</text>
-      <text x="110" y="105" font-family="'Segoe UI', sans-serif" font-size="8.5" font-weight="900" fill="#1d4ed8" text-anchor="middle">EZHILARASI MATHIVANAN</text>
-      <text x="110" y="116" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="700" fill="#1d4ed8" text-anchor="middle">MANAGING DIRECTOR</text>
-      <text x="110" y="127" font-family="'Segoe UI', sans-serif" font-size="7.5" font-weight="800" fill="#1d4ed8" text-anchor="middle">TRN: 100482910400003</text>
-      <text x="110" y="138" font-family="'Segoe UI', sans-serif" font-size="7" font-weight="800" fill="#1d4ed8" text-anchor="middle">REG: 1012000000006736354</text>
-    </svg>
-  `;
+  // Seal removed per user request (no seal needed)
+  return '';
 }
 
 export function renderSignatureBlock(idSuffix: string = 'inv'): string {
   return `
-    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin: 16px 0 10px 0; padding-top: 6px;">
+    <div style="display: flex; justify-content: flex-start; align-items: flex-end; margin: 18px 0 12px 0; padding-top: 6px;">
       <div>
-        <div style="font-size: 8px; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 2px;">Authorized Signature / التوقيع المعتمد:</div>
+        <div style="font-size: 8.5px; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 3px;">Authorized Signature / التوقيع المعتمد:</div>
         <div style="font-family: 'Brush Script MT', 'Segoe Script', cursive, sans-serif; font-size: 22px; color: #0f172a; margin: 2px 0;">Ezhilarasi Mathivanan</div>
         <div style="font-weight: 800; font-size: 11px; color: #0f172a;">${COMPANY_INFO.signatory_name}</div>
-        <div style="font-size: 8.5px; color: #64748b; margin-top: 1px;">${COMPANY_INFO.signatory_title_en} &bull; ${COMPANY_INFO.signatory_title_ar}</div>
-      </div>
-      <div>
-        ${renderOfficialSealSvg(idSuffix)}
+        <div style="font-size: 9px; font-weight: 600; color: #334155; margin-top: 1px;">${COMPANY_INFO.signatory_title_en} &bull; ${COMPANY_INFO.signatory_title_ar}</div>
       </div>
     </div>
   `;
@@ -114,26 +89,19 @@ export function renderSignatureBlock(idSuffix: string = 'inv'): string {
 
 export function renderDocumentFooter(docTypeLabel: string = 'Official Commercial Document'): string {
   return `
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1.2fr; gap: 14px; border-top: 1.5px solid #0f172a; padding-top: 8px; margin-top: 16px; font-size: 8px; color: #64748b; line-height: 1.4;">
-      <div>
-        <div style="font-weight: 800; color: #0f172a; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;">ABU DHABI HEADQUARTERS (HQ)</div>
-        Musaffah Industrial M-14, P.O. Box 92144<br>
-        Abu Dhabi, United Arab Emirates
+    <div style="border-top: 1.5px solid #0f172a; padding-top: 10px; margin-top: 24px; font-size: 8.5px; color: #1e293b; line-height: 1.5;">
+      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 20px;">
+        <div>
+          <div style="font-weight: 800; font-size: 9.5px; color: #0f172a; margin-bottom: 2px;">TAKA SCIENTIFIC EQUIPMENT - L.L.C</div>
+          <div>Al Dana, Sector East 11, Building: Al Khazna Insurance Company, P.O. Box 73343, Abu Dhabi, United Arab Emirates</div>
+          <div>Tel / WhatsApp: +971 55 853 1705 &bull; Email: sales@taka.ae &bull; Web: taka.ae</div>
+        </div>
+        <div style="text-align: right; white-space: nowrap;">
+          <div style="font-weight: 700; color: #0f172a;">Tax TRN: ${COMPANY_INFO.trn}</div>
+          <div>Trade License: <strong>${COMPANY_INFO.trade_license}</strong> &bull; Unified Reg: <strong>${COMPANY_INFO.economic_reg}</strong></div>
+          <div style="color: #334155; font-weight: 600; margin-top: 1px;">${COMPANY_INFO.certifications} &bull; ${docTypeLabel}</div>
+        </div>
       </div>
-      <div>
-        <div style="font-weight: 800; color: #0f172a; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;">DUBAI REGIONAL BRANCH</div>
-        Business Bay, Dubai<br>
-        United Arab Emirates
-      </div>
-      <div>
-        <div style="font-weight: 800; color: #0f172a; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 2px;">INQUIRIES & VERIFICATION</div>
-        ${COMPANY_INFO.website} &bull; ${COMPANY_INFO.email}<br>
-        Tel / WhatsApp: ${COMPANY_INFO.phone}
-      </div>
-    </div>
-    <div style="border-top: 1px solid #e2e8f0; margin-top: 6px; padding-top: 4px; font-size: 7.5px; color: #94a3b8; display: flex; justify-content: space-between;">
-      <div>Tax TRN: <strong style="color: #475569;">${COMPANY_INFO.trn}</strong> &bull; License: <strong style="color: #475569;">${COMPANY_INFO.trade_license}</strong> &bull; Unified Reg: <strong style="color: #475569;">${COMPANY_INFO.economic_reg}</strong></div>
-      <div>${COMPANY_INFO.certifications} &bull; ${docTypeLabel}</div>
     </div>
   `;
 }
@@ -156,34 +124,42 @@ const COMMON_CSS = `
   .doc-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     padding-bottom: 12px;
-    border-bottom: 1.5px solid #0f172a;
+    border-bottom: 2px solid #0f172a;
     margin-bottom: 14px;
   }
-  .doc-meta { text-align: right; }
+  .doc-meta-strip {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 1.5px solid #0f172a;
+  }
   .doc-title-en {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 900;
     letter-spacing: 0.5px;
     color: #0f172a;
     margin: 0;
-    line-height: 1.2;
+    line-height: 1.1;
   }
   .doc-title-ar {
     font-size: 12px;
     font-weight: 700;
-    color: #64748b;
-    margin: 2px 0 6px 0;
+    color: #334155;
+    margin: 2px 0 0 0;
     direction: rtl;
   }
+  .doc-meta-col { text-align: right; font-size: 9.5px; line-height: 1.55; }
   .doc-meta-row {
     font-size: 9.5px;
-    color: #475569;
-    line-height: 1.45;
+    color: #334155;
+    line-height: 1.55;
   }
   .doc-meta-row strong { color: #0f172a; }
-  .doc-meta-ref { color: #054d89; font-weight: 700; }
+  .doc-meta-ref { color: #054d89; font-weight: 800; font-size: 11px; }
 
   /* Two-column Party & Specs layout - NO BOXES */
   .parties-grid {
@@ -192,25 +168,25 @@ const COMMON_CSS = `
     gap: 24px;
     margin-bottom: 16px;
     padding-bottom: 14px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #cbd5e1;
   }
   .party-col h4 {
     margin: 0 0 4px 0;
     font-size: 8.5px;
     font-weight: 800;
-    color: #64748b;
+    color: #334155;
     text-transform: uppercase;
     letter-spacing: 0.6px;
   }
   .party-name {
     font-size: 13px;
-    font-weight: 700;
+    font-weight: 800;
     color: #0f172a;
     margin-bottom: 3px;
   }
   .party-details {
     font-size: 9.5px;
-    color: #475569;
+    color: #1e293b;
     line-height: 1.5;
   }
 
@@ -233,14 +209,15 @@ const COMMON_CSS = `
   }
   .items-table td {
     padding: 9px 6px;
-    border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #cbd5e1;
     font-size: 10px;
+    color: #0f172a;
     vertical-align: top;
   }
   .th-sub {
     font-size: 7.5px;
-    color: #64748b;
-    font-weight: 500;
+    color: #334155;
+    font-weight: 600;
     text-transform: none;
     margin-top: 1px;
   }
@@ -254,7 +231,7 @@ const COMMON_CSS = `
   }
   .bank-details {
     font-size: 9px;
-    color: #475569;
+    color: #1e293b;
     line-height: 1.5;
   }
   .bank-details h5 {
@@ -273,8 +250,8 @@ const COMMON_CSS = `
     display: flex;
     justify-content: space-between;
     padding: 4px 0;
-    border-bottom: 1px solid #f1f5f9;
-    color: #475569;
+    border-bottom: 1px solid #e2e8f0;
+    color: #1e293b;
   }
   .totals-row.grand {
     border-top: 1.5px solid #0f172a;
@@ -290,10 +267,10 @@ const COMMON_CSS = `
   .terms-block {
     margin-bottom: 12px;
     font-size: 9px;
-    color: #475569;
+    color: #1e293b;
     line-height: 1.45;
     padding-top: 8px;
-    border-top: 1px solid #e2e8f0;
+    border-top: 1px solid #cbd5e1;
   }
   .terms-title {
     font-weight: 700;
@@ -329,19 +306,22 @@ export function renderInvoiceHtml(inv: InvoiceRecord): string {
   <div class="doc-header">
     <div>
       ${renderTakaLogoSvg(175, 46)}
-      <div style="font-size: 9.5px; font-weight: 700; color: #054d89; margin-top: 4px; letter-spacing: 0.3px;">SCIENTIFIC EQUIPMENT & LAB FURNITURE &bull; DELIVERED & INSTALLED ACROSS THE UAE</div>
-      <div style="font-size: 9px; color: #64748b; margin-top: 2px;">
-        Head Office: Musaffah Industrial M-14, Abu Dhabi, UAE &bull; sales@taka.ae
-      </div>
     </div>
+    <div style="text-align: right; direction: rtl;">
+      <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 18px; font-weight: 800; color: #054d89; letter-spacing: 0.3px;">تاكا للمعدات العلمية - ذ.م.م</div>
+      <div style="font-size: 9.5px; font-weight: 700; color: #334155; margin-top: 1px;">TAKA SCIENTIFIC EQUIPMENT - L.L.C</div>
+    </div>
+  </div>
 
-    <div class="doc-meta">
+  <div class="doc-meta-strip">
+    <div>
       <h1 class="doc-title-en">TAX INVOICE</h1>
       <div class="doc-title-ar">فاتورة ضريبية</div>
+    </div>
+    <div class="doc-meta-col">
       <div class="doc-meta-row">REF: <span class="doc-meta-ref">${inv.invoice_number}</span></div>
       <div class="doc-meta-row">DATE: <strong>${inv.date}</strong></div>
-      <div class="doc-meta-row">DUE: <strong style="color: ${isPaid ? '#0E8668' : '#b91c1c'};">${inv.due_date}</strong></div>
-      <div class="doc-meta-row">STATUS: <strong style="color: ${isPaid ? '#0E8668' : '#054d89'}; text-transform: uppercase;">${isPaid ? 'PAID' : inv.status}</strong></div>
+      <div class="doc-meta-row">DUE: <strong style="color: ${isPaid ? '#0E8668' : '#b91c1c'};">${inv.due_date}</strong> &bull; STATUS: <strong style="color: ${isPaid ? '#0E8668' : '#054d89'}; text-transform: uppercase;">${isPaid ? 'PAID' : inv.status}</strong></div>
     </div>
   </div>
 
@@ -477,19 +457,22 @@ export function renderQuotationHtml(quote: QuoteRecord): string {
   <div class="doc-header">
     <div>
       ${renderTakaLogoSvg(175, 46)}
-      <div style="font-size: 9.5px; font-weight: 700; color: #054d89; margin-top: 4px; letter-spacing: 0.3px;">SCIENTIFIC EQUIPMENT & LAB FURNITURE &bull; DELIVERED & INSTALLED ACROSS THE UAE</div>
-      <div style="font-size: 9px; color: #64748b; margin-top: 2px;">
-        Head Office: Musaffah Industrial M-14, Abu Dhabi, UAE &bull; sales@taka.ae
-      </div>
     </div>
+    <div style="text-align: right; direction: rtl;">
+      <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 18px; font-weight: 800; color: #054d89; letter-spacing: 0.3px;">تاكا للمعدات العلمية - ذ.م.م</div>
+      <div style="font-size: 9.5px; font-weight: 700; color: #334155; margin-top: 1px;">TAKA SCIENTIFIC EQUIPMENT - L.L.C</div>
+    </div>
+  </div>
 
-    <div class="doc-meta">
+  <div class="doc-meta-strip">
+    <div>
       <h1 class="doc-title-en">COMMERCIAL QUOTATION</h1>
       <div class="doc-title-ar">عرض أسعار تجاري</div>
+    </div>
+    <div class="doc-meta-col">
       <div class="doc-meta-row">REF: <span class="doc-meta-ref">${quote.quote_number}</span></div>
       <div class="doc-meta-row">DATE: <strong>${quote.date}</strong></div>
-      <div class="doc-meta-row">VALIDITY: <strong>${quote.expiry_date}</strong></div>
-      <div class="doc-meta-row">STATUS: <strong style="color: #054d89; text-transform: uppercase;">${quote.status}</strong></div>
+      <div class="doc-meta-row">VALIDITY: <strong>${quote.expiry_date}</strong> &bull; STATUS: <strong style="color: #054d89; text-transform: uppercase;">${quote.status}</strong></div>
     </div>
   </div>
 
@@ -611,19 +594,22 @@ export function renderPurchaseOrderHtml(po: PurchaseOrderRecord): string {
   <div class="doc-header">
     <div>
       ${renderTakaLogoSvg(175, 46)}
-      <div style="font-size: 9.5px; font-weight: 700; color: #054d89; margin-top: 4px; letter-spacing: 0.3px;">SCIENTIFIC EQUIPMENT & LAB FURNITURE &bull; DELIVERED & INSTALLED ACROSS THE UAE</div>
-      <div style="font-size: 9px; color: #64748b; margin-top: 2px;">
-        Head Office: Musaffah Industrial M-14, Abu Dhabi, UAE &bull; sales@taka.ae
-      </div>
     </div>
+    <div style="text-align: right; direction: rtl;">
+      <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 18px; font-weight: 800; color: #054d89; letter-spacing: 0.3px;">تاكا للمعدات العلمية - ذ.م.م</div>
+      <div style="font-size: 9.5px; font-weight: 700; color: #334155; margin-top: 1px;">TAKA SCIENTIFIC EQUIPMENT - L.L.C</div>
+    </div>
+  </div>
 
-    <div class="doc-meta">
+  <div class="doc-meta-strip">
+    <div>
       <h1 class="doc-title-en">LOCAL PURCHASE ORDER</h1>
       <div class="doc-title-ar">أمر شراء محلي (LPO)</div>
+    </div>
+    <div class="doc-meta-col">
       <div class="doc-meta-row">REF: <span class="doc-meta-ref">${po.po_number}</span></div>
       <div class="doc-meta-row">DATE: <strong>${po.date}</strong></div>
-      <div class="doc-meta-row">DELIVERY: <strong>${po.expected_delivery_date || 'Standard'}</strong></div>
-      <div class="doc-meta-row">STATUS: <strong style="color: #054d89; text-transform: uppercase;">${po.status}</strong></div>
+      <div class="doc-meta-row">DELIVERY: <strong>${po.expected_delivery_date || 'Standard'}</strong> &bull; STATUS: <strong style="color: #054d89; text-transform: uppercase;">${po.status}</strong></div>
     </div>
   </div>
 
@@ -642,7 +628,7 @@ export function renderPurchaseOrderHtml(po: PurchaseOrderRecord): string {
       <h4>DELIVERY & PROCUREMENT DIRECTIVES (بيانات الاستلام):</h4>
       <div class="party-details">
         Order Total: <strong style="font-size: 15px; color: #0f172a;" class="tabular-nums">${po.currency} ${Number(po.total_amount).toLocaleString('en-US', { minimumFractionDigits: 2 })}</strong><br>
-        Delivery Location: <strong>Musaffah M-14 Central Facility, Abu Dhabi</strong><br>
+        Delivery Location: <strong>Al Dana, Sector East 11, Building: Al Khazna Insurance Company, Abu Dhabi, UAE</strong><br>
         Receiving Hours: Sunday&ndash;Thursday, 8:00 AM &ndash; 4:00 PM GST<br>
         Currency: <strong>${po.currency}</strong>
       </div>
@@ -680,7 +666,7 @@ export function renderPurchaseOrderHtml(po: PurchaseOrderRecord): string {
     <div class="bank-details">
       <h5>DELIVERY & COMPLIANCE REQUIREMENTS</h5>
       • All supplied equipment must include Factory Inspection Certificates & Calibration Reports.<br>
-      • Consignee: TAKA Scientific Equipment L.L.C, Central Warehouse, Musaffah M-14, Abu Dhabi.<br>
+      • Consignee: TAKA Scientific Equipment L.L.C, Al Dana, Sector East 11, Building: Al Khazna Insurance Company, Abu Dhabi, UAE.<br>
       • Commercial Invoice & Packing List required upon dispatch.
     </div>
 
@@ -698,6 +684,129 @@ export function renderPurchaseOrderHtml(po: PurchaseOrderRecord): string {
 
   ${renderSignatureBlock('po')}
   ${renderDocumentFooter('TAKA Scientific Equipment L.L.C &bull; Official Purchase Order')}
+</body>
+</html>`;
+}
+
+export interface DeliveryNoteDocRecord {
+  dn_number: string;
+  customer_name?: string;
+  customer_company?: string;
+  customer_trn?: string;
+  billing_address?: string;
+  shipping_address?: string;
+  customer_po_ref?: string;
+  delivery_date: string;
+  received_by?: string;
+  vehicle?: string;
+  status: string;
+  notes?: string;
+  items?: { description: string; quantity: number; sku?: string; brand?: string; model?: string }[];
+}
+
+// Official UAE Delivery Note (سند تسليم): goods handover document.
+// Not a tax document — no VAT fields; the tax invoice creates the VAT point.
+export function renderDeliveryNoteHtml(dn: DeliveryNoteDocRecord): string {
+  const itemsHtml = (dn.items || []).map((item, idx) => `
+    <tr>
+      <td style="text-align: center; color: #334155;">${idx + 1}</td>
+      <td>
+        <div style="font-weight: 700; color: #0f172a;">${item.description}</div>
+        ${item.sku ? `<div class="th-sub">SKU: ${item.sku}${item.brand ? ` &bull; ${item.brand}` : ''}${item.model ? ` ${item.model}` : ''}</div>` : ''}
+      </td>
+      <td style="text-align: center; font-weight: 700;">${item.quantity}</td>
+      <td style="text-align: center;"></td>
+    </tr>
+  `).join('');
+
+  const totalQty = (dn.items || []).reduce((sum, i) => sum + Number(i.quantity || 0), 0);
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>DELIVERY NOTE: ${dn.dn_number}</title>
+  <style>${COMMON_CSS}</style>
+</head>
+<body>
+  <div class="doc-header">
+    <div>
+      ${renderTakaLogoSvg(175, 46)}
+    </div>
+    <div style="text-align: right; direction: rtl;">
+      <div style="font-family: 'Segoe UI', Tahoma, Arial, sans-serif; font-size: 18px; font-weight: 800; color: #054d89; letter-spacing: 0.3px;">تاكا للمعدات العلمية - ذ.م.م</div>
+      <div style="font-size: 9.5px; font-weight: 700; color: #334155; margin-top: 1px;">TAKA SCIENTIFIC EQUIPMENT - L.L.C</div>
+    </div>
+  </div>
+
+  <div class="doc-meta-strip">
+    <div>
+      <h1 class="doc-title-en">DELIVERY NOTE</h1>
+      <div class="doc-title-ar">سند تسليم</div>
+    </div>
+    <div class="doc-meta-col">
+      <div class="doc-meta-row">REF: <span class="doc-meta-ref">${dn.dn_number}</span></div>
+      <div class="doc-meta-row">DATE: <strong>${dn.delivery_date}</strong></div>
+      <div class="doc-meta-row">STATUS: <strong style="color: ${dn.status === 'delivered' ? '#0E8668' : '#054d89'}; text-transform: uppercase;">${dn.status}</strong>${dn.customer_po_ref ? ` &bull; PO: <strong>${dn.customer_po_ref}</strong>` : ''}</div>
+    </div>
+  </div>
+
+  <div class="parties-grid">
+    <div class="party-col">
+      <h4>DELIVER TO / CUSTOMER (العميل):</h4>
+      <div class="party-name">${dn.customer_company || dn.customer_name || 'Valued Client'}</div>
+      <div class="party-details">
+        Tax TRN: <strong style="color: #0f172a;">${dn.customer_trn || 'N/A'}</strong><br>
+        Address: ${dn.shipping_address || dn.billing_address || 'Abu Dhabi / Dubai, UAE'}
+      </div>
+    </div>
+
+    <div class="party-col">
+      <h4>DELIVERY SPECIFICATIONS (بيانات التوريد):</h4>
+      <div class="party-details">
+        Total Boxes / Units: <strong style="font-size: 15px; color: #0f172a;" class="tabular-nums">${totalQty}</strong><br>
+        ${dn.vehicle ? `Vehicle: <strong>${dn.vehicle}</strong><br>` : ''}
+        ${dn.received_by ? `Received By: <strong>${dn.received_by}</strong><br>` : ''}
+        Currency: <strong>AED (UAE Dirham)</strong>
+      </div>
+    </div>
+  </div>
+
+  <table class="items-table">
+    <thead>
+      <tr>
+        <th style="width: 30px; text-align: center;">#</th>
+        <th>Item Description <span class="th-sub">وصف</span></th>
+        <th style="width: 60px; text-align: center;">Qty <span class="th-sub">كمية</span></th>
+        <th style="width: 90px; text-align: center;">Checked</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${itemsHtml}
+    </tbody>
+  </table>
+
+  <div class="terms-block">
+    <div class="terms-title">Delivery Terms &amp; Conditions (شروط):</div>
+    Goods must be inspected on receipt. Please report shortages or visible damage within 48 hours to sales@taka.ae with the delivery note reference. Signing the acknowledgment below confirms the items listed were received in good condition. A separate FTA Tax Invoice will be issued for this supply.
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; page-break-inside: avoid;">
+    <div style="text-align: center;">
+      <div style="font-size: 8px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">Delivered By (TAKA Scientific)</div>
+      <div style="border-top: 1px solid #94a3b8; margin: 0 20px; padding-top: 4px; font-size: 9px; color: #475569;">
+        Name &amp; Signature &nbsp;&bull;&nbsp; ${dn.delivery_date}
+      </div>
+    </div>
+    <div style="text-align: center;">
+      <div style="font-size: 8px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 14px;">Received By (Customer / العميل)</div>
+      <div style="border-top: 1px solid #94a3b8; margin: 0 20px; padding-top: 4px; font-size: 9px; color: #475569;">
+        ${dn.received_by || 'Name &amp; Signature'} &nbsp;&bull;&nbsp; ${dn.delivery_date}
+      </div>
+    </div>
+  </div>
+
+  ${renderDocumentFooter('TAKA Scientific Equipment L.L.C &bull; Official Delivery Note')}
 </body>
 </html>`;
 }

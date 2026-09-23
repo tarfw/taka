@@ -119,10 +119,88 @@ export async function recordInvoiceLedgerEntry(params: {
   });
 }
 
-// 2. Customer Payment Receipt Entry:
-// Debit: Bank Account (1000)
-// Credit: Accounts Receivable (1200)
+// 2. Customer Payment Receipt Entry (supports card processing fees):
+// Debit: Bank Account (1000) [net amount]
+// Debit: Card & Bank Fees (5100) [optional fee]
+// Credit: Accounts Receivable (1200) [total]
 export async function recordCustomerPaymentLedgerEntry(params: {
+  paymentId: string;
+  paymentNumber: string;
+  customerName: string;
+  invoiceNumber: string;
+  amount: number;
+  date: string;
+  feeAmount?: number;
+}) {
+  const feeAmount = Math.round((params.feeAmount || 0) * 100) / 100;
+  const lines: JournalLine[] = [
+    {
+      account_code: '1000', // Bank
+      debit: params.amount - feeAmount,
+      credit: 0,
+      description: `Bank deposit for ${params.invoiceNumber}`
+    }
+  ];
+  if (feeAmount > 0.01) {
+    lines.push({
+      account_code: '5100', // Card & Bank Fees
+      debit: feeAmount,
+      credit: 0,
+      description: `Processing fee on ${params.paymentNumber}`
+    });
+  }
+  lines.push({
+    account_code: '1200', // Accounts Receivable
+    debit: 0,
+    credit: params.amount,
+    description: `Clear AR for ${params.customerName}`
+  });
+
+  await createJournalEntry({
+    date: params.date,
+    reference_type: 'customer_receipt',
+    reference_id: params.paymentId,
+    memo: `Payment receipt ${params.paymentNumber} from ${params.customerName} for ${params.invoiceNumber}`,
+    lines
+  });
+}
+
+// 2b. Customer Deposit (Advance) Entry — money received before delivery:
+// Debit: Bank Account (1000)
+// Credit: Customer Deposits (2300) [liability]
+export async function recordDepositLedgerEntry(params: {
+  paymentId: string;
+  paymentNumber: string;
+  customerName: string;
+  amount: number;
+  date: string;
+}) {
+  await createJournalEntry({
+    date: params.date,
+    reference_type: 'customer_deposit',
+    reference_id: params.paymentId,
+    memo: `Advance payment ${params.paymentNumber} from ${params.customerName}`,
+    lines: [
+      {
+        account_code: '1000', // Bank
+        debit: params.amount,
+        credit: 0,
+        description: `Advance received from ${params.customerName}`
+      },
+      {
+        account_code: '2300', // Customer Deposits (liability)
+        debit: 0,
+        credit: params.amount,
+        description: `Deposit held for ${params.customerName}`
+      }
+    ]
+  });
+}
+
+// 2c. Deposit Applied to Invoice Entry (no bank movement):
+// Debit: Customer Deposits (2300) [liability reduced]
+// Credit: Accounts Receivable (1200) [AR settled]
+export async function recordDepositAppliedLedgerEntry(params: {
   paymentId: string;
   paymentNumber: string;
   customerName: string;
@@ -132,21 +210,21 @@ export async function recordCustomerPaymentLedgerEntry(params: {
 }) {
   await createJournalEntry({
     date: params.date,
-    reference_type: 'customer_receipt',
+    reference_type: 'deposit_applied',
     reference_id: params.paymentId,
-    memo: `Payment receipt ${params.paymentNumber} from ${params.customerName} for ${params.invoiceNumber}`,
+    memo: `Deposit ${params.paymentNumber} applied to ${params.invoiceNumber} for ${params.customerName}`,
     lines: [
       {
-        account_code: '1000', // Bank
+        account_code: '2300', // Customer Deposits (liability)
         debit: params.amount,
         credit: 0,
-        description: `Bank deposit for ${params.invoiceNumber}`
+        description: `Release deposit held for ${params.customerName}`
       },
       {
         account_code: '1200', // Accounts Receivable
         debit: 0,
         credit: params.amount,
-        description: `Clear AR for ${params.customerName}`
+        description: `Settle ${params.invoiceNumber} from deposit`
       }
     ]
   });

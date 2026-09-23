@@ -1,4 +1,5 @@
 import { initializeDatabase } from './db/init.js';
+import { resetDatabaseToProduction } from './db/reset_production.js';
 import { findContactByNameOrEmail, listContacts } from './modules/contacts.js';
 import { searchCatalog } from './modules/catalog.js';
 import { createQuote, getQuote } from './modules/quotes.js';
@@ -161,7 +162,12 @@ async function runTestSuite() {
   console.log('===============================================================');
 }
 
-runTestSuite().catch(err => {
-  console.error('\n❌ Test Suite Failed:', err);
-  process.exit(1);
-});
+runTestSuite()
+  .finally(async () => {
+    console.log('\n[Test Suite Cleanup] Restoring database to pristine production state...');
+    await resetDatabaseToProduction();
+  })
+  .catch(err => {
+    console.error('\n❌ Test Suite Failed:', err);
+    process.exit(1);
+  });
