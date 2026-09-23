@@ -21,9 +21,9 @@
       </div>
     </div>
     <div class="header-actions">
-      <button class="btn btn-secondary" id="btn-load-samples">Load Sample</button>
+      <button class="btn btn-secondary" id="btn-apply-all-header">Apply Stamp & Signature to All</button>
       <button class="btn btn-secondary" id="btn-sign-current">Download Current PDF</button>
-      <button class="btn btn-primary" id="btn-batch-download-top">Sign All (ZIP)</button>
+      <button class="btn btn-primary" id="btn-batch-download-top">Download All</button>
     </div>
   </header>
 
@@ -71,28 +71,17 @@
 
         <!-- Stamp Palette Quick Add -->
         <div class="sidebar-section" style="border-top: 1px solid var(--border);">
-          <div class="sidebar-title">Add to Current Document</div>
+          <div class="sidebar-title">Add Element to Current Document</div>
           <div class="stamp-items">
-            
-            <div class="stamp-card" data-type="combined">
-              <div class="stamp-preview-box">
-                <img src="assets/stamp_and_signature.png" id="img-preview-combined" alt="Stamp and Signature">
-              </div>
-              <div class="stamp-info">
-                <div class="stamp-title">Stamp + Signature</div>
-                <div class="stamp-desc">Official Stamp with M. Esha Sign</div>
-                <button class="btn-add-item">+ Add</button>
-              </div>
-            </div>
 
             <div class="stamp-card" data-type="stamp">
               <div class="stamp-preview-box">
-                <img src="assets/stamp.png" id="img-preview-stamp" alt="Stamp Only">
+                <img src="assets/stamp.png" id="img-preview-stamp" alt="Company Stamp">
               </div>
               <div class="stamp-info">
                 <div class="stamp-title">Company Stamp</div>
                 <div class="stamp-desc">TAKA Scientific Equipment LLC</div>
-                <button class="btn-add-item">+ Add</button>
+                <button class="btn-add-item">+ Add Stamp</button>
               </div>
             </div>
 
@@ -103,7 +92,7 @@
               <div class="stamp-info">
                 <div class="stamp-title">Signature Only</div>
                 <div class="stamp-desc">M. Esha Authorized Sign</div>
-                <button class="btn-add-item">+ Add</button>
+                <button class="btn-add-item">+ Add Signature</button>
               </div>
             </div>
 
@@ -117,20 +106,11 @@
         <div class="sidebar-section">
           <div class="sidebar-title">Batch Placement Rules</div>
           <p style="font-size: 11px; color: var(--text-muted); margin-bottom: 12px;">
-            Configure default stamp placement to apply across all queued files.
+            Automatically adds both the Company Stamp and Signature to every uploaded PDF with subtle natural random variations.
           </p>
 
           <div class="form-group">
-            <label class="form-label">1. Element Type</label>
-            <div class="radio-group" id="batch-type-group">
-              <div class="radio-btn selected" data-value="combined">Stamp + Sig</div>
-              <div class="radio-btn" data-value="stamp">Stamp Only</div>
-              <div class="radio-btn" data-value="signature">Signature Only</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label class="form-label">2. Target Pages</label>
+            <label class="form-label">1. Target Pages</label>
             <div class="radio-group" id="batch-page-target">
               <div class="radio-btn selected" data-value="last">Last Page</div>
               <div class="radio-btn" data-value="all">All Pages</div>
@@ -139,7 +119,7 @@
           </div>
 
           <div class="form-group">
-            <label class="form-label">3. Position</label>
+            <label class="form-label">2. Position</label>
             <div class="radio-group" id="batch-pos-group">
               <div class="radio-btn selected" data-value="bottom-right">Bottom Right</div>
               <div class="radio-btn" data-value="bottom-left">Bottom Left</div>
@@ -149,14 +129,14 @@
 
           <div class="control-group" style="margin-top: 8px;">
             <div class="control-label">
-              <span>Scale</span>
+              <span>Stamp & Sig Scale</span>
               <span class="control-val" id="val-batch-scale">100%</span>
             </div>
             <input type="range" id="slider-batch-scale" min="40" max="180" value="100">
           </div>
 
           <button class="btn btn-primary" id="btn-apply-batch-rules" style="width: 100%; margin-top: 14px;">
-            Apply Rules to All Files
+            Apply Stamp & Signature to All Files
           </button>
         </div>
       </div>
@@ -213,13 +193,6 @@
         </div>
       </div>
 
-      <!-- Bottom Action: Sign All & Download ZIP -->
-      <div class="sidebar-section" style="margin-top: auto; border-bottom: none; background: #ffffff; border-top: 1px solid var(--border);">
-        <button class="btn-zip" id="btn-batch-zip">
-          Sign All & Download ZIP (<span id="btn-zip-count">0</span>)
-        </button>
-      </div>
-
     </aside>
 
     <!-- Main PDF Viewport -->
@@ -250,14 +223,11 @@
         <div class="empty-state" id="empty-state">
           <div class="empty-title">No PDF Document Selected</div>
           <div class="empty-desc">
-            Upload PDF files using the left panel or click below to load the sample document.
+            Upload single or multiple PDF files using the button below or drag them into the dropzone.
           </div>
           <div style="display: flex; gap: 8px; margin-top: 8px;">
             <button class="btn btn-primary" onclick="document.getElementById('file-input').click()">
               Upload PDFs
-            </button>
-            <button class="btn btn-secondary" id="btn-load-sample-hero">
-              Load Sample Invoice
             </button>
           </div>
         </div>

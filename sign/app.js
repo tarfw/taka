@@ -1,10 +1,27 @@
 /**
- * TAKA Scientific - Batch Document Signer & Stamp Engine
+ * TAKA Scientific - Document Signer & Stamp Engine
  */
 
 // Configure PDF.js worker
 if (window.pdfjsLib) {
   window.pdfjsLib.GlobalWorkerOptions.workerSrc = 'vendor/pdf.worker.min.js';
+}
+
+// Convert base64 data URL directly to Uint8Array for offline PDF-Lib embedding
+function dataURLtoUint8Array(dataurl) {
+  try {
+    const parts = dataurl.split(',');
+    const bstr = atob(parts[1]);
+    let n = bstr.length;
+    const u8arr = new Uint8Array(n);
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+    return u8arr;
+  } catch (e) {
+    console.error('Error decoding base64 data URL:', e);
+    throw e;
+  }
 }
 
 // Application State
@@ -18,15 +35,13 @@ const state = {
   
   // Batch Defaults
   batchRules: {
-    type: 'combined',         // 'combined' | 'stamp' | 'signature'
     target: 'last',           // 'last' | 'all' | 'first'
     position: 'bottom-right', // 'bottom-right' | 'bottom-left' | 'center'
     scale: 1.0
   },
 
-  // Base64 transparent assets
+  // Assets
   assets: {
-    combined: window.ASSETS ? window.ASSETS.combined : 'assets/stamp_and_signature.png',
     stamp: window.ASSETS ? window.ASSETS.stamp : 'assets/stamp.png',
     signature: window.ASSETS ? window.ASSETS.signature : 'assets/signature.png'
   }
@@ -49,12 +64,11 @@ const els = {
   queueList: document.getElementById('queue-list'),
   btnAddMore: document.getElementById('btn-add-more'),
   btnClearQueue: document.getElementById('btn-clear-queue'),
-  btnLoadSamples: document.getElementById('btn-load-samples'),
-  btnLoadSampleHero: document.getElementById('btn-load-sample-hero'),
 
   sliderBatchScale: document.getElementById('slider-batch-scale'),
   valBatchScale: document.getElementById('val-batch-scale'),
   btnApplyBatchRules: document.getElementById('btn-apply-batch-rules'),
+  btnApplyAllHeader: document.getElementById('btn-apply-all-header'),
 
   inspectorGrid: document.getElementById('inspector-grid'),
   inspectorEmpty: document.getElementById('inspector-empty'),
@@ -73,8 +87,6 @@ const els = {
 
   btnSignCurrent: document.getElementById('btn-sign-current'),
   btnBatchDownloadTop: document.getElementById('btn-batch-download-top'),
-  btnBatchZip: document.getElementById('btn-batch-zip'),
-  btnZipCount: document.getElementById('btn-zip-count'),
 
   bannerFileName: document.getElementById('banner-filename'),
   pageDisplay: document.getElementById('page-display'),
@@ -103,11 +115,16 @@ function init() {
   setupEventListeners();
   setupTabHandlers();
   setupBatchRadioHandlers();
-  
-  // Load sample on initial load
-  setTimeout(() => {
-    loadSampleDoc();
-  }, 200);
+  setupImageFallbacks();
+}
+
+function setupImageFallbacks() {
+  if (window.ASSETS) {
+    const pStamp = document.getElementById('img-preview-stamp');
+    const pSig = document.getElementById('img-preview-sig');
+    if (pStamp) pStamp.src = window.ASSETS.stamp;
+    if (pSig) pSig.src = window.ASSETS.signature;
+  }
 }
 
 // Event Listeners
@@ -134,8 +151,6 @@ function setupEventListeners() {
   });
 
   els.btnClearQueue.addEventListener('click', clearAllQueue);
-  els.btnLoadSamples.addEventListener('click', loadSampleDoc);
-  if (els.btnLoadSampleHero) els.btnLoadSampleHero.addEventListener('click', loadSampleDoc);
 
   document.querySelectorAll('.stamp-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -183,10 +198,10 @@ function setupEventListeners() {
   });
 
   els.btnApplyBatchRules.addEventListener('click', applyBatchRulesToAll);
+  if (els.btnApplyAllHeader) els.btnApplyAllHeader.addEventListener('click', applyBatchRulesToAll);
 
   els.btnSignCurrent.addEventListener('click', downloadCurrentSignedPdf);
   els.btnBatchDownloadTop.addEventListener('click', batchSignAndDownloadZip);
-  els.btnBatchZip.addEventListener('click', batchSignAndDownloadZip);
 
   els.pageWrapper.addEventListener('pointerdown', (e) => {
     if (e.target === els.pageWrapper || e.target === els.pdfCanvas || e.target === els.overlayLayer) {
@@ -218,14 +233,6 @@ function setupTabHandlers() {
 }
 
 function setupBatchRadioHandlers() {
-  document.querySelectorAll('#batch-type-group .radio-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('#batch-type-group .radio-btn').forEach(b => b.classList.remove('selected'));
-      btn.classList.add('selected');
-      state.batchRules.type = btn.getAttribute('data-value');
-    });
-  });
-
   document.querySelectorAll('#batch-page-target .radio-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('#batch-page-target .radio-btn').forEach(b => b.classList.remove('selected'));
@@ -263,7 +270,8 @@ async function handleIncomingFiles(fileList) {
   for (const file of pdfFiles) {
     try {
       const buffer = await file.arrayBuffer();
-      await addDocumentToQueue(file.name, file.size, buffer);
+      const bytes = new Uint8Array(buffer);
+      await addDocumentToQueue(file.name, file.size, bytes);
     } catch (err) {
       console.error(`Error loading ${file.name}:`, err);
     }
@@ -273,22 +281,20 @@ async function handleIncomingFiles(fileList) {
   showToast(`Loaded ${pdfFiles.length} document(s).`);
 }
 
-async function loadSampleDoc() {
-  try {
-    const res = await fetch('sample.pdf');
-    if (!res.ok) return;
-    const buffer = await res.arrayBuffer();
-    await addDocumentToQueue('INV-21_Sample.pdf', buffer.byteLength, buffer);
-    updateQueueUI();
-  } catch (err) {
-    console.warn('Could not load sample.pdf', err);
-  }
-}
-
-async function addDocumentToQueue(name, size, arrayBuffer) {
-  const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(arrayBuffer) });
+async function addDocumentToQueue(name, size, pdfUint8Array) {
+  // Pass a cloned copy of bytes to PDF.js
+  const pdfJsData = new Uint8Array(pdfUint8Array.buffer.slice(pdfUint8Array.byteOffset, pdfUint8Array.byteOffset + pdfUint8Array.byteLength));
+  const loadingTask = pdfjsLib.getDocument({ data: pdfJsData });
   const pdfJsDoc = await loadingTask.promise;
   const numPages = pdfJsDoc.numPages;
+
+  // Cache unscaled dimensions for each page
+  const pageDimensions = {};
+  for (let p = 1; p <= numPages; p++) {
+    const page = await pdfJsDoc.getPage(p);
+    const vp = page.getViewport({ scale: 1.0 });
+    pageDimensions[p] = { width: vp.width, height: vp.height };
+  }
 
   const docId = 'doc_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
   
@@ -296,14 +302,17 @@ async function addDocumentToQueue(name, size, arrayBuffer) {
     id: docId,
     name: name,
     size: size,
-    arrayBuffer: arrayBuffer,
+    rawBytes: new Uint8Array(pdfUint8Array.buffer.slice(pdfUint8Array.byteOffset, pdfUint8Array.byteOffset + pdfUint8Array.byteLength)),
     pdfJsDoc: pdfJsDoc,
     numPages: numPages,
+    pageDimensions: pageDimensions,
     pageItems: {},
     status: 'ready'
   };
 
+  // Automatically apply both Stamp AND Signature to document
   applyRuleToDocument(newDoc, state.batchRules);
+
   state.documents.push(newDoc);
 
   if (!state.activeDocId) {
@@ -311,6 +320,7 @@ async function addDocumentToQueue(name, size, arrayBuffer) {
   }
 }
 
+// Automatically places BOTH Company Stamp AND Signature onto document with accurate per-page dimensions
 function applyRuleToDocument(doc, rules) {
   doc.pageItems = {};
 
@@ -323,47 +333,68 @@ function applyRuleToDocument(doc, rules) {
     for (let p = 1; p <= doc.numPages; p++) targetPages.push(p);
   }
 
-  // Realistic natural stamp proportions (in points: 1/72 inch)
-  // A4 page is ~595 x 842 points
-  let baseWidth = 160;
-  let baseHeight = 80;
-  if (rules.type === 'stamp') {
-    baseWidth = 150;
-    baseHeight = 62;
-  } else if (rules.type === 'signature') {
-    baseWidth = 85;
-    baseHeight = 42;
-  }
-
   targetPages.forEach(p => {
-    const pw = 595;
-    const ph = 842;
-    const finalW = baseWidth * rules.scale;
-    const finalH = baseHeight * rules.scale;
+    const pageDim = (doc.pageDimensions && doc.pageDimensions[p]) || { width: 595.28, height: 841.89 };
+    const pw = pageDim.width;
+    const ph = pageDim.height;
 
-    let posX = pw - finalW - 40;
-    let posY = ph - finalH - 50;
+    const stampW = 150 * rules.scale;
+    const stampH = 62 * rules.scale;
+    const sigW = 85 * rules.scale;
+    const sigH = 42 * rules.scale;
+
+    // Jitter for natural unique hand-stamped & signed look
+    const jitterX = (Math.random() - 0.5) * 6;
+    const jitterY = (Math.random() - 0.5) * 6;
+    const stampRot = parseFloat(((Math.random() - 0.5) * 3).toFixed(1));
+    const sigRot = parseFloat(((Math.random() - 0.5) * 4).toFixed(1));
+
+    let stampX = pw - stampW - 40 + jitterX;
+    let stampY = ph - stampH - 45 + jitterY;
+
+    let sigX = stampX + (stampW * 0.45);
+    let sigY = stampY - (sigH * 0.5);
 
     if (rules.position === 'bottom-left') {
-      posX = 40;
-      posY = ph - finalH - 50;
+      stampX = 40 + jitterX;
+      stampY = ph - stampH - 45 + jitterY;
+      sigX = stampX + (stampW * 0.45);
+      sigY = stampY - (sigH * 0.5);
     } else if (rules.position === 'center') {
-      posX = (pw - finalW) / 2;
-      posY = (ph - finalH) / 2;
+      stampX = (pw - stampW) / 2 + jitterX;
+      stampY = (ph - stampH) / 2 + jitterY;
+      sigX = stampX + (stampW * 0.45);
+      sigY = stampY - (sigH * 0.5);
     }
 
     if (!doc.pageItems[p]) doc.pageItems[p] = [];
+
+    // Add Company Stamp
     doc.pageItems[p].push({
       id: 'item_' + Date.now() + '_' + Math.floor(Math.random() * 10000),
-      type: rules.type,
-      x: posX,
-      y: posY,
-      baseWidth: baseWidth,
-      baseHeight: baseHeight,
+      type: 'stamp',
+      x: stampX,
+      y: stampY,
+      baseWidth: 150,
+      baseHeight: 62,
       scale: rules.scale,
-      rotation: 0,
+      rotation: stampRot,
       opacity: 1.0,
-      imgDataUrl: state.assets[rules.type]
+      imgDataUrl: state.assets.stamp
+    });
+
+    // Add Signature
+    doc.pageItems[p].push({
+      id: 'item_' + Date.now() + '_' + Math.floor(Math.random() * 10000),
+      type: 'signature',
+      x: sigX,
+      y: sigY,
+      baseWidth: 85,
+      baseHeight: 42,
+      scale: rules.scale,
+      rotation: sigRot,
+      opacity: 1.0,
+      imgDataUrl: state.assets.signature
     });
   });
 }
@@ -382,7 +413,7 @@ function applyBatchRulesToAll() {
     renderCurrentPage();
   }
 
-  showToast(`Updated all ${state.documents.length} document(s).`);
+  showToast(`Applied stamp & signature to all ${state.documents.length} document(s).`);
 }
 
 function setActiveDocument(docId) {
@@ -415,8 +446,6 @@ function updateQueueUI() {
   els.tabCount.textContent = count;
   els.queueHeaderCount.textContent = `Queue (${count} File${count !== 1 ? 's' : ''})`;
   els.batchStatsBadge.textContent = `${count} Document${count !== 1 ? 's' : ''}`;
-  els.btnZipCount.textContent = count;
-  els.btnBatchZip.disabled = count === 0;
 
   els.queueList.innerHTML = '';
 
@@ -530,18 +559,16 @@ function addItemToActiveDoc(type) {
     doc.pageItems[state.currentPage] = [];
   }
 
-  let baseWidth = 160;
-  let baseHeight = 80;
-  if (type === 'stamp') {
-    baseWidth = 150;
-    baseHeight = 62;
-  } else if (type === 'signature') {
+  let baseWidth = 150;
+  let baseHeight = 62;
+  if (type === 'signature') {
     baseWidth = 85;
     baseHeight = 42;
   }
 
-  const pw = state.pageViewport ? (state.pageViewport.width / state.zoom) : 595;
-  const ph = state.pageViewport ? (state.pageViewport.height / state.zoom) : 842;
+  const pageDim = (doc.pageDimensions && doc.pageDimensions[state.currentPage]) || { width: 595.28, height: 841.89 };
+  const pw = pageDim.width;
+  const ph = pageDim.height;
   const count = doc.pageItems[state.currentPage].length;
 
   const newItem = {
@@ -740,19 +767,20 @@ function placePreset(position) {
   if (!doc || !state.selectedItemId) return;
   const items = doc.pageItems[state.currentPage] || [];
   const selected = items.find(it => it.id === state.selectedItemId);
-  if (!selected || !state.pageViewport) return;
+  if (!selected) return;
 
-  const pw = state.pageViewport.width / state.zoom;
-  const ph = state.pageViewport.height / state.zoom;
+  const pageDim = (doc.pageDimensions && doc.pageDimensions[state.currentPage]) || { width: 595.28, height: 841.89 };
+  const pw = pageDim.width;
+  const ph = pageDim.height;
   const itemW = selected.baseWidth * selected.scale;
   const itemH = selected.baseHeight * selected.scale;
 
   if (position === 'bottom-right') {
     selected.x = pw - itemW - 40;
-    selected.y = ph - itemH - 50;
+    selected.y = ph - itemH - 45;
   } else if (position === 'bottom-left') {
     selected.x = 40;
-    selected.y = ph - itemH - 50;
+    selected.y = ph - itemH - 45;
   } else if (position === 'center') {
     selected.x = (pw - itemW) / 2;
     selected.y = (ph - itemH) / 2;
@@ -808,47 +836,51 @@ function deleteSelectedItem() {
   renderOverlayItems();
 }
 
+// 1:1 WYSIWYG PDF Binary Signing using exact page coordinate system
 async function generateSignedPdfBytes(doc) {
-  const pdfDoc = await PDFLib.PDFDocument.load(doc.arrayBuffer);
-  const pages = pdfDoc.getPages();
-  const embeddedImages = {};
+  try {
+    const bytesClone = new Uint8Array(doc.rawBytes.buffer.slice(doc.rawBytes.byteOffset, doc.rawBytes.byteOffset + doc.rawBytes.byteLength));
+    const pdfDoc = await PDFLib.PDFDocument.load(bytesClone);
+    const pages = pdfDoc.getPages();
+    const embeddedImages = {};
 
-  for (let p = 1; p <= pages.length; p++) {
-    const items = doc.pageItems[p] || [];
-    if (items.length === 0) continue;
+    for (let p = 1; p <= pages.length; p++) {
+      const items = doc.pageItems[p] || [];
+      if (items.length === 0) continue;
 
-    const pdfPage = pages[p - 1];
-    const { width: pdfWidth, height: pdfHeight } = pdfPage.getSize();
-    const cssWidth = 595.28;
-    const cssHeight = 841.89;
+      const pdfPage = pages[p - 1];
+      const { width: pdfWidth, height: pdfHeight } = pdfPage.getSize();
 
-    for (const item of items) {
-      if (!embeddedImages[item.type]) {
-        const imgBytes = await fetch(item.imgDataUrl).then(res => res.arrayBuffer());
-        embeddedImages[item.type] = await pdfDoc.embedPng(imgBytes);
+      for (const item of items) {
+        if (!embeddedImages[item.type]) {
+          const rawBytes = dataURLtoUint8Array(item.imgDataUrl);
+          embeddedImages[item.type] = await pdfDoc.embedPng(rawBytes);
+        }
+
+        const pngImage = embeddedImages[item.type];
+
+        const drawWidth = item.baseWidth * item.scale;
+        const drawHeight = item.baseHeight * item.scale;
+        const drawX = item.x;
+        // Exact 1:1 conversion from Top-Left (canvas) to Bottom-Left (PDF coordinate space)
+        const drawY = pdfHeight - item.y - drawHeight;
+
+        pdfPage.drawImage(pngImage, {
+          x: drawX,
+          y: drawY,
+          width: drawWidth,
+          height: drawHeight,
+          opacity: item.opacity,
+          rotate: PDFLib.degrees(-item.rotation)
+        });
       }
-
-      const pngImage = embeddedImages[item.type];
-      const scaleX = pdfWidth / cssWidth;
-      const scaleY = pdfHeight / cssHeight;
-
-      const drawWidth = item.baseWidth * item.scale * scaleX;
-      const drawHeight = item.baseHeight * item.scale * scaleY;
-      const drawX = item.x * scaleX;
-      const drawY = pdfHeight - (item.y * scaleY) - drawHeight;
-
-      pdfPage.drawImage(pngImage, {
-        x: drawX,
-        y: drawY,
-        width: drawWidth,
-        height: drawHeight,
-        opacity: item.opacity,
-        rotate: PDFLib.degrees(-item.rotation)
-      });
     }
-  }
 
-  return await pdfDoc.save();
+    return await pdfDoc.save();
+  } catch (err) {
+    console.error('Error generating signed PDF bytes:', err);
+    throw err;
+  }
 }
 
 async function downloadCurrentSignedPdf() {
@@ -873,13 +905,13 @@ async function downloadCurrentSignedPdf() {
     showToast(`Downloaded ${link.download}`);
   } catch (err) {
     console.error('Error signing document:', err);
-    showToast('Failed to sign document.', 'error');
+    showToast(`Failed to sign document: ${err.message || 'Unknown error'}`, 'error');
   }
 }
 
 async function batchSignAndDownloadZip() {
   if (state.documents.length === 0) {
-    showToast('No documents in queue.', 'error');
+    showToast('No documents in queue to download.', 'error');
     return;
   }
 
@@ -919,7 +951,7 @@ async function batchSignAndDownloadZip() {
   } catch (err) {
     console.error('Batch sign error:', err);
     hideProgress();
-    showToast('Error during batch signing.', 'error');
+    showToast(`Failed to sign documents: ${err.message || 'Unknown error'}`, 'error');
   }
 }
 
@@ -948,7 +980,7 @@ function showToast(message, type = 'info') {
   els.toast.className = `toast show ${type}`;
   toastTimer = setTimeout(() => {
     els.toast.classList.remove('show');
-  }, 3000);
+  }, 3500);
 }
 
 document.addEventListener('DOMContentLoaded', init);
