@@ -360,8 +360,8 @@ ul, ol { list-style: none; }
 
 .dept-card-contact {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .dept-card-contact a,
@@ -370,12 +370,30 @@ ul, ol { list-style: none; }
 }
 
 .dept-card-contact a {
-  color: var(--brand);
-  text-decoration: underline;
-  text-underline-offset: 2px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  color: #1a365d;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
-.dept-card-contact a:hover { color: var(--brand-hover); }
+.dept-card-contact a:hover {
+  background: #1a365d;
+  border-color: #1a365d;
+  color: #fff;
+}
+
+.dept-card-contact a svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
 
 /* ═══ Reduced motion ═══ */
 @media (prefers-reduced-motion: reduce) {
